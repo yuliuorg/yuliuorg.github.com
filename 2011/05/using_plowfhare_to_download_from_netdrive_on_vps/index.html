@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="刘昱" />
+	<title>刘昱 | 使用plowshare在VPS（centos）上下载网盘文件 </title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="http://192.168.1.197:4000/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+	<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+	<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+    <script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+    <script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+	<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+  	<script type="text/javascript" src="/media/script/default.js"></script>
+  </head>
+  <body>
+	  <div id="container">
+		  <header>	  
+			  <h1>刘 昱</h1>
+			  <h2>核能动力系统设计工程师</h2>
+	 	  </header>
+		<nav>
+        <span><a title="首页" class="" href="http://192.168.1.197:4000/">主页</a></span>
+		<span><a title="简历" class="" href="http://192.168.1.197:4000/vitae/">简历</a></span>
+        <span><a title="论文" class="" href="http://192.168.1.197:4000/publication/">论文</a></span>
+        <span><a title="关于" class="" href="http://192.168.1.197:4000/about/">关于</a></span>
+        <span><a title="留言" class="" href="http://192.168.1.197:4000/guestbook/">留言</a></span>
+        <span><a title="链接" class="" href="http://192.168.1.197:4000/links/">链接</a></span>
+		<span><a title="杂货铺" class="" href="http://192.168.1.197:4000/essay">杂货铺</a></span>
+        </nav>
+      <div id="main" role="main">
+        <article class="content">
+        <section class="title">
+        <h1>使用plowshare在VPS（centos）上下载网盘文件</h1>
+</section>
+<section class="post">
+<p><a href="http://code.google.com/p/plowshare">plowshare</a>是一个*nix系统中，基于命令行的网盘下载工具，该工具不能自动读取验证码。支持Megaupload, Rapidshare, 2Shared, 4Shared, ZShare, Badongo, Divshare.com, Depositfiles, Netload.in, Sendspace, Usershare, x7.to等网站（<a href="http://code.google.com/p/plowshare/wiki/Readme">全部列表</a>），惊喜发现还支持国内的115。网上有很多在vps上安装plowshare的教程，但是基本上都是从plowshare wiki翻译的，在我的centos 5.5 vps上安装中遇到了一些小问题，所以有了这篇blog，注意该文只针对centos</p>
+
+<h1>配置rpmforge</h1>
+
+<p>plowshare需要一众的依赖包，其中一些包在centos官方的镜像中是没有的，因此首先需要配置<a href="http://wiki.centos.org/AdditionalResources/Repositories/RPMForge">rpmforge</a>。<em>现在网上的大部分教程都缺少这一步</em>，上来就yum instal ***，结果发现yum根本找不到这些包</p>
+
+<p>rpmforge是Dag和其他包的集合，为centos提供了超过5000个的包，包括wine、vlc、mplayer等（<a href="http://packages.sw.be/">所有包列表</a>）。安装plowshare所需的libcaca、caca-utils、tesseract-ocr等。</p>
+
+<p>1.首先进入<a href="http://packages.sw.be/rpmforge-release/">http://packages.sw.be/rpmforge-release</a>选择适合硬件架构的<tt>rpmforge-release</tt>包，可以使用uname -i来检查自己的硬件架构，我选的是</p>
+
+<pre><code>wget http://packages.sw.be/rpmforge-release/rpmforge-release-0.5.2-2.el5.rf.i386.rpm
+</code></pre>
+
+<p>2.安装DAG's GPG密钥</p>
+
+<pre><code>rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt
+</code></pre>
+
+<p>3.验证下载的<tt>rpmforge-release</tt></p>
+
+<pre><code>rpm -K rpmforge-release-0.5.2-2.el5.rf.*.rpm
+</code></pre>
+
+<p>4.安装rpmforge</p>
+
+<pre><code>rpm -i rpmforge-release-0.5.2-2.el5.rf.*.rpm
+</code></pre>
+
+<p>程序将配置yum库配置文件并导入相应的GPG密钥，这样rpmforge就配置好了。</p>
+
+<h1>安装plowshare</h1>
+
+<p>1.安装一众依赖包</p>
+
+<pre><code>yum install curl recode imagemagick tesseract-ocr-eng spidermonkey-bin perlmagick libcaca caca-utils
+</code></pre>
+
+<p>记得要装caca-utils，因为CLI下将网盘验证码图片装换为ASCII的img2txt不是包含在libcaca里面，而是在caca-utils里面。网上一众教程都没有提到这个~</p>
+
+<p>2.下载plowshare，注意将代码中的version换成相应的版本号</p>
+
+<pre><code>wget http://plowshare.googlecode.com/files/plowshare-SVN-r[VERSION]-snapshot.tar.gz
+</code></pre>
+
+<p>如果喜欢稳定版</p>
+
+<pre><code>wget http://plowshare.googlecode.com/files/plowshare-[VERSION].tgz
+</code></pre>
+
+<p>3.解压缩和安装（root下），</p>
+
+<pre><code>tar xvzf plowshare-SVN-rVERSION-snapshot.tar.gz
+cd plowshare-SVN-rVERSION-snapshot.tar.gz
+setup.sh install
+</code></pre>
+
+<p>稳定版把文件名换换就行</p>
+
+<p>4.使用</p>
+
+<p>下载</p>
+
+<pre><code>plowdown FILEURL
+</code></pre>
+
+<p>上传</p>
+
+<pre><code>plowup FILEURL megaupload
+</code></pre>
+
+<p>更多使用参数参见plowshare的文档吧。</p>
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://192.168.1.197:4000">刘昱</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2011-05-19">2011-05-19</time>
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+
+<span class="categories">
+  in categories
+  
+  <a href="http://192.168.1.197:4000/categories/#计算机" title="计算机">计算机</a>&nbsp;
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+  <a href="http://192.168.1.197:4000/tags/#centos" title="centos">centos</a>&nbsp;
+  
+  <a href="http://192.168.1.197:4000/tags/#linux" title="linux">linux</a>&nbsp;
+  
+  <a href="http://192.168.1.197:4000/tags/#VPS" title="VPS">VPS</a>&nbsp;
+  
+  <a href="http://192.168.1.197:4000/tags/#未分类" title="未分类">未分类</a>&nbsp;
+  
+  <a href="http://192.168.1.197:4000/tags/#电脑技术" title="电脑技术">电脑技术</a>&nbsp;
+  
+  <a href="http://192.168.1.197:4000/tags/#网盘" title="网盘">网盘</a>&nbsp;
+  
+  <a href="http://192.168.1.197:4000/tags/#软件使用" title="软件使用">软件使用</a>&nbsp;
+  
+</span>
+
+</section>
+
+	<section class="comment">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+    var disqus_url = 'http://192.168.1.197:4000/2011/05/using_plowfhare_to_download_from_netdrive_on_vps/';
+	// var disqus_developer = 1; 
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://192.168.1.197:4000/2011/05/auto_start_and_login_of_tunnelier/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://192.168.1.197:4000/2011/05/disassembly_of_asus_notebook_f8sa/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+        </article>
+		<div id="toc"></div>
+      </div>
+    </div>
+    </body>
+</html>

@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <rss version="2.0"
+        xmlns:content="http://purl.org/rss/1.0/modules/content/"
+        xmlns:atom="http://www.w3.org/2005/Atom"
+  >
+  <channel>
+    <title>刘昱</title>
+    <link href="http://192.168.1.197:4000/feed/" rel="self" />
+    <link href="http://yihui.name/" />
+    <lastBuildDate>2012-07-04T23:05:05+08:00</lastBuildDate>
+    <webMaster>xie@yihui.name</webMaster>
+    
+    <item>
+      <title>vim和相关东东</title>
+      <link href="http://192.168.1.197:4000/2012/06/vim-and-related/"/>
+      <pubDate>2012-06-29T00:00:00+08:00</pubDate>
+      <author>刘昱</author>
+      <guid>http://192.168.1.197:4000/2012/06/vim-and-related</guid>
+      <content:encoded><![CDATA[<h1>VIM和相关东东</h1>
+
+<h2>1 我的VIM初始安装</h2>
+
+<ul>
+<li>下载安装</li>
+<li>修改.vimrc或_vimrc文件</li>
+<li>安装Vundle插件管理软件</li>
+<li>通过Vundle安装插件<br/>
+Vundle插件名需要区分大小写</li>
+</ul>
+
+
+<h2>2 VIM插件</h2>
+
+<ul>
+<li><a href="">Vundle</a></li>
+</ul>
+
+
+<p>需要git和curl的支持</p>
+
+<ul>
+<li><a href="http://www.vim.org/scripts/script.php?script_id=1708">FencView</a></li>
+</ul>
+
+
+<p>自动检测文件编码，也可以手动选择文件编码。</p>
+
+<p>需要<a href="http://mbbill.googlepages.com/iconv.dll">iconv.dll</a>的支持，在系统PATH路径下。</p>
+
+<ul>
+<li><a href="http://www.vim.org/scripts/script.php?script_id=2657">VOom</a></li>
+</ul>
+
+
+<p>部分标记语言的标题自动摘要</p>
+
+<p>需要python 2.X的支持</p>
+
+<ul>
+<li><a href="http://www.vim.org/scripts/script.php?script_id=2882">Markdown</a></li>
+</ul>
+
+
+<p>提供markdown着色功能，顺便也提供了snippet</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>git和github</title>
+      <link href="http://192.168.1.197:4000/2012/06/git-and-github/"/>
+      <pubDate>2012-06-29T00:00:00+08:00</pubDate>
+      <author>刘昱</author>
+      <guid>http://192.168.1.197:4000/2012/06/git-and-github</guid>
+      <content:encoded><![CDATA[<h1>1 git</h1>
+
+<h1>2 github</h1>
+
+<h2>2.1 配置和使用github</h2>
+
+<h2>2.2 github pages</h2>
+
+<p>github提供了github pages的服务，不仅可以方便的为项目建立介绍页面，也可以用来建立个人页面。gitHub pages分两种，一种是你的gitHub用户名建立的[username].github.com这样的User &amp; Organization Pages，另一种是依附项目的Project Pages。</p>
+
+<h3>User &amp; Organization Pages</h3>
+
+<p>首先建立一个repo，名称只能是[username].github.com。每个用户名下面只能建立一个。该repo下master分支中的内容将被用作用户&amp;组织页（站）内容。</p>
+
+<p>创建好repo之后，commit一个index.html文件，然后push到master分支即可。如果是第一次使用页面，大概需要10分钟左右才能生效，之后的更改则会立即生效。</p>
+
+<p>生效之后就可以访问[username].github.com，将会看到上传的index.html页面。</p>
+
+<h3>Project Pages</h3>
+
+<p>Project Pages放在项目相同的repo中，但是使用 gh-pages分支。其默认地址为[username].github.com/[projectname]。</p>
+
+<h3>yuliu.org的个人页设置</h3>
+
+<p>使用Markdown生成user page中的html文件，本地目录的组织结构如下</p>
+
+<pre><code>root \[ -&gt; "source" \]
+|- markdown files
+|- html \[ -&gt; "master" \]
+</code></pre>
+
+<p>root目录指向git repo的source分支，html目录用来指向相同repo的master分支。</p>
+
+<p><em>实现上述结构的方法</em></p>
+
+<p>首先在root目录初始化一个repo。（$ 为cmd提示符）</p>
+
+<pre><code># 初始化本地repo
+$ git init
+# 提交文件
+$ git add .
+$ git commit -m "init"
+</code></pre>
+
+<p>通过上述命令建立了一个包含所有源文件的master分支，接着重命名该分支并push到服务器（remote）</p>
+
+<pre><code># 将本地master重命名为source
+$ git branch -m master source
+# 将github repo添加为origin
+$ git remote add origin git@github.com:[username]/[username].github.com.git
+# 将source分支push到服务器repo
+$ git push -u origin source
+</code></pre>
+
+<p>这样repo中只有一个分支：source，见者创建master分支。如果root目录存在html目录，先删除该html目录</p>
+
+<pre><code># 获取一个github repo的副本到html
+$ git clone git@github.com:[username]/[username].github.com.git html
+$ cd html
+# 建立一个独立的分支
+$ git symbolic-ref HEAD refs/heads/master
+$ rm .git/index
+$ git clean -fdx
+</code></pre>
+
+<p>现在master分支已经建立好，每当有新内容生成，只需要commit &amp; push到服务器即可</p>
+
+<pre><code>$ git add .
+$ git commit -m "updated"
+$ git push -u origin master
+</code></pre>
+
+<h2>2.3 自定义域名</h2>
+
+<p>github page中，要想让username.github.com能通过你自己的域名来访问，需要在项目的根目录下新建一个名为CNAME的文件，文件内容为域名或者子域名名称，例如：</p>
+
+<pre><code>gt.yuliu.org
+</code></pre>
+
+<p>接着需要设置域名的DNS（这不是立即生效的），对于顶级域名需要建立一条 A记录 到 204.232.175.78。注意不是使用CNAME形式，否则可能对其他服务（例如email）造成影响。</p>
+
+<p>对于子域名最好使用CNAME记录，指向[username].github.com</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>CentOS 修改IP地址, DNS, 网关</title>
+      <link href="http://192.168.1.197:4000/2011/05/modify_ip_dns_gateway_in_cento/"/>
+      <pubDate>2011-05-24T00:00:00+08:00</pubDate>
+      <author>刘昱</author>
+      <guid>http://192.168.1.197:4000/2011/05/modify_ip_dns_gateway_in_cento</guid>
+      <content:encoded><![CDATA[<h1>一、CentOS修改IP地址</h1>
+
+
+<p>修改对应网卡的IP地址的配置文件</p>
+
+<p>vi /etc/sysconfig/network-scripts/ifcfg-eth0</p>
+
+<blockquote>#描述网卡对应的设备别名，例如ifcfg-eth0的文件中它为eth0
+DEVICE=eth0
+#设置网卡获得ip地址的方式，选项为static，dhcp或bootp，对应静态指定的 ip地址,通过dhcp协议获得的ip地址，通过bootp协议获得的ip地址
+BOOTPROTO=static
+#对应的子网广播地址
+BROADCAST=192.168.1.255
+#对应的网卡物理地址
+HWADDR=00:07:E9:05:E8:B4
+#如果设置网卡获得 ip地址的方式为静态指定，此字段就指定了网卡对应的ip地址
+IPADDR=192.168.1.99
+IPV6INIT=no
+IPV6_AUTOCONF=no
+#网卡对应的网络掩码
+NETMASK=255.255.255.0
+ONBOOT=yes #系统启动时是否设置此网络接口，设置为yes时，系统启动时激活此设备</blockquote>
+
+
+<p>&nbsp;</p>
+
+<h1>二、CentOS 修改网关</h1>
+
+
+<p>修改对应网卡的网关的配置文件</p>
+
+<p>vi /etc/sysconfig/network</p>
+
+<blockquote>#表示系统是否使用网络，一般设置为yes。如果设为no，则不能使用网络，而且很多系统服务程序将无法启动
+NETWORKING=yes
+#设置本机的主机名，这里设置的主机名要和/etc/hosts中设置的主机名对应
+HOSTNAME=localhost.localdomain
+#设置本机连接的网关的IP地址。例如，网关为192.168.1.1
+GATEWAY=192.168.1.1</blockquote>
+
+
+<h1>三、CentOS 修改DNS</h1>
+
+
+<p>修改对应网卡的DNS的配置文件</p>
+
+<p>vi /etc/resolv.conf</p>
+
+<blockquote>#OPENDNS
+nameserver 208.67.222.222
+nameserver 208.67.220.220
+nameserver 192.168.1.1
+search localdomain</blockquote>
+
+
+<h1>四、重启网络</h1>
+
+
+<blockquote>/etc/init.d/network restart</blockquote>
+
+
+<p>&nbsp;</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>华硕笔记本F8SA笔记本拆机+换主板电池未果</title>
+      <link href="http://192.168.1.197:4000/2011/05/disassembly_of_asus_notebook_f8sa/"/>
+      <pubDate>2011-05-21T00:00:00+08:00</pubDate>
+      <author>刘昱</author>
+      <guid>http://192.168.1.197:4000/2011/05/disassembly_of_asus_notebook_f8sa</guid>
+      <content:encoded><![CDATA[<p>用了快4年的华硕笔记本F8SA出了点小毛病，bios设置总是自动复位、通电自动启动等，初步判断是主板电池没电了。打电话问asus售后，告知换主板电池要200大洋。10块钱就能解决的事情要皮生花200块钱，心有不甘啊，遂决定DIY操作之。网上先搜了几个F8的拆机教程，都挺不错的，尤其是第一篇，共同的缺点是图片太小了。</p>
+
+<blockquote><p> <a href="http://benyouhui.it168.com/thread-1086993-1-1.html">F8S系列拆机详细图</a></p>
+
+<p> <a href="http://benyouhui.it168.com/viewthread.php?tid=846638&amp;amp;extra=&amp;amp;page=1">无聊手痒 ASUS F8Sv 拆机耍</a></p></blockquote>
+
+<p>流程第一篇写得很清楚了，照着一步一步来就是、随便上几张图吧。</p>
+
+<p><img src="http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5628.jpg" title="日立160G 5400rpm SATA硬盘" alt="日立160G 5400rpm SATA硬盘" /></p>
+
+<p><img src="http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5427.jpg" title="hynix 1G DDR2 667 内存" alt="hynix 1G DDR2 667 内存" /></p>
+
+<p><img src="http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5621.jpg" title="笔记本内存 安装" alt="笔记本内存 安装" /></p>
+
+<p><img src="http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5608.jpg" title="INTEL T7500 CPU" alt="INTEL T7500 CPU" /></p>
+
+<p><img src="http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5618.jpg" title="CPU安装" alt="CPU安装" /></p>
+
+<p><img src="http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5426.jpg" title="CPU+散热器+内存+HD2600显卡" alt="CPU+散热器+内存+HD2600显卡" /></p>
+
+<p><img src="http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5604.jpg" title="INTEL 4965AGN 无线网卡" alt="INTEL 4965AGN 无线网卡" /></p>
+
+<p><img src="http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5600.jpg" title="显示器接头" alt="显示器接头" /></p>
+
+<p><img src="http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5589.jpg" title="电源开关" alt="电源开关" /></p>
+
+<p>拆电源开关上面这一块老费劲了，没想到更成为了终点，后面的前盖折腾了半天愣是没有弄下来。看来这200块钱果然是个技术加体力活啊~，还是周末提去售后吧。</p>
+
+<p>于是又原封不动宠幸将拆下来的东西装了回去，发现掉出来一根弹簧，找不到出处~~</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>使用plowshare在VPS（centos）上下载网盘文件</title>
+      <link href="http://192.168.1.197:4000/2011/05/using_plowfhare_to_download_from_netdrive_on_vps/"/>
+      <pubDate>2011-05-19T00:00:00+08:00</pubDate>
+      <author>刘昱</author>
+      <guid>http://192.168.1.197:4000/2011/05/using_plowfhare_to_download_from_netdrive_on_vps</guid>
+      <content:encoded><![CDATA[<p><a href="http://code.google.com/p/plowshare">plowshare</a>是一个*nix系统中，基于命令行的网盘下载工具，该工具不能自动读取验证码。支持Megaupload, Rapidshare, 2Shared, 4Shared, ZShare, Badongo, Divshare.com, Depositfiles, Netload.in, Sendspace, Usershare, x7.to等网站（<a href="http://code.google.com/p/plowshare/wiki/Readme">全部列表</a>），惊喜发现还支持国内的115。网上有很多在vps上安装plowshare的教程，但是基本上都是从plowshare wiki翻译的，在我的centos 5.5 vps上安装中遇到了一些小问题，所以有了这篇blog，注意该文只针对centos</p>
+
+<h1>配置rpmforge</h1>
+
+<p>plowshare需要一众的依赖包，其中一些包在centos官方的镜像中是没有的，因此首先需要配置<a href="http://wiki.centos.org/AdditionalResources/Repositories/RPMForge">rpmforge</a>。<em>现在网上的大部分教程都缺少这一步</em>，上来就yum instal ***，结果发现yum根本找不到这些包</p>
+
+<p>rpmforge是Dag和其他包的集合，为centos提供了超过5000个的包，包括wine、vlc、mplayer等（<a href="http://packages.sw.be/">所有包列表</a>）。安装plowshare所需的libcaca、caca-utils、tesseract-ocr等。</p>
+
+<p>1.首先进入<a href="http://packages.sw.be/rpmforge-release/">http://packages.sw.be/rpmforge-release</a>选择适合硬件架构的<tt>rpmforge-release</tt>包，可以使用uname -i来检查自己的硬件架构，我选的是</p>
+
+<pre><code>wget http://packages.sw.be/rpmforge-release/rpmforge-release-0.5.2-2.el5.rf.i386.rpm
+</code></pre>
+
+<p>2.安装DAG's GPG密钥</p>
+
+<pre><code>rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt
+</code></pre>
+
+<p>3.验证下载的<tt>rpmforge-release</tt></p>
+
+<pre><code>rpm -K rpmforge-release-0.5.2-2.el5.rf.*.rpm
+</code></pre>
+
+<p>4.安装rpmforge</p>
+
+<pre><code>rpm -i rpmforge-release-0.5.2-2.el5.rf.*.rpm
+</code></pre>
+
+<p>程序将配置yum库配置文件并导入相应的GPG密钥，这样rpmforge就配置好了。</p>
+
+<h1>安装plowshare</h1>
+
+<p>1.安装一众依赖包</p>
+
+<pre><code>yum install curl recode imagemagick tesseract-ocr-eng spidermonkey-bin perlmagick libcaca caca-utils
+</code></pre>
+
+<p>记得要装caca-utils，因为CLI下将网盘验证码图片装换为ASCII的img2txt不是包含在libcaca里面，而是在caca-utils里面。网上一众教程都没有提到这个~</p>
+
+<p>2.下载plowshare，注意将代码中的version换成相应的版本号</p>
+
+<pre><code>wget http://plowshare.googlecode.com/files/plowshare-SVN-r[VERSION]-snapshot.tar.gz
+</code></pre>
+
+<p>如果喜欢稳定版</p>
+
+<pre><code>wget http://plowshare.googlecode.com/files/plowshare-[VERSION].tgz
+</code></pre>
+
+<p>3.解压缩和安装（root下），</p>
+
+<pre><code>tar xvzf plowshare-SVN-rVERSION-snapshot.tar.gz
+cd plowshare-SVN-rVERSION-snapshot.tar.gz
+setup.sh install
+</code></pre>
+
+<p>稳定版把文件名换换就行</p>
+
+<p>4.使用</p>
+
+<p>下载</p>
+
+<pre><code>plowdown FILEURL
+</code></pre>
+
+<p>上传</p>
+
+<pre><code>plowup FILEURL megaupload
+</code></pre>
+
+<p>更多使用参数参见plowshare的文档吧。</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Tunnelier自动登录指定的SSH</title>
+      <link href="http://192.168.1.197:4000/2011/05/auto_start_and_login_of_tunnelier/"/>
+      <pubDate>2011-05-16T00:00:00+08:00</pubDate>
+      <author>刘昱</author>
+      <guid>http://192.168.1.197:4000/2011/05/auto_start_and_login_of_tunnelier</guid>
+      <content:encoded><![CDATA[<p>Tunnelier是一个很好的软件，但选项中没有随系统启动的功能，但是这种软件怎么能不自动启动呢。</p>
+
+<p>其实简单DIY，利用tunnelier的命令行就能很简单的解决这个问题。</p>
+
+<p>在 Tunnelier 配置并成功登录过一次 SSH，并将该配置保存为abc.tlp。</p>
+
+<p>之后  Tunnelier 的快捷方式的最后面加上<code>-loginOnStartup</code>和<code>-profile="路径\abc.tlp</code>参数，然后拷贝一个丢在启动里面即可~~</p>
+
+<p>无需向官网说的那样，添加成一个服务即可实现Tunnelier自动登录指定的SSH</p>
+
+<p>Tunnelier 更多的命令行参数可以用<code>Tunnelier.exe /?</code>查看</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>tar解压 tar.bz2文件出错</title>
+      <link href="http://192.168.1.197:4000/2011/05/tar_error_with_bzip2/"/>
+      <pubDate>2011-05-11T00:00:00+08:00</pubDate>
+      <author>刘昱</author>
+      <guid>http://192.168.1.197:4000/2011/05/tar_error_with_bzip2</guid>
+      <content:encoded><![CDATA[<p>用tar 解压 tar.bz2文件出错</p>
+
+<blockquote><p>debian:/usr/src# tar jxf linux-2.6.26.tar.bz2<br/>
+tar: bzip2: Cannot exec: No such file or directory<br/>
+tar: Error is not recoverable: exiting now<br/>
+tar: Child returned status 2<br/>
+tar: Error exit delayed from previous errors</p></blockquote>
+
+<p>安装bzip2软件包</p>
+
+<pre><code>apt-get install bzip2
+</code></pre>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>gVIM和中文字符编码</title>
+      <link href="http://192.168.1.197:4000/2011/03/gvim-and-encoding/"/>
+      <pubDate>2011-03-22T00:00:00+08:00</pubDate>
+      <author>刘昱</author>
+      <guid>http://192.168.1.197:4000/2011/03/gvim-and-encoding</guid>
+      <content:encoded><![CDATA[<p>gVIM 对我来说是作为一个文本类文件查看器和快速编辑器（windows系统下），使用中总是碰到编码的问题。其实在网络上已经有很好的解决方案了，安装<em>fencive</em>插件即可。</p>
+
+<blockquote><p>  http://www.vim.org/scripts/script.php?script_id=1708</p></blockquote>
+
+<p>将下载的 fencview.vim 放入 vim安装目录/plugin  中</p>
+
+<p>注：该插件是用了"+iconv" 特性，因此确保(解压缩后的)iconv.dll【<a href="https://sites.google.com/site/mbbill/iconv.dll">原始下载（墙外）</a>，<a href="http://ffs.nuclear2power.com/wp-content/uploads/2011/03/iconv.zip">本地</a>】在win的$PATH路径中（放到vim安装目录下即可）</p>
+
+<p>我使用 gVIM 通常是作为文件查看器，因此这种乱码问题遇到较多。</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>没有光驱装XP系统</title>
+      <link href="http://192.168.1.197:4000/2011/03/xp_install_without_cd_dirver/"/>
+      <pubDate>2011-03-11T00:00:00+08:00</pubDate>
+      <author>刘昱</author>
+      <guid>http://192.168.1.197:4000/2011/03/xp_install_without_cd_dirver</guid>
+      <content:encoded><![CDATA[<p>自己的步骤，X61通过
+1. 将XP镜像拷到欲重装系统电脑的非C盘上</p>
+
+<ol>
+<li><p>下载 通用PE工具箱 http://hi.baidu.com/uepon</p></li>
+<li><p>将通用PE工具箱 刻录 到U盘。<br/>
+Tips：最好不要用安装程序自带的刻录方式，这个方式格式化U盘的时候好像不是快速格式化。因此选择刻录到镜像，在用ultraISO写入</p></li>
+<li><p>U盘启动进入PE，打开虚拟光驱（桌面上），装入预先复制进来的镜像</p></li>
+<li><p>拔掉U盘</p></li>
+<li><p>安装，复制文件<br/>
+Tips 1：如果是2003的PE，直接运行安装，安装选项不可选，但可进入I386文件夹，选winnt32.exe程序安装<br/>
+Tips 2：记得在高级处，选择复制所有安装文件</p></li>
+<li><p>安装程序不会自动重启，手动重启</p></li>
+<li><p>重启后进入安装界面安装<br/>
+Tips 1：如果蓝屏，一般是因为bios的硬盘设置有问题，改为compatible即可<br/>
+Tips 2：安装中如果出现不能复制文件，是因为原系统为vista，未格盘后就直接装XP就会出现该问题，可格调安装盘后重来~</p></li>
+<li><p>之后我的电脑就OK了~大家有什么问题还欢迎补充</p></li>
+</ol>
+
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>使用C#进行基于PI的开发（三）- 应用PISDK和PIAPI从PI数据库读取数据</title>
+      <link href="http://192.168.1.197:4000/2011/03/pi_development_using_csharp-3/"/>
+      <pubDate>2011-03-11T00:00:00+08:00</pubDate>
+      <author>刘昱</author>
+      <guid>http://192.168.1.197:4000/2011/03/pi_development_using_csharp-3</guid>
+      <content:encoded><![CDATA[<p>上次说了这次的题目是对PI数据库中的数据进行读取和写入，可是为了等了这么久呢?出了自己比较懒以外,遇到了一点麻烦也是一个原因呢?后面又说</p>
+
+<h1>1 应用SDK从PI数据库读取数据</h1>
+
+<p>我们知道PI数据库的数据分别存储在Snapshot或者Archive中,一个是快照一个是档案文件,这样做是为了方便PI数据库对数据进行压缩.那么自然对数据库的读取也分为对Snapshot和Archive读取.snapshot和archive的值都是用PIValue的形式表示的， PIValue对象包括了数值和时间。应用SDK从数据库中获取snapshop或者archive的值很简单。
+首先连接数据库，声明一个PIServer：</p>
+
+<pre><code>_piServer = piSDK.Servers.DefaultServer；
+</code></pre>
+
+<p>然后利用PIServer的Points属性访回一个点的集合，再通过tagName来获取点：</p>
+
+<pre><code>PIPoint pt = _piServer.PIPoints[tbxTagName.Text];
+</code></pre>
+
+<p>如果是使用Snapshot，直接声明一个PIValue通过PIPoint的Snapshot属性来返回值：</p>
+
+<pre><code>pv = pt.Data.Snapshot;
+</code></pre>
+
+<p>然后我们就可以通过PIValue的Value属性和TimeStamp属性来获取snapshot的值和该值对应的时间了。</p>
+
+<pre><code>tbxValue.Text = pv.Value.ToString();
+tbxTime.Text = pv.TimeStamp.LocalDate.ToString();
+</code></pre>
+
+<p>如果要读取Archive的值，那么要稍微麻烦一点，应为你要给定读取的时间和模式，PIPoint对象的ArcValue方法是用来获取Archive的值，帮助的说明如下：</p>
+
+<p>object.ArcValue TimeStamp, Mode, AsynchStatus</p>
+
+<p>这个应该是VB的语法吧，我们可以看出他有三个参数。第一个是时间，C#中我们可以直接传一个DateTime格式的数据进去，当然你也可以使用 PITime对象表示的时间，或者一个字符串。Mode代表取出的模式，因为PI数据库并不是每个时间都存有数据的，所以在你可以选择模式是读取你输入时间的当前点，后面一个点，前面一个点或者插值表示的时间。最后一个参数不解，文档里面没有说明，VB的例子则直接没有传这个参数，应该是一个可选参数，我的处理方法如下。</p>
+
+<pre><code>RetrievalTypeConstants rtType;
+rtType = (RetrievalTypeConstants)piSDK.PIConstants["RetrievalTypeConstants"][cbxValue.Text].Value;
+pv = pt.Data.ArcValue(dt, rtType, new PISDKCommon.PIAsynchStatus());
+</code></pre>
+
+<p>RetrievalTypeConstants 就是表示存取模式的，我这里使用过一个下拉列表框获得可用的模式的，最后一个参数是通过传一个新的实例下去，这里不知道这样和不合理，反正可以读出数据我就没有管了，又没有达人解释一下怎么处理这种VB的可选参数的情况呢？我学着VSTS的那种Type.Missing又不可以。</p>
+
+<p>然后读出来的PIValue同样包含一个数值和一个时间，现在我想大家应该理解为什么PIValue里面要包含一个时间了吧。</p>
+
+<p>我觉得应用SDK很简单，感觉和开发Excel很象，都是调用Com，也挺符合.net的开发习惯的，文档也好，每个对象还有一个详细的VB例子，虽然不是.net的，但是也可以大致了解得差不多。</p>
+
+<h1>2 应用SDK向PI数据库写入数据</h1>
+
+<p>在PIData对象中有一个UpdateValue方法和UpdateValues方法，顾名思义，一个是更新单个数据，一个是更新一批数据。但是文档里面红红的标着Not Implemented两个单词，心顿时凉了，考虑到文档的版本比我实际使用的SDK版本第一点，去Object Browser里面搜索了一下，果然找到了这个方法</p>
+
+<pre><code>public virtual void UpdateValue(object newValue, object TimeStamp, PISDK.DataMergeConstants MergeType, PISDKCommon.PIAsynchStatus asynchStatus)
+</code></pre>
+
+<p>这些参数的意思没有文档也挺好理解的，这里就不说了，可是当我尝试用这个方法去更新数据库的时候，一样抛出了Not Implemented的错误，当时心里非常的郁闷，这个也就是开头我说到的麻烦。我的SDK的版本是1.2.0，问了一个比较有经验的人，他说他没有遇到过不能写入的问题，等有时间去问问他，看看是不是版本的问题，如果有人能写入的，请给我说一下你们的版本；</p>
+
+<h1>3 应用API从PI数据库读取数据</h1>
+
+<p>SDK不行，还好我们还有PI-API，这个感觉和Win32 API挺象的吧，都是一写用C写的函数，PISDK其实就是把PIAPI包装了一下，可惜我对P/Invoke不怎么熟悉，如果大家对这个也不熟悉的话，我觉得这两篇文章还是不错，作为预备知识。</p>
+
+<p>在C#中通过P/Invoke调用Win32 DLL
+如何在C#中使用Win32和其他库</p>
+
+<p>这两篇文章看了我还是颇有收获的，至少知道引用类型在传递的时候不需要ref关键字，因为在.net中本身就是按地址传递的，呵呵，可能是基础知识太差。</p>
+
+<p>不过看API的文档和SDK的文档相比真是天壤之别，API文档只有一个简单的概述，例子也没有，参数的说明更是往往只有一句话，不过还好吧，我慢慢的试还是试出来了一些。</p>
+
+<p>对于数据读取和写入还是分为snapshot和archive，就是两个不同的函数，参数也差不多类似。</p>
+
+<p>PI-API函数是按组分开的，有Point函数，Archive函数和snapshot函数等。</p>
+
+<p>从archive数据库读取数据有两个，一个是扩展函数，功能多一些，所以我们在这里使用的是扩展函数来读取数据，其文档的声明如下：</p>
+
+<pre><code>int32 PIPROC piar_getarcvaluex(
+int32 ptnum,
+int32 mode,
+float64 PIPTR *drval,
+int32 PIPTR *ival,
+void PIPTR *bval,
+uint32 PIPTR *bsize,
+int32 PIPTR *istat,
+int16 PIPTR *flags,
+PITIMESTAMP PIPTR *time);
+</code></pre>
+
+<p>int32,uint32这些都是PIAPI里面自己定义的类型，从名字可以很简单的看出他们对应32位整数，32位无符号整数，在C#中这些，.net已经给我们定制好了，还比较方便。</p>
+
+<p>PITIMESTAMP 是一个结构体，定义很简单，我们直接在C#中定制一个类似的结构就好了。</p>
+
+<p>ptnum是PI tag号对应的一个Int32位的整数来代表数据库中的一个点，可以通过API函数pipt_findpoint把Tag名字转换成ptnum。</p>
+
+<p>mode和SDK里面的模式很类似，就是看是读取前面一个点，还是后面一个点的值。</p>
+
+<p>如果读取出来的是浮点值，drval就是这个值；如果读取出来的是整型值，ival就是这个值；bval是一个字符串，bsize是这个字符串的缓冲区大小，istat是代表数值量的值，flags文档上面的说明是</p>
+
+<p>Data quality flag mask不解。time是值对应的时间，相当于SDK里面的pv.TimeStamp.LocalDate。</p>
+
+<p>对于字符串，这里我看了半天，因为string类型是一个不定长的字符串，所以是不能用在这个地方的，这个地方的bval应该是使用 StringBuilder,StringBuilder.Capacity就表示了bsize，这一点还是冲上面那两篇文章看到的，真是基础差，呵呵。</p>
+
+<p>对于void指针，我是把它处理成为object类型，因为我们基本上不用到字符串的值，所以这里我也没有测试，达人指导一下，呵呵。综上，我的C#格式的函数是</p>
+
+<pre><code>[DllImport("piapi32.dll", CharSet = CharSet.Ansi, SetLastError = true, CallingConvention = CallingConvention.StdCall)]
+public static extern Int32 piar_getarcvaluex(
+Int32 ptnum,
+Int32 mode,
+ref Double drval,
+ref Int32 ival,
+[MarshalAs(UnmanagedType.AsAny)] object bval,
+ref UInt32 bsize,
+ref Int32 istat,
+ref Int16 flags,
+ref PITime.PITIMESTAMP time);
+</code></pre>
+
+<p>第五个参数必须Mashall成AsAny类型，要不直接使用object类型是不行的。那么我怎么知道他是Any类型呢？因为文档上面VB的函数调用声明是bVal As Any,这也是一点灵感吧。至于返回的Int32值是代表调用是否成功的，就和win32  API类似吧。</p>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>

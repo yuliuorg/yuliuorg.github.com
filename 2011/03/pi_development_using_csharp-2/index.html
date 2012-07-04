@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="刘昱" />
+	<title>刘昱 | 使用C#进行基于PI的开发（二）--常用对象的学习 </title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="http://192.168.1.197:4000/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+	<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+	<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+    <script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+    <script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+	<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+  	<script type="text/javascript" src="/media/script/default.js"></script>
+  </head>
+  <body>
+	  <div id="container">
+		  <header>	  
+			  <h1>刘 昱</h1>
+			  <h2>核能动力系统设计工程师</h2>
+	 	  </header>
+		<nav>
+        <span><a title="首页" class="" href="http://192.168.1.197:4000/">主页</a></span>
+		<span><a title="简历" class="" href="http://192.168.1.197:4000/vitae/">简历</a></span>
+        <span><a title="论文" class="" href="http://192.168.1.197:4000/publication/">论文</a></span>
+        <span><a title="关于" class="" href="http://192.168.1.197:4000/about/">关于</a></span>
+        <span><a title="留言" class="" href="http://192.168.1.197:4000/guestbook/">留言</a></span>
+        <span><a title="链接" class="" href="http://192.168.1.197:4000/links/">链接</a></span>
+		<span><a title="杂货铺" class="" href="http://192.168.1.197:4000/essay">杂货铺</a></span>
+        </nav>
+      <div id="main" role="main">
+        <article class="content">
+        <section class="title">
+        <h1>使用C#进行基于PI的开发（二）--常用对象的学习</h1>
+</section>
+<section class="post">
+<p><a href="/2011/03/pi_development_using_csharp/">上一次</a>的例子是通过PI-SDK获取Tag的属性并且修改它，我想更重要的是怎么取出Tag的值和进行更新吧。在进行尝试之前看了看文档，了解了一下PISDK的对象结构，下面这一张就是PISDK的结构图</p>
+
+<p><img src="http://ffs.nuclear2power.com/wp-content/uploads/2011/03/PISDKModel.jpg" title="PISDKModel" alt="PISDKModel" /></p>
+
+<p>简要了解在例子中要用到的对象，并把它们的描述进行了简单的翻译，我想翻译的目的应该是帮助自己更好的进行学习，给出英文对照。不妥之处，忘大牛们指正：</p>
+
+<blockquote><p>The Server object represents a single server (data archive). Server objects are retrieved from the Servers collection and provide access to the basic entities represented on each server, such as points, point classes, digital states, users, and groups. Some basic properties are available from the Server object as initially retrieved from the Servers collection.</p>
+
+<p>Typically a program will require a network connection to the server. Connections are established either by calling the Open method of the Server object explicitly or by accessing a property or calling a method of the Server object that requires server access, forcing an implicit connection.
+Many of the services available through the Server object are accessed through its properties which return other objects. For example, the PIPoints property provides a PIPoints collection object for accessing the various points on a server.</p></blockquote>
+
+<p>服务器（Server）对象表示了一个单独的PI数据库服务器，服务器对象可从服务器集合中获得并且提供了访问每个数据库中的实体的方法，这些实体包括点，点集合，数字量（开关量），用户和组。服务器对象提供了一些基本的属性从而在服务器集合中队服务器进行初始化。</p>
+
+<p>一般地，程序连接到服务器需要网络连接属性，这个连接可以通过服务器对象的Open方法显式的进行，也可以通过服务器对象的某个属性或方法连接需要验证的服务器来进行一个隐式的连接。</p>
+
+<p>上面这一段有点不太懂，直到目前我都没有用过显式的Open方法，都是通过</p>
+
+<pre><code>_piServer = piSDK.Servers.DefaultServer;
+</code></pre>
+
+<p>这种所谓的隐式方法来连接，这个是不是就是所谓的隐式连接？因为在PISDK安装的时候指定了一个PI数据源，所以DefaultServer就是这个？所以我访问的时候都不需要输入用户或者密码</p>
+
+<p>我们可以通过服务器对象的属性来返回其他的对象从而获得很多服务。例如，通过服务器对象的PIPoints属性返回的PIPoints集合的对象来访问数据库里面的不同的点。</p>
+
+<blockquote><p>A PIConstant collection maps display strings to PI-SDK enumerations.  This provides a way for an application to display strings indicating choices of behavior for a user to select particular actions.  The application then retrieves the associated constant and passes it to a particular method being called. A PIConstant collection contains members, stored and accessed as NamedValue objects that represent the display string (the name) and the constant (the value).  A PIConstant collection is retrieved using PISDK.PIConstants.Item.</p></blockquote>
+
+<p>PIConstant集合映射字符串到PI-SDK枚举。（使字符串和枚举的项一一对应）。它为程序提供了字符串来代表用户选择的一个特殊的操作，然后程序可以把这个字符串对应的值获得并且把它传送到使用的方法里面去。PIConstant集合包含了Members（不知道什么意思），存贮和访问NamedValue对象。NamedValue对象是一个字符串（名字）-常量（数值）对。PIConstant集合中的对象通过PISDK.PIConstants.Item来获取</p>
+
+<p>我觉得这个PIConstant集合就是相当于在C#中用DialogueResult枚举中用OK代表某个具体的意思。具体代表的东西我们不用关心，知道是什么就可以了。NamedValue就是一个字符串-常量对，有点像一个字典吧，最后一句话说PISDK.PIConstants.Item来获取PIContant,但是我在C#中PISDK.PIConstants没有Item属性，反而使直接通过PISDK.PIConstants[Name]取到。同时NamedValue是在PISDKCommon命名空间下面</p>
+
+<blockquote><p>The PIPoint object represents a point on a PI Server.  The PIPoint is the primary access point to data on the Server as well as configuration of a point's properties.</p>
+
+<p>PIPoint对象表征PI数据库里面的点，PIPoint是访问数据库里面点的值和属性的主要方法。</p>
+
+<p>The PIData object is associated with a single PIPoint and is used to send and retrieve values to and from the server.  It is accessed through the Data property of the PIPoint.</p></blockquote>
+
+<p>PIData对象是和单独的PIPoint联系的，它从服务器获取数据或者写回数据到服务器。它通过PIPoint的Data属性得到。</p>
+
+<p>本来翻译完这些准备再把例子试验一下的，但是没有时间了，下次吧！先作一下铺垫。</p>
+
+<p>这些英文文字都是来源于PI的Manual，版权归OSISOFT所有，与我无关，至于我翻译的中文文字只是简单的鹦鹉学舌，版权仍然是OSISOFT的。</p>
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://192.168.1.197:4000">刘昱</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2011-03-11">2011-03-11</time>
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+
+<span class="categories">
+  in categories
+  
+  <a href="http://192.168.1.197:4000/categories/#计算机" title="计算机">计算机</a>&nbsp;
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+  <a href="http://192.168.1.197:4000/tags/#C#" title="C#">C#</a>&nbsp;
+  
+  <a href="http://192.168.1.197:4000/tags/#PI数据库" title="PI数据库">PI数据库</a>&nbsp;
+  
+  <a href="http://192.168.1.197:4000/tags/#程序设计" title="程序设计">程序设计</a>&nbsp;
+  
+</span>
+
+</section>
+
+	<section class="comment">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+    var disqus_url = 'http://192.168.1.197:4000/2011/03/pi_development_using_csharp-2/';
+	// var disqus_developer = 1; 
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://192.168.1.197:4000/2011/03/pi_development_using_csharp/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://192.168.1.197:4000/2011/03/pi_development_using_csharp-3/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+        </article>
+		<div id="toc"></div>
+      </div>
+    </div>
+    </body>
+</html>

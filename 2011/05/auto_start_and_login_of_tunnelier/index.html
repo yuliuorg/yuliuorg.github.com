@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="刘昱" />
+	<title>刘昱 | Tunnelier自动登录指定的SSH </title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="http://192.168.1.197:4000/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+	<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+	<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+    <script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+    <script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+	<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+  	<script type="text/javascript" src="/media/script/default.js"></script>
+  </head>
+  <body>
+	  <div id="container">
+		  <header>	  
+			  <h1>刘 昱</h1>
+			  <h2>核能动力系统设计工程师</h2>
+	 	  </header>
+		<nav>
+        <span><a title="首页" class="" href="http://192.168.1.197:4000/">主页</a></span>
+		<span><a title="简历" class="" href="http://192.168.1.197:4000/vitae/">简历</a></span>
+        <span><a title="论文" class="" href="http://192.168.1.197:4000/publication/">论文</a></span>
+        <span><a title="关于" class="" href="http://192.168.1.197:4000/about/">关于</a></span>
+        <span><a title="留言" class="" href="http://192.168.1.197:4000/guestbook/">留言</a></span>
+        <span><a title="链接" class="" href="http://192.168.1.197:4000/links/">链接</a></span>
+		<span><a title="杂货铺" class="" href="http://192.168.1.197:4000/essay">杂货铺</a></span>
+        </nav>
+      <div id="main" role="main">
+        <article class="content">
+        <section class="title">
+        <h1>Tunnelier自动登录指定的SSH</h1>
+</section>
+<section class="post">
+<p>Tunnelier是一个很好的软件，但选项中没有随系统启动的功能，但是这种软件怎么能不自动启动呢。</p>
+
+<p>其实简单DIY，利用tunnelier的命令行就能很简单的解决这个问题。</p>
+
+<p>在 Tunnelier 配置并成功登录过一次 SSH，并将该配置保存为abc.tlp。</p>
+
+<p>之后  Tunnelier 的快捷方式的最后面加上<code>-loginOnStartup</code>和<code>-profile="路径\abc.tlp</code>参数，然后拷贝一个丢在启动里面即可~~</p>
+
+<p>无需向官网说的那样，添加成一个服务即可实现Tunnelier自动登录指定的SSH</p>
+
+<p>Tunnelier 更多的命令行参数可以用<code>Tunnelier.exe /?</code>查看</p>
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://192.168.1.197:4000">刘昱</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2011-05-16">2011-05-16</time>
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+
+<span class="categories">
+  in categories
+  
+  <a href="http://192.168.1.197:4000/categories/#计算机" title="计算机">计算机</a>&nbsp;
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+  <a href="http://192.168.1.197:4000/tags/#ssh" title="ssh">ssh</a>&nbsp;
+  
+  <a href="http://192.168.1.197:4000/tags/#tunnelier" title="tunnelier">tunnelier</a>&nbsp;
+  
+  <a href="http://192.168.1.197:4000/tags/#软件使用" title="软件使用">软件使用</a>&nbsp;
+  
+</span>
+
+</section>
+
+	<section class="comment">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+    var disqus_url = 'http://192.168.1.197:4000/2011/05/auto_start_and_login_of_tunnelier/';
+	// var disqus_developer = 1; 
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://192.168.1.197:4000/2011/05/tar_error_with_bzip2/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://192.168.1.197:4000/2011/05/using_plowfhare_to_download_from_netdrive_on_vps/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+        </article>
+		<div id="toc"></div>
+      </div>
+    </div>
+    </body>
+</html>
