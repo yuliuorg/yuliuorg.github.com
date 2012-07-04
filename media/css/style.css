@@ -105,8 +105,8 @@ nav a:hover{background-color:#4A75B5;text-decoration:none;color:#F9F9F9;}
 .meta{text-align:right;font-size:12px;}
 header {margin-left:1em;margin-bottom:1em;}
 header h1,header h2 {border:medium none;padding:0;}
-header h1 {font-size:2.5em;margin:0;font-family:STXingkai "华文行楷";}
-header h2 {font-size:1.6em;margin:0;font-family:STLiti "华文隶书";}
+header h1 {font-size:2.5em;margin:0;font-family:STXingkai,"华文行楷";}
+header h2 {font-size:1.6em;margin:0;font-family:STLiti,"华文隶书";}
 img.homepic {float:left;margin-right:2em;}
 
 /************** 页面目录(js生成)设置 **************/
