@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="刘昱" />
+	<title>刘昱 | CentOS 修改IP地址, DNS, 网关 </title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="http://192.168.1.197:4000/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+	<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+	<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+    <script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+    <script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+	<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+  	<script type="text/javascript" src="/media/script/default.js"></script>
+  </head>
+  <body>
+	  <div id="container">
+		  <header>	  
+			  <h1>刘 昱</h1>
+			  <h2>核能动力系统设计工程师</h2>
+	 	  </header>
+		<nav>
+        <span><a title="首页" class="" href="http://192.168.1.197:4000/">主页</a></span>
+		<span><a title="简历" class="" href="http://192.168.1.197:4000/vitae/">简历</a></span>
+        <span><a title="论文" class="" href="http://192.168.1.197:4000/publication/">论文</a></span>
+        <span><a title="关于" class="" href="http://192.168.1.197:4000/about/">关于</a></span>
+        <span><a title="留言" class="" href="http://192.168.1.197:4000/guestbook/">留言</a></span>
+        <span><a title="链接" class="" href="http://192.168.1.197:4000/links/">链接</a></span>
+		<span><a title="杂货铺" class="" href="http://192.168.1.197:4000/essay">杂货铺</a></span>
+        </nav>
+      <div id="main" role="main">
+        <article class="content">
+        <section class="title">
+        <h1>CentOS 修改IP地址, DNS, 网关</h1>
+</section>
+<section class="post">
+<h1>一、CentOS修改IP地址</h1>
+
+
+<p>修改对应网卡的IP地址的配置文件</p>
+
+<p>vi /etc/sysconfig/network-scripts/ifcfg-eth0</p>
+
+<blockquote>#描述网卡对应的设备别名，例如ifcfg-eth0的文件中它为eth0
+DEVICE=eth0
+#设置网卡获得ip地址的方式，选项为static，dhcp或bootp，对应静态指定的 ip地址,通过dhcp协议获得的ip地址，通过bootp协议获得的ip地址
+BOOTPROTO=static
+#对应的子网广播地址
+BROADCAST=192.168.1.255
+#对应的网卡物理地址
+HWADDR=00:07:E9:05:E8:B4
+#如果设置网卡获得 ip地址的方式为静态指定，此字段就指定了网卡对应的ip地址
+IPADDR=192.168.1.99
+IPV6INIT=no
+IPV6_AUTOCONF=no
+#网卡对应的网络掩码
+NETMASK=255.255.255.0
+ONBOOT=yes #系统启动时是否设置此网络接口，设置为yes时，系统启动时激活此设备</blockquote>
+
+
+<p>&nbsp;</p>
+
+<h1>二、CentOS 修改网关</h1>
+
+
+<p>修改对应网卡的网关的配置文件</p>
+
+<p>vi /etc/sysconfig/network</p>
+
+<blockquote>#表示系统是否使用网络，一般设置为yes。如果设为no，则不能使用网络，而且很多系统服务程序将无法启动
+NETWORKING=yes
+#设置本机的主机名，这里设置的主机名要和/etc/hosts中设置的主机名对应
+HOSTNAME=localhost.localdomain
+#设置本机连接的网关的IP地址。例如，网关为192.168.1.1
+GATEWAY=192.168.1.1</blockquote>
+
+
+<h1>三、CentOS 修改DNS</h1>
+
+
+<p>修改对应网卡的DNS的配置文件</p>
+
+<p>vi /etc/resolv.conf</p>
+
+<blockquote>#OPENDNS
+nameserver 208.67.222.222
+nameserver 208.67.220.220
+nameserver 192.168.1.1
+search localdomain</blockquote>
+
+
+<h1>四、重启网络</h1>
+
+
+<blockquote>/etc/init.d/network restart</blockquote>
+
+
+<p>&nbsp;</p>
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://192.168.1.197:4000">刘昱</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2011-05-24">2011-05-24</time>
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+
+<span class="categories">
+  in categories
+  
+  <a href="http://192.168.1.197:4000/categories/#计算机" title="计算机">计算机</a>&nbsp;
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+  <a href="http://192.168.1.197:4000/tags/#centos" title="centos">centos</a>&nbsp;
+  
+  <a href="http://192.168.1.197:4000/tags/#linux" title="linux">linux</a>&nbsp;
+  
+  <a href="http://192.168.1.197:4000/tags/#软件使用" title="软件使用">软件使用</a>&nbsp;
+  
+</span>
+
+</section>
+
+	<section class="comment">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+    var disqus_url = 'http://192.168.1.197:4000/2011/05/modify_ip_dns_gateway_in_cento/';
+	var disqus_developer = 1; 
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://192.168.1.197:4000/2011/05/disassembly_of_asus_notebook_f8sa/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://192.168.1.197:4000/2012/06/git-and-github/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+        </article>
+		<div id="toc"></div>
+      </div>
+    </div>
+    </body>
+</html>

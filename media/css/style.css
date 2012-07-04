@@ -1,0 +1,123 @@
+/*------------------------------------
+* gt.yuliu.org
+*
+* @author LIU Yu
+* @link http://yuliu.org/
+* @update 2012-06-29
+* --------------------------------- */
+
+/*********** 导入字体 **********/
+/* @import url(http://fonts.googleapis.com/css?family=Galdeano);
+@import url(http://fonts.googleapis.com/css?family=Electrolize);
+@import url(http://fonts.googleapis.com/css?family=Cuprum); */
+
+
+/********** 重置浏览器CSS **********/
+/* 防止用户自定义背景颜色对网页的影响 */
+html{color:#000;background:#F0F0F0;}
+/* 内外边距通常让各个浏览器样式的表现位置不同 */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0;}
+/* 重设 HTML5 标签, IE 需要在 js 中 createElement(TAG) */
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}
+/* 要注意表单元素并不继续父级 font 的问题 */
+body,button,input,select,textarea{font-size:16px; line-height:1.2;}
+input,select,textarea{font-size:inherit;font-family:inherit;font-weight:inherit;}
+/* IE 自定义尺寸 */
+/* input,select,textarea{*font-size:100%;} */
+/* IE 中legend不会自动继承 */
+legend {color:#000;}
+/* 去掉各Table  cell 的边距并让其边重合 */
+table{border-collapse:collapse;border-spacing:0;}
+/* IE bug fixed: th 不继承 text-align*/
+th{text-align:inherit;}
+/* 去除默认边框 */
+fieldset,img,a img{border:0;}
+/* ie6 7 8(q) bug 显示为行内表现 */
+iframe{display:block;}
+/* 去掉 firefox 下此元素的边框 */
+abbr,acronym{border:0;font-variant:normal;}
+/* 一致的 del 样式 */
+del{text-decoration:line-through;}
+address,caption,cite,code,dfn,em,th,var {font-style:normal;font-weight:normal;}
+/* 去掉列表前的标识, li 会继承 */
+/* ol,ul {list-style:none;} */
+/* 对齐是排版最重要的因素, 别让什么都居中 */
+caption,th{text-align:left;}
+/* 来自yahoo, 让标题都自定义, 适应多个系统应用 */
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+q:before,q:after {content:'';}
+/* 统一上标和下标 */
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+/* 清理浮动 */
+.clearfix:after {visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+.clearfix{zoom:1; /* for IE6 IE7 */}
+/* 隐藏, 通常用来与 JS 配合 */
+body .hide{display:none;}
+/* 设置内联, 减少浮动带来的bug */
+.left,.right{display:inline;}
+.left{float:left;}
+.right{float:right;}
+
+/*********** 基础设置 **********/
+body {font-family: "Hiragino Sans GB","Microsoft YaHei",Trebuchet,"Trebuchet MS",Tahoma,"Lucida Grande","Lucida Sans Unicode",Verdana,sans-serif;font-size:16px;background:#F0F0F0}
+a {color:#4A75B5;text-decoration:none;outline:none;}
+a:hover {color:#CC3333;text-decoration:underline}
+a.external {padding-right:13px;background:url('cssimg/icons.gif') no-repeat right 1px;}
+a.external:hover {background-position:right -14px;}
+h1,h2,h3{padding:0.5em 0;}
+h1 {font-size:1.3em;font-weight:bold;}
+h1 a {font-size:1.3em;font-weight:bold;}
+h1 a:hover {text-decoration:none;}
+h2 {font-size:1.15em;font-weight:bold;}
+h3,h4,h5,h6 {font-weight:bold;}
+p {padding:0.5em 0;line-height:25px;}
+li {padding:0.2em 0;}
+ol,ul,dl {margin-left:1.2em;}
+ol ul,ul ol,ul ul,ol ol {margin-left:1em;}
+code {margin:0 0.3em;background:#DDDDDD;border:1px solid #999999;padding:0 5px;font-family:"Courier";font-size:14px;}
+pre {background-color:#000;padding:15px;overflow:auto;margin-bottom:20px;font-size:14px;border: 1px solid #eee;border-radius: 4px 4px 4px 4px;color:#b9bdb6;line-height:1.3em;}
+pre code{background-color:transparent;border:none;padding:0;margin:0;}
+pre ol{margin-left:25px;list-style-type:decimal;}
+hr{margin:0.7em 0;border-top:1px dashed #D0D0D0;border-bottom:1px dashed #F9F9F9;}
+blockquote{display:block;text-align:justify;border-left:4px solid #999999;}
+blockquote{margin:1em 0em;padding-left:1.5em;}
+blockquote p{margin:0;padding:.5em 0;}
+em{color:#CC3333;}
+
+
+/************ 布局设置 *****************/
+nav{font-size:1.2em;text-transform:uppercase;float:left;margin-left:-9em;width:7em;text-align:right;}
+nav a{display:block;padding:.7em 1em;color:#000000;}
+nav a:hover{background-color:#4A75B5;text-decoration:none;color:#F9F9F9;}
+.title {padding-bottom:0.5em;}
+.title h1{margin-bottom:0.5em;padding:0.2em 0.5em;border-left:8px solid #4A75B5;font-size:1.4em;border-bottom:1px solid #4A75B5;line-height:1.3;}
+#container{width:650px;margin:2em auto;display:block;padding:0 2em;}
+.content{font-size:16px;line-height:24px;}
+.content img{max-width:600px;display:block;margin:10px auto;box-shadow:#999 1px 1px 4px;}
+.content{margin-bottom:50px;}
+#tag_cloud{margin-bottom: 1em;}
+#tag_cloud a:hover{color:#333333 !important;text-decoration:none;}
+.listing-item,.listing-seperator{list-style-type:none;}
+.listing-item a{padding:0 1em;}
+.listing-item time{color:#999999;}
+.listing-seperator{font-weight:bold;}
+.meta{text-align:right;font-size:12px;}
+header {margin-left:1em;margin-bottom:1em;}
+header h1,header h2 {border:medium none;padding:0;}
+header h1 {font-size:2.5em;margin:0;font-family:STXingkai "华文行楷";}
+header h2 {font-size:1.6em;margin:0;font-family:STLiti "华文隶书";}
+img.homepic {float:left;margin-right:2em;}
+
+/************** 页面目录(js生成)设置 **************/
+#toc {position:fixed;top:60px;right:20px;width:250px;overflow:auto;}
+#toc p {padding:0 0 0.2em 0.4em;font-size:0.8em;margin-bottom:0.4em;border-bottom:1px solid #4A75B5;line-height:1.4;}
+#toc a {display:block;}
+#toc a:hover {text-decoration:none;color:#CC3333}
+#toc ul {margin:0;}
+#toc ul li{font-size:0.7em;margin:5px;word-wrap:break-word;list-style:none;}
+#toc ul li.on{background-color:#DDDDDD;}
+#toc li.h1{font-size:0.8em;font-weight:normal;}
+#toc li.h2{padding-left:10px;}
+#toc li.h3{padding-left:20px;}
+
