@@ -7,7 +7,7 @@
     <title>刘昱</title>
     <link href="http://yuliu.org/feed/" rel="self" />
     <link href="http://yihui.name/" />
-    <lastBuildDate>2012-07-04T23:13:13+08:00</lastBuildDate>
+    <lastBuildDate>2012-07-04T23:23:28+08:00</lastBuildDate>
     <webMaster>xie@yihui.name</webMaster>
     
     <item>
@@ -95,7 +95,8 @@ Vundle插件名需要区分大小写</li>
 
 <h3>yuliu.org的个人页设置</h3>
 
-<p>使用Markdown生成user page中的html文件，本地目录的组织结构如下</p>
+<p>个人偏好通过本地的jekyll生成site后直接放入repo中，而不是使用github的jekyll引擎。
+因此，本地目录的组织结构如下</p>
 
 <pre><code>root \[ -&gt; "source" \]
 |- markdown files
@@ -147,7 +148,7 @@ $ git push -u origin master
 
 <p>github page中，要想让username.github.com能通过你自己的域名来访问，需要在项目的根目录下新建一个名为CNAME的文件，文件内容为域名或者子域名名称，例如：</p>
 
-<pre><code>gt.yuliu.org
+<pre><code>yuliu.org
 </code></pre>
 
 <p>接着需要设置域名的DNS（这不是立即生效的），对于顶级域名需要建立一条 A记录 到 204.232.175.78。注意不是使用CNAME形式，否则可能对其他服务（例如email）造成影响。</p>
