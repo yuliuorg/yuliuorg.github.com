@@ -7,7 +7,7 @@
     <title>刘昱</title>
     <link href="http://yuliu.org/feed/" rel="self" />
     <link href="http://yuliu.org/" />
-    <lastBuildDate>2012-07-05T17:56:53+08:00</lastBuildDate>
+    <lastBuildDate>2012-07-05T22:01:34+08:00</lastBuildDate>
     <webMaster>xie@yihui.name</webMaster>
     
     <item>
@@ -18,7 +18,9 @@
       <guid>http://yuliu.org/2012/06/vim-and-related</guid>
       <content:encoded><![CDATA[<h1>VIM和相关东东</h1>
 
-<h2>1 我的VIM初始安装</h2>
+<h2>1 VIM初始安装</h2>
+
+<p>主要是因为采用了Vundle的插件管理方式，因此一般使用下述步骤。</p>
 
 <ul>
 <li>下载安装</li>
@@ -54,14 +56,21 @@ Vundle插件名需要区分大小写</li>
 
 <p>部分标记语言的标题自动摘要</p>
 
-<p>需要python 2.X的支持</p>
+<p>需要python 2.X的支持，不能使用64位的。</p>
 
 <ul>
-<li><a href="http://www.vim.org/scripts/script.php?script_id=2882">Markdown</a></li>
+<li><a href="https://github.com/tpope/vim-markdown">Markdown</a></li>
 </ul>
 
 
-<p>提供markdown着色功能，顺便也提供了snippet</p>
+<p>提供markdown着色功能</p>
+
+<p>为了便于识别两个空格表示的换行，修改<code>~\.vim\bundle\vim-markdown\syntax\markdown.vim</code>，在96行增加</p>
+
+<pre><code>hi def link markdownLineBreak             Todo
+</code></pre>
+
+<p>markdownLineBreak其实在原始vim中已经定义，没有着色而已</p>
 
 <ul>
 <li><a href="http://www.vim.org/scripts/script.php?script_id=1658">The NERD tree</a></li>
