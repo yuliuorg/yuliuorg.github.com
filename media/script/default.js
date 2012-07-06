@@ -1,4 +1,5 @@
 $(document).ready(function(){
+		// prettyprint代码高亮需要
 		$('pre').addClass('prettyprint');
 		prettyPrint();
 
@@ -72,5 +73,32 @@ $(document).ready(function(){
 		// 设置div#toc的最大高度。
 		$('#toc').css('max-height',$(window).height()-80);
 
+
 });
 
+
+//js加载函数
+var PSJS ={};
+
+PSJS.loadScript = function(file,callback) {
+	var _doc = document.getElementsByTagName('head')[0];
+	var js = document.createElement('script');
+	js.setAttribute('type', 'text/javascript');
+	js.setAttribute('src', file);
+	_doc.appendChild(js);
+
+	if (!/*@cc_on!@*/0) { //if not IE
+		//Firefox2、Firefox3、Safari3.1+、Opera9.6+ support js.onload
+		js.onload = function () {
+			callback();
+		}
+	} else {
+		//IE6、IE7 support js.onreadystatechange
+		js.onreadystatechange = function () {
+			if (js.readyState == 'loaded' || js.readyState == 'complete') {
+				callback();
+			}
+		}
+	}
+	return false;
+}

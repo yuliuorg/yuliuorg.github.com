@@ -3,7 +3,7 @@
   <head>
 	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="author" content="刘昱" />
-	<title>刘昱 | vim和相关东东 </title>
+	<title>刘昱 | windows下的jekyll编码问题 </title>
     <link rel="shortcut icon" href="/favicon.ico">
     <link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
 	<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
@@ -31,94 +31,25 @@
       <div id="main" role="main">
         <article class="content">
         <section class="title">
-        <h1>vim和相关东东</h1>
+        <h1>windows下的jekyll编码问题</h1>
 </section>
 <section class="post">
-<h1>VIM和相关东东</h1>
+<p>为了便于调试等各种原因，本地的windows系统上安装了jekyll。
+由于windows系统没有采用UTF-8编码，因此需要给jekyll（版本 0.11.2）在打开文件时指定编码，以保证它能够正常工作。</p>
 
-<h2>1 VIM初始安装</h2>
+<ol>
+<li><p>修改<code>[RubyDIR]\lib\ruby\gems\1.9.1\gems\jekyll-0.11.2\lib\jekyll\convertible.rb</code> 文件27行</p>
 
-<p>主要是因为采用了Vundle的插件管理方式，因此一般使用下述步骤。</p>
+<pre><code> self.content = File.read(File.join(base, name))
+ self.content = File.read(File.join(base, name),:encoding=&gt;"utf-8")
+</code></pre></li>
+<li><p>修改<code>[RubyDIR]\lib\ruby\gems\1.9.1\gems\jekyll-0.11.2\lib\jekyll\tags\include.rb</code> 文件23行</p>
 
-<ul>
-<li>下载安装</li>
-<li>修改.vimrc或_vimrc文件</li>
-<li>安装Vundle插件管理软件</li>
-<li>通过Vundle安装和管理插件<br/>
-Vundle插件名需要区分大小写</li>
-</ul>
+<pre><code> source = File.read(@file)
+ source = File.read(@file, :encoding =&gt; "utf-8")
+</code></pre></li>
+</ol>
 
-
-<h2>2 VIM插件</h2>
-
-<ul>
-<li><a href="http://www.vim.org/scripts/script.php?script_id=3458">Vundle</a></li>
-</ul>
-
-
-<p>vim插件管理包，需要git和curl的支持</p>
-
-<ul>
-<li><a href="http://www.vim.org/scripts/script.php?script_id=1708">FencView</a></li>
-</ul>
-
-
-<p>自动检测文件编码，也可以手动选择文件编码。</p>
-
-<p>需要<a href="http://mbbill.googlepages.com/iconv.dll">iconv.dll</a>的支持，在系统PATH路径下。</p>
-
-<ul>
-<li><a href="http://www.vim.org/scripts/script.php?script_id=2657">VOom</a></li>
-</ul>
-
-
-<p>部分标记语言的标题自动摘要</p>
-
-<p>需要python 2.X的支持，不能使用64位的。</p>
-
-<ul>
-<li><a href="https://github.com/tpope/vim-markdown">Markdown</a></li>
-</ul>
-
-
-<p>提供markdown着色功能</p>
-
-<p>为了便于识别两个空格表示的换行，修改<code>~\.vim\bundle\vim-markdown\syntax\markdown.vim</code>，在96行增加</p>
-
-<pre><code>hi def link markdownLineBreak             Todo
-</code></pre>
-
-<p>markdownLineBreak其实在原始vim中已经定义，没有着色而已</p>
-
-<ul>
-<li><a href="http://www.vim.org/scripts/script.php?script_id=1658">The NERD tree</a></li>
-</ul>
-
-
-<p>一个文件浏览器插件，方便在vim中直接切换文件</p>
-
-<ul>
-<li><a href="http://www.vim.org/scripts/script.php?script_id=1218">NERDCommenter</a></li>
-</ul>
-
-
-<p>代码快速注释/取消注释插件</p>
-
-<ul>
-<li><a href="http://www.vim.org/scripts/script.php?script_id=1984">FuzzyFinder</a></li>
-</ul>
-
-
-<p>buffer、文件、命令...的快速切换和浏览器，神器。</p>
-
-<p>需要L9插件的支持</p>
-
-<ul>
-<li><a href="http://www.vim.org/scripts/script.php?script_id=3252">L9</a></li>
-</ul>
-
-
-<p>vim脚本库。</p>
 
 </section>
 <section class="meta">
@@ -127,7 +58,7 @@ Vundle插件名需要区分大小写</li>
 </span>
 <span class="time">
   /
-  <time datetime="2012-06-29">2012-06-29</time>
+  <time datetime="2012-07-04">2012-07-04</time>
 </span>
 <br />
 <span class="license">
@@ -162,7 +93,7 @@ $(function(){
 		$('section.comment #show_disqus_comment').on('click',function(){
 			$(this).html('评论加载中<image src="/images/siteimg/loading.gif" class="loader-img" />');
 			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
-			var disqus_url = 'http://yuliu.org/2012/06/vim-and-related/';
+			var disqus_url = 'http://yuliu.org/2012/07/jekyll_encoding_in_windows/';
 			var disqus_developer = 1; 
 			var that = this;
 			//var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -181,13 +112,11 @@ $(function(){
     var url = false;
         if (e.which == 37 || e.which == 74) {  // Left arrow and J
             
-        url = 'http://yuliu.org/2012/06/git-and-github/';
+        url = 'http://yuliu.org/2012/06/vim-and-related/';
         
         }
         else if (e.which == 39 || e.which == 75) {  // Right arrow and K
             
-        url = 'http://yuliu.org/2012/07/jekyll_encoding_in_windows/';
-        
         }
         if (url) {
             window.location = url;
