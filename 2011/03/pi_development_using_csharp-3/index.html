@@ -191,9 +191,9 @@ $(function(){
 			$(this).html('评论加载中<image src="/images/siteimg/loading.gif" class="loader-img" />');
 			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
 			var disqus_url = 'http://yuliu.org/2011/03/pi_development_using_csharp-3/';
-			var disqus_developer = 1; 
+			// var disqus_developer = 1; 
 			var that = this;
-			//var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
 			var src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
 			PSJS.loadScript(src, function(){$(that).remove()});
 			});
