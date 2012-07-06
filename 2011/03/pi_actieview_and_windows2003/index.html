@@ -87,7 +87,27 @@ for MIME type: application/octet-stream</p></li>
 
 </section>
 
-	Liquid error: invalid byte sequence in GB2312
+	<section class="comment">
+<a href="#" id="show_disqus_comment" onclick="return false;">更多信息，请点击查看评论</a>
+<div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+$(function(){
+		$('section.comment #show_disqus_comment').on('click',function(){
+			$(this).html('评论加载中<image src="/images/siteimg/loading.gif" class="loader-img" />');
+			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+			var disqus_url = 'http://yuliu.org/2011/03/pi_actieview_and_windows2003/';
+			// var disqus_developer = 1; 
+			var that = this;
+			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			var src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			PSJS.loadScript(src, function(){$(that).remove()});
+			});
+		});
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
 
 <script type="text/javascript">
 $(function(){
