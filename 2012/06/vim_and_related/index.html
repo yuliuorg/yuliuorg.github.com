@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="author" content="刘昱" />
-		<title>刘昱 | 没有光驱装XP系统 </title>
+		<title>刘昱 | vim和相关东东 </title>
 		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
 		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
 		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
@@ -35,28 +35,94 @@
 			<div id="main" role="main">
 				<article class="content">
 				<section class="title">
-        <h1>没有光驱装XP系统</h1>
+        <h1>vim和相关东东</h1>
 </section>
 <section class="post">
-<p>自己的步骤，X61通过
-1. 将XP镜像拷到欲重装系统电脑的非C盘上</p>
+<h1>VIM和相关东东</h1>
 
-<ol>
-<li><p>下载 通用PE工具箱 http://hi.baidu.com/uepon</p></li>
-<li><p>将通用PE工具箱 刻录 到U盘。<br/>
-Tips：最好不要用安装程序自带的刻录方式，这个方式格式化U盘的时候好像不是快速格式化。因此选择刻录到镜像，在用ultraISO写入</p></li>
-<li><p>U盘启动进入PE，打开虚拟光驱（桌面上），装入预先复制进来的镜像</p></li>
-<li><p>拔掉U盘</p></li>
-<li><p>安装，复制文件<br/>
-Tips 1：如果是2003的PE，直接运行安装，安装选项不可选，但可进入I386文件夹，选winnt32.exe程序安装<br/>
-Tips 2：记得在高级处，选择复制所有安装文件</p></li>
-<li><p>安装程序不会自动重启，手动重启</p></li>
-<li><p>重启后进入安装界面安装<br/>
-Tips 1：如果蓝屏，一般是因为bios的硬盘设置有问题，改为compatible即可<br/>
-Tips 2：安装中如果出现不能复制文件，是因为原系统为vista，未格盘后就直接装XP就会出现该问题，可格调安装盘后重来~</p></li>
-<li><p>之后我的电脑就OK了~大家有什么问题还欢迎补充</p></li>
-</ol>
+<h2>1 VIM初始安装</h2>
 
+<p>主要是因为采用了Vundle的插件管理方式，因此一般使用下述步骤。</p>
+
+<ul>
+<li>下载安装</li>
+<li>修改.vimrc或_vimrc文件</li>
+<li>安装Vundle插件管理软件</li>
+<li>通过Vundle安装和管理插件<br/>
+Vundle插件名需要区分大小写</li>
+</ul>
+
+
+<h2>2 VIM插件</h2>
+
+<ul>
+<li><a href="http://www.vim.org/scripts/script.php?script_id=3458">Vundle</a></li>
+</ul>
+
+
+<p>vim插件管理包，需要git和curl的支持</p>
+
+<ul>
+<li><a href="http://www.vim.org/scripts/script.php?script_id=1708">FencView</a></li>
+</ul>
+
+
+<p>自动检测文件编码，也可以手动选择文件编码。</p>
+
+<p>需要<a href="http://mbbill.googlepages.com/iconv.dll">iconv.dll</a>的支持，在系统PATH路径下。</p>
+
+<ul>
+<li><a href="http://www.vim.org/scripts/script.php?script_id=2657">VOom</a></li>
+</ul>
+
+
+<p>部分标记语言的标题自动摘要</p>
+
+<p>需要python 2.X的支持，不能使用64位的。</p>
+
+<ul>
+<li><a href="https://github.com/tpope/vim-markdown">Markdown</a></li>
+</ul>
+
+
+<p>提供markdown着色功能</p>
+
+<p>为了便于识别两个空格表示的换行，修改<code>~\.vim\bundle\vim-markdown\syntax\markdown.vim</code>，在96行增加</p>
+
+<pre><code>hi def link markdownLineBreak             Todo
+</code></pre>
+
+<p>markdownLineBreak其实在原始vim中已经定义，没有着色而已</p>
+
+<ul>
+<li><a href="http://www.vim.org/scripts/script.php?script_id=1658">The NERD tree</a></li>
+</ul>
+
+
+<p>一个文件浏览器插件，方便在vim中直接切换文件</p>
+
+<ul>
+<li><a href="http://www.vim.org/scripts/script.php?script_id=1218">NERDCommenter</a></li>
+</ul>
+
+
+<p>代码快速注释/取消注释插件</p>
+
+<ul>
+<li><a href="http://www.vim.org/scripts/script.php?script_id=1984">FuzzyFinder</a></li>
+</ul>
+
+
+<p>buffer、文件、命令...的快速切换和浏览器，神器。</p>
+
+<p>需要L9插件的支持</p>
+
+<ul>
+<li><a href="http://www.vim.org/scripts/script.php?script_id=3252">L9</a></li>
+</ul>
+
+
+<p>vim脚本库。</p>
 
 </section>
 <section class="meta">
@@ -65,7 +131,7 @@ Tips 2：安装中如果出现不能复制文件，是因为原系统为vista，
 </span>
 <span class="time">
   /
-  <time datetime="2011-03-11">2011-03-11</time>
+  <time datetime="2012-06-29">2012-06-29</time>
 </span>
 <br />
 <span class="license">
@@ -83,11 +149,9 @@ Tips 2：安装中如果出现不能复制文件，是因为原系统为vista，
 <span class="tags">
   tagged with 
   
-  <a href="http://yuliu.org/tags/#Windows" title="Windows">Windows</a>&nbsp;
+  <a href="http://yuliu.org/tags/#vim" title="vim">vim</a>&nbsp;
   
-  <a href="http://yuliu.org/tags/#电脑技术" title="电脑技术">电脑技术</a>&nbsp;
-  
-  <a href="http://yuliu.org/tags/#装系统" title="装系统">装系统</a>&nbsp;
+  <a href="http://yuliu.org/tags/#插件" title="插件">插件</a>&nbsp;
   
 </span>
 
@@ -102,7 +166,7 @@ $(function(){
 		$('section.comment #show_disqus_comment').on('click',function(){
 			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
 			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
-			var disqus_url = 'http://yuliu.org/2011/03/xp_install_without_cd_dirver/';
+			var disqus_url = 'http://yuliu.org/2012/06/vim_and_related/';
 			// var disqus_developer = 1; 
 			var that = this;
 			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -121,12 +185,12 @@ $(function(){
     var url = false;
         if (e.which == 37 || e.which == 74) {  // Left arrow and J
             
-        url = 'http://yuliu.org/2011/03/pi_development_using_csharp-3/';
+        url = 'http://yuliu.org/2012/06/git_and_github/';
         
         }
         else if (e.which == 39 || e.which == 75) {  // Right arrow and K
             
-        url = 'http://yuliu.org/2011/03/gvim_and_encoding/';
+        url = 'http://yuliu.org/2012/07/jekyll_encoding_in_windows/';
         
         }
         if (url) {

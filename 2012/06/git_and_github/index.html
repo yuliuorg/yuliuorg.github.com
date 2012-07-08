@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="author" content="刘昱" />
-		<title>刘昱 | 没有光驱装XP系统 </title>
+		<title>刘昱 | git和github </title>
 		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
 		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
 		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
@@ -35,28 +35,92 @@
 			<div id="main" role="main">
 				<article class="content">
 				<section class="title">
-        <h1>没有光驱装XP系统</h1>
+        <h1>git和github</h1>
 </section>
 <section class="post">
-<p>自己的步骤，X61通过
-1. 将XP镜像拷到欲重装系统电脑的非C盘上</p>
+<h1>1 git</h1>
 
-<ol>
-<li><p>下载 通用PE工具箱 http://hi.baidu.com/uepon</p></li>
-<li><p>将通用PE工具箱 刻录 到U盘。<br/>
-Tips：最好不要用安装程序自带的刻录方式，这个方式格式化U盘的时候好像不是快速格式化。因此选择刻录到镜像，在用ultraISO写入</p></li>
-<li><p>U盘启动进入PE，打开虚拟光驱（桌面上），装入预先复制进来的镜像</p></li>
-<li><p>拔掉U盘</p></li>
-<li><p>安装，复制文件<br/>
-Tips 1：如果是2003的PE，直接运行安装，安装选项不可选，但可进入I386文件夹，选winnt32.exe程序安装<br/>
-Tips 2：记得在高级处，选择复制所有安装文件</p></li>
-<li><p>安装程序不会自动重启，手动重启</p></li>
-<li><p>重启后进入安装界面安装<br/>
-Tips 1：如果蓝屏，一般是因为bios的硬盘设置有问题，改为compatible即可<br/>
-Tips 2：安装中如果出现不能复制文件，是因为原系统为vista，未格盘后就直接装XP就会出现该问题，可格调安装盘后重来~</p></li>
-<li><p>之后我的电脑就OK了~大家有什么问题还欢迎补充</p></li>
-</ol>
+<h1>2 github</h1>
 
+<h2>2.1 配置和使用github</h2>
+
+<h2>2.2 github pages</h2>
+
+<p>github提供了github pages的服务，不仅可以方便的为项目建立介绍页面，也可以用来建立个人页面。gitHub pages分两种，一种是你的gitHub用户名建立的[username].github.com这样的User &amp; Organization Pages，另一种是依附项目的Project Pages。</p>
+
+<h3>User &amp; Organization Pages</h3>
+
+<p>首先建立一个repo，名称只能是[username].github.com。每个用户名下面只能建立一个。该repo下master分支中的内容将被用作用户&amp;组织页（站）内容。</p>
+
+<p>创建好repo之后，commit一个index.html文件，然后push到master分支即可。如果是第一次使用页面，大概需要10分钟左右才能生效，之后的更改则会立即生效。</p>
+
+<p>生效之后就可以访问[username].github.com，将会看到上传的index.html页面。</p>
+
+<h3>Project Pages</h3>
+
+<p>Project Pages放在项目相同的repo中，但是使用 gh-pages分支。其默认地址为[username].github.com/[projectname]。</p>
+
+<h3>yuliu.org的个人页设置</h3>
+
+<p>个人偏好通过本地的jekyll生成site后直接放入repo中，而不是使用github的jekyll引擎。
+因此，本地目录的组织结构如下</p>
+
+<pre><code>root \[ -&gt; "source" \]
+|- markdown files
+|- html \[ -&gt; "master" \]
+</code></pre>
+
+<p>root目录指向git repo的source分支，html目录用来指向相同repo的master分支。</p>
+
+<h4>实现上述结构的方法</h4>
+
+<p>首先在root目录初始化一个repo。（$ 为cmd提示符）</p>
+
+<pre><code># 初始化本地repo
+$ git init
+# 提交文件
+$ git add .
+$ git commit -m "init"
+</code></pre>
+
+<p>通过上述命令建立了一个包含所有源文件的master分支，接着重命名该分支并push到服务器（remote）</p>
+
+<pre><code># 将本地master重命名为source
+$ git branch -m master source
+# 将github repo添加为origin
+$ git remote add origin git@github.com:[username]/[username].github.com.git
+# 将source分支push到服务器repo
+$ git push -u origin source
+</code></pre>
+
+<p>这样repo中只有一个分支：source，见者创建master分支。如果root目录存在html目录，先删除该html目录</p>
+
+<pre><code># 获取一个github repo的副本到html
+$ git clone git@github.com:[username]/[username].github.com.git html
+$ cd html
+# 建立一个独立的分支
+$ git symbolic-ref HEAD refs/heads/master
+$ rm .git/index
+$ git clean -fdx
+</code></pre>
+
+<p>现在master分支已经建立好，每当有新内容生成，只需要commit &amp; push到服务器即可</p>
+
+<pre><code>$ git add .
+$ git commit -m "updated"
+$ git push -u origin master
+</code></pre>
+
+<h2>2.3 自定义域名</h2>
+
+<p>github page中，要想让username.github.com能通过你自己的域名来访问，需要在项目的根目录下新建一个名为CNAME的文件，文件内容为域名或者子域名名称，例如：</p>
+
+<pre><code>yuliu.org
+</code></pre>
+
+<p>接着需要设置域名的DNS（这不是立即生效的），对于顶级域名需要建立一条 A记录 到 204.232.175.78。注意不是使用CNAME形式，否则可能对其他服务（例如email）造成影响。</p>
+
+<p>对于子域名最好使用CNAME记录，指向[username].github.com</p>
 
 </section>
 <section class="meta">
@@ -65,7 +129,7 @@ Tips 2：安装中如果出现不能复制文件，是因为原系统为vista，
 </span>
 <span class="time">
   /
-  <time datetime="2011-03-11">2011-03-11</time>
+  <time datetime="2012-06-29">2012-06-29</time>
 </span>
 <br />
 <span class="license">
@@ -83,11 +147,9 @@ Tips 2：安装中如果出现不能复制文件，是因为原系统为vista，
 <span class="tags">
   tagged with 
   
-  <a href="http://yuliu.org/tags/#Windows" title="Windows">Windows</a>&nbsp;
+  <a href="http://yuliu.org/tags/#git" title="git">git</a>&nbsp;
   
-  <a href="http://yuliu.org/tags/#电脑技术" title="电脑技术">电脑技术</a>&nbsp;
-  
-  <a href="http://yuliu.org/tags/#装系统" title="装系统">装系统</a>&nbsp;
+  <a href="http://yuliu.org/tags/#github" title="github">github</a>&nbsp;
   
 </span>
 
@@ -102,7 +164,7 @@ $(function(){
 		$('section.comment #show_disqus_comment').on('click',function(){
 			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
 			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
-			var disqus_url = 'http://yuliu.org/2011/03/xp_install_without_cd_dirver/';
+			var disqus_url = 'http://yuliu.org/2012/06/git_and_github/';
 			// var disqus_developer = 1; 
 			var that = this;
 			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -121,12 +183,12 @@ $(function(){
     var url = false;
         if (e.which == 37 || e.which == 74) {  // Left arrow and J
             
-        url = 'http://yuliu.org/2011/03/pi_development_using_csharp-3/';
+        url = 'http://yuliu.org/2011/05/modify_ip_dns_gateway_in_cento/';
         
         }
         else if (e.which == 39 || e.which == 75) {  // Right arrow and K
             
-        url = 'http://yuliu.org/2011/03/gvim_and_encoding/';
+        url = 'http://yuliu.org/2012/06/vim_and_related/';
         
         }
         if (url) {

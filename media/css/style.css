@@ -87,7 +87,7 @@ em{color:#CC3333;}
 
 
 /************ 布局设置 *****************/
-nav{font-size:1.2em;text-transform:uppercase;float:left;margin-left:-9em;width:7em;text-align:right;}
+nav{font-size:1.2em;text-transform:uppercase;float:left;margin-left:-9.5em;width:7.5em;text-align:right;}
 nav a{display:block;padding:.7em 1em;color:#000000;}
 nav a:hover{background-color:#4A75B5;text-decoration:none;color:#F9F9F9;}
 .title {padding-bottom:0.5em;}
@@ -97,7 +97,7 @@ nav a:hover{background-color:#4A75B5;text-decoration:none;color:#F9F9F9;}
 .content img{max-width:600px;display:block;margin:10px auto;box-shadow:#999 1px 1px 4px;}
 .content{margin-bottom:50px;}
 #tag_cloud{margin-bottom: 1em;}
-#tag_cloud a:hover{color:#333333 !important;text-decoration:none;}
+#tag_cloud a:hover{text-decoration:none;}
 .listing-item,.listing-seperator{list-style-type:none;}
 .listing-item a{padding:0 1em;}
 .listing-item time{color:#999999;}

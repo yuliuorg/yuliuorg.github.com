@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="author" content="刘昱" />
-		<title>刘昱 | 没有光驱装XP系统 </title>
+		<title>刘昱 | gVIM和中文字符编码 </title>
 		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
 		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
 		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
@@ -35,28 +35,18 @@
 			<div id="main" role="main">
 				<article class="content">
 				<section class="title">
-        <h1>没有光驱装XP系统</h1>
+        <h1>gVIM和中文字符编码</h1>
 </section>
 <section class="post">
-<p>自己的步骤，X61通过
-1. 将XP镜像拷到欲重装系统电脑的非C盘上</p>
+<p>gVIM 对我来说是作为一个文本类文件查看器和快速编辑器（windows系统下），使用中总是碰到编码的问题。其实在网络上已经有很好的解决方案了，安装<em>fencive</em>插件即可。</p>
 
-<ol>
-<li><p>下载 通用PE工具箱 http://hi.baidu.com/uepon</p></li>
-<li><p>将通用PE工具箱 刻录 到U盘。<br/>
-Tips：最好不要用安装程序自带的刻录方式，这个方式格式化U盘的时候好像不是快速格式化。因此选择刻录到镜像，在用ultraISO写入</p></li>
-<li><p>U盘启动进入PE，打开虚拟光驱（桌面上），装入预先复制进来的镜像</p></li>
-<li><p>拔掉U盘</p></li>
-<li><p>安装，复制文件<br/>
-Tips 1：如果是2003的PE，直接运行安装，安装选项不可选，但可进入I386文件夹，选winnt32.exe程序安装<br/>
-Tips 2：记得在高级处，选择复制所有安装文件</p></li>
-<li><p>安装程序不会自动重启，手动重启</p></li>
-<li><p>重启后进入安装界面安装<br/>
-Tips 1：如果蓝屏，一般是因为bios的硬盘设置有问题，改为compatible即可<br/>
-Tips 2：安装中如果出现不能复制文件，是因为原系统为vista，未格盘后就直接装XP就会出现该问题，可格调安装盘后重来~</p></li>
-<li><p>之后我的电脑就OK了~大家有什么问题还欢迎补充</p></li>
-</ol>
+<blockquote><p>  http://www.vim.org/scripts/script.php?script_id=1708</p></blockquote>
 
+<p>将下载的 fencview.vim 放入 vim安装目录/plugin  中</p>
+
+<p>注：该插件是用了"+iconv" 特性，因此确保(解压缩后的)iconv.dll【<a href="https://sites.google.com/site/mbbill/iconv.dll">原始下载（墙外）</a>，<a href="http://ffs.nuclear2power.com/wp-content/uploads/2011/03/iconv.zip">本地</a>】在win的$PATH路径中（放到vim安装目录下即可）</p>
+
+<p>我使用 gVIM 通常是作为文件查看器，因此这种乱码问题遇到较多。</p>
 
 </section>
 <section class="meta">
@@ -65,7 +55,7 @@ Tips 2：安装中如果出现不能复制文件，是因为原系统为vista，
 </span>
 <span class="time">
   /
-  <time datetime="2011-03-11">2011-03-11</time>
+  <time datetime="2011-03-22">2011-03-22</time>
 </span>
 <br />
 <span class="license">
@@ -83,11 +73,9 @@ Tips 2：安装中如果出现不能复制文件，是因为原系统为vista，
 <span class="tags">
   tagged with 
   
-  <a href="http://yuliu.org/tags/#Windows" title="Windows">Windows</a>&nbsp;
+  <a href="http://yuliu.org/tags/#vim" title="vim">vim</a>&nbsp;
   
   <a href="http://yuliu.org/tags/#电脑技术" title="电脑技术">电脑技术</a>&nbsp;
-  
-  <a href="http://yuliu.org/tags/#装系统" title="装系统">装系统</a>&nbsp;
   
 </span>
 
@@ -102,7 +90,7 @@ $(function(){
 		$('section.comment #show_disqus_comment').on('click',function(){
 			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
 			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
-			var disqus_url = 'http://yuliu.org/2011/03/xp_install_without_cd_dirver/';
+			var disqus_url = 'http://yuliu.org/2011/03/gvim_and_encoding/';
 			// var disqus_developer = 1; 
 			var that = this;
 			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -121,12 +109,12 @@ $(function(){
     var url = false;
         if (e.which == 37 || e.which == 74) {  // Left arrow and J
             
-        url = 'http://yuliu.org/2011/03/pi_development_using_csharp-3/';
+        url = 'http://yuliu.org/2011/03/xp_install_without_cd_dirver/';
         
         }
         else if (e.which == 39 || e.which == 75) {  // Right arrow and K
             
-        url = 'http://yuliu.org/2011/03/gvim_and_encoding/';
+        url = 'http://yuliu.org/2011/05/tar_error_with_bzip2/';
         
         }
         if (url) {
