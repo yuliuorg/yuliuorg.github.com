@@ -7,7 +7,7 @@
     <title>刘昱</title>
     <link href="http://yuliu.org/feed/" rel="self" />
     <link href="http://yuliu.org/" />
-    <lastBuildDate>2012-07-09T21:36:18+08:00</lastBuildDate>
+    <lastBuildDate>2012-07-09T23:09:50+08:00</lastBuildDate>
     <webMaster>xie@yihui.name</webMaster>
     
     <item>
@@ -16,7 +16,7 @@
       <pubDate>2012-07-09T00:00:00+08:00</pubDate>
       <author>刘昱</author>
       <guid>http://yuliu.org/2012/07/my_favorite_softwares</guid>
-      <content:encoded><![CDATA[<p>一个列表而已，排名分先后，但这个东西随时间的变化太快，仅在更新这篇文章时候的想法，不保证长期有效，欢迎拍砖。</p>
+      <content:encoded><![CDATA[<p>日常工作生活常用软件的列表，排名不分先后，但这个东西随时间的变化太快，不保证及时更新，欢迎拍砖。</p>
 
 <ol>
 <li><p>APPz</p>
@@ -54,12 +54,19 @@
     </item>
     
     <item>
-      <title>windows下的jekyll编码问题</title>
-      <link href="http://yuliu.org/2012/07/jekyll_encoding_in_windows/"/>
+      <title>jekyll笔记</title>
+      <link href="http://yuliu.org/2012/07/jekyll_notes/"/>
       <pubDate>2012-07-04T00:00:00+08:00</pubDate>
       <author>刘昱</author>
-      <guid>http://yuliu.org/2012/07/jekyll_encoding_in_windows</guid>
-      <content:encoded><![CDATA[<p>为了便于调试等各种原因，本地的windows系统上安装了jekyll。
+      <guid>http://yuliu.org/2012/07/jekyll_notes</guid>
+      <content:encoded><![CDATA[<h1>jekyll的sitemap生成器</h1>
+
+<p>为了方便搜索引擎的收录，sitemap还是必要的。
+好在jekyll支持插件，<a href="http://www.kinnetica.com/">kinnetica</a>编了一个sitemap生成器，下载<code>sitemap_generator.rb</code>丢到<code>_plugins</code>目录，再打开该文件简单修改<code>MY_URL</code>为网站地址即可。</p>
+
+<h1>jekyll在windows下的编码</h1>
+
+<p>为了便于调试等各种原因，本地的windows系统上安装了jekyll。
 由于windows系统没有采用UTF-8编码，因此需要给jekyll（版本 0.11.2）在打开文件时指定编码，以保证它能够正常工作。</p>
 
 <ol>

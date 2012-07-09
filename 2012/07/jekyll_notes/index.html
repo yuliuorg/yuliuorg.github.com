@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="author" content="刘昱" />
-		<title>刘昱 | 喜欢的软件 </title>
+		<title>刘昱 | jekyll笔记 </title>
 		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
 		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
 		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
@@ -35,41 +35,30 @@
 			<div id="main" role="main">
 				<article class="content">
 				<section class="title">
-        <h1>喜欢的软件</h1>
+        <h1>jekyll笔记</h1>
 </section>
 <section class="post">
-<p>日常工作生活常用软件的列表，排名不分先后，但这个东西随时间的变化太快，不保证及时更新，欢迎拍砖。</p>
+<h1>jekyll的sitemap生成器</h1>
+
+<p>为了方便搜索引擎的收录，sitemap还是必要的。
+好在jekyll支持插件，<a href="http://www.kinnetica.com/">kinnetica</a>编了一个sitemap生成器，下载<code>sitemap_generator.rb</code>丢到<code>_plugins</code>目录，再打开该文件简单修改<code>MY_URL</code>为网站地址即可。</p>
+
+<h1>jekyll在windows下的编码</h1>
+
+<p>为了便于调试等各种原因，本地的windows系统上安装了jekyll。
+由于windows系统没有采用UTF-8编码，因此需要给jekyll（版本 0.11.2）在打开文件时指定编码，以保证它能够正常工作。</p>
 
 <ol>
-<li><p>APPz</p>
+<li><p>修改<code>[RubyDIR]\lib\ruby\gems\1.9.1\gems\jekyll-0.11.2\lib\jekyll\convertible.rb</code> 文件27行</p>
 
-<ul>
-<li>windows（没有理由不排在第一位）</li>
-<li>office （你已经发现我是一个微软控了吧）</li>
-</ul>
-</li>
-<li><p>系统工具</p>
+<pre><code> self.content = File.read(File.join(base, name))
+ self.content = File.read(File.join(base, name),:encoding=&gt;"utf-8")
+</code></pre></li>
+<li><p>修改<code>[RubyDIR]\lib\ruby\gems\1.9.1\gems\jekyll-0.11.2\lib\jekyll\tags\include.rb</code> 文件23行</p>
 
-<ul>
-<li><a href="http://www.vim.org/">vim</a> （嗯，我是第二类人，主要是*nux的cli下基本都自带vi，而且emacs的门槛太高，最近好像sublime text 2的好评如潮，有空再试试）</li>
-<li><a href="http://www.mozilla.org/en-US/firefox/new/">firefox</a> / <a href="https://www.google.com/intl/en/chrome/browser/">chrome</a> （不争了，两个一起用）</li>
-<li><a href="http://www.ghisler.com/">total command</a> （据说有不少人是因为tc才留在windows的）</li>
-<li><a href="http://www.voidtools.com/">everything</a> （快速搜索，这个功能难道不是系统应该直接集成的吗？）</li>
-<li><a href="http://www.picpick.org/">picpick</a> （还能有比这个更好的截图软件吗）</li>
-</ul>
-</li>
-<li><p>工程小软件</p>
-
-<ul>
-<li><a href="http://convertall.bellz.org/index.html">ConvertAll</a> （单位换算必备，使用python实现，单位组合是其最值得推荐之处）</li>
-</ul>
-</li>
-<li><p>程序设计</p>
-
-<ul>
-<li><a href="http://www.linqpad.net/">LINQPad</a> （使用LINQ与数据库进行交互和管理的工具，现在不经常用了）</li>
-</ul>
-</li>
+<pre><code> source = File.read(@file)
+ source = File.read(@file, :encoding =&gt; "utf-8")
+</code></pre></li>
 </ol>
 
 
@@ -80,7 +69,7 @@
 </span>
 <span class="time">
   /
-  <time datetime="2012-07-09">2012-07-09</time>
+  <time datetime="2012-07-04">2012-07-04</time>
 </span>
 <br />
 <span class="license">
@@ -98,7 +87,9 @@
 <span class="tags">
   tagged with 
   
-  <a href="http://yuliu.org/tags/#软件" title="软件">软件</a>&nbsp;
+  <a href="http://yuliu.org/tags/#jekyll" title="jekyll">jekyll</a>&nbsp;
+  
+  <a href="http://yuliu.org/tags/#windows" title="windows">windows</a>&nbsp;
   
 </span>
 
@@ -113,7 +104,7 @@ $(function(){
 		$('section.comment #show_disqus_comment').on('click',function(){
 			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
 			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
-			var disqus_url = 'http://yuliu.org/2012/07/my_favorite_softwares/';
+			var disqus_url = 'http://yuliu.org/2012/07/jekyll_notes/';
 			// var disqus_developer = 1; 
 			var that = this;
 			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -132,11 +123,13 @@ $(function(){
     var url = false;
         if (e.which == 37 || e.which == 74) {  // Left arrow and J
             
-        url = 'http://yuliu.org/2012/07/jekyll_notes/';
+        url = 'http://yuliu.org/2012/06/vim_and_related/';
         
         }
         else if (e.which == 39 || e.which == 75) {  // Right arrow and K
             
+        url = 'http://yuliu.org/2012/07/my_favorite_softwares/';
+        
         }
         if (url) {
             window.location = url;
