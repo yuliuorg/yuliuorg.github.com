@@ -3,11 +3,11 @@
   <channel>
     <title>刘昱 | 核能动力系统工程师</title>
     <link>http://yuliu.org</link>
-    <atom:link href="http://yuliu.org/feed/" rel="self" type="application/rss+xml" />
+    <atom:link href="http://yuliu.org/feed/rss.xml" rel="self" type="application/rss+xml" />
 	<description>刘昱 | 核能动力系统工程师</description>
     <language>zh-cn</language>
-    <pubDate>Tue, 10 Jul 2012 22:36:05 +0800</pubDate>
-    <lastBuildDate>Tue, 10 Jul 2012 22:36:05 +0800</lastBuildDate>
+    <pubDate>Tue, 10 Jul 2012 22:48:24 +0800</pubDate>
+    <lastBuildDate>Tue, 10 Jul 2012 22:48:24 +0800</lastBuildDate>
 
     
     <item>
@@ -533,10 +533,10 @@ Tips 2：安装中如果出现不能复制文件，是因为原系统为vista，
     
     <item>
       <title>使用C#进行基于PI的开发（三）- 应用PISDK和PIAPI从PI数据库读取数据</title>
-      <link>http://yuliu.org/2011/03/pi_development_using_csharp-3/</link>
+      <link>http://yuliu.org/2011/03/pi_development_using_csharp_3/</link>
       <pubDate>Fri, 11 Mar 2011 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://yuliu.org/2011/03/pi_development_using_csharp-3</guid>
+	  <guid>http://yuliu.org/2011/03/pi_development_using_csharp_3</guid>
 	  <description>&lt;p&gt;上次说了这次的题目是对PI数据库中的数据进行读取和写入，可是为了等了这么久呢?出了自己比较懒以外,遇到了一点麻烦也是一个原因呢?后面又说&lt;/p&gt;
 
 &lt;h1&gt;1 应用SDK从PI数据库读取数据&lt;/h1&gt;
@@ -653,10 +653,10 @@ ref PITime.PITIMESTAMP time);
     
     <item>
       <title>使用C#进行基于PI的开发（二）--常用对象的学习</title>
-      <link>http://yuliu.org/2011/03/pi_development_using_csharp-2/</link>
+      <link>http://yuliu.org/2011/03/pi_development_using_csharp_2/</link>
       <pubDate>Fri, 11 Mar 2011 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://yuliu.org/2011/03/pi_development_using_csharp-2</guid>
+	  <guid>http://yuliu.org/2011/03/pi_development_using_csharp_2</guid>
 	  <description>&lt;p&gt;&lt;a href=&quot;/2011/03/pi_development_using_csharp/&quot;&gt;上一次&lt;/a&gt;的例子是通过PI-SDK获取Tag的属性并且修改它，我想更重要的是怎么取出Tag的值和进行更新吧。在进行尝试之前看了看文档，了解了一下PISDK的对象结构，下面这一张就是PISDK的结构图&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://ffs.nuclear2power.com/wp-content/uploads/2011/03/PISDKModel.jpg&quot; title=&quot;PISDKModel&quot; alt=&quot;PISDKModel&quot; /&gt;&lt;/p&gt;
