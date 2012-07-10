@@ -70,14 +70,18 @@
     </url>
     <url>
         <loc>http://yuliu.org/about/</loc>
-        <lastmod>2012-07-10T18:21:46+08:00</lastmod>
+        <lastmod>2012-07-10T23:41:21+08:00</lastmod>
     </url>
     <url>
-        <loc>http://yuliu.org/categories/</loc>
+        <loc>http://yuliu.org/essay/categories.html</loc>
         <lastmod>2012-07-10T18:21:46+08:00</lastmod>
     </url>
     <url>
         <loc>http://yuliu.org/essay/</loc>
+        <lastmod>2012-07-10T23:46:25+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://yuliu.org/essay/tags.html</loc>
         <lastmod>2012-07-10T18:21:46+08:00</lastmod>
     </url>
     <url>
@@ -98,10 +102,6 @@
     </url>
     <url>
         <loc>http://yuliu.org/publication/</loc>
-        <lastmod>2012-07-10T18:21:46+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://yuliu.org/tags/</loc>
         <lastmod>2012-07-10T18:21:46+08:00</lastmod>
     </url>
     <url>
