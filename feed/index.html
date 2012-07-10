@@ -7,7 +7,7 @@
     <title>刘昱</title>
     <link href="http://yuliu.org/feed/" rel="self" />
     <link href="http://yuliu.org/" />
-    <lastBuildDate>2012-07-09T23:09:50+08:00</lastBuildDate>
+    <lastBuildDate>2012-07-10T18:04:05+08:00</lastBuildDate>
     <webMaster>xie@yihui.name</webMaster>
     
     <item>
@@ -86,29 +86,31 @@
     </item>
     
     <item>
-      <title>vim和相关东东</title>
-      <link href="http://yuliu.org/2012/06/vim_and_related/"/>
+      <title>我的Vim（Vim-of-pisheng)</title>
+      <link href="http://yuliu.org/2012/06/vim_of_pisheng/"/>
       <pubDate>2012-06-29T00:00:00+08:00</pubDate>
       <author>刘昱</author>
-      <guid>http://yuliu.org/2012/06/vim_and_related</guid>
-      <content:encoded><![CDATA[<h1>VIM和相关东东</h1>
-
-<h2>1 VIM初始安装</h2>
+      <guid>http://yuliu.org/2012/06/vim_of_pisheng</guid>
+      <content:encoded><![CDATA[<h1>1 Vim初始安装</h1>
 
 <p>主要是因为采用了Vundle的插件管理方式，因此一般使用下述步骤。</p>
 
 <ul>
 <li>下载安装</li>
-<li>修改.vimrc或_vimrc文件</li>
+<li>修改<code>.vimrc或\_vimrc</code>文件</li>
 <li>安装Vundle插件管理软件</li>
 <li>通过Vundle安装和管理插件<br/>
 Vundle插件名需要区分大小写</li>
 </ul>
 
 
-<h2>2 VIM插件</h2>
+<h1>2 vim的基本配置</h1>
 
-<ul>
+<p>这一部分具体可以参考<code>.vimrc或\_vimrc</code>文件，设置中均进行了注释。</p>
+
+<h1>3 Vim插件</h1>
+
+<ol>
 <li><p><a href="http://www.vim.org/scripts/script.php?script_id=3458">Vundle</a><br/>
 vim插件管理包，需要git和curl的支持</p></li>
 <li><p><a href="http://www.vim.org/scripts/script.php?script_id=1708">FencView</a><br/>
@@ -121,7 +123,7 @@ vim插件管理包，需要git和curl的支持</p></li>
 提供markdown着色功能
 为了便于识别两个空格表示的换行，修改<code>~\.vim\bundle\vim-markdown\syntax\markdown.vim</code>，在96行增加</p>
 
-<pre><code>  hi def link markdownLineBreak             Todo
+<pre><code> hi def link markdownLineBreak             Todo
 </code></pre>
 
 <p>markdownLineBreak其实在原始vim中已经定义，没有着色而已</p></li>
@@ -134,8 +136,28 @@ buffer、文件、命令...的快速切换和浏览器，神器。<br/>
 需要L9插件的支持</p></li>
 <li><p><a href="http://www.vim.org/scripts/script.php?script_id=3252">L9</a><br/>
 vim脚本库。</p></li>
-</ul>
+<li><p><a href="http://www.vim.org/scripts/script.php?script_id=3227">Simple-Javascript-Indenter</a><br/>
+javascript缩进插件，支持OOP和jQuery</p></li>
+<li><p><a href="http://www.vim.org/scripts/script.php?script_id=2416">jQuery</a><br/>
+jQuery语法支持，包括关键字，和CSS选择器</p></li>
+<li><p><a href="http://www.vim.org/scripts/script.php?script_id=2620">neocomplcache</a><br/>
+自动完成插件，不需要ctags，但是可能占用较大的内存。</p></li>
+<li><p><a href="http://www.vim.org/scripts/script.php?script_id=4043">neocomplcache-snippets_complete</a><br/>
+提供在neocomplcache使用和snipMate.vim相似的功能。</p></li>
+</ol>
 
+
+<h1>4 Vim的配色</h1>
+
+<p>个人在gui下喜欢使用torte的colorscheme，但是原始版本的配色没有考虑Pmenu的样式，使得Pmenu的色调很不搭（背景是粉红)。</p>
+
+<p>打开<code>colors\torte.vim</code>，在文件最后加入下面几行。</p>
+
+<pre><code>hi Pmenu guifg=#c0c0c0 guibg=#404080
+hi PmenuSel guifg=#c0c0c0 guibg=#2050d0
+hi PmenuSbar guifg=blue guibg=darkgray
+hi PmenuThumb guifg=#c0c0c0
+</code></pre>
 ]]></content:encoded>
     </item>
     
@@ -146,6 +168,8 @@ vim脚本库。</p></li>
       <author>刘昱</author>
       <guid>http://yuliu.org/2012/06/git_and_github</guid>
       <content:encoded><![CDATA[<h1>1 git</h1>
+
+<p>一个版本管理和控制工具</p>
 
 <h1>2 github</h1>
 
