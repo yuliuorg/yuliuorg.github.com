@@ -4,7 +4,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="author" content="刘昱" />
 		
-		<title>刘昱 | 我的Vim（Vim-of-pisheng) </title>
+		<title>刘昱 | 远程桌面连接windows 2000 </title>
 		
 		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
 		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
@@ -49,76 +49,27 @@
 			<div id="main" role="main">
 				<article class="content">
 				<section class="title">
-<h1>我的Vim（Vim-of-pisheng)</h1>
+<h1>远程桌面连接windows 2000</h1>
 </section>
 <section class="post">
-<h1>1 Vim初始安装</h1>
+<p>知道windows远程桌面是从XP开始的，一直觉得这个是个好东西，使用起来很方便，最近需要远程桌面连接windows 2000的机子，才知道2000也可以使用远程连接，但是设置要稍微麻烦一点。</p>
 
-<p>主要是因为采用了Vundle的插件管理方式，因此一般使用下述步骤。</p>
+<p>首先Windows 2000的各个版本对远程桌面的支持不一样的，Pro版只能连接另外的计算机而不能被其他计算机连接，Server版本以上的就双向都可以了,还好我这台是Server版的.</p>
 
-<ul>
-<li>下载安装</li>
-<li>修改<code>.vimrc或\_vimrc</code>文件</li>
-<li>安装Vundle插件管理软件</li>
-<li>通过Vundle安装和管理插件<br/>
-Vundle插件名需要区分大小写</li>
-</ul>
+<p>欲远程桌面连接到2000(下面都是指Server以上的版本).
+首先要在添加删除程序里面添加Windows组件</p>
 
+<p><img src="http://fs.yuliu.org/images/essay/2006/remote_desktop_to_windows2000_001.jpg" alt="添加组件" /></p>
 
-<h1>2 vim的基本配置</h1>
+<p>然后再控制面板--〉管理工具--〉服务中启动下列服务</p>
 
-<p>这一部分具体可以参考<code>.vimrc或\_vimrc</code>文件，设置中均进行了注释。</p>
+<p><img src="http://fs.yuliu.org/images/essay/2006/remote_desktop_to_windows2000_002.jpg" alt="启动服务" /></p>
 
-<h1>3 Vim插件</h1>
+<p>把启动类型改成自动，然后点击启动按钮就好了</p>
 
-<ol>
-<li><p><a href="http://www.vim.org/scripts/script.php?script_id=3458">Vundle</a><br/>
-vim插件管理包，需要git和curl的支持</p></li>
-<li><p><a href="http://www.vim.org/scripts/script.php?script_id=1708">FencView</a><br/>
-自动检测文件编码，也可以手动选择文件编码。<br/>
-需要<a href="http://mbbill.googlepages.com/iconv.dll">iconv.dll</a>的支持，在系统PATH路径下。</p></li>
-<li><p><a href="http://www.vim.org/scripts/script.php?script_id=2657">VOom</a><br/>
-部分标记语言的标题自动摘要<br/>
-需要python 2.X的支持，不能使用64位的。</p></li>
-<li><p><a href="https://github.com/tpope/vim-markdown">Markdown</a><br/>
-提供markdown着色功能
-为了便于识别两个空格表示的换行，修改<code>~\.vim\bundle\vim-markdown\syntax\markdown.vim</code>，在96行增加</p>
+<p>如果这样改了以后还不能被连接上，那么可能还需要去注册表里面修改一下，开启被连接选项，这个在XP和2003里面可以通过右击我的电脑--〉远程改，但是在2000里面这样不行，google了一下，可以通过直接改注册表实现这个功能。在注册表<code>HKEY_LOCAL_MACHINE--&gt;SYSTEM--&gt;CURRENTCONTROLSET--&gt;CONTROL-- &gt;TERMINAL SERVICE</code>中修改(如果不存在就添加)<code>fDenyTSConnections</code>的值为0</p>
 
-<pre><code> hi def link markdownLineBreak             Todo
-</code></pre>
-
-<p>markdownLineBreak其实在原始vim中已经定义，没有着色而已</p></li>
-<li><p><a href="http://www.vim.org/scripts/script.php?script_id=1658">The NERD tree</a><br/>
-一个文件浏览器插件，方便在vim中直接切换文件</p></li>
-<li><p><a href="http://www.vim.org/scripts/script.php?script_id=1218">NERDCommenter</a><br/>
-代码快速注释/取消注释插件</p></li>
-<li><p><a href="http://www.vim.org/scripts/script.php?script_id=1984">FuzzyFinder</a><br/>
-buffer、文件、命令...的快速切换和浏览器，神器。<br/>
-需要L9插件的支持</p></li>
-<li><p><a href="http://www.vim.org/scripts/script.php?script_id=3252">L9</a><br/>
-vim脚本库。</p></li>
-<li><p><a href="http://www.vim.org/scripts/script.php?script_id=3227">Simple-Javascript-Indenter</a><br/>
-javascript缩进插件，支持OOP和jQuery</p></li>
-<li><p><a href="http://www.vim.org/scripts/script.php?script_id=2416">jQuery</a><br/>
-jQuery语法支持，包括关键字，和CSS选择器</p></li>
-<li><p><a href="http://www.vim.org/scripts/script.php?script_id=2620">neocomplcache</a><br/>
-自动完成插件，不需要ctags，但是可能占用较大的内存。</p></li>
-<li><p><a href="http://www.vim.org/scripts/script.php?script_id=4043">neocomplcache-snippets_complete</a><br/>
-提供在neocomplcache使用和snipMate.vim相似的功能。</p></li>
-</ol>
-
-
-<h1>4 Vim的配色</h1>
-
-<p>个人在gui下喜欢使用torte的colorscheme，但是原始版本的配色没有考虑Pmenu的样式，使得Pmenu的色调很不搭（背景是粉红)。</p>
-
-<p>打开<code>colors\torte.vim</code>，在文件最后加入下面几行。</p>
-
-<pre><code>hi Pmenu guifg=#c0c0c0 guibg=#404080
-hi PmenuSel guifg=#c0c0c0 guibg=#2050d0
-hi PmenuSbar guifg=blue guibg=darkgray
-hi PmenuThumb guifg=#c0c0c0
-</code></pre>
+<p><img src="http://fs.yuliu.org/images/essay/2006/remote_desktop_to_windows2000_003.jpg" alt="修改注册表" /></p>
 
 </section>
 <section class="meta">
@@ -128,7 +79,7 @@ hi PmenuThumb guifg=#c0c0c0
 <span class="time">
 	/
 	
-	<time datetime="2012-07-10">2012-07-10</time> 更新
+	<time datetime="2006-11-29">2006-11-29</time> 发表
 	
 </span>
 <br />
@@ -144,9 +95,7 @@ hi PmenuThumb guifg=#c0c0c0
 <span class="tags">
 	标签： 
 	
-	<a href="http://yuliu.org/tags/#vim" title="vim">vim</a>&nbsp;
-	
-	<a href="http://yuliu.org/tags/#插件" title="插件">插件</a>&nbsp;
+	<a href="http://yuliu.org/tags/#软件" title="软件">软件</a>&nbsp;
 	
 </span>
 
@@ -161,7 +110,7 @@ $(function(){
 		$('section.comment #show_disqus_comment').on('click',function(){
 			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
 			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
-			var disqus_url = 'http://yuliu.org/2012/06/vim_of_pisheng/';
+			var disqus_url = 'http://yuliu.org/2006/11/remote_desktop_to_windows2000/';
 			// var disqus_developer = 1; 
 			var that = this;
 			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -180,12 +129,10 @@ $(function(){
 			var url = false;
 			if (e.which == 37 || e.which == 74) {  // Left arrow and J
 				
-				url = 'http://yuliu.org/2012/06/git_and_github/';
-				
 			}
 			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
 				
-				url = 'http://yuliu.org/2012/07/jekyll_notes/';
+				url = 'http://yuliu.org/2011/03/vps_hosting_from_zero_1/';
 				
 			}
 			if (url) {

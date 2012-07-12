@@ -6,8 +6,8 @@
     <atom:link href="http://yuliu.org/feed/rss.xml" rel="self" type="application/rss+xml" />
 	<description>刘昱 | 核能动力系统工程师</description>
     <language>zh-cn</language>
-    <pubDate>Tue, 10 Jul 2012 23:54:37 +0800</pubDate>
-    <lastBuildDate>Tue, 10 Jul 2012 23:54:37 +0800</lastBuildDate>
+    <pubDate>Thu, 12 Jul 2012 22:51:09 +0800</pubDate>
+    <lastBuildDate>Thu, 12 Jul 2012 22:51:09 +0800</lastBuildDate>
 
     
     <item>
@@ -961,6 +961,33 @@ root  /home/wwwroot;
 &lt;p&gt;&lt;a href=&quot;http://www.vpser.net/manage/lnmp-pureftpd-cp.html&quot;&gt;lnmp之pureftpd管理面板安装教程[图文]&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;恩，还是很简单，先到这里。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>远程桌面连接windows 2000</title>
+      <link>http://yuliu.org/2006/11/remote_desktop_to_windows2000/</link>
+      <pubDate>Wed, 29 Nov 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/11/remote_desktop_to_windows2000</guid>
+	  <description>&lt;p&gt;知道windows远程桌面是从XP开始的，一直觉得这个是个好东西，使用起来很方便，最近需要远程桌面连接windows 2000的机子，才知道2000也可以使用远程连接，但是设置要稍微麻烦一点。&lt;/p&gt;
+
+&lt;p&gt;首先Windows 2000的各个版本对远程桌面的支持不一样的，Pro版只能连接另外的计算机而不能被其他计算机连接，Server版本以上的就双向都可以了,还好我这台是Server版的.&lt;/p&gt;
+
+&lt;p&gt;欲远程桌面连接到2000(下面都是指Server以上的版本).
+首先要在添加删除程序里面添加Windows组件&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2006/remote_desktop_to_windows2000_001.jpg&quot; alt=&quot;添加组件&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;然后再控制面板--〉管理工具--〉服务中启动下列服务&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2006/remote_desktop_to_windows2000_002.jpg&quot; alt=&quot;启动服务&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;把启动类型改成自动，然后点击启动按钮就好了&lt;/p&gt;
+
+&lt;p&gt;如果这样改了以后还不能被连接上，那么可能还需要去注册表里面修改一下，开启被连接选项，这个在XP和2003里面可以通过右击我的电脑--〉远程改，但是在2000里面这样不行，google了一下，可以通过直接改注册表实现这个功能。在注册表&lt;code&gt;HKEY_LOCAL_MACHINE--&amp;gt;SYSTEM--&amp;gt;CURRENTCONTROLSET--&amp;gt;CONTROL-- &amp;gt;TERMINAL SERVICE&lt;/code&gt;中修改(如果不存在就添加)&lt;code&gt;fDenyTSConnections&lt;/code&gt;的值为0&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2006/remote_desktop_to_windows2000_003.jpg&quot; alt=&quot;修改注册表&quot; /&gt;&lt;/p&gt;
 </description>
     </item>
     
