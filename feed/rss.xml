@@ -6,8 +6,8 @@
     <atom:link href="http://yuliu.org/feed/rss.xml" rel="self" type="application/rss+xml" />
 	<description>刘昱 | 核能动力系统工程师</description>
     <language>zh-cn</language>
-    <pubDate>Thu, 12 Jul 2012 22:51:09 +0800</pubDate>
-    <lastBuildDate>Thu, 12 Jul 2012 22:51:09 +0800</lastBuildDate>
+    <pubDate>Thu, 12 Jul 2012 23:20:42 +0800</pubDate>
+    <lastBuildDate>Thu, 12 Jul 2012 23:20:42 +0800</lastBuildDate>
 
     
     <item>
@@ -961,6 +961,144 @@ root  /home/wwwroot;
 &lt;p&gt;&lt;a href=&quot;http://www.vpser.net/manage/lnmp-pureftpd-cp.html&quot;&gt;lnmp之pureftpd管理面板安装教程[图文]&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;恩，还是很简单，先到这里。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>A Normal Problem In China -- Train Delay</title>
+      <link>http://yuliu.org/2006/12/a_normal_problem_in_china_train_delay/</link>
+      <pubDate>Mon, 04 Dec 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/12/a_normal_problem_in_china_train_delay</guid>
+	  <description>&lt;p&gt;I do not know whether train delay in other country than china is a normal thing, but it's quite ordinary in china although the railway department has improved their service now.&lt;/p&gt;
+
+&lt;p&gt;Today I take train from Shanghai to Hangzhou. A tour should take one and half a hour from 5:30 - 7:00 PM. I got to the South Shanghai Railway station at 4:40 on time, but when I waiting in the room,   unfortunately a moment later screen displayed that the train will delay, I am familiar with it as frequently train taker. but a little surprised to me the delay time is unsure. This is unacceptable to be because I can't go out for supper if I do not know when would train come. I don't think the delay time is totally unknown to railway workers. Although there is not accurate time, but must be a range. It is a monopoly mentality that just say sorry from broadcast and have not any practical action include their responsibility to forecast delay time. Finally after waiting in the room for almost one hour I got up the train at 6:20 and the train leave Shanghai at 6:40 which time I had arrived the destination if on time. when I arrived at Hangzhou, It's 8:20. the train delayed 1 hour and 20 minutes  to a trip just 1 hour 30 minutes. this is not a special case, I encounter this condition about 2 month ago in the same train.&lt;/p&gt;
+
+&lt;p&gt;I search some compensation for train delay from Internet. In Sweden, they passed a law to ensure this. Euro are prepare for it. I understand there is lot's of reason for train delay,  but the behavior such irresponsible like not giving any practical action include their responsibility to forecast delay time is makes me frustrated and angry.&lt;/p&gt;
+
+&lt;p&gt;China had developed a lot and fast in hardware however, there is a great delay in software like service. Hope it can be better!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Two Simple Hack Tips on Blogger Beta</title>
+      <link>http://yuliu.org/2006/12/two_simple_hack_tips_on_blogger_beta/</link>
+      <pubDate>Fri, 01 Dec 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/12/two_simple_hack_tips_on_blogger_beta</guid>
+	  <description>&lt;p&gt;Because I am a freshman to Blogger Beta. I found two tips to make my new blog better.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;The fisrt one is to hide navbar.&lt;br/&gt;
+you can add code below&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; #navbar-iframe { height: 0px; visibility: hidden; display: none }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;to &lt;code&gt;head--&amp;lt;b:skin&amp;gt;&lt;/code&gt; section in your HTML. the HTML is under template settings.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The second one is to open new window in Link List widget.&lt;br/&gt;
+By default there is not option that you can config it. so links in Link List widget will open in current window. However this is also could be solved it HTML code.&lt;br/&gt;
+At first, remember to check the option Expand Widget Templates . Then find the section&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; &amp;lt;b:widget id='LinkList1' locked='false' title='Blog Links' type='LinkList'&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+change links
+
+&lt;pre&gt;&lt;code&gt; &amp;lt;li&amp;gt;&amp;lt;a expr:href='data:link.target' &amp;gt;&amp;lt;data:link.name/&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+to
+
+&lt;pre&gt;&lt;code&gt; &amp;lt;li&amp;gt;&amp;lt;a expr:href='data:link.target' target='_blank'&amp;gt;&amp;lt;data:link.name/&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;p&gt;Finnally, Open your blog and try it.&lt;/p&gt;
+
+&lt;p&gt;Hope these two simple hack tips is useful to you!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Wikipedia CD 1.0 （BT下载链接已失效）</title>
+      <link>http://yuliu.org/2006/11/wikipedia_cd_1/</link>
+      <pubDate>Thu, 30 Nov 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/11/wikipedia_cd_1</guid>
+	  <description>&lt;p&gt;维基百科在中国的命运真可谓一波三折，前段时间仿佛看着已经解封了，在大家庆祝了一段时间以后突然又不能访问了。这样的一个好东西在各个方面（政治方面暂且不论）给于我的帮助是很大的，可惜了。&lt;/p&gt;
+
+&lt;p&gt;维基百科CD给于我们用另外一种方式接触它的机会，也许有的网友会认为这个是不是专门给中国用户制作的呢？以前我也是这样认为的，但是看了介绍以后发现完全不是这样的。&lt;/p&gt;
+
+&lt;p&gt;以下翻译自&lt;a href=&quot;http://www.bittorrent.com/users/jpettitt/torrents/Wikipedia_CD_1.0/779c3b64448f0b438a80cad8d202cec84f4e0bf5/index.html&quot;&gt;BitTorrent.com的介绍（已失效）&lt;/a&gt;：&lt;/p&gt;
+
+&lt;p&gt;CD包含了2000条投票选择的文章，特别关注于学生和儿童（地理、科学、恐龙、植物和动物）。所有条目是英语维基百科上的为SOS儿童工作的志愿者选取的，适合儿童阅读的并且清除了脚本。CD包含了极少的图片。CD的细节为：&lt;/p&gt;
+
+&lt;p&gt;从优秀文章，标志性文章和主要列表（例如所有国家，所有首都等）选取了大约2500篇文章。&lt;/p&gt;
+
+&lt;p&gt;垃圾文章、学生难于理解的、模拟两个的文章和肤浅的文章被遗弃或者重新排序。&lt;/p&gt;
+
+&lt;p&gt;使用早先讨论通过的存在争议条目的（如基督教等）版本&lt;/p&gt;
+
+&lt;p&gt;没有包括文章的链接，外部链接被标识为纯文本，链接表和无用的节被移除.&lt;/p&gt;
+
+&lt;p&gt;编辑上的公告和到其他语言的链接等被移除。&lt;/p&gt;
+
+&lt;p&gt;维基百科的标志引文SOS没有得到授权所以不会出现在CD中，但是2007版的CD已经得到授权并且会出现维基百科的标志&lt;/p&gt;
+
+&lt;p&gt;CD中大概有130页在一个小公告栏中增加了内容，增加的内容关注于SOS儿童（例如 在条目Africa中，增加了内容“SOS已经在大约123个国家开展工作”，见下图。这些提示遵循不影响选择的文章的内容的原则。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2006/wikipedia_cd_1_001.png&quot; alt=&quot;内容和原则&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;最终版本中有一个用于收集目的的完整的SOS儿童网站的镜像。&lt;/p&gt;
+
+&lt;p&gt;自动运行拼写检查。 BT下载链接 &lt;a href=&quot;http://torrentfreak.com/torrents/wpcd.zip.torrent&quot;&gt;Wikipedia CD 1.0 （已失效）&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;PS: 除开Wikipedia CD，这里还有一个Wikipedia的选择叫做Encyclopodia, SF上的一个开源工程&lt;a href=&quot;http://encyclopodia.sourceforge.net/en/index.html&quot;&gt;Wikipedia on your iPod&lt;/a&gt;。可惜我没有iPod要不一定试一下。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>About PI-API Error -10401</title>
+      <link>http://yuliu.org/2006/11/pi_api_error_10401/</link>
+      <pubDate>Thu, 30 Nov 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/11/pi_api_error_10401</guid>
+	  <description>&lt;p&gt;Today I wanted to insert data to PI by using a .net class which boxed PI-API I created it before. I used function pisn_putsnapshotx, but it doesn't work with error code -10401.&lt;/p&gt;
+
+&lt;p&gt;In PI-API Documents, there is no comment about this error code. so I had to found the reason by myself. I used default point &quot;sinusoid&quot; as test point and try to insert data into it. it works Fine. Then I compare tag property of &quot;sinusoid&quot; and my problem tag, I notice defference on DataAccess.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sinusoid: o:rw g:rw w:rw
+Problem tag: o:rw g:r w:r
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;OK, I guess this is the reason, I chaged Problem tag's property to o:rw g:rw w:rw, then I use pisn_putsnapshotx function to insert data, works well.&lt;/p&gt;
+
+&lt;p&gt;So &lt;em&gt;error code -10401 is a access level problem&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;there is two way to solve it now.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;As said above, change property to o:rw g:rw w:rw.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Add login information in your code by using pilg_login or piut_login&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;p&gt;PS: I can't use pilg_login because no entry point in piapi32.dll when I P/Invoke it. I do not know why. But I found piut_login is always OK.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>China First Warcraft 3 Network Live Broadcast</title>
+      <link>http://yuliu.org/2006/11/china_first_warcraft3_network_live_broadcast/</link>
+      <pubDate>Thu, 30 Nov 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/11/china_first_warcraft3_network_live_broadcast</guid>
+	  <description>&lt;p&gt;Everyone who played starcraft or concerned about Electronic Competition would know Electronic Competition in starcraft have great development. Korean government have confirm its legal position and contribution to national economics. yellow, nada and oov had become star in Korea. but war3 and war3 player has less Influence.&lt;/p&gt;
+
+&lt;p&gt;China had develop starcraft before, but there is still great distance between Chinese and Korean player. as Sky(a famous Chinese war3 player) continually won two championship in WCG which represent highest award in Electronic Competition. China decided to make  breakthrough in war3 even in Electronic competition so that Chinese government would confirm its legal position.
+Nowadays China hold a China-Korea war3 star competition to expand Electronic Competition influence in china. the most significant feature of this competition is live Network Broadcast by a software called ppstream, so many gamer could see it through Internet. I think this is a good try to develop China Electronic Competition. The emcee of live broadcast give me such feeling as young and humor. It's the style I like. But I found that emcee give so strong Chinese bias although they are Chinese, So do I. it makes me a little displeasure because I think they should take neutrality in their position. If you are just a audience you can express your whole feeling but you are not. However I still like this game although I love starcraft more than war3 and hope it can expand Electronic Competition influence in china.&lt;/p&gt;
 </description>
     </item>
     

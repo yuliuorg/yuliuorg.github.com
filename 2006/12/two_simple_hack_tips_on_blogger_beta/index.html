@@ -4,7 +4,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="author" content="刘昱" />
 		
-		<title>刘昱 | 远程桌面连接windows 2000 </title>
+		<title>刘昱 | Two Simple Hack Tips on Blogger Beta </title>
 		
 		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
 		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
@@ -49,27 +49,41 @@
 			<div id="main" role="main">
 				<article class="content">
 				<section class="title">
-<h1>远程桌面连接windows 2000</h1>
+<h1>Two Simple Hack Tips on Blogger Beta</h1>
 </section>
 <section class="post">
-<p>知道windows远程桌面是从XP开始的，一直觉得这个是个好东西，使用起来很方便，最近需要远程桌面连接windows 2000的机子，才知道2000也可以使用远程连接，但是设置要稍微麻烦一点。</p>
+<p>Because I am a freshman to Blogger Beta. I found two tips to make my new blog better.</p>
 
-<p>首先Windows 2000的各个版本对远程桌面的支持不一样的，Pro版只能连接另外的计算机而不能被其他计算机连接，Server版本以上的就双向都可以了,还好我这台是Server版的.</p>
+<ol>
+<li><p>The fisrt one is to hide navbar.<br/>
+you can add code below</p>
 
-<p>欲远程桌面连接到2000(下面都是指Server以上的版本).
-首先要在添加删除程序里面添加Windows组件</p>
+<pre><code> #navbar-iframe { height: 0px; visibility: hidden; display: none }
+</code></pre>
 
-<p><img src="http://fs.yuliu.org/images/essay/2006/remote_desktop_to_windows2000_001.jpg" alt="添加组件" /></p>
+<p>to <code>head--&lt;b:skin&gt;</code> section in your HTML. the HTML is under template settings.</p></li>
+<li><p>The second one is to open new window in Link List widget.<br/>
+By default there is not option that you can config it. so links in Link List widget will open in current window. However this is also could be solved it HTML code.<br/>
+At first, remember to check the option Expand Widget Templates . Then find the section</p>
 
-<p>然后再控制面板--〉管理工具--〉服务中启动下列服务</p>
+<pre><code> &lt;b:widget id='LinkList1' locked='false' title='Blog Links' type='LinkList'&gt;
+</code></pre>
 
-<p><img src="http://fs.yuliu.org/images/essay/2006/remote_desktop_to_windows2000_002.jpg" alt="启动服务" /></p>
+change links
 
-<p>把启动类型改成自动，然后点击启动按钮就好了</p>
+<pre><code> &lt;li&gt;&lt;a expr:href='data:link.target' &gt;&lt;data:link.name/&gt;&lt;/a&gt;&lt;/li&gt;
+</code></pre>
 
-<p>如果这样改了以后还不能被连接上，那么可能还需要去注册表里面修改一下，开启被连接选项，这个在XP和2003里面可以通过右击我的电脑--〉远程改，但是在2000里面这样不行，google了一下，可以通过直接改注册表实现这个功能。在注册表<code>HKEY_LOCAL_MACHINE--&gt;SYSTEM--&gt;CURRENTCONTROLSET--&gt;CONTROL-- &gt;TERMINAL SERVICE</code>中修改(如果不存在就添加)<code>fDenyTSConnections</code>的值为0</p>
+to
 
-<p><img src="http://fs.yuliu.org/images/essay/2006/remote_desktop_to_windows2000_003.jpg" alt="修改注册表" /></p>
+<pre><code> &lt;li&gt;&lt;a expr:href='data:link.target' target='_blank'&gt;&lt;data:link.name/&gt;&lt;/a&gt;&lt;/li&gt;
+</code></pre></li>
+</ol>
+
+
+<p>Finnally, Open your blog and try it.</p>
+
+<p>Hope these two simple hack tips is useful to you!</p>
 
 </section>
 <section class="meta">
@@ -79,7 +93,7 @@
 <span class="time">
 	/
 	
-	<time datetime="2006-11-29">2006-11-29</time> 发表
+	<time datetime="2006-12-01">2006-12-01</time> 发表
 	
 </span>
 <br />
@@ -95,7 +109,9 @@
 <span class="tags">
 	标签： 
 	
-	<a href="http://yuliu.org/tags/#软件" title="软件">软件</a>&nbsp;
+	<a href="http://yuliu.org/tags/#设计" title="设计">设计</a>&nbsp;
+	
+	<a href="http://yuliu.org/tags/#网络服务" title="网络服务">网络服务</a>&nbsp;
 	
 </span>
 
@@ -110,7 +126,7 @@ $(function(){
 		$('section.comment #show_disqus_comment').on('click',function(){
 			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
 			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
-			var disqus_url = 'http://yuliu.org/2006/11/remote_desktop_to_windows2000/';
+			var disqus_url = 'http://yuliu.org/2006/12/two_simple_hack_tips_on_blogger_beta/';
 			// var disqus_developer = 1; 
 			var that = this;
 			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -129,10 +145,12 @@ $(function(){
 			var url = false;
 			if (e.which == 37 || e.which == 74) {  // Left arrow and J
 				
+				url = 'http://yuliu.org/2006/11/wikipedia_cd_1/';
+				
 			}
 			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
 				
-				url = 'http://yuliu.org/2006/11/china_first_warcraft3_network_live_broadcast/';
+				url = 'http://yuliu.org/2006/12/a_normal_problem_in_china_train_delay/';
 				
 			}
 			if (url) {
