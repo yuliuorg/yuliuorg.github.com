@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="刘昱" />
+		
+		<title>刘昱 | Word 2007调整表格中公式显示格式的宏 </title>
+		
+		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
+		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+		<script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+		<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+		<!--[if IE]>
+		<script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+		<![endif]-->		
+		<script type="text/javascript" src="/media/script/default.js"></script>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33277878-1']);
+			_gaq.push(['_setDomainName', 'yuliu.org']);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_trackPageLoadTime']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+
+		<div id="container">
+			<header>
+			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
+			<h1>刘 昱</h1>
+			<h2>核能动力系统设计工程师</h2>
+			</header>
+			<nav>
+			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
+			<span><a title="简历" class="" href="http://yuliu.org/vitae/">简历</a></span>
+			<span><a title="文章" class="" href="http://yuliu.org/publication/">文章</a></span>
+			<span><a title="关于" class="" href="http://yuliu.org/about/">关于</a></span>
+			<span><a title="留言" class="" href="http://yuliu.org/guestbook/">留言</a></span>
+			<span><a title="链接" class="" href="http://yuliu.org/links/">链接</a></span>
+			<span><a title="杂货铺" class="" href="http://yuliu.org/essay">杂货铺</a></span>
+			</nav>
+			<div id="main" role="main">
+				<article class="content">
+				<section class="title">
+<h1>Word 2007调整表格中公式显示格式的宏</h1>
+</section>
+<section class="post">
+<p>最近要写一个报告，正好体验了一把Word 2007，改变的确很大，界面的报道已经很多了，google、baidu搜索不知道有多少结果。我比较关心其中公式编辑器的改变，不像以前的版本使用MathType的简化版来做为公式编辑器，word 2007使用普通文本来而不是对象来描述公式（以前的版本使用嵌入对象来描述，这个方法现在仍然被支持），所以它能很好的嵌入在普通文本里面。更为重要的是据说为了新的公式编辑器，微软使用了TeX的标准和设计新的数学字体。通过实践，果然word 2007生成的公式比以前的美观了很多。下面两个你能猜出来哪个是新公式编辑器写的吗？</p>
+
+<p><img src="http://fs.yuliu.org/images/essay/2007/word2007_macro_to_adjust_formula_style_in_table_001.jpg" alt="公式" /></p>
+
+<pre><code>Sub 公式格式()
+    On Error GoTo Err
+    Dim oTable As Table
+    Set oTable = Selection.Tables(1)
+    Dim oCell As Cell
+    For Each oCell In oTable.Range.Cells
+        Dim intMathNumber As Integer
+        intMathNumber = oCell.Range.OMaths.Count
+        If intMathNumber &gt; 0 Then
+            For i = 1 To intMathNumber
+                oCell.Range.OMaths(i).ParentOMath.Type = wdOMathInline
+            Next
+        End If
+    Next
+    Exit Sub
+Err:
+    MsgBox ("没有选中表格")
+End Sub
+</code></pre>
+
+<p>word 2007虽然有不少进步，但是也有不足之处，</p>
+
+<p>第一是录制宏好像不怎么方便，右键菜单不能用，还有那个PP菜单上的很多东西也不能点，这个好像相比2003有了很大的退步。</p>
+
+<p>第二就是公式的编号问题，word 2007中好像取消了公式编号，所以这个成了一个麻烦事，微软研究院的<a href="http://research.microsoft.com/en-us/people/dongyu/">Dong Yu</a>好像也对这个问题有点奇怪，于是写了一个<a href="http://research.microsoft.com/en-us/people/dongyu/Office2007EqnNumber.txt">宏</a>来完成这个任务，虽然我觉得不是很好用，word 2007怎么会不提供这个功能呢？</p>
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://yuliu.org">刘昱</a>
+</span>
+<span class="time">
+	/
+	
+	<time datetime="2007-03-22">2007-03-22</time> 发表
+	
+</span>
+<br />
+
+<span class="categories">
+	分类： 
+	
+	<a href="http://yuliu.org/essay/categories.html#计算机" title="计算机">计算机</a>&nbsp;/
+	
+</span>
+
+
+<span class="tags">
+	标签： 
+	
+	<a href="http://yuliu.org/essay/tags.html#word" title="word">word</a>&nbsp;
+	
+	<a href="http://yuliu.org/essay/tags.html#脚本" title="脚本">脚本</a>&nbsp;
+	
+</span>
+
+</section>
+
+<section class="comment">
+<a href="#" id="show_disqus_comment" onclick="return false;">更多信息，请点击查看评论</a>
+<div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+$(function(){
+		$('section.comment #show_disqus_comment').on('click',function(){
+			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
+			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+			var disqus_url = 'http://yuliu.org/2007/03/word2007_macro_to_adjust_formula_style_in_table/';
+			// var disqus_developer = 1; 
+			var that = this;
+			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			var src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			PSJS.loadScript(src, function(){$(that).remove()});
+			});
+		});
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		$(document).keydown(function(e) {
+			var url = false;
+			if (e.which == 37 || e.which == 74) {  // Left arrow and J
+				
+				url = 'http://yuliu.org/2007/03/compatible_softwares_of_windows_2003sp2_in_microsoft_website/';
+				
+			}
+			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+				
+				url = 'http://yuliu.org/2007/03/demo_to_read_write_snapshot_and_archive_using_pisdk/';
+				
+			}
+			if (url) {
+				window.location = url;
+			}
+		});
+	})
+</script>
+
+
+				</article>
+				<div id="toc"></div>
+			</div>
+		</div>
+	</body>
+</html>

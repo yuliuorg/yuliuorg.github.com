@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="刘昱" />
+		
+		<title>刘昱 | 远程桌面连接windows 2000 </title>
+		
+		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
+		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+		<script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+		<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+		<!--[if IE]>
+		<script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+		<![endif]-->		
+		<script type="text/javascript" src="/media/script/default.js"></script>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33277878-1']);
+			_gaq.push(['_setDomainName', 'yuliu.org']);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_trackPageLoadTime']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+
+		<div id="container">
+			<header>
+			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
+			<h1>刘 昱</h1>
+			<h2>核能动力系统设计工程师</h2>
+			</header>
+			<nav>
+			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
+			<span><a title="简历" class="" href="http://yuliu.org/vitae/">简历</a></span>
+			<span><a title="文章" class="" href="http://yuliu.org/publication/">文章</a></span>
+			<span><a title="关于" class="" href="http://yuliu.org/about/">关于</a></span>
+			<span><a title="留言" class="" href="http://yuliu.org/guestbook/">留言</a></span>
+			<span><a title="链接" class="" href="http://yuliu.org/links/">链接</a></span>
+			<span><a title="杂货铺" class="" href="http://yuliu.org/essay">杂货铺</a></span>
+			</nav>
+			<div id="main" role="main">
+				<article class="content">
+				<section class="title">
+<h1>远程桌面连接windows 2000</h1>
+</section>
+<section class="post">
+<p>知道windows远程桌面是从XP开始的，一直觉得这个是个好东西，使用起来很方便，最近需要远程桌面连接windows 2000的机子，才知道2000也可以使用远程连接，但是设置要稍微麻烦一点。</p>
+
+<p>首先Windows 2000的各个版本对远程桌面的支持不一样的，Pro版只能连接另外的计算机而不能被其他计算机连接，Server版本以上的就双向都可以了,还好我这台是Server版的.</p>
+
+<p>欲远程桌面连接到2000(下面都是指Server以上的版本).
+首先要在添加删除程序里面添加Windows组件</p>
+
+<p><img src="http://fs.yuliu.org/images/essay/2006/remote_desktop_to_windows2000_001.jpg" alt="添加组件" /></p>
+
+<p>然后再控制面板--〉管理工具--〉服务中启动下列服务</p>
+
+<p><img src="http://fs.yuliu.org/images/essay/2006/remote_desktop_to_windows2000_002.jpg" alt="启动服务" /></p>
+
+<p>把启动类型改成自动，然后点击启动按钮就好了</p>
+
+<p>如果这样改了以后还不能被连接上，那么可能还需要去注册表里面修改一下，开启被连接选项，这个在XP和2003里面可以通过右击我的电脑--〉远程改，但是在2000里面这样不行，google了一下，可以通过直接改注册表实现这个功能。在注册表<code>HKEY_LOCAL_MACHINE--&gt;SYSTEM--&gt;CURRENTCONTROLSET--&gt;CONTROL-- &gt;TERMINAL SERVICE</code>中修改(如果不存在就添加)<code>fDenyTSConnections</code>的值为0</p>
+
+<p><img src="http://fs.yuliu.org/images/essay/2006/remote_desktop_to_windows2000_003.jpg" alt="修改注册表" /></p>
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://yuliu.org">刘昱</a>
+</span>
+<span class="time">
+	/
+	
+	<time datetime="2006-11-29">2006-11-29</time> 发表
+	
+</span>
+<br />
+
+<span class="categories">
+	分类： 
+	
+	<a href="http://yuliu.org/essay/categories.html#计算机" title="计算机">计算机</a>&nbsp;/
+	
+</span>
+
+
+<span class="tags">
+	标签： 
+	
+	<a href="http://yuliu.org/essay/tags.html#软件" title="软件">软件</a>&nbsp;
+	
+</span>
+
+</section>
+
+<section class="comment">
+<a href="#" id="show_disqus_comment" onclick="return false;">更多信息，请点击查看评论</a>
+<div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+$(function(){
+		$('section.comment #show_disqus_comment').on('click',function(){
+			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
+			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+			var disqus_url = 'http://yuliu.org/2006/11/remote_desktop_to_windows2000/';
+			// var disqus_developer = 1; 
+			var that = this;
+			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			var src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			PSJS.loadScript(src, function(){$(that).remove()});
+			});
+		});
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		$(document).keydown(function(e) {
+			var url = false;
+			if (e.which == 37 || e.which == 74) {  // Left arrow and J
+				
+			}
+			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+				
+				url = 'http://yuliu.org/2006/11/china_first_warcraft3_network_live_broadcast/';
+				
+			}
+			if (url) {
+				window.location = url;
+			}
+		});
+	})
+</script>
+
+
+				</article>
+				<div id="toc"></div>
+			</div>
+		</div>
+	</body>
+</html>

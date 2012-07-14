@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="刘昱" />
+		
+		<title>刘昱 | Javascript 的命名空间、类、属性和方法 </title>
+		
+		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
+		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+		<script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+		<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+		<!--[if IE]>
+		<script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+		<![endif]-->		
+		<script type="text/javascript" src="/media/script/default.js"></script>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33277878-1']);
+			_gaq.push(['_setDomainName', 'yuliu.org']);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_trackPageLoadTime']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+
+		<div id="container">
+			<header>
+			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
+			<h1>刘 昱</h1>
+			<h2>核能动力系统设计工程师</h2>
+			</header>
+			<nav>
+			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
+			<span><a title="简历" class="" href="http://yuliu.org/vitae/">简历</a></span>
+			<span><a title="文章" class="" href="http://yuliu.org/publication/">文章</a></span>
+			<span><a title="关于" class="" href="http://yuliu.org/about/">关于</a></span>
+			<span><a title="留言" class="" href="http://yuliu.org/guestbook/">留言</a></span>
+			<span><a title="链接" class="" href="http://yuliu.org/links/">链接</a></span>
+			<span><a title="杂货铺" class="" href="http://yuliu.org/essay">杂货铺</a></span>
+			</nav>
+			<div id="main" role="main">
+				<article class="content">
+				<section class="title">
+<h1>Javascript 的命名空间、类、属性和方法</h1>
+</section>
+<section class="post">
+<p>今天在网上看了一些实现Javascript 的命名空间、类、属性和方法的文章，下面是我自己尝试的代码，由于对Javascript这种prototype型的语言的理解不是很深，理解可能有误，还好实现应该没有问题的:-)</p>
+
+<h1>1. 命名空间</h1>
+
+<p>分为两个部分。第一个部分是注册函数，另外一部分是声明命名空间</p>
+
+<p>命名空间注册函数，参照yui的方式，注意这种方式下所有的命名空间的第一级都是sacranto。</p>
+
+<pre><code>var sacranto = {};
+sacranto.namespace=function(ns){
+    if(!ns||!ns.length){
+        return null;
+    }
+    var levels = ns.split(".");
+    var nsobj=sacranto;
+    for(var i=(levels[0] == anto")?1:0;i&lt;levels.length;i++){
+        nsobj[levels[i]]=nsobj[levels[i]]||{};
+        nsobj = nsobj[levels[i]];
+    }
+    return nsobj;
+};  
+</code></pre>
+
+<p>声明命名空间的语句，这样我们就注册了一个sacranto.demo命名空间。</p>
+
+<pre><code>sacranto.namespace("demo");
+</code></pre>
+
+<h1>2. 类</h1>
+
+<p>对于prototype类型的语言，函数其实就是类，声明一个函数其实就声明了一个类，并且他还是是类的静态构造函数。下面的语句声明了一个类，静态构造函数里面什么也没有做。</p>
+
+<pre><code>sacranto.demo.aclass = function(){};
+</code></pre>
+
+<h1>3. 类的属性和方法</h1>
+
+<p>这里就需要使用到prototype这个特性了</p>
+
+<pre><code>sacranto.demo.aclass.prototype = {
+    //属性
+    version: "1.0",
+    //方法
+    bar: function(s){
+        return "hello " + s;
+    }
+};
+</code></pre>
+
+<h1>4. 静态方法</h1>
+
+<p>仿佛在javascript里面应该没有静态方法这个概念吧。我的理解是这样的</p>
+
+<pre><code>//我理解的静态方法，其实是另外一个类和它的静态构造函数。
+sacranto.demo.aclass.foo=function(s){
+    return "hello "+s;
+}
+</code></pre>
+
+<p>OK，完成，测试一下吧</p>
+
+<pre><code>window.onload = function(){
+    var aobj=new sacranto.demo.aclass();
+    alert(aobj.bar("world"));                    //成功
+    //alert(sacranto.demo.aclass.bar("world"));    //失败
+    alert(sacranto.demo.aclass.foo("world"));    //成功
+};
+</code></pre>
+
+<p>延伸阅读：</p>
+
+<p><a href="http://www.crockford.com/javascript/private.html">Private Members in JavaScript</a>　英文：讨论了类中的私有成员</p>
+
+<p><a href="http://dev.csdn.net/article/84/84222.shtm">prototype的一个优势也是缺点</a>    中文：prototype实现类的属性和方法，以及在运行时刻会改变的特点。</p>
+
+<p>PS：取消 使用IE打开包括JavaScript 的本地web页时收到安全警告 方法</p>
+
+<ol>
+<li>在 工具 菜单上, 单击 Internet选项</li>
+<li>单击 高级 选项卡</li>
+<li>在 设置 列表, 确定依次选中 安全--允许活动内容在本机上的文件中运行。此选项允许您运行脚本和 ActiveX 控件在 InternetExplorer 中</li>
+<li>在 文件 菜单上, 单击 关闭</li>
+</ol>
+
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://yuliu.org">刘昱</a>
+</span>
+<span class="time">
+	/
+	
+	<time datetime="2007-04-21">2007-04-21</time> 发表
+	
+</span>
+<br />
+
+<span class="categories">
+	分类： 
+	
+	<a href="http://yuliu.org/essay/categories.html#计算机" title="计算机">计算机</a>&nbsp;/
+	
+</span>
+
+
+<span class="tags">
+	标签： 
+	
+	<a href="http://yuliu.org/essay/tags.html#Javascript" title="Javascript">Javascript</a>&nbsp;
+	
+	<a href="http://yuliu.org/essay/tags.html#程序设计" title="程序设计">程序设计</a>&nbsp;
+	
+</span>
+
+</section>
+
+<section class="comment">
+<a href="#" id="show_disqus_comment" onclick="return false;">更多信息，请点击查看评论</a>
+<div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+$(function(){
+		$('section.comment #show_disqus_comment').on('click',function(){
+			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
+			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+			var disqus_url = 'http://yuliu.org/2007/04/namespace_class_property_function_in_javascript/';
+			// var disqus_developer = 1; 
+			var that = this;
+			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			var src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			PSJS.loadScript(src, function(){$(that).remove()});
+			});
+		});
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		$(document).keydown(function(e) {
+			var url = false;
+			if (e.which == 37 || e.which == 74) {  // Left arrow and J
+				
+				url = 'http://yuliu.org/2007/04/ibatis_net_datamapper_configuration/';
+				
+			}
+			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+				
+				url = 'http://yuliu.org/2007/04/using_dotnet_web_service_by_javascript/';
+				
+			}
+			if (url) {
+				window.location = url;
+			}
+		});
+	})
+</script>
+
+
+				</article>
+				<div id="toc"></div>
+			</div>
+		</div>
+	</body>
+</html>

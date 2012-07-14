@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="刘昱" />
+		
+		<title>刘昱 | Windows 2003下安装965主板集成显卡（GMA3000）驱动程序 </title>
+		
+		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
+		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+		<script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+		<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+		<!--[if IE]>
+		<script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+		<![endif]-->		
+		<script type="text/javascript" src="/media/script/default.js"></script>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33277878-1']);
+			_gaq.push(['_setDomainName', 'yuliu.org']);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_trackPageLoadTime']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+
+		<div id="container">
+			<header>
+			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
+			<h1>刘 昱</h1>
+			<h2>核能动力系统设计工程师</h2>
+			</header>
+			<nav>
+			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
+			<span><a title="简历" class="" href="http://yuliu.org/vitae/">简历</a></span>
+			<span><a title="文章" class="" href="http://yuliu.org/publication/">文章</a></span>
+			<span><a title="关于" class="" href="http://yuliu.org/about/">关于</a></span>
+			<span><a title="留言" class="" href="http://yuliu.org/guestbook/">留言</a></span>
+			<span><a title="链接" class="" href="http://yuliu.org/links/">链接</a></span>
+			<span><a title="杂货铺" class="" href="http://yuliu.org/essay">杂货铺</a></span>
+			</nav>
+			<div id="main" role="main">
+				<article class="content">
+				<section class="title">
+<h1>Windows 2003下安装965主板集成显卡（GMA3000）驱动程序</h1>
+</section>
+<section class="post">
+<p>一台<a href="http://www1.ap.dell.com/content/products/productdetails.aspx/optix_745?c=cn&amp;l=zh&amp;s=bsd&amp;cs=cnbsd1">DELL OptiPlex 745</a>的商用台式机因为需要重新安装了Windows 2003系统，安装好以后插入自带的驱动程序盘，发现没有2003的驱动。那么先用xp的驱动试一下吧，主板的还好，到了显卡，出现了下面的对话框</p>
+
+<p><img src="http://fs.yuliu.org/images/essay/2007/gma3000_driver_installation_of_965_mainboard_in_windows_2003_001.jpg" alt="error message" /></p>
+
+<p>不知道是什么显卡，打开Everest（这个软件还真是好用），一看显示芯片是965主板集成的GMA3000（我的945集成的还是GMA950，到了965一下子就跳到3000了。难道是性能有很大的提升？）。知道了芯片就好办了，DELL、Intel和驱动之家查了一圈下来，竟然都没有它在2003下面的驱动，不是商用台式机吗？怎么也应该提供2003的驱动吧。没办法，只好试试在设备管理器里面能不能更新他的驱动，还好这个手段OK，重启。</p>
+
+<p>重启以后进入系统，……%￥#@！系统竟然变成了640*480*4bit的界面，而且调整分辨率也没有用，无论怎么调都停留在这个分辨率。那还不如不要装呢，不转之前还能跳到1280*1024，只是界面拖动的时候会有尾迹。于是只好在google漫无边际的搜索。</p>
+
+<p>最后在<a href="http://softwarecommunity.intel.com/isn/Community/en-US/forums/thread/30225949.aspx">Intel</a>的论坛看到了一个相似的问题，照着一位坛友的方法修改，重启进入系统，终于看到了如愿的界面。</p>
+
+<p>解决方法很简单：修改注册表 <code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management</code> 下的 <code>LargeSystemCache</code>为<code>0</code>（数字零）</p>
+
+<p>如果你修改了还不行，尝试一下重新在设备管理中更新一下驱动程序。</p>
+
+<p>"LargeSystemCache"是用来制定系统是否使用大缓存，通常来说，打开该选项会使系统性能得到相当的提升，但也有可能会使某些应用程序性能降低。需要注意的是必须有256M以上的内存，激活LargeSystemCache才能起到正面作用。不知道这个和驱动有什么具体的冲突。</p>
+
+<p>PS：Windows 2003 下面安装Intel High Definition audio声卡之前先到微软下载这个 <a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=d0934d06-15b3-4a65-8c52-746beb24e86c&amp;displaylang=zh-cn">补丁（中文版）</a></p>
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://yuliu.org">刘昱</a>
+</span>
+<span class="time">
+	/
+	
+	<time datetime="2007-03-16">2007-03-16</time> 发表
+	
+</span>
+<br />
+
+<span class="categories">
+	分类： 
+	
+	<a href="http://yuliu.org/essay/categories.html#计算机" title="计算机">计算机</a>&nbsp;/
+	
+</span>
+
+
+<span class="tags">
+	标签： 
+	
+	<a href="http://yuliu.org/essay/tags.html#windows" title="windows">windows</a>&nbsp;
+	
+	<a href="http://yuliu.org/essay/tags.html#驱动程序" title="驱动程序">驱动程序</a>&nbsp;
+	
+</span>
+
+</section>
+
+<section class="comment">
+<a href="#" id="show_disqus_comment" onclick="return false;">更多信息，请点击查看评论</a>
+<div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+$(function(){
+		$('section.comment #show_disqus_comment').on('click',function(){
+			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
+			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+			var disqus_url = 'http://yuliu.org/2007/03/gma3000_driver_installation_of_965_mainboard_in_windows_2003/';
+			// var disqus_developer = 1; 
+			var that = this;
+			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			var src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			PSJS.loadScript(src, function(){$(that).remove()});
+			});
+		});
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		$(document).keydown(function(e) {
+			var url = false;
+			if (e.which == 37 || e.which == 74) {  // Left arrow and J
+				
+				url = 'http://yuliu.org/2007/03/abnormal_shutdown_when_upgrading_to_2003sp2/';
+				
+			}
+			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+				
+				url = 'http://yuliu.org/2007/03/compatible_softwares_of_windows_2003sp2_in_microsoft_website/';
+				
+			}
+			if (url) {
+				window.location = url;
+			}
+		});
+	})
+</script>
+
+
+				</article>
+				<div id="toc"></div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="刘昱" />
+		
+		<title>刘昱 | Log For log4net (三) - 配置语法 </title>
+		
+		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
+		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+		<script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+		<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+		<!--[if IE]>
+		<script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+		<![endif]-->		
+		<script type="text/javascript" src="/media/script/default.js"></script>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33277878-1']);
+			_gaq.push(['_setDomainName', 'yuliu.org']);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_trackPageLoadTime']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+
+		<div id="container">
+			<header>
+			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
+			<h1>刘 昱</h1>
+			<h2>核能动力系统设计工程师</h2>
+			</header>
+			<nav>
+			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
+			<span><a title="简历" class="" href="http://yuliu.org/vitae/">简历</a></span>
+			<span><a title="文章" class="" href="http://yuliu.org/publication/">文章</a></span>
+			<span><a title="关于" class="" href="http://yuliu.org/about/">关于</a></span>
+			<span><a title="留言" class="" href="http://yuliu.org/guestbook/">留言</a></span>
+			<span><a title="链接" class="" href="http://yuliu.org/links/">链接</a></span>
+			<span><a title="杂货铺" class="" href="http://yuliu.org/essay">杂货铺</a></span>
+			</nav>
+			<div id="main" role="main">
+				<article class="content">
+				<section class="title">
+<h1>Log For log4net (三) - 配置语法</h1>
+</section>
+<section class="post">
+<p>接<a href="/2007/04/log_for_log4net_2_configuration_attribute_file">上篇</a></p>
+
+<p>注：这是log4net配置文档的最后一部份，描述了配置文档的语法</p>
+
+<p>对于其中的renderer的意义不是很清楚</p>
+
+<p>原文地址：<a href="http://logging.apache.org/log4net/release/manual/configuration.html">log4net Manual - Configuration</a></p>
+
+<p>log4net使用log4net.Config.XmlConfigurator配置读取器来解析XML，这一部分描述XmlConfigurator的语法</p>
+
+<p>下面是一个有效的XML配置，根元素必须是<log4net>，这并不意味着这个元素不能嵌入到其他元素里面。详见配置文件节。</p>
+
+<pre><code>&lt;log4net&gt;
+    &lt;appender name="ConsoleAppender" type="log4net.Appender.ConsoleAppender" &gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+            &lt;conversionPattern value="%date [%thread] %-5level %logger [%ndc] - %message%newline" /&gt;
+        &lt;/layout&gt;
+    &lt;/appender&gt;
+    &lt;root&gt;
+        &lt;level value="INFO" /&gt;
+        &lt;appender-ref ref="ConsoleAppender" /&gt;
+    &lt;/root&gt;
+&lt;/log4net&gt;
+</code></pre>
+
+<p><log4net>节支持下列属性</p>
+
+<ul>
+<li>debug：可选属性，值为true或者false，默认为false。指定为true时允许log4net的内部调试</li>
+<li>update：可选属性，值为Merge或者Overwrite，默认为Merge。指定为Overwrite时将在应用此配置之前重置库中的配置。</li>
+<li>threshold：可选属性，值必须是已在库中已注册的等级名，默认为ALL。这个属性用来在整个库中限制需要记录的等级，不管记录到任何地方。</li>
+</ul>
+
+
+<p><log4net>支持下列子元素</p>
+
+<ul>
+<li>appender：0或者多个，定义记录方式（appender）</li>
+<li>logger：0或者多个，定义记录器（logger）的配置。</li>
+<li>renderer：0或者多个，定义一个对象renderer（不知道怎么意思）</li>
+<li>root：0个或者1个，定义根记录器</li>
+<li>param：0或者多个，库特定参数。</li>
+</ul>
+
+
+<h1>Appenders</h1>
+
+<pre><code>&lt;appender name="ConsoleAppender" type="log4net.Appender.ConsoleAppender" &gt;
+    &lt;layout type="log4net.Layout.PatternLayout"&gt;
+        &lt;conversionPattern value="%date [%thread] %-5level %logger [%ndc] - %message%newline" /&gt;
+    &lt;/layout&gt;
+&lt;/appender&gt;
+</code></pre>
+
+<p><appender>节支持下列属性</p>
+
+<ul>
+<li>name：必须属性，字符串表示的appender名称，名称必须在所有记录方式中唯一，它在记录器的<appender-ref>元素中被引用，用来指定记录方式。</li>
+<li>type：必须属性，值为记录器类型名，如果记录器不在log4net组件集中，必须给出完整的组件集名称。</li>
+</ul>
+
+
+<p><appender>节支持下列子元素</p>
+
+<ul>
+<li>appender-ref：0或者多个，允许记录方式引用其他记录方式，不被所有记录方式支持。</li>
+<li>filter：0或者多个，定义记录方式的过滤器</li>
+<li>layout：0个或者1个，定义记录方式的布局</li>
+<li>param：0或者多个，记录方式特定参数。</li>
+</ul>
+
+
+<p>例子参见<a href="http://logging.apache.org/log4net/release/config-examples.html">Example Appender Configuration</a>文档</p>
+
+<h1>Filters（过滤器）</h1>
+
+<p>filter只可以定义为<appender>元素的子元素</p>
+
+<p><filter>节支持下列属性</p>
+
+<ul>
+<li>type：必须属性，值为过滤器的类型名称。如果过滤器不在log4net组件集中，必须给出完整的组件集名称。</li>
+</ul>
+
+
+<p><filter>节支持下列子元素</p>
+
+<ul>
+<li>param：0或者多个，filter特定参数</li>
+</ul>
+
+
+<p>过滤器组成一个串来规定能够通过的事件，每个过滤器能够指定接受和处理的事件、拒绝和停止处理的事件或者允许事件到下一个过滤器。如果事件达到filter串的尽头而且没有被拒绝，那么它将被隐式的被记录器接受。</p>
+
+<pre><code>&lt;filter type="log4net.Filter.LevelRangeFilter"&gt;
+    &lt;levelMin value="INFO" /&gt;
+    &lt;levelMax value="FATAL" /&gt;
+&lt;/filter&gt;
+</code></pre>
+
+<p>这个过滤器将会拒绝等级低于INFO或者高于FATAL的事件，其他事件包括INFO和FATAL将会被记录。</p>
+
+<p>如果我们只想允许消息中包含特定字符（如“database”）的事件被记录，那么可以使用下面的过滤器</p>
+
+<pre><code>&lt;filter type="log4net.Filter.StringMatchFilter"&gt;
+    &lt;stringToMatch value="database" /&gt;
+&lt;/filter&gt;
+&lt;filter type="log4net.Filter.DenyAllFilter" /&gt;
+</code></pre>
+
+<p>上面的例子中，第一个过滤器将会检查时间消息中是否包含“database”，如果包含，过滤器将接受消息并停止过滤，事件被记录。如果不包含，事件被传递到下一个过滤器处理，如果没有下一个过滤器，时间会被隐式的记录。如果我们不想不符合过滤要求的事件被隐式记录，可以在最后加上log4net.Filter.DenyAllFilter，他将拒绝所有到达它的事件。</p>
+
+<p>如果我们希望记录消息中包含“database”或者“ldap”的事件，可以使用下列过滤器</p>
+
+<pre><code>&lt;filter type="log4net.Filter.StringMatchFilter"&gt;
+    &lt;stringToMatch value="database"/&gt;
+&lt;/filter&gt;
+&lt;filter type="log4net.Filter.StringMatchFilter"&gt;
+    &lt;stringToMatch value="ldap"/&gt;
+&lt;/filter&gt;
+&lt;filter type="log4net.Filter.DenyAllFilter" /&gt;
+</code></pre>
+
+<h1>Layouts</h1>
+
+<p>Layout只可以定义为<appender>元素的子元素</p>
+
+<p><layout>节支持下列属性</p>
+
+<ul>
+<li>type：必须属性，值为layout的类型名称。如果过滤器不在log4net组件集中，必须给出完整的组件集名称。</li>
+</ul>
+
+
+<p><layout>节支持下列子元素</p>
+
+<ul>
+<li>param：0或者多个，filter特定参数</li>
+</ul>
+
+
+<p>下面的例子表示了怎样使用log4net.Layout.PatternLayout来配置布局。</p>
+
+<pre><code>&lt;layout type="log4net.Layout.PatternLayout"&gt;
+    &lt;conversionPattern value="%date [%thread] %-5level %logger [%ndc] - %message%newline" /&gt;
+&lt;/layout&gt;
+</code></pre>
+
+<h1>Root Logger（根记录器）</h1>
+
+<p>root logger只可以定义为<log4net>元素的子元素，它在记录器层次结构的根部，其他记录器都继承自他。</p>
+
+<p>根记录器的例子</p>
+
+<pre><code>&lt;root&gt;
+    &lt;level value="INFO" /&gt;
+    &lt;appender-ref ref="ConsoleAppender" /&gt;
+&lt;/root&gt;
+</code></pre>
+
+<p><root>节不支持属性</p>
+
+<p><root>节支持下列子元素</p>
+
+<ul>
+<li>appender-ref：0或者多个，允许记录器通过记录方式的名称引用记录方式</li>
+<li>level：0个或者1个，定义记录器的记录等级，记录器只记录大于或等于这一等级的事件</li>
+<li>param：0或者多个，记录器特定参数</li>
+</ul>
+
+
+<h1>Loggers（记录器）</h1>
+
+<p>logger只可以定义为<log4net>元素的子元素</p>
+
+<p>一个记录器的例子</p>
+
+<pre><code>&lt;logger name="LoggerName"&gt;
+    &lt;level value="DEBUG" /&gt;
+    &lt;appender-ref ref="ConsoleAppender" /&gt;
+&lt;/logger&gt;
+</code></pre>
+
+<p><logger>节支持下列属性</p>
+
+<ul>
+<li>name：必须属性，制定记录器的名称</li>
+<li>additivity：可选属性，值为true或者false，默认为true。指定为false时将禁止记录器继承父记录器的记录方式。</li>
+</ul>
+
+
+<p><logger>节支持下列子元素</p>
+
+<ul>
+<li>appender-ref：0或者多个，允许记录器通过记录方式的名称引用记录方式</li>
+<li>level：0个或者1个，定义记录器的记录等级，记录器只记录大于或等于这一等级的事件</li>
+<li>param：0或者多个，记录器特定参数</li>
+</ul>
+
+
+<h1>Renderers（映射？）<em>不太懂</em></h1>
+
+<p>Renderer只可以定义为<log4net>元素的子元素</p>
+
+<p>一个renderer例子</p>
+
+<pre><code>&lt;renderer renderingClass="MyClass.MyRenderer" renderedClass="MyClass.MyFunkyObject" /&gt;
+</code></pre>
+
+<p><renderer>节支持下列属性</p>
+
+<ul>
+<li><p>renderingClass：必须属性，值为该renderer的类型名称，如果类型不在log4net组件集中，必须给出完整的组件集名称。它是为被render的类型负责的类型</p></li>
+<li><p>renderedClass：必须属性，值为该renderer的目标类型名称，如果类型不在log4net组件集中。它是被render的的类型。</p></li>
+</ul>
+
+
+<p><renderer>节支持子元素</p>
+
+<h1>Parameters（参数）</h1>
+
+<p>parameter只可以定义为<log4net>元素的子元素</p>
+
+<p>一个parameter例子</p>
+
+<pre><code>&lt;param name="ConversionPattern" value="%date [%thread] %-5level %logger [%ndc] - %message%newline" /&gt;
+</code></pre>
+
+<p><param>节支持下列属性</p>
+
+<ul>
+<li>name：必须属性，值为传递到父对象中的parameter的名称</li>
+<li>value：可选属性，该属性的值是一个被转换成参数（parameter）的值的字符串。</li>
+<li><p>type：可选属性，该属性的值是一个用来创建和设置参数（parameter）的值的类型名称。如果类型不在log4net组件集中，必须给出完整的组件集名称。</p></li>
+<li><p>value和type必须制定其中一个</p></li>
+</ul>
+
+
+<p><param>节支持下列子元素</p>
+
+<ul>
+<li>param：0或者多个，参数特定参数</li>
+</ul>
+
+
+<p>一个使用嵌套参数元素的例子</p>
+
+<pre><code>&lt;param name="evaluator" type="log4net.spi.LevelEvaluator"&gt;
+    &lt;param name="Threshold" value="WARN"/&gt;
+&lt;param&gt;
+</code></pre>
+
+<p><strong> 扩展参数 </strong></p>
+
+<p>配置参数直接映射对象的可写属性，可用的属性依赖于被配置对象的实际类型。log4net SDK文档包含了log4net组件集中所有部件的API参考。</p>
+
+<p><strong> 紧凑参数语法 </strong></p>
+
+<p>所有的参数可以使用参数名作为他们的元素名</p>
+
+<p>例如</p>
+
+<pre><code>&lt;param name="evaluator" type="log4net.spi.LevelEvaluator"&gt;
+    &lt;param name="Threshold" value="WARN"/&gt;
+&lt;param&gt;
+</code></pre>
+
+<p>可以写成</p>
+
+<pre><code>&lt;evaluator type="log4net.spi.LevelEvaluator"&gt;
+    &lt;threshold value="WARN"/&gt;
+&lt;evaluator&gt;
+</code></pre>
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://yuliu.org">刘昱</a>
+</span>
+<span class="time">
+	/
+	
+	<time datetime="2007-04-27">2007-04-27</time> 发表
+	
+</span>
+<br />
+
+<span class="categories">
+	分类： 
+	
+	<a href="http://yuliu.org/essay/categories.html#计算机" title="计算机">计算机</a>&nbsp;/
+	
+</span>
+
+
+<span class="tags">
+	标签： 
+	
+	<a href="http://yuliu.org/essay/tags.html#log4net" title="log4net">log4net</a>&nbsp;
+	
+	<a href="http://yuliu.org/essay/tags.html#.net" title=".net">.net</a>&nbsp;
+	
+</span>
+
+</section>
+
+<section class="comment">
+<a href="#" id="show_disqus_comment" onclick="return false;">更多信息，请点击查看评论</a>
+<div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+$(function(){
+		$('section.comment #show_disqus_comment').on('click',function(){
+			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
+			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+			var disqus_url = 'http://yuliu.org/2007/04/log_for_log4net_3_configuration_grammar/';
+			// var disqus_developer = 1; 
+			var that = this;
+			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			var src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			PSJS.loadScript(src, function(){$(that).remove()});
+			});
+		});
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		$(document).keydown(function(e) {
+			var url = false;
+			if (e.which == 37 || e.which == 74) {  // Left arrow and J
+				
+				url = 'http://yuliu.org/2007/04/log_for_log4net_2_configuration_attribute_file/';
+				
+			}
+			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+				
+				url = 'http://yuliu.org/2007/04/log_for_log4net_4_logger/';
+				
+			}
+			if (url) {
+				window.location = url;
+			}
+		});
+	})
+</script>
+
+
+				</article>
+				<div id="toc"></div>
+			</div>
+		</div>
+	</body>
+</html>

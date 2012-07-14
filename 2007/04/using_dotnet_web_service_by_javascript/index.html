@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="刘昱" />
+		
+		<title>刘昱 | 使用Javascript 调用.NET WEB服务 </title>
+		
+		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
+		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+		<script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+		<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+		<!--[if IE]>
+		<script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+		<![endif]-->		
+		<script type="text/javascript" src="/media/script/default.js"></script>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33277878-1']);
+			_gaq.push(['_setDomainName', 'yuliu.org']);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_trackPageLoadTime']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+
+		<div id="container">
+			<header>
+			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
+			<h1>刘 昱</h1>
+			<h2>核能动力系统设计工程师</h2>
+			</header>
+			<nav>
+			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
+			<span><a title="简历" class="" href="http://yuliu.org/vitae/">简历</a></span>
+			<span><a title="文章" class="" href="http://yuliu.org/publication/">文章</a></span>
+			<span><a title="关于" class="" href="http://yuliu.org/about/">关于</a></span>
+			<span><a title="留言" class="" href="http://yuliu.org/guestbook/">留言</a></span>
+			<span><a title="链接" class="" href="http://yuliu.org/links/">链接</a></span>
+			<span><a title="杂货铺" class="" href="http://yuliu.org/essay">杂货铺</a></span>
+			</nav>
+			<div id="main" role="main">
+				<article class="content">
+				<section class="title">
+<h1>使用Javascript 调用.NET WEB服务</h1>
+</section>
+<section class="post">
+<p>过去使用Javascript调用服务器端代码时，后台代码一直都是放在普通的ASPX页面的Page_Load方法内，一直觉得这种方式不是很好，每实现一个功能都要一个新的页面来实现，也许还有其他问题。如果能够使用WEB服务的话，就可以解决上述问题，如可以在一个Web服务页面内放置多个函数和代码，解决web服务调用验证等。</p>
+
+<p>在网上搜索Javascript调用web服务的方法，找到一篇<a href="http://www.ibm.com/developerworks/cn/webservices/ws-wsajax/">使用 Ajax 调用 SOAP Web 服务</a>，但总是感觉好像太复杂了，要使用到它的Web Services JavaScript Library。另外一种我知道的方法就是使用ASP.NET Ajax，使用这个库调用web服务很简单并且实现的功能也很强。但是如果不使用这么重量的库能不能直接使用Javascript调用WEB服务呢？</p>
+
+<p>一个偶然的机会，我发现使用ASP.NET编写的Web服务格式是这样的。加入名为Demo的asmx页面中有一个Web方法为foo()。那么调用它的时候，在地址栏显示的地址是Demo.asmx/foo。那么在Javascript能不能直接post（get）到服务器的这个页面呢？答案是可以，从而这样很简单的就实现了通过Javascript 调用WEB服务，也不需要其他库的支持。</p>
+
+<p>下面用一个例子简单实现Javascript 调用WEB服务，假设WEB应用程序的Services/Demo.asmx中存在foo方法返回"Hello World"。</p>
+
+<pre><code>[WebMethod]
+public string foo()
+{
+    return "Hello World";
+}
+</code></pre>
+
+<p>直接通过<code>Services/Demo.asmx/foo</code>访问，得到下面结果，是一个XML文件</p>
+
+<pre><code>&lt;?xml version="1.0" encoding="utf-8" ?&gt; 
+&lt;string xmlns="http://sacranto.blogspot.com/"&gt;Hello World&lt;/string&gt; 
+</code></pre>
+
+<p>在Javascript中的调用如下：（Javascript中使用了<a href="http://jquery.org/">jQuery</a>库，这个库与是否调用WEB服务没有关系，下同）</p>
+
+<pre><code>$(document).ready(function() {
+    $("#btnFoo").click(function(){
+        $.post("Services/Demo.asmx/foo",
+            function(res){
+                alert($(res).text());
+            }
+        );
+    });
+});
+</code></pre>
+
+<p>这段代码用于显示返回xml中的字符，IE7和FF2的结果不同，个人认为FF2的好一些。不知道IE6和其他浏览器的结果怎么样？
+<img src="http://fs.yuliu.org/images/essay/2007/using_dotnet_web_service_by_javascript_001.jpg" alt="IE截图" />
+<img src="http://fs.yuliu.org/images/essay/2007/using_dotnet_web_service_by_javascript_002.jpg" alt="FF截图" /></p>
+
+<p>那么能不能直接传递参数给WEB服务呢？在ASP.NET WEB服务中，答案仍然是可以（使用其他语言编写的WEB服务应该也可以吧）。借助于WebService.Context 获取当前请求的ASP.NET HttpContext，它封装了由 HTTP 服务器用来处理Web 请求的所有HTTP 特定的上下文。</p>
+
+<p>修改请求的Javascript代码，多了传递参数的一行。</p>
+
+<pre><code>$(document).ready(function() {
+    $("#btnFoo").click(function(){
+        $.post("Services/Demo.asmx/foo",
+            {name:'sacranto',age:'24'},
+            function(res){
+                alert($(res).text());
+            }
+        );
+    });
+});
+</code></pre>
+
+<p>这样在web服务页面中，可以通过如下代码访问传递的参数</p>
+
+<pre><code>string name = Context.Request.Form["name"];
+int age = Convert.ToInt32(Context.Request.Form["age"]);
+</code></pre>
+
+<p>解决了传递参数的问题，救下来就是返回值了。web服务直接返回的都是xml，我们也可以利用Respone返回其他格式，如text/plain。例如线面的fooText方法就返回了纯文本，记得把方法改成无返回值。</p>
+
+<pre><code>[WebMethod]
+public void fooText()
+{
+    string name = Context.Request.Form["name"];
+    int age = Convert.ToInt32(Context.Request.Form["age"]);
+    Context.Response.Expires = -1;       
+    Context.Response.ContentType = "text/plain";
+    Context.Response.Write("Hello " + name + ", your age is " + oString());
+    Context.Response.End();
+}
+</code></pre>
+
+<p>在Javascript中的调用与上面基本相同，只是回调类型是text，直接使用即可。这也意味着text可以直接是json字符串了。</p>
+
+<pre><code>$("#btnFooText").click(function(){
+    $.post("Services/Demo.asmx/fooText",
+        {name:'sacranto',age:'24'},
+        function(res){
+            alert(res);
+        }
+    );
+});
+</code></pre>
+
+<p>看看结果
+<img src="http://fs.yuliu.org/images/essay/2007/using_dotnet_web_service_by_javascript_003.jpg" alt="json结果" />
+使用Javascript 调用.NET WEB服务，是不是很简单呢?</p>
+
+<p>PS：据说这种方法使用 http://localhost/... 访问就正常, 但用域名会出错。　我试了用IP是没有问题的，用域名？我还没有域名呢 :-)</p>
+
+<p>解决方法：
+在Web.config里面加上就可以了.</p>
+
+<pre><code>&lt;webServices&gt; 
+    &lt;protocols&gt; 
+        &lt;add name="HttpPost" /&gt; 
+        &lt;add name="HttpGet" /&gt; 
+    &lt;/protocols&gt; 
+&lt;/webServices&gt; 
+</code></pre>
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://yuliu.org">刘昱</a>
+</span>
+<span class="time">
+	/
+	
+	<time datetime="2007-04-22">2007-04-22</time> 发表
+	
+</span>
+<br />
+
+<span class="categories">
+	分类： 
+	
+	<a href="http://yuliu.org/essay/categories.html#计算机" title="计算机">计算机</a>&nbsp;/
+	
+</span>
+
+
+<span class="tags">
+	标签： 
+	
+	<a href="http://yuliu.org/essay/tags.html#Javascript" title="Javascript">Javascript</a>&nbsp;
+	
+	<a href="http://yuliu.org/essay/tags.html#.net" title=".net">.net</a>&nbsp;
+	
+</span>
+
+</section>
+
+<section class="comment">
+<a href="#" id="show_disqus_comment" onclick="return false;">更多信息，请点击查看评论</a>
+<div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+$(function(){
+		$('section.comment #show_disqus_comment').on('click',function(){
+			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
+			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+			var disqus_url = 'http://yuliu.org/2007/04/using_dotnet_web_service_by_javascript/';
+			// var disqus_developer = 1; 
+			var that = this;
+			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			var src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			PSJS.loadScript(src, function(){$(that).remove()});
+			});
+		});
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		$(document).keydown(function(e) {
+			var url = false;
+			if (e.which == 37 || e.which == 74) {  // Left arrow and J
+				
+				url = 'http://yuliu.org/2007/04/namespace_class_property_function_in_javascript/';
+				
+			}
+			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+				
+				url = 'http://yuliu.org/2007/04/log_for_log4net_1_configuration_summary/';
+				
+			}
+			if (url) {
+				window.location = url;
+			}
+		});
+	})
+</script>
+
+
+				</article>
+				<div id="toc"></div>
+			</div>
+		</div>
+	</body>
+</html>

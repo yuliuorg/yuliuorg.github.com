@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="刘昱" />
+		
+		<title>刘昱 | Log For log4net (四) - Logger（记录器） </title>
+		
+		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
+		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+		<script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+		<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+		<!--[if IE]>
+		<script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+		<![endif]-->		
+		<script type="text/javascript" src="/media/script/default.js"></script>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33277878-1']);
+			_gaq.push(['_setDomainName', 'yuliu.org']);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_trackPageLoadTime']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+
+		<div id="container">
+			<header>
+			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
+			<h1>刘 昱</h1>
+			<h2>核能动力系统设计工程师</h2>
+			</header>
+			<nav>
+			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
+			<span><a title="简历" class="" href="http://yuliu.org/vitae/">简历</a></span>
+			<span><a title="文章" class="" href="http://yuliu.org/publication/">文章</a></span>
+			<span><a title="关于" class="" href="http://yuliu.org/about/">关于</a></span>
+			<span><a title="留言" class="" href="http://yuliu.org/guestbook/">留言</a></span>
+			<span><a title="链接" class="" href="http://yuliu.org/links/">链接</a></span>
+			<span><a title="杂货铺" class="" href="http://yuliu.org/essay">杂货铺</a></span>
+			</nav>
+			<div id="main" role="main">
+				<article class="content">
+				<section class="title">
+<h1>Log For log4net (四) - Logger（记录器）</h1>
+</section>
+<section class="post">
+<p>前三节主要翻译和学习了配置文件的写法。从这一节将计划翻译Logger（第四节）、记录方式（第五节）、布局（第六节）和过滤器（第七节）。</p>
+
+<p>原文地址：<a href="http://logging.apache.org/log4net/release/manual/introduction.html#hierarchy">Loggers and Appenders</a></p>
+
+<p>log4net主要包含三个主要部分，记录器(loggers)、记录方式（appenders）和布局（layouts）。通过这三个部件，开发者可以根据消息类型和等级记录消息，并在运行时刻控制消息的格式和输入方式。这些部件使用过滤器(filters)控制记录方式的行为，使用renderers把对象转换为字符串。</p>
+
+<h1>Logger hierarchy（记录器层次结构）</h1>
+
+<p>使用记录API相比System.Console.WriteLine最大的优势在于可以禁用某些特定消息并让其他消息畅通无阻。它把所有可能记录的消息按开发者规定的元素进行归类。</p>
+
+<p>记录器是已命名的实体。名字大小写敏感并且遵守夏磊层次命名规则：</p>
+
+<p>如果记录器A的名字以其他记录器B的名字加上.为前缀，那么它就是其他记录器的后代（A是B的后代）。记录器被称为他直接子记录器的父亲。</p>
+
+<p>这个层次结构和.NET中的命名空间、类层次结构类似。在下面我们可以看见这样将非常方便。</p>
+
+<p>例如：名为"Foo.Bar"的记录器是"Foo.Bar.Baz"记录器的父亲。类似的，”System”是"System.Text"的父亲和"System.Text.StringBuilder"的祖先。这种命名方式对于程序来说是相当熟悉的。</p>
+
+<p>根记录器（root logger）位于层次结构的顶端。它在以下三方面表现出特别之处。</p>
+
+<ol>
+<li>它总是存在的。</li>
+<li>他不能通过名字获取。</li>
+<li>它总被指定在某个等级。</li>
+</ol>
+
+
+<p>记录器可以通过log4net.LogManger类的静态方法获得。GetLogger方法以欲获取的记录器名称为参数，如下所示：</p>
+
+<pre><code>namespace log4net
+{
+    public class LogManager
+    {
+        public static ILog GetLogger(string name);
+        public static ILog GetLogger(Type type);
+    }
+}
+</code></pre>
+
+<p>GetLogger方法也可以接受欲获取记录器的完整类型为名称的Type类型参数。</p>
+
+<p>记录器返回ILog接口，它代表了返回给开发者的记录器。ILog接口定义如下</p>
+
+<pre><code>namespace log4net
+{
+    public interface ILog
+    {
+        /* Test if a level is enabled for logging */
+        bool IsDebugEnabled { get; }
+        bool IsInfoEnabled { get; }
+        bool IsWarnEnabled { get; }
+        bool IsErrorEnabled { get; }
+        bool IsFatalEnabled { get; }
+        /* Log a message object */
+        void Debug(object message);
+        void Info(object message);
+        void Warn(object message);
+        void Error(object message);
+        void Fatal(object message);
+        /* Log a message object and exception */
+        void Debug(object message, Exception t);
+        void Info(object message, Exception t);
+        void Warn(object message, Exception t);
+        void Error(object message, Exception t);
+        void Fatal(object message, Exception t);
+        /* Log a message string using the System.String.Format syntax */
+        void DebugFormat(string format, params object[] args);
+        void InfoFormat(string format, params object[] args);
+        void WarnFormat(string format, params object[] args);
+        void ErrorFormat(string format, params object[] args);
+        void FatalFormat(string format, params object[] args);
+        /* Log a message string using the System.String.Format syntax */
+        void DebugFormat(IFormatProvider provider, string format, params object[] args);
+        void InfoFormat(IFormatProvider provider, string format, params object[] args);
+        void WarnFormat(IFormatProvider provider, string format, params object[] args);
+        void ErrorFormat(IFormatProvider provider, string format, params object[] args);
+        void FatalFormat(IFormatProvider provider, string format, params object[] args);
+    }
+}
+</code></pre>
+
+<p>记录器可以被指定等级。等级是log4net.Core.Level类的实例。下列等级依照递增优先级被定义。</p>
+
+<p>ALL DEBUG INFO WARN ERROR FATAL OFF</p>
+
+<p>如果一个记录器没有被指定等级，那么它继承它最近的父类的等级。</p>
+
+<p>未指定等级的记录器X 继承 从X向上到根记录器的路线中第一个被直接指定等级的记录器的等级。</p>
+
+<p>为了保证所有的记录器能够继承一个等级，所以根记录器总被指定一个等级，默认为DEBUG。下面4个表格是根据上面规则分配和继承等级的例子。</p>
+
+<table border="1">
+    <tbody>
+        <tr>
+            <td>
+                记录器名
+            </td>
+            <td>
+                被指定等级
+            </td>
+            <td>
+                继承等级
+            </td>
+        </tr>
+        <tr>
+            <td>
+                root
+            </td>
+            <td>
+                Proot
+            </td>
+            <td>
+                Proot
+            </td>
+        </tr>
+        <tr>
+            <td>
+                X
+            </td>
+            <td>
+                none
+            </td>
+            <td>
+                Proot
+            </td>
+        </tr>
+        <tr>
+            <td>
+                X.Y
+            </td>
+            <td>
+                none
+            </td>
+            <td>
+                Proot
+            </td>
+        </tr>
+        <tr>
+            <td>
+                X.Y.Z
+            </td>
+            <td>
+                none
+            </td>
+            <td>
+                proot
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<p>上面例子中只有根记录器被指定了等级Proot，因此其他记录器X, X.Y, X.Y.Z均继承了等级Proot。</p>
+
+<table border="1">
+    <tbody>
+        <tr>
+            <td>
+                记录器名
+            </td>
+            <td>
+                被指定等级
+            </td>
+            <td>
+                继承等级
+            </td>
+        </tr>
+        <tr>
+            <td>
+                root
+            </td>
+            <td>
+                Proot
+            </td>
+            <td>
+                Proot
+            </td>
+        </tr>
+        <tr>
+            <td>
+                X
+            </td>
+            <td>
+                Px
+            </td>
+            <td>
+                Px
+            </td>
+        </tr>
+        <tr>
+            <td>
+                X.Y
+            </td>
+            <td>
+                Pxy
+            </td>
+            <td>
+                Pxy
+            </td>
+        </tr>
+        <tr>
+            <td>
+                X.Y.Z
+            </td>
+            <td>
+                Pxyz
+            </td>
+            <td>
+                pxyz
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<p>上面的例子中，每个记录器都被指定了等级，因此没有继承的等级。</p>
+
+<table border="1">
+    <tbody>
+        <tr>
+            <td>
+                记录器名
+            </td>
+            <td>
+                被指定等级
+            </td>
+            <td>
+                继承等级
+            </td>
+        </tr>
+        <tr>
+            <td>
+                root
+            </td>
+            <td>
+                Proot
+            </td>
+            <td>
+                Proot
+            </td>
+        </tr>
+        <tr>
+            <td>
+                X
+            </td>
+            <td>
+                Px
+            </td>
+            <td>
+                Px
+            </td>
+        </tr>
+        <tr>
+            <td>
+                X.Y
+            </td>
+            <td>
+                none
+            </td>
+            <td>
+                Px
+            </td>
+        </tr>
+        <tr>
+            <td>
+                X.Y.Z
+            </td>
+            <td>
+                Pxyz
+            </td>
+            <td>
+                pxyz
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<p>上面的例子中，根记录器、X记录器、X.Y.Z记录器分别被分配了等级Proot、Px、Pxyz。X.Y记录器继承父亲X的等级Px。</p>
+
+<table border="1">
+    <tbody>
+        <tr>
+            <td>
+                记录器名
+            </td>
+            <td>
+                被指定等级
+            </td>
+            <td>
+                继承等级
+            </td>
+        </tr>
+        <tr>
+            <td>
+                root
+            </td>
+            <td>
+                Proot
+            </td>
+            <td>
+                Proot
+            </td>
+        </tr>
+        <tr>
+            <td>
+                X
+            </td>
+            <td>
+                Px
+            </td>
+            <td>
+                Px
+            </td>
+        </tr>
+        <tr>
+            <td>
+                X.Y
+            </td>
+            <td>
+                none
+            </td>
+            <td>
+                Px
+            </td>
+        </tr>
+        <tr>
+            <td>
+                X.Y.Z
+            </td>
+            <td>
+                none
+            </td>
+            <td>
+                Px
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<p>上面的例子中，根记录器、X记录器分别被分配了等级Proot、Px。X.Y和X.Y.Z记录器继承它们最近的被指定等级的记录器的等级。</p>
+
+<p>记录请求通过调用记录器实例（使用log4net.ILog）的printing方法调用，printing方法包括Debug, Info, Warn, Error和Fatal。</p>
+
+<p>通常，printing方法决定了记录请求的等级。例如，存在记录器实例log，那么log.Info(“…”)将发出等级为INFO的记录请求。</p>
+
+<p>如果记录请求的等级高于或者等于记录器的等级将被允许。相反，请求将被禁止。没有指定等级的记录器将从层次结构中继承一个。这个规则归纳如下。</p>
+
+<p>L>=K时，等级（指定或者继承）为K的记录器允许等级为L的记录请求。</p>
+
+<p>这条规则是log4net的核心。它基于有序的规则，标准等级规则下，DEBUG&lt;INFO&lt;WARN&lt;ERROR&lt;FATAL。调用使用相同名称为参数的log4net.LogManager.GetLogger方法将返回完全相同的记录器的应用。例如</p>
+
+<pre><code>ILog x = LogManager.GetLogger("wombat");
+ILog y = LogManager.GetLogger("wombat");
+</code></pre>
+
+<p>X和y指向完全相同的记录器。</p>
+
+<p>因此，配置一个记录器并在代码中的某个地方不通过传递引用而获取相同的记录器成为可能。与生物学的父亲总是先于后代的基本原理不同，log4net记录器能够以任何顺序被配置。但是，即使父记录器晚于子记录器被配置，他也总是先被找到并链接到它的后代。</p>
+
+<p>log4net环境通常在程序初始化时被配置。通常偏爱使用配置文件的方式，这个将在后面讨论（翻译调换了顺序，配置见前几节）</p>
+
+<p>log4net使通过组件命名记录器很简单。它可以通过在每个类中实例化记录器实现，记录器的名字为每个类的完整名称。这是一个定义记录器有用和直接的方法。随着输出的记录带有产生它的记录器的名字，这种命名规则简化了确认记录消息的来源方法。但是，这只是一种普遍的命名记录器的方法。Log4net不限制其他的命名方式。开发人员可以任意给记录器取名。</p>
+
+<p>然而，按所在类命名记录器是目前已知的最好的方法。他给开发者明确指出了记录消息的来源。更重要的是这样可是使用程序的设计来设计记录器的层次结构。希望其中一些思想已进入到程序的设计中。</p>
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://yuliu.org">刘昱</a>
+</span>
+<span class="time">
+	/
+	
+	<time datetime="2007-04-27">2007-04-27</time> 发表
+	
+</span>
+<br />
+
+<span class="categories">
+	分类： 
+	
+	<a href="http://yuliu.org/essay/categories.html#计算机" title="计算机">计算机</a>&nbsp;/
+	
+</span>
+
+
+<span class="tags">
+	标签： 
+	
+	<a href="http://yuliu.org/essay/tags.html#log4net" title="log4net">log4net</a>&nbsp;
+	
+	<a href="http://yuliu.org/essay/tags.html#.net" title=".net">.net</a>&nbsp;
+	
+</span>
+
+</section>
+
+<section class="comment">
+<a href="#" id="show_disqus_comment" onclick="return false;">更多信息，请点击查看评论</a>
+<div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+$(function(){
+		$('section.comment #show_disqus_comment').on('click',function(){
+			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
+			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+			var disqus_url = 'http://yuliu.org/2007/04/log_for_log4net_4_logger/';
+			// var disqus_developer = 1; 
+			var that = this;
+			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			var src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			PSJS.loadScript(src, function(){$(that).remove()});
+			});
+		});
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		$(document).keydown(function(e) {
+			var url = false;
+			if (e.which == 37 || e.which == 74) {  // Left arrow and J
+				
+				url = 'http://yuliu.org/2007/04/log_for_log4net_3_configuration_grammar/';
+				
+			}
+			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+				
+				url = 'http://yuliu.org/2007/04/log_for_log4net_5_appenders/';
+				
+			}
+			if (url) {
+				window.location = url;
+			}
+		});
+	})
+</script>
+
+
+				</article>
+				<div id="toc"></div>
+			</div>
+		</div>
+	</body>
+</html>

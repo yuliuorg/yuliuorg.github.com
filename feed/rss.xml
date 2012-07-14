@@ -1,0 +1,3414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>刘昱 | 核能动力系统工程师</title>
+    <link>http://yuliu.org</link>
+    <atom:link href="http://yuliu.org/feed/rss.xml" rel="self" type="application/rss+xml" />
+	<description>刘昱 | 核能动力系统工程师</description>
+    <language>zh-cn</language>
+    <pubDate>Sat, 14 Jul 2012 23:08:13 +0800</pubDate>
+    <lastBuildDate>Sat, 14 Jul 2012 23:08:13 +0800</lastBuildDate>
+
+    
+    <item>
+      <title>喜欢的软件</title>
+      <link>http://yuliu.org/2012/07/my_favorite_softwares/</link>
+      <pubDate>Mon, 09 Jul 2012 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2012/07/my_favorite_softwares</guid>
+	  <description>&lt;p&gt;日常工作生活常用软件的列表，排名不分先后，但这个东西随时间的变化太快，不保证及时更新，欢迎拍砖。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;APPz&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;windows（没有理由不排在第一位）&lt;/li&gt;
+&lt;li&gt;office （你已经发现我是一个微软控了吧）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;系统工具&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.vim.org/&quot;&gt;vim&lt;/a&gt; （嗯，我是第二类人，主要是*nux的cli下基本都自带vi，而且emacs的门槛太高，最近好像sublime text 2的好评如潮，有空再试试）&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.mozilla.org/en-US/firefox/new/&quot;&gt;firefox&lt;/a&gt; / &lt;a href=&quot;https://www.google.com/intl/en/chrome/browser/&quot;&gt;chrome&lt;/a&gt; （不争了，两个一起用）&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.ghisler.com/&quot;&gt;total command&lt;/a&gt; （据说有不少人是因为tc才留在windows的）&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.voidtools.com/&quot;&gt;everything&lt;/a&gt; （快速搜索，这个功能难道不是系统应该直接集成的吗？）&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.picpick.org/&quot;&gt;picpick&lt;/a&gt; （还能有比这个更好的截图软件吗）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;工程小软件&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://convertall.bellz.org/index.html&quot;&gt;ConvertAll&lt;/a&gt; （单位换算必备，使用python实现，单位组合是其最值得推荐之处）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;程序设计&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.linqpad.net/&quot;&gt;LINQPad&lt;/a&gt; （使用LINQ与数据库进行交互和管理的工具，现在不经常用了）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>jekyll笔记</title>
+      <link>http://yuliu.org/2012/07/jekyll_notes/</link>
+      <pubDate>Wed, 04 Jul 2012 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2012/07/jekyll_notes</guid>
+	  <description>&lt;h1&gt;jekyll的sitemap生成器&lt;/h1&gt;
+
+&lt;p&gt;为了方便搜索引擎的收录，sitemap还是必要的。
+好在jekyll支持插件，&lt;a href=&quot;http://www.kinnetica.com/&quot;&gt;kinnetica&lt;/a&gt;编了一个sitemap生成器，下载&lt;code&gt;sitemap_generator.rb&lt;/code&gt;丢到&lt;code&gt;_plugins&lt;/code&gt;目录，再打开该文件简单修改&lt;code&gt;MY_URL&lt;/code&gt;为网站地址即可。&lt;/p&gt;
+
+&lt;h1&gt;jekyll在windows下的编码&lt;/h1&gt;
+
+&lt;p&gt;为了便于调试等各种原因，本地的windows系统上安装了jekyll。
+由于windows系统没有采用UTF-8编码，因此需要给jekyll（版本 0.11.2）在打开文件时指定编码，以保证它能够正常工作。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;修改&lt;code&gt;[RubyDIR]\lib\ruby\gems\1.9.1\gems\jekyll-0.11.2\lib\jekyll\convertible.rb&lt;/code&gt; 文件27行&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; self.content = File.read(File.join(base, name))
+ self.content = File.read(File.join(base, name),:encoding=&amp;gt;&quot;utf-8&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;修改&lt;code&gt;[RubyDIR]\lib\ruby\gems\1.9.1\gems\jekyll-0.11.2\lib\jekyll\tags\include.rb&lt;/code&gt; 文件23行&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; source = File.read(@file)
+ source = File.read(@file, :encoding =&amp;gt; &quot;utf-8&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>我的Vim（Vim-of-pisheng)</title>
+      <link>http://yuliu.org/2012/06/vim_of_pisheng/</link>
+      <pubDate>Fri, 29 Jun 2012 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2012/06/vim_of_pisheng</guid>
+	  <description>&lt;h1&gt;1 Vim初始安装&lt;/h1&gt;
+
+&lt;p&gt;主要是因为采用了Vundle的插件管理方式，因此一般使用下述步骤。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;下载安装&lt;/li&gt;
+&lt;li&gt;修改&lt;code&gt;.vimrc或\_vimrc&lt;/code&gt;文件&lt;/li&gt;
+&lt;li&gt;安装Vundle插件管理软件&lt;/li&gt;
+&lt;li&gt;通过Vundle安装和管理插件&lt;br/&gt;
+Vundle插件名需要区分大小写&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1&gt;2 vim的基本配置&lt;/h1&gt;
+
+&lt;p&gt;这一部分具体可以参考&lt;code&gt;.vimrc或\_vimrc&lt;/code&gt;文件，设置中均进行了注释。&lt;/p&gt;
+
+&lt;h1&gt;3 Vim插件&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.vim.org/scripts/script.php?script_id=3458&quot;&gt;Vundle&lt;/a&gt;&lt;br/&gt;
+vim插件管理包，需要git和curl的支持&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.vim.org/scripts/script.php?script_id=1708&quot;&gt;FencView&lt;/a&gt;&lt;br/&gt;
+自动检测文件编码，也可以手动选择文件编码。&lt;br/&gt;
+需要&lt;a href=&quot;http://mbbill.googlepages.com/iconv.dll&quot;&gt;iconv.dll&lt;/a&gt;的支持，在系统PATH路径下。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.vim.org/scripts/script.php?script_id=2657&quot;&gt;VOom&lt;/a&gt;&lt;br/&gt;
+部分标记语言的标题自动摘要&lt;br/&gt;
+需要python 2.X的支持，不能使用64位的。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/tpope/vim-markdown&quot;&gt;Markdown&lt;/a&gt;&lt;br/&gt;
+提供markdown着色功能
+为了便于识别两个空格表示的换行，修改&lt;code&gt;~\.vim\bundle\vim-markdown\syntax\markdown.vim&lt;/code&gt;，在96行增加&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; hi def link markdownLineBreak             Todo
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;markdownLineBreak其实在原始vim中已经定义，没有着色而已&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.vim.org/scripts/script.php?script_id=1658&quot;&gt;The NERD tree&lt;/a&gt;&lt;br/&gt;
+一个文件浏览器插件，方便在vim中直接切换文件&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.vim.org/scripts/script.php?script_id=1218&quot;&gt;NERDCommenter&lt;/a&gt;&lt;br/&gt;
+代码快速注释/取消注释插件&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.vim.org/scripts/script.php?script_id=1984&quot;&gt;FuzzyFinder&lt;/a&gt;&lt;br/&gt;
+buffer、文件、命令...的快速切换和浏览器，神器。&lt;br/&gt;
+需要L9插件的支持&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.vim.org/scripts/script.php?script_id=3252&quot;&gt;L9&lt;/a&gt;&lt;br/&gt;
+vim脚本库。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.vim.org/scripts/script.php?script_id=3227&quot;&gt;Simple-Javascript-Indenter&lt;/a&gt;&lt;br/&gt;
+javascript缩进插件，支持OOP和jQuery&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.vim.org/scripts/script.php?script_id=2416&quot;&gt;jQuery&lt;/a&gt;&lt;br/&gt;
+jQuery语法支持，包括关键字，和CSS选择器&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.vim.org/scripts/script.php?script_id=2620&quot;&gt;neocomplcache&lt;/a&gt;&lt;br/&gt;
+自动完成插件，不需要ctags，但是可能占用较大的内存。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.vim.org/scripts/script.php?script_id=4043&quot;&gt;neocomplcache-snippets_complete&lt;/a&gt;&lt;br/&gt;
+提供在neocomplcache使用和snipMate.vim相似的功能。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;h1&gt;4 Vim的配色&lt;/h1&gt;
+
+&lt;p&gt;个人在gui下喜欢使用torte的colorscheme，但是原始版本的配色没有考虑Pmenu的样式，使得Pmenu的色调很不搭（背景是粉红)。&lt;/p&gt;
+
+&lt;p&gt;打开&lt;code&gt;colors\torte.vim&lt;/code&gt;，在文件最后加入下面几行。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hi Pmenu guifg=#c0c0c0 guibg=#404080
+hi PmenuSel guifg=#c0c0c0 guibg=#2050d0
+hi PmenuSbar guifg=blue guibg=darkgray
+hi PmenuThumb guifg=#c0c0c0
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git和github</title>
+      <link>http://yuliu.org/2012/06/git_and_github/</link>
+      <pubDate>Fri, 29 Jun 2012 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2012/06/git_and_github</guid>
+	  <description>&lt;h1&gt;1 git&lt;/h1&gt;
+
+&lt;p&gt;一个版本管理和控制工具&lt;/p&gt;
+
+&lt;h1&gt;2 github&lt;/h1&gt;
+
+&lt;h2&gt;2.1 配置和使用github&lt;/h2&gt;
+
+&lt;h2&gt;2.2 github pages&lt;/h2&gt;
+
+&lt;p&gt;github提供了github pages的服务，不仅可以方便的为项目建立介绍页面，也可以用来建立个人页面。gitHub pages分两种，一种是你的gitHub用户名建立的[username].github.com这样的User &amp;amp; Organization Pages，另一种是依附项目的Project Pages。&lt;/p&gt;
+
+&lt;h3&gt;User &amp;amp; Organization Pages&lt;/h3&gt;
+
+&lt;p&gt;首先建立一个repo，名称只能是[username].github.com。每个用户名下面只能建立一个。该repo下master分支中的内容将被用作用户&amp;amp;组织页（站）内容。&lt;/p&gt;
+
+&lt;p&gt;创建好repo之后，commit一个index.html文件，然后push到master分支即可。如果是第一次使用页面，大概需要10分钟左右才能生效，之后的更改则会立即生效。&lt;/p&gt;
+
+&lt;p&gt;生效之后就可以访问[username].github.com，将会看到上传的index.html页面。&lt;/p&gt;
+
+&lt;h3&gt;Project Pages&lt;/h3&gt;
+
+&lt;p&gt;Project Pages放在项目相同的repo中，但是使用 gh-pages分支。其默认地址为[username].github.com/[projectname]。&lt;/p&gt;
+
+&lt;h3&gt;yuliu.org的个人页设置&lt;/h3&gt;
+
+&lt;p&gt;个人偏好通过本地的jekyll生成site后直接放入repo中，而不是使用github的jekyll引擎。
+因此，本地目录的组织结构如下&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;root \[ -&amp;gt; &quot;source&quot; \]
+|- markdown files
+|- html \[ -&amp;gt; &quot;master&quot; \]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;root目录指向git repo的source分支，html目录用来指向相同repo的master分支。&lt;/p&gt;
+
+&lt;h4&gt;实现上述结构的方法&lt;/h4&gt;
+
+&lt;p&gt;首先在root目录初始化一个repo。（$ 为cmd提示符）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# 初始化本地repo
+$ git init
+# 提交文件
+$ git add .
+$ git commit -m &quot;init&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;通过上述命令建立了一个包含所有源文件的master分支，接着重命名该分支并push到服务器（remote）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# 将本地master重命名为source
+$ git branch -m master source
+# 将github repo添加为origin
+$ git remote add origin git@github.com:[username]/[username].github.com.git
+# 将source分支push到服务器repo
+$ git push -u origin source
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这样repo中只有一个分支：source，见者创建master分支。如果root目录存在html目录，先删除该html目录&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# 获取一个github repo的副本到html
+$ git clone git@github.com:[username]/[username].github.com.git html
+$ cd html
+# 建立一个独立的分支
+$ git symbolic-ref HEAD refs/heads/master
+$ rm .git/index
+$ git clean -fdx
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;现在master分支已经建立好，每当有新内容生成，只需要commit &amp;amp; push到服务器即可&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git add .
+$ git commit -m &quot;updated&quot;
+$ git push -u origin master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2&gt;2.3 自定义域名&lt;/h2&gt;
+
+&lt;p&gt;github page中，要想让username.github.com能通过你自己的域名来访问，需要在项目的根目录下新建一个名为CNAME的文件，文件内容为域名或者子域名名称，例如：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;yuliu.org
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;接着需要设置域名的DNS（这不是立即生效的），对于顶级域名需要建立一条 A记录 到 204.232.175.78。注意不是使用CNAME形式，否则可能对其他服务（例如email）造成影响。&lt;/p&gt;
+
+&lt;p&gt;对于子域名最好使用CNAME记录，指向[username].github.com&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>CentOS 修改IP地址, DNS, 网关</title>
+      <link>http://yuliu.org/2011/05/modify_ip_dns_gateway_in_cento/</link>
+      <pubDate>Tue, 24 May 2011 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2011/05/modify_ip_dns_gateway_in_cento</guid>
+	  <description>&lt;h1&gt;一、CentOS修改IP地址&lt;/h1&gt;
+
+
+&lt;p&gt;修改对应网卡的IP地址的配置文件&lt;/p&gt;
+
+&lt;p&gt;vi /etc/sysconfig/network-scripts/ifcfg-eth0&lt;/p&gt;
+
+&lt;blockquote&gt;#描述网卡对应的设备别名，例如ifcfg-eth0的文件中它为eth0
+DEVICE=eth0
+#设置网卡获得ip地址的方式，选项为static，dhcp或bootp，对应静态指定的 ip地址,通过dhcp协议获得的ip地址，通过bootp协议获得的ip地址
+BOOTPROTO=static
+#对应的子网广播地址
+BROADCAST=192.168.1.255
+#对应的网卡物理地址
+HWADDR=00:07:E9:05:E8:B4
+#如果设置网卡获得 ip地址的方式为静态指定，此字段就指定了网卡对应的ip地址
+IPADDR=192.168.1.99
+IPV6INIT=no
+IPV6_AUTOCONF=no
+#网卡对应的网络掩码
+NETMASK=255.255.255.0
+ONBOOT=yes #系统启动时是否设置此网络接口，设置为yes时，系统启动时激活此设备&lt;/blockquote&gt;
+
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;h1&gt;二、CentOS 修改网关&lt;/h1&gt;
+
+
+&lt;p&gt;修改对应网卡的网关的配置文件&lt;/p&gt;
+
+&lt;p&gt;vi /etc/sysconfig/network&lt;/p&gt;
+
+&lt;blockquote&gt;#表示系统是否使用网络，一般设置为yes。如果设为no，则不能使用网络，而且很多系统服务程序将无法启动
+NETWORKING=yes
+#设置本机的主机名，这里设置的主机名要和/etc/hosts中设置的主机名对应
+HOSTNAME=localhost.localdomain
+#设置本机连接的网关的IP地址。例如，网关为192.168.1.1
+GATEWAY=192.168.1.1&lt;/blockquote&gt;
+
+
+&lt;h1&gt;三、CentOS 修改DNS&lt;/h1&gt;
+
+
+&lt;p&gt;修改对应网卡的DNS的配置文件&lt;/p&gt;
+
+&lt;p&gt;vi /etc/resolv.conf&lt;/p&gt;
+
+&lt;blockquote&gt;#OPENDNS
+nameserver 208.67.222.222
+nameserver 208.67.220.220
+nameserver 192.168.1.1
+search localdomain&lt;/blockquote&gt;
+
+
+&lt;h1&gt;四、重启网络&lt;/h1&gt;
+
+
+&lt;blockquote&gt;/etc/init.d/network restart&lt;/blockquote&gt;
+
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>华硕笔记本F8SA笔记本拆机+换主板电池未果</title>
+      <link>http://yuliu.org/2011/05/disassembly_of_asus_notebook_f8sa/</link>
+      <pubDate>Sat, 21 May 2011 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2011/05/disassembly_of_asus_notebook_f8sa</guid>
+	  <description>&lt;p&gt;用了快4年的华硕笔记本F8SA出了点小毛病，bios设置总是自动复位、通电自动启动等，初步判断是主板电池没电了。打电话问asus售后，告知换主板电池要200大洋。10块钱就能解决的事情要皮生花200块钱，心有不甘啊，遂决定DIY操作之。网上先搜了几个F8的拆机教程，都挺不错的，尤其是第一篇，共同的缺点是图片太小了。&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt; &lt;a href=&quot;http://benyouhui.it168.com/thread-1086993-1-1.html&quot;&gt;F8S系列拆机详细图&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt; &lt;a href=&quot;http://benyouhui.it168.com/viewthread.php?tid=846638&amp;amp;amp;extra=&amp;amp;amp;page=1&quot;&gt;无聊手痒 ASUS F8Sv 拆机耍&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;流程第一篇写得很清楚了，照着一步一步来就是、随便上几张图吧。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5628.jpg&quot; title=&quot;日立160G 5400rpm SATA硬盘&quot; alt=&quot;日立160G 5400rpm SATA硬盘&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5427.jpg&quot; title=&quot;hynix 1G DDR2 667 内存&quot; alt=&quot;hynix 1G DDR2 667 内存&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5621.jpg&quot; title=&quot;笔记本内存 安装&quot; alt=&quot;笔记本内存 安装&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5608.jpg&quot; title=&quot;INTEL T7500 CPU&quot; alt=&quot;INTEL T7500 CPU&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5618.jpg&quot; title=&quot;CPU安装&quot; alt=&quot;CPU安装&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5426.jpg&quot; title=&quot;CPU+散热器+内存+HD2600显卡&quot; alt=&quot;CPU+散热器+内存+HD2600显卡&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5604.jpg&quot; title=&quot;INTEL 4965AGN 无线网卡&quot; alt=&quot;INTEL 4965AGN 无线网卡&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5600.jpg&quot; title=&quot;显示器接头&quot; alt=&quot;显示器接头&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5589.jpg&quot; title=&quot;电源开关&quot; alt=&quot;电源开关&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;拆电源开关上面这一块老费劲了，没想到更成为了终点，后面的前盖折腾了半天愣是没有弄下来。看来这200块钱果然是个技术加体力活啊~，还是周末提去售后吧。&lt;/p&gt;
+
+&lt;p&gt;于是又原封不动宠幸将拆下来的东西装了回去，发现掉出来一根弹簧，找不到出处~~&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>使用plowshare在VPS（centos）上下载网盘文件</title>
+      <link>http://yuliu.org/2011/05/using_plowfhare_to_download_from_netdrive_on_vps/</link>
+      <pubDate>Thu, 19 May 2011 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2011/05/using_plowfhare_to_download_from_netdrive_on_vps</guid>
+	  <description>&lt;p&gt;&lt;a href=&quot;http://code.google.com/p/plowshare&quot;&gt;plowshare&lt;/a&gt;是一个*nix系统中，基于命令行的网盘下载工具，该工具不能自动读取验证码。支持Megaupload, Rapidshare, 2Shared, 4Shared, ZShare, Badongo, Divshare.com, Depositfiles, Netload.in, Sendspace, Usershare, x7.to等网站（&lt;a href=&quot;http://code.google.com/p/plowshare/wiki/Readme&quot;&gt;全部列表&lt;/a&gt;），惊喜发现还支持国内的115。网上有很多在vps上安装plowshare的教程，但是基本上都是从plowshare wiki翻译的，在我的centos 5.5 vps上安装中遇到了一些小问题，所以有了这篇blog，注意该文只针对centos&lt;/p&gt;
+
+&lt;h1&gt;配置rpmforge&lt;/h1&gt;
+
+&lt;p&gt;plowshare需要一众的依赖包，其中一些包在centos官方的镜像中是没有的，因此首先需要配置&lt;a href=&quot;http://wiki.centos.org/AdditionalResources/Repositories/RPMForge&quot;&gt;rpmforge&lt;/a&gt;。&lt;em&gt;现在网上的大部分教程都缺少这一步&lt;/em&gt;，上来就yum instal ***，结果发现yum根本找不到这些包&lt;/p&gt;
+
+&lt;p&gt;rpmforge是Dag和其他包的集合，为centos提供了超过5000个的包，包括wine、vlc、mplayer等（&lt;a href=&quot;http://packages.sw.be/&quot;&gt;所有包列表&lt;/a&gt;）。安装plowshare所需的libcaca、caca-utils、tesseract-ocr等。&lt;/p&gt;
+
+&lt;p&gt;1.首先进入&lt;a href=&quot;http://packages.sw.be/rpmforge-release/&quot;&gt;http://packages.sw.be/rpmforge-release&lt;/a&gt;选择适合硬件架构的&lt;tt&gt;rpmforge-release&lt;/tt&gt;包，可以使用uname -i来检查自己的硬件架构，我选的是&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget http://packages.sw.be/rpmforge-release/rpmforge-release-0.5.2-2.el5.rf.i386.rpm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.安装DAG's GPG密钥&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3.验证下载的&lt;tt&gt;rpmforge-release&lt;/tt&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rpm -K rpmforge-release-0.5.2-2.el5.rf.*.rpm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;4.安装rpmforge&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rpm -i rpmforge-release-0.5.2-2.el5.rf.*.rpm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;程序将配置yum库配置文件并导入相应的GPG密钥，这样rpmforge就配置好了。&lt;/p&gt;
+
+&lt;h1&gt;安装plowshare&lt;/h1&gt;
+
+&lt;p&gt;1.安装一众依赖包&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;yum install curl recode imagemagick tesseract-ocr-eng spidermonkey-bin perlmagick libcaca caca-utils
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;记得要装caca-utils，因为CLI下将网盘验证码图片装换为ASCII的img2txt不是包含在libcaca里面，而是在caca-utils里面。网上一众教程都没有提到这个~&lt;/p&gt;
+
+&lt;p&gt;2.下载plowshare，注意将代码中的version换成相应的版本号&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget http://plowshare.googlecode.com/files/plowshare-SVN-r[VERSION]-snapshot.tar.gz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果喜欢稳定版&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget http://plowshare.googlecode.com/files/plowshare-[VERSION].tgz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3.解压缩和安装（root下），&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tar xvzf plowshare-SVN-rVERSION-snapshot.tar.gz
+cd plowshare-SVN-rVERSION-snapshot.tar.gz
+setup.sh install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;稳定版把文件名换换就行&lt;/p&gt;
+
+&lt;p&gt;4.使用&lt;/p&gt;
+
+&lt;p&gt;下载&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;plowdown FILEURL
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上传&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;plowup FILEURL megaupload
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;更多使用参数参见plowshare的文档吧。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Tunnelier自动登录指定的SSH</title>
+      <link>http://yuliu.org/2011/05/auto_start_and_login_of_tunnelier/</link>
+      <pubDate>Mon, 16 May 2011 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2011/05/auto_start_and_login_of_tunnelier</guid>
+	  <description>&lt;p&gt;Tunnelier是一个很好的软件，但选项中没有随系统启动的功能，但是这种软件怎么能不自动启动呢。&lt;/p&gt;
+
+&lt;p&gt;其实简单DIY，利用tunnelier的命令行就能很简单的解决这个问题。&lt;/p&gt;
+
+&lt;p&gt;在 Tunnelier 配置并成功登录过一次 SSH，并将该配置保存为abc.tlp。&lt;/p&gt;
+
+&lt;p&gt;之后  Tunnelier 的快捷方式的最后面加上&lt;code&gt;-loginOnStartup&lt;/code&gt;和&lt;code&gt;-profile=&quot;路径\abc.tlp&lt;/code&gt;参数，然后拷贝一个丢在启动里面即可~~&lt;/p&gt;
+
+&lt;p&gt;无需向官网说的那样，添加成一个服务即可实现Tunnelier自动登录指定的SSH&lt;/p&gt;
+
+&lt;p&gt;Tunnelier 更多的命令行参数可以用&lt;code&gt;Tunnelier.exe /?&lt;/code&gt;查看&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>tar解压 tar.bz2文件出错</title>
+      <link>http://yuliu.org/2011/05/tar_error_with_bzip2/</link>
+      <pubDate>Wed, 11 May 2011 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2011/05/tar_error_with_bzip2</guid>
+	  <description>&lt;p&gt;用tar 解压 tar.bz2文件出错&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt;debian:/usr/src# tar jxf linux-2.6.26.tar.bz2&lt;br/&gt;
+tar: bzip2: Cannot exec: No such file or directory&lt;br/&gt;
+tar: Error is not recoverable: exiting now&lt;br/&gt;
+tar: Child returned status 2&lt;br/&gt;
+tar: Error exit delayed from previous errors&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;安装bzip2软件包&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apt-get install bzip2
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>gVIM和中文字符编码</title>
+      <link>http://yuliu.org/2011/03/gvim_and_encoding/</link>
+      <pubDate>Tue, 22 Mar 2011 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2011/03/gvim_and_encoding</guid>
+	  <description>&lt;p&gt;gVIM 对我来说是作为一个文本类文件查看器和快速编辑器（windows系统下），使用中总是碰到编码的问题。其实在网络上已经有很好的解决方案了，安装&lt;em&gt;fencive&lt;/em&gt;插件即可。&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt;  http://www.vim.org/scripts/script.php?script_id=1708&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;将下载的 fencview.vim 放入 vim安装目录/plugin  中&lt;/p&gt;
+
+&lt;p&gt;注：该插件是用了&quot;+iconv&quot; 特性，因此确保(解压缩后的)iconv.dll【&lt;a href=&quot;https://sites.google.com/site/mbbill/iconv.dll&quot;&gt;原始下载（墙外）&lt;/a&gt;，&lt;a href=&quot;http://ffs.nuclear2power.com/wp-content/uploads/2011/03/iconv.zip&quot;&gt;本地&lt;/a&gt;】在win的$PATH路径中（放到vim安装目录下即可）&lt;/p&gt;
+
+&lt;p&gt;我使用 gVIM 通常是作为文件查看器，因此这种乱码问题遇到较多。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>没有光驱装XP系统</title>
+      <link>http://yuliu.org/2011/03/xp_install_without_cd_dirver/</link>
+      <pubDate>Fri, 11 Mar 2011 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2011/03/xp_install_without_cd_dirver</guid>
+	  <description>&lt;p&gt;自己的步骤，X61通过
+1. 将XP镜像拷到欲重装系统电脑的非C盘上&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;下载 通用PE工具箱 http://hi.baidu.com/uepon&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;将通用PE工具箱 刻录 到U盘。&lt;br/&gt;
+Tips：最好不要用安装程序自带的刻录方式，这个方式格式化U盘的时候好像不是快速格式化。因此选择刻录到镜像，在用ultraISO写入&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;U盘启动进入PE，打开虚拟光驱（桌面上），装入预先复制进来的镜像&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;拔掉U盘&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;安装，复制文件&lt;br/&gt;
+Tips 1：如果是2003的PE，直接运行安装，安装选项不可选，但可进入I386文件夹，选winnt32.exe程序安装&lt;br/&gt;
+Tips 2：记得在高级处，选择复制所有安装文件&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;安装程序不会自动重启，手动重启&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;重启后进入安装界面安装&lt;br/&gt;
+Tips 1：如果蓝屏，一般是因为bios的硬盘设置有问题，改为compatible即可&lt;br/&gt;
+Tips 2：安装中如果出现不能复制文件，是因为原系统为vista，未格盘后就直接装XP就会出现该问题，可格调安装盘后重来~&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;之后我的电脑就OK了~大家有什么问题还欢迎补充&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>使用C#进行基于PI的开发（三）- 应用PISDK和PIAPI从PI数据库读取数据</title>
+      <link>http://yuliu.org/2011/03/pi_development_using_csharp_3/</link>
+      <pubDate>Fri, 11 Mar 2011 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2011/03/pi_development_using_csharp_3</guid>
+	  <description>&lt;p&gt;上次说了这次的题目是对PI数据库中的数据进行读取和写入，可是为了等了这么久呢?出了自己比较懒以外,遇到了一点麻烦也是一个原因呢?后面又说&lt;/p&gt;
+
+&lt;h1&gt;1 应用SDK从PI数据库读取数据&lt;/h1&gt;
+
+&lt;p&gt;我们知道PI数据库的数据分别存储在Snapshot或者Archive中,一个是快照一个是档案文件,这样做是为了方便PI数据库对数据进行压缩.那么自然对数据库的读取也分为对Snapshot和Archive读取.snapshot和archive的值都是用PIValue的形式表示的， PIValue对象包括了数值和时间。应用SDK从数据库中获取snapshop或者archive的值很简单。
+首先连接数据库，声明一个PIServer：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;_piServer = piSDK.Servers.DefaultServer；
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后利用PIServer的Points属性访回一个点的集合，再通过tagName来获取点：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;PIPoint pt = _piServer.PIPoints[tbxTagName.Text];
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果是使用Snapshot，直接声明一个PIValue通过PIPoint的Snapshot属性来返回值：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pv = pt.Data.Snapshot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后我们就可以通过PIValue的Value属性和TimeStamp属性来获取snapshot的值和该值对应的时间了。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tbxValue.Text = pv.Value.ToString();
+tbxTime.Text = pv.TimeStamp.LocalDate.ToString();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果要读取Archive的值，那么要稍微麻烦一点，应为你要给定读取的时间和模式，PIPoint对象的ArcValue方法是用来获取Archive的值，帮助的说明如下：&lt;/p&gt;
+
+&lt;p&gt;object.ArcValue TimeStamp, Mode, AsynchStatus&lt;/p&gt;
+
+&lt;p&gt;这个应该是VB的语法吧，我们可以看出他有三个参数。第一个是时间，C#中我们可以直接传一个DateTime格式的数据进去，当然你也可以使用 PITime对象表示的时间，或者一个字符串。Mode代表取出的模式，因为PI数据库并不是每个时间都存有数据的，所以在你可以选择模式是读取你输入时间的当前点，后面一个点，前面一个点或者插值表示的时间。最后一个参数不解，文档里面没有说明，VB的例子则直接没有传这个参数，应该是一个可选参数，我的处理方法如下。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;RetrievalTypeConstants rtType;
+rtType = (RetrievalTypeConstants)piSDK.PIConstants[&quot;RetrievalTypeConstants&quot;][cbxValue.Text].Value;
+pv = pt.Data.ArcValue(dt, rtType, new PISDKCommon.PIAsynchStatus());
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;RetrievalTypeConstants 就是表示存取模式的，我这里使用过一个下拉列表框获得可用的模式的，最后一个参数是通过传一个新的实例下去，这里不知道这样和不合理，反正可以读出数据我就没有管了，又没有达人解释一下怎么处理这种VB的可选参数的情况呢？我学着VSTS的那种Type.Missing又不可以。&lt;/p&gt;
+
+&lt;p&gt;然后读出来的PIValue同样包含一个数值和一个时间，现在我想大家应该理解为什么PIValue里面要包含一个时间了吧。&lt;/p&gt;
+
+&lt;p&gt;我觉得应用SDK很简单，感觉和开发Excel很象，都是调用Com，也挺符合.net的开发习惯的，文档也好，每个对象还有一个详细的VB例子，虽然不是.net的，但是也可以大致了解得差不多。&lt;/p&gt;
+
+&lt;h1&gt;2 应用SDK向PI数据库写入数据&lt;/h1&gt;
+
+&lt;p&gt;在PIData对象中有一个UpdateValue方法和UpdateValues方法，顾名思义，一个是更新单个数据，一个是更新一批数据。但是文档里面红红的标着Not Implemented两个单词，心顿时凉了，考虑到文档的版本比我实际使用的SDK版本第一点，去Object Browser里面搜索了一下，果然找到了这个方法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public virtual void UpdateValue(object newValue, object TimeStamp, PISDK.DataMergeConstants MergeType, PISDKCommon.PIAsynchStatus asynchStatus)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这些参数的意思没有文档也挺好理解的，这里就不说了，可是当我尝试用这个方法去更新数据库的时候，一样抛出了Not Implemented的错误，当时心里非常的郁闷，这个也就是开头我说到的麻烦。我的SDK的版本是1.2.0，问了一个比较有经验的人，他说他没有遇到过不能写入的问题，等有时间去问问他，看看是不是版本的问题，如果有人能写入的，请给我说一下你们的版本；&lt;/p&gt;
+
+&lt;h1&gt;3 应用API从PI数据库读取数据&lt;/h1&gt;
+
+&lt;p&gt;SDK不行，还好我们还有PI-API，这个感觉和Win32 API挺象的吧，都是一写用C写的函数，PISDK其实就是把PIAPI包装了一下，可惜我对P/Invoke不怎么熟悉，如果大家对这个也不熟悉的话，我觉得这两篇文章还是不错，作为预备知识。&lt;/p&gt;
+
+&lt;p&gt;在C#中通过P/Invoke调用Win32 DLL
+如何在C#中使用Win32和其他库&lt;/p&gt;
+
+&lt;p&gt;这两篇文章看了我还是颇有收获的，至少知道引用类型在传递的时候不需要ref关键字，因为在.net中本身就是按地址传递的，呵呵，可能是基础知识太差。&lt;/p&gt;
+
+&lt;p&gt;不过看API的文档和SDK的文档相比真是天壤之别，API文档只有一个简单的概述，例子也没有，参数的说明更是往往只有一句话，不过还好吧，我慢慢的试还是试出来了一些。&lt;/p&gt;
+
+&lt;p&gt;对于数据读取和写入还是分为snapshot和archive，就是两个不同的函数，参数也差不多类似。&lt;/p&gt;
+
+&lt;p&gt;PI-API函数是按组分开的，有Point函数，Archive函数和snapshot函数等。&lt;/p&gt;
+
+&lt;p&gt;从archive数据库读取数据有两个，一个是扩展函数，功能多一些，所以我们在这里使用的是扩展函数来读取数据，其文档的声明如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;int32 PIPROC piar_getarcvaluex(
+int32 ptnum,
+int32 mode,
+float64 PIPTR *drval,
+int32 PIPTR *ival,
+void PIPTR *bval,
+uint32 PIPTR *bsize,
+int32 PIPTR *istat,
+int16 PIPTR *flags,
+PITIMESTAMP PIPTR *time);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;int32,uint32这些都是PIAPI里面自己定义的类型，从名字可以很简单的看出他们对应32位整数，32位无符号整数，在C#中这些，.net已经给我们定制好了，还比较方便。&lt;/p&gt;
+
+&lt;p&gt;PITIMESTAMP 是一个结构体，定义很简单，我们直接在C#中定制一个类似的结构就好了。&lt;/p&gt;
+
+&lt;p&gt;ptnum是PI tag号对应的一个Int32位的整数来代表数据库中的一个点，可以通过API函数pipt_findpoint把Tag名字转换成ptnum。&lt;/p&gt;
+
+&lt;p&gt;mode和SDK里面的模式很类似，就是看是读取前面一个点，还是后面一个点的值。&lt;/p&gt;
+
+&lt;p&gt;如果读取出来的是浮点值，drval就是这个值；如果读取出来的是整型值，ival就是这个值；bval是一个字符串，bsize是这个字符串的缓冲区大小，istat是代表数值量的值，flags文档上面的说明是&lt;/p&gt;
+
+&lt;p&gt;Data quality flag mask不解。time是值对应的时间，相当于SDK里面的pv.TimeStamp.LocalDate。&lt;/p&gt;
+
+&lt;p&gt;对于字符串，这里我看了半天，因为string类型是一个不定长的字符串，所以是不能用在这个地方的，这个地方的bval应该是使用 StringBuilder,StringBuilder.Capacity就表示了bsize，这一点还是冲上面那两篇文章看到的，真是基础差，呵呵。&lt;/p&gt;
+
+&lt;p&gt;对于void指针，我是把它处理成为object类型，因为我们基本上不用到字符串的值，所以这里我也没有测试，达人指导一下，呵呵。综上，我的C#格式的函数是&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[DllImport(&quot;piapi32.dll&quot;, CharSet = CharSet.Ansi, SetLastError = true, CallingConvention = CallingConvention.StdCall)]
+public static extern Int32 piar_getarcvaluex(
+Int32 ptnum,
+Int32 mode,
+ref Double drval,
+ref Int32 ival,
+[MarshalAs(UnmanagedType.AsAny)] object bval,
+ref UInt32 bsize,
+ref Int32 istat,
+ref Int16 flags,
+ref PITime.PITIMESTAMP time);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;第五个参数必须Mashall成AsAny类型，要不直接使用object类型是不行的。那么我怎么知道他是Any类型呢？因为文档上面VB的函数调用声明是bVal As Any,这也是一点灵感吧。至于返回的Int32值是代表调用是否成功的，就和win32  API类似吧。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>使用C#进行基于PI的开发（二）--常用对象的学习</title>
+      <link>http://yuliu.org/2011/03/pi_development_using_csharp_2/</link>
+      <pubDate>Fri, 11 Mar 2011 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2011/03/pi_development_using_csharp_2</guid>
+	  <description>&lt;p&gt;&lt;a href=&quot;/2011/03/pi_development_using_csharp/&quot;&gt;上一次&lt;/a&gt;的例子是通过PI-SDK获取Tag的属性并且修改它，我想更重要的是怎么取出Tag的值和进行更新吧。在进行尝试之前看了看文档，了解了一下PISDK的对象结构，下面这一张就是PISDK的结构图&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ffs.nuclear2power.com/wp-content/uploads/2011/03/PISDKModel.jpg&quot; title=&quot;PISDKModel&quot; alt=&quot;PISDKModel&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;简要了解在例子中要用到的对象，并把它们的描述进行了简单的翻译，我想翻译的目的应该是帮助自己更好的进行学习，给出英文对照。不妥之处，忘大牛们指正：&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt;The Server object represents a single server (data archive). Server objects are retrieved from the Servers collection and provide access to the basic entities represented on each server, such as points, point classes, digital states, users, and groups. Some basic properties are available from the Server object as initially retrieved from the Servers collection.&lt;/p&gt;
+
+&lt;p&gt;Typically a program will require a network connection to the server. Connections are established either by calling the Open method of the Server object explicitly or by accessing a property or calling a method of the Server object that requires server access, forcing an implicit connection.
+Many of the services available through the Server object are accessed through its properties which return other objects. For example, the PIPoints property provides a PIPoints collection object for accessing the various points on a server.&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;服务器（Server）对象表示了一个单独的PI数据库服务器，服务器对象可从服务器集合中获得并且提供了访问每个数据库中的实体的方法，这些实体包括点，点集合，数字量（开关量），用户和组。服务器对象提供了一些基本的属性从而在服务器集合中队服务器进行初始化。&lt;/p&gt;
+
+&lt;p&gt;一般地，程序连接到服务器需要网络连接属性，这个连接可以通过服务器对象的Open方法显式的进行，也可以通过服务器对象的某个属性或方法连接需要验证的服务器来进行一个隐式的连接。&lt;/p&gt;
+
+&lt;p&gt;上面这一段有点不太懂，直到目前我都没有用过显式的Open方法，都是通过&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;_piServer = piSDK.Servers.DefaultServer;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这种所谓的隐式方法来连接，这个是不是就是所谓的隐式连接？因为在PISDK安装的时候指定了一个PI数据源，所以DefaultServer就是这个？所以我访问的时候都不需要输入用户或者密码&lt;/p&gt;
+
+&lt;p&gt;我们可以通过服务器对象的属性来返回其他的对象从而获得很多服务。例如，通过服务器对象的PIPoints属性返回的PIPoints集合的对象来访问数据库里面的不同的点。&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt;A PIConstant collection maps display strings to PI-SDK enumerations.  This provides a way for an application to display strings indicating choices of behavior for a user to select particular actions.  The application then retrieves the associated constant and passes it to a particular method being called. A PIConstant collection contains members, stored and accessed as NamedValue objects that represent the display string (the name) and the constant (the value).  A PIConstant collection is retrieved using PISDK.PIConstants.Item.&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;PIConstant集合映射字符串到PI-SDK枚举。（使字符串和枚举的项一一对应）。它为程序提供了字符串来代表用户选择的一个特殊的操作，然后程序可以把这个字符串对应的值获得并且把它传送到使用的方法里面去。PIConstant集合包含了Members（不知道什么意思），存贮和访问NamedValue对象。NamedValue对象是一个字符串（名字）-常量（数值）对。PIConstant集合中的对象通过PISDK.PIConstants.Item来获取&lt;/p&gt;
+
+&lt;p&gt;我觉得这个PIConstant集合就是相当于在C#中用DialogueResult枚举中用OK代表某个具体的意思。具体代表的东西我们不用关心，知道是什么就可以了。NamedValue就是一个字符串-常量对，有点像一个字典吧，最后一句话说PISDK.PIConstants.Item来获取PIContant,但是我在C#中PISDK.PIConstants没有Item属性，反而使直接通过PISDK.PIConstants[Name]取到。同时NamedValue是在PISDKCommon命名空间下面&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt;The PIPoint object represents a point on a PI Server.  The PIPoint is the primary access point to data on the Server as well as configuration of a point's properties.&lt;/p&gt;
+
+&lt;p&gt;PIPoint对象表征PI数据库里面的点，PIPoint是访问数据库里面点的值和属性的主要方法。&lt;/p&gt;
+
+&lt;p&gt;The PIData object is associated with a single PIPoint and is used to send and retrieve values to and from the server.  It is accessed through the Data property of the PIPoint.&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;PIData对象是和单独的PIPoint联系的，它从服务器获取数据或者写回数据到服务器。它通过PIPoint的Data属性得到。&lt;/p&gt;
+
+&lt;p&gt;本来翻译完这些准备再把例子试验一下的，但是没有时间了，下次吧！先作一下铺垫。&lt;/p&gt;
+
+&lt;p&gt;这些英文文字都是来源于PI的Manual，版权归OSISOFT所有，与我无关，至于我翻译的中文文字只是简单的鹦鹉学舌，版权仍然是OSISOFT的。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>使用C#进行基于PI的开发（一）</title>
+      <link>http://yuliu.org/2011/03/pi_development_using_csharp/</link>
+      <pubDate>Fri, 11 Mar 2011 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2011/03/pi_development_using_csharp</guid>
+	  <description>&lt;p&gt;根据PI的SDK的文档,从这里开始下手吧,这个文档的版本有点早,大概是2002年的,里面没有.net的例子,还好里面大多数是VB的例子,我想应该可以直接搬过来吧.于是开始动手.&lt;/p&gt;
+
+&lt;p&gt;首先欲基于PI-SDK开发PI数据库,必须先安装PI-SDK,然后再VS中新建了一个aspnet网站,添加引用:PI-SDK 1.2 Type Library 和 PISDKCommon 1.2 Type Library&lt;/p&gt;
+
+&lt;p&gt;接着看文档上面VB的例子代码是&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Option Explicit
+Dim srv as Server
+Dim pt As PIPoint
+for Each srv In Servers
+Combo1.AddItem srv.Name
+Next srv
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;为了把这两个地方改成能运行得C#代码还花费了不少力气,因为原来没有做的东西都是很简单的.net东西,基本上没有用到过和COM组件进行交互.首先说什么不能实例花,接着又说什么Servers不行,花了很多时间在PISDK下面找了一个能实例化的类PISDKClass,后来又发现原来Servers 是这个对象的一个属性.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;private PISDK.IPISDK piSDK= new PISDK.PISDKClass();
+private PISDK.Server _piServer;
+private PISDK.PIPoint _piPoint;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在Page_Load事件枚举所有的数据源,添加到DropSownlist.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;foreach(PISDK.Server item in piSDK.Servers)
+{
+DropDownList1.Items.Add(srv.Name);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;设置_piServer为dropdown里面选中的数据库&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;_piServer = piSDK.Servers[DropDownList1.Text];
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后下面接着防置一个文本框来读取用户输入的Tag点,Tag有点相当于普通数据库的字段.但是又不一样,关于这个暂时不细说了&lt;/p&gt;
+
+&lt;p&gt;和一个ListBox来得到这个Tag的所有属性.代码如下:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;_piPoint = _piServer.PIPoints[tbxTagName.Text];
+ListBox1.Items.Clear();
+foreach (PISDK.PointAttribute ptatr in _piPoint.PointAttributes)
+{
+ListBox1.Items.Add(ptatr.Name);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;读取Tag属性的值可以用下述属性.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tbxAttValue.Text = _piPoint.PointAttributes[ListBox1.Text].Value.ToString();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果要更新这个属性的值呢?仍然很简单&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;PISDK.PointAttribute ptatr;
+_piPoint = _piServer.PIPoints[tbxTagName.Text];
+ptatr = _piPoint.PointAttributes[lblAttrName.Text];
+_piPoint.PointAttributes.ReadOnly = false;
+ptatr.Value = tbxAttValue.Text;
+_piPoint.PointAttributes.ReadOnly = true;
+blNotion.Text = &quot;更新成功！&quot;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其实最后一句想用MessageBox可惜在asp.net下面一直找不到好的使用MessageBox的方法,原来在CodeProject上面找了一个,但是因为后来发现在Atlas的updatepanel中不能使用,也就作罢了&lt;/p&gt;
+
+&lt;p&gt;OK,上面就是我根据SDK-Manual里面的一个Basic例子,用C#改写了一下,实现了和例子一样的功能,虽然今天花费了不少时间,最后做出来的东西看起来却很简单,不过自己感受到了收获,第一次发文到首页,有点紧张,呵呵!&lt;/p&gt;
+
+&lt;p&gt;下面是一个简单的截图和SDK截图的对比：&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>在windows 2003中使用PI Activeview</title>
+      <link>http://yuliu.org/2011/03/pi_actieview_and_windows2003/</link>
+      <pubDate>Fri, 11 Mar 2011 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2011/03/pi_actieview_and_windows2003</guid>
+	  <description>&lt;p&gt;今天在搞把PDI文件用PI Activeview嵌到网页里面去，搞了半天都不行，使用同样的方法在其他的电脑上面都是OK的，而且我的电脑浏览其他主机上面嵌有PDI的网页也不能显示。分析原因，其他的电脑都是XP或者2000的系统，只有我的是2003，难道是操作系统的原因，搜索了一下，果然在OSISOFT的支持网站上面有这样一片文章&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://techsupport.osisoft.com/support_bulletin.aspx?bulletin=126fdb56-a4ba-41dd-95b8-390e85edf4e7&quot; title=&quot;Using PI ActiveView and Windows Server 2003[已失效]&quot;&gt;Using PI ActiveView and Windows Server 2003[已失效]&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Copy一下解决方法粘在这里&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;In IIS Manager, right-click on the level of hierarchy for which to change the setting and select &quot;Properties.&quot;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Go to the tab &quot;HTTP Headers&quot; and click the &quot;MIME Types...&quot; button.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Select New and enter the following information&lt;br/&gt;
+for Extension: .PDI&lt;br/&gt;
+for MIME type: application/octet-stream&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;You should now see the .PDI under the Registered MIME Types list.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Click OK.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Stop and restart your IIS service for the changes to take effect.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>零起点VPS建站-2</title>
+      <link>http://yuliu.org/2011/03/vps_hosting_from_zero_2/</link>
+      <pubDate>Thu, 10 Mar 2011 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2011/03/vps_hosting_from_zero_2</guid>
+	  <description>&lt;p&gt;在 &lt;a href=&quot;/2011/03/vps_hosting_from_zero_1&quot;&gt;上一篇&lt;/a&gt; 里面已经讲了 域名和VPS、VPS安装和虚拟主机配置、FTP的安装等。这里主要介绍一下如何安装discuz和wordpress。&lt;/p&gt;
+
+&lt;h1&gt;1. discuz&lt;/h1&gt;
+
+&lt;p&gt;虚拟主机一节已经说了如何使不同的域名指向不同的目录，假设这里已经OK了，那么接下来就是把discuz下载到对应的目录中。这里有两种方法可以实现，一是下载到电脑上以后在FTP传上去，另外一种是putty进入SSH后直接下载。第一种估计不用讲什么了吧。&lt;/p&gt;
+
+&lt;p&gt;使用第二种方法，就要用到一些简单的linux命令了，当然这些命令我们在安装lnmp的时候都已经用了，他们就是 wget、unzip和cp等。&lt;/p&gt;
+
+&lt;p&gt;找到discuz的下载地址，比如说X1.5 UTF8版本的官方地址是&lt;code&gt;http://download.comsenz.com/DiscuzX/1.5/Discuz_X1.5_SC_UTF8.zip&lt;/code&gt;，那么我们可以直接在putty中输入如下命令下载。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget -c http://download.comsenz.com/DiscuzX/1.5/Discuz_X1.5_SC_UTF8.zip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;接着使用zip命令解压缩&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;unzip Discuz_X1.5_SC_UTF8.zip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;接着将解压缩后的upload目录中的所有文件和文件夹，拷贝到虚拟主机对应的目录下。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cp -R upload/* /home/wwwroot/XXXX.com
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;之后？之后就可以参考discuz的官方安装教程了，同样的，给链接&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.discuz.net/thread-1887949-1-1.htm&quot;&gt;Discuz!X1.5 全新安装图文教程&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;设置相关目录的文件属性部分，同样也可以采用命令&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;chmod 777 -R 文中给出的目录名
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注：dz的伪静态模板有两个，选择的时候注意discuz.conf和discuz&lt;em&gt;x&lt;/em&gt;.conf&lt;/p&gt;
+
+&lt;h1&gt;2. wordpress&lt;/h1&gt;
+
+&lt;p&gt;有了dz的安装经验，wordpress也是相同的。&lt;/p&gt;
+
+&lt;p&gt;首先下载wp并解压缩，拷贝到对应目录，有官方中文版的哦&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget -c http://cn.wordpress.org/wordpress-3.1-zh_CN.zip
+unzip wordpress-3.1-zh_CN.zip
+cp -R wordpress/* /home/wwwroot/blog.XXXX.com
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;接下来进入 域名/wp-admin/install.php即会启动安装过程。&lt;/p&gt;
+
+&lt;p&gt;注：LNMP WordPress安装主题、插件会要求你输入FTP信息，在putty下执行下述命令，就不需要输入这些信息咯。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;chown -R www 目录      //设置目录下所有文件和目录为www用户所有
+chgrp -R www 目录      //设置目录下所有文件和目录为www用户组所有
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;综上，现在在VPS上建站是非常方便的，如果懂一点linux命令和vi就更好了~~&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>零起点VPS建站-1</title>
+      <link>http://yuliu.org/2011/03/vps_hosting_from_zero_1/</link>
+      <pubDate>Thu, 10 Mar 2011 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2011/03/vps_hosting_from_zero_1</guid>
+	  <description>&lt;p&gt;原来也建过网站，但是大部分都是在自己的电脑上，在VPS上建站还真是0起点~&lt;/p&gt;
+
+&lt;p&gt;开始还以为会遇到很多困难，后来发现现在各种牛人太多，VPS建站基本上已经全自动化了。&lt;/p&gt;
+
+&lt;h1&gt;1. 域名和VPS&lt;/h1&gt;
+
+&lt;p&gt;VPS建站的第一步自然是购买VPS咯，现在销售VPS的人很多，淘宝上面也是一抓一大把，但是为了保证质量保证速度，建议直接购买国外VPS，为了照顾中国用户，现在很多VPS销售商已经支持支付宝了~~&lt;/p&gt;
+
+&lt;p&gt;无责任推荐几个VPS：linode，diahosting，vpsyou。注意第一个只支持信用卡绑定&lt;/p&gt;
+
+&lt;p&gt;域名是可选项，但是我想建站的一般都不会省这个吧，我一般买这个都在godaddy，现在也可以用支付宝了。&lt;/p&gt;
+
+&lt;p&gt;买了vps以后，会得到一个IP地址，这样去godaddy域名控制面板里面将 域名（如XXXX.com 不带www） 指向这个IP地址即可。域名面板里面还可以管理多个二级域名，例如blog@域名，bbs@域名，可以指向不同的VPS，自然也可以都指向刚刚购买的VPS IP。让后再VPS建虚拟主机，将blog@域名指向wordpress，bbs@域名指向discuz。www@域名也可以看做是你购买域名的二级域名，只是这个一般和域名指向同一个链接罢了。&lt;/p&gt;
+
+&lt;h1&gt;2. VPS安装&lt;/h1&gt;
+
+&lt;p&gt;由于linux VPS比较便宜而且用得比较多，这里以linux系统为例，而其中VPS用得最多的发行版是centos 5.5。我也不例外买的这种。&lt;/p&gt;
+
+&lt;p&gt;购买VPS以后，将得到IP地址，SSH密码，SSH用户名。接着你就需要使用一个叫做&lt;a href=&quot;http://www.chiark.greenend.org.uk/~sgtatham/putty/&quot;&gt;putty&lt;/a&gt; 的工具登陆你的VPS主机了。打开putty，输入地址后open，接着在窗口输入用户名和密码即可登陆。&lt;/p&gt;
+
+&lt;p&gt;前面说到VPS建站基本上是半自动化的，就在于一些牛人已经将网站服务器+数据库都已经打包好了，例如我们这里使用的这个&lt;a href=&quot;http://lnmp.org/index.html&quot;&gt;lnmp&lt;/a&gt;，是一个用Linux Shell编写的可以为CentOS/RadHat、Debian/Ubuntu VPS(VDS)或独立主机安装LNMP(Nginx、MySQL、PHP、phpMyAdmin)生产环境的Shell程序。一键安装方法在lnmp官网中有说明，我这里直接copy了&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt;1、下载LNMP一键安装包： 可以选择使用下载版(推荐国外或者美国VPS使用)或者完整版(推荐国内VPS使用)，如果使用下载版执行命令 wget -c http://soft.vpser.net/lnmp/lnmp0.6.tar.gz ，如果使用完整版，执行命令 wget -c http://soft.vpser.net/lnmp/lnmp0.6-full.tar.gz ，执行上述命令后LNMP一键安装包就会被下载到VPS上。&lt;/p&gt;
+
+&lt;p&gt;2、解压LNMP一键安装包： 执行tar zxvf lnmp0.6.tar.gz 或tar zxvf lnmp0.6-full.tar.gz 就会将LNMP一键安装包解压缩。&lt;/p&gt;
+
+&lt;p&gt;3、CentOS下安装步骤 下载版执行命令 cd lnmp0.6/ ，完整版执行命令：cd lnmp0.6-full/&lt;br/&gt;
+然后再执行./centos.sh 也可以执行./centos.sh | tee lnmp.log (推荐这种方式,出错时可以到论坛上传lnmp.log日志)，输入要绑定的域名，回车，再输入要设置的MySQL root的密码，回车，提示&quot;Press any key to start...&quot;，按任意键开始安装。程序会自动安装编译Nginx、PHP、MySQL、phpMyAdmin、Zend这几个软件。&lt;/p&gt;
+
+&lt;p&gt;4、Debian下安装步骤 下载版执行命令 cd lnmp0.6/ ，完整版执行命令：cd lnmp0.6-full/&lt;/p&gt;
+
+&lt;p&gt;然后执行./debian.sh 也可以执行./debian.sh | tee lnmp.log (推荐这种方式,出错时可以到论坛上传lnmp.log日志)，输入要绑定的域名，回车，再次输入VPS/服务器所在位置：asia、america、europe、oceania或 africa，回车，再输入要设置的MySQL root的密码，回车，提示&quot;Press any key to start...&quot;，按任意键开始安装。程序会自动安装编译Nginx、PHP、MySQL、phpMyAdmin、Zend这几个软件。安装大约10分钟左右需要设置MySQL root用户的密码。&lt;/p&gt;
+
+&lt;p&gt;5、Ubuntu下安装步骤 下载版执行命令 cd lnmp0.6/ ，完整版执行命令：cd lnmp0.6-full/&lt;/p&gt;
+
+&lt;p&gt;6、然后执行./ubuntu.sh 也可以执行./ubuntu.sh | tee lnmp.log (推荐这种方式,出错时可以到论坛上传lnmp.log日志)，输入要绑定的域名，回车，再输入要设置的MySQL root的密码，回车，提示&quot;Press any key to start...&quot;，按任意键开始安装。程序会自动安装编译Nginx、PHP、MySQL、phpMyAdmin、Zend这几个软件。安装大约10分钟左右需要设置MySQL root用户的密码。&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;简单吧~~，安装以后的相关目录：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mysql :    /usr/local/mysql
+php :      /usr/local/php
+nginx :    /usr/local/nginx
+网站目录:  /home/wwwroot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1&gt;3. 虚拟主机设置&lt;/h1&gt;
+
+&lt;p&gt;前面提到了咋们的域名、blog@域名，bbs@域名都指到了VPS的IP，那么如何让他们指向不同的地方呢~这时候就需要虚拟主机了即让不同的域名指向不同的目录。&lt;/p&gt;
+
+&lt;p&gt;首先要对一键生成的lnmp进行一点小修改，因为我们一键安装是输入的域名已经配置指向了/home/wwwroot，如果你再通过下面的方式对虚拟主机进行配置将会出现重复，自相矛盾，因此首先需要修改（编辑器 vi, nano什么的都可以）&lt;/p&gt;
+
+&lt;p&gt;/usr/local/nginx/conf/nginx.conf&lt;/p&gt;
+
+&lt;p&gt;找到&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;server
+{
+listen       80;
+server_name XXXX.com;
+index index.html index.htm index.php;
+root  /home/wwwroot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;将最后一句其修改为你所希望的目录，例如&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;root  /home/wwwroot/[XXXX.com];
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这样nginx网站服务器在解析XXXX.com的时候，便会读取/home/wwwroot/XXXX.com目录下的内容。&lt;/p&gt;
+
+&lt;p&gt;之后可以通过lnmp自带的vhost.sh添加虚拟主机咯&lt;/p&gt;
+
+&lt;p&gt;执行命令：&lt;code&gt;/root/vhost.sh&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;根据提示输入要绑定的域名，回车，如果需要添加更多的域名，输入y，再输入要另外绑定的域名，多个域名可以用空格隔开。&lt;/p&gt;
+
+&lt;p&gt;再输入域名绑定的目录(绝对目录， 如&lt;code&gt;/home/wwwroot/lnmp&lt;/code&gt;，如果不填默认是/home/wwwroot/绑定的域名)，&lt;/p&gt;
+
+&lt;p&gt;再选择是否添加伪静态规则，默认已经有了 Discuz、Wordpress、Sablog、emlog、dabr，可直接输入以上名称即可，如果需要添加自定义伪静态规则，直接输入一个想要的名字，程序会自动创建伪静态文件，直接在&lt;code&gt;/usr/local/nginx/conf/&lt;/code&gt;你自定义的伪静态名字.conf  里面添加伪静态规则就行。&lt;/p&gt;
+
+&lt;p&gt;接下来会提示是否需要启用日志功能，一般情况下不需要启动，直接输入n就行，如需启动，输入y，再输入要定义的日志文件名字，回车就会自动添加虚拟主机。&lt;/p&gt;
+
+&lt;h1&gt;4. 增加FTP功能&lt;/h1&gt;
+
+&lt;p&gt;这里我选择了pureftpd，为什么呢？因为有一篇很好的介绍如何在lnmp中安装它的图文教程，所以我就直接给一个链接好了。里面介绍了如何安装pureftpd，如何将它加入自动启动中等等问题。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.vpser.net/manage/lnmp-pureftpd-cp.html&quot;&gt;lnmp之pureftpd管理面板安装教程[图文]&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;恩，还是很简单，先到这里。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>n475被和谐了!</title>
+      <link>http://yuliu.org/2007/06/harmonized_N475/</link>
+      <pubDate>Mon, 25 Jun 2007 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2007/06/harmonized_N475</guid>
+	  <description>&lt;p&gt;昨天乘n475从上海回杭州。发现它的运行时间增加了十五分钟。才发现铁道部的确在努力构建和谐火车。此车原先的运行时间是1742-1910。&lt;/p&gt;
+
+&lt;p&gt;现在改在1737发车，比沪杭加动车前提前了五分钟，后面跟着新加的动车d677，1750-1908。于是我很简单的推算，475提早五分钟发车是为了提前五分钟1905到杭州。很开心的走上bsp，觉得bsp比动车好，一排只有四个人，还便宜六快钱，不少哦，10几%了。刚开了一会儿就觉得不对劲，这个速度不象原来的，在慢慢摇。果不其然，1745火车便停下了，预感不会是为了避让动车吧。左等右等，大概十分钟后窗边白色呼宵而过。最后475 1930才到杭州。&lt;/p&gt;
+
+&lt;p&gt;动车快我没有意见，但是没有必要这样吧，完全可以把动车的开行时间和475换一下或者直接推迟开车时间，也不必让bsp停十几分钟来证明动车快吧，bsp也可以用到更需要的地方吧。但据说bsp和25t也很多地方想要吧。其实我想到的解释很简单，显示动车很快，促进和谐吧。至少这样搞下次我会座动车了。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Log For log4net (五) - Appenders(记录方式)</title>
+      <link>http://yuliu.org/2007/04/log_for_log4net_5_appenders/</link>
+      <pubDate>Fri, 27 Apr 2007 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2007/04/log_for_log4net_5_appenders</guid>
+	  <description>&lt;p&gt;原文地址：&lt;a href=&quot;http://logging.apache.org/log4net/release/manual/introduction.html#appenders&quot;&gt;Appenders&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;选择和禁止记录请求只是log4net框架的一部份。log4net允许将记录请求输出到不同的目的地。在log4net中，输出目的地叫做Appender（记录方式）。记录方式必须继承log4net.Appenders.IAppender接口。&lt;/p&gt;
+
+&lt;p&gt;log4net中定义了下面的记录方式： (链接到英文的log4net SDK)&lt;/p&gt;
+
+&lt;table border=&quot;1&quot;&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                类型
+            &lt;/td&gt;
+            &lt;td&gt;
+                描述
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;a target=&quot;_blank&quot; href=&quot;http://logging.apache.org/log4net/release/sdk/log4net.Appender.AdoNetAppender.html&quot;&gt;
+                    log4net.Appender.AdoNetAppender&lt;/a&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                把记录通过SQL语句或者存储过程保存到数据库中
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;a target=&quot;_blank&quot; href=&quot;http://logging.apache.org/log4net/release/sdk/log4net.Appender.AnsiColorTerminalAppender.html&quot;&gt;
+                    log4net.Appender.AnsiColorTerminalAppender&lt;/a&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                把记录进行颜色高亮，并输出到ANSI终端窗口
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;a target=&quot;_blank&quot; href=&quot;http://logging.apache.org/log4net/release/sdk/log4net.Appender.AspNetTraceAppender.html&quot;&gt;
+                    log4net.Appender.AspNetTraceAppender&lt;/a&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                将记录输出到ASP追踪页面，他们被返回到ASP页面或者追踪页面的底部。
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;a target=&quot;_blank&quot; href=&quot;http://logging.apache.org/log4net/release/sdk/log4net.Appender.BufferingForwardingAppender.html&quot;&gt;
+                    log4net.Appender.BufferingForwardingAppender&lt;/a&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                缓存送到子记录器的记录
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;a target=&quot;_blank&quot; href=&quot;http://logging.apache.org/log4net/release/sdk/log4net.Appender.ColoredConsoleAppender.html&quot;&gt;
+                    log4net.Appender.ColoredConsoleAppender&lt;/a&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                把记录输出到程序的控制台。事件信息可以输出到标准输出流，也可以输出到标准错误流。事件可以包含为每个等级定义的结构化文本和背景颜色。
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;a target=&quot;_blank&quot; href=&quot;http://log4net.Appender.ConsoleAppender&quot;&gt;log4net.Appender.ConsoleAppender&lt;/a&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                把记录输出到程序的控制台。事件信息可以输出到标准输出流，也可以输出到标准错误流。
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;a target=&quot;_blank&quot; href=&quot;http://logging.apache.org/log4net/release/sdk/log4net.Appender.EventLogAppender.html&quot;&gt;
+                    log4net.Appender.EventLogAppender&lt;/a&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                把记录输出到Windows事件日志
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;a target=&quot;_blank&quot; href=&quot;http://logging.apache.org/log4net/release/sdk/log4net.Appender.FileAppender.html&quot;&gt;
+                    log4net.Appender.FileAppender&lt;/a&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                把记录输出到文件系统的文件中
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;a target=&quot;_blank&quot; href=&quot;http://logging.apache.org/log4net/release/sdk/log4net.Appender.ForwardingAppender.html&quot;&gt;
+                    log4net.Appender.ForwardingAppender&lt;/a&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                把记录送到子记录器
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;a target=&quot;_blank&quot; href=&quot;http://logging.apache.org/log4net/release/sdk/log4net.Appender.LocalSyslogAppender.html&quot;&gt;
+                    log4net.LocalSyslogAppender&lt;/a&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                把记录输出到本地系统日志服务（UNIX）
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;a target=&quot;_blank&quot; href=&quot;http://logging.apache.org/log4net/release/sdk/log4net.Appender.MemoryAppender.html&quot;&gt;
+                    log4net.Appender.MemoryAppender&lt;/a&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                把记录保存到内存缓存中
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;a target=&quot;_blank&quot; href=&quot;http://logging.apache.org/log4net/release/sdk/log4net.Appender.NetSendAppender.html&quot;&gt;
+                    log4net.Appender.NetSendAppender&lt;/a&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                把时间输出到Windows消息服务，这些消息在用户终端中显示
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;a target=&quot;_blank&quot; href=&quot;http://logging.apache.org/log4net/release/sdk/log4net.Appender.OutputDebugStringAppender.html&quot;&gt;
+                    log4net.Appender.OutputDebugStringAppender&lt;/a&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                把记录输出到调试器。如果程序没有调试器，将会输出到系统调试器。如果系统没有调试器并且系统调试器被禁用，记录被忽略
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;a target=&quot;_blank&quot; href=&quot;http://logging.apache.org/log4net/release/sdk/log4net.Appender.RemoteSyslogAppender.html&quot;&gt;
+                    log4net.Appender.RemoteSyslogAppender&lt;/a&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                把记录通过UDP网络输出到远程系统记录服务。
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;a target=&quot;_blank&quot; href=&quot;http://logging.apache.org/log4net/release/sdk/log4net.Appender.RemotingAppender.html&quot;&gt;
+                    log4net.Appender.RemotingAppender&lt;/a&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                通过.NET Remoting把记录输出到远程接收器
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;a target=&quot;_blank&quot; href=&quot;http://logging.apache.org/log4net/release/sdk/log4net.Appender.RollingFileAppender.html&quot;&gt;
+                    log4net.Appender.RollingFileAppender&lt;/a&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                把记录输出到文件系统的文件中。RollingFileAppender可以通过配置日期或者文件大小的限制把记录配置输出到多个文件。
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;a target=&quot;_blank&quot; href=&quot;http://logging.apache.org/log4net/release/sdk/log4net.Appender.SmtpAppender.html&quot;&gt;
+                    log4net.Appender.SmtpAppender&lt;/a&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                把记录发送到制定邮箱地址
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;a target=&quot;_blank&quot; href=&quot;http://logging.apache.org/log4net/release/sdk/log4net.Appender.SmtpPickupDirAppender.html&quot;&gt;
+                    log4net.Appender.SmtpPickupDirAppender&lt;/a&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                把SMTP消息记录到制定目录的文件中，这些文件可已通过像IIS SMTP代理这样的SMTP代理读取和发送
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;a target=&quot;_blank&quot; href=&quot;http://logging.apache.org/log4net/release/sdk/log4net.Appender.TelnetAppender.html&quot;&gt;
+                    log4net.Appender.TelnetAppender&lt;/a&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                用户通过Telnet连接来获取记录
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;a target=&quot;_blank&quot; href=&quot;http://logging.apache.org/log4net/release/sdk/log4net.Appender.TraceAppender.html&quot;&gt;
+                    log4net.Appender.TraceAppender&lt;/a&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                把记录输出到.NET追踪系统
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;a target=&quot;_blank&quot; href=&quot;http://logging.apache.org/log4net/release/sdk/log4net.Appender.UdpAppender.html&quot;&gt;
+                    log4net.Appender.UdpAppender&lt;/a&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                把记录当成无状态UDP数据包发送到使用UDP客户端的远程主机或者组。
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+
+&lt;p&gt;一个记录器能够使用道中输出方式。&lt;/p&gt;
+
+&lt;p&gt;每条记录器允许的记录请求将被输出到记录器所有的记录方式，包括记录器层次结构中上级的记录器的记录方式。换句话说，记录方式具备继承加成的特性。例如，如果在根控制器上增加了一个控制台记录方式，那么所有被允许的记录请求将至少被输出到控制台。如果记录器增加了一个文件记录方式X，所有X和X的后代通过的记录请求将被输出到文件和控制台。可以将记录器的additivity属性标记为false来避免记录方式的集成加成特性。&lt;/p&gt;
+
+&lt;p&gt;下面总结了记录方式的加成特性。&lt;/p&gt;
+
+&lt;p&gt;记录器X的记录语句将会输出到X和他祖先的所有记录方式。这就是“继承加成”&lt;/p&gt;
+
+&lt;p&gt;但是，如果X的祖先Y，设置了additivity属性为false，那么X的的记录将会输出到X到Y（包括X和Y）之间的所有记录方式，但不会输出到Y的祖先的记录方式。&lt;/p&gt;
+
+&lt;p&gt;记录器的默认additivity属性为true。&lt;/p&gt;
+
+&lt;p&gt;下面是一个例子&lt;/p&gt;
+
+&lt;table border=&quot;1&quot;&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                记录器名
+            &lt;/td&gt;
+            &lt;td&gt;
+                记录方式
+            &lt;/td&gt;
+            &lt;td&gt;
+                additivity属性
+            &lt;/td&gt;
+            &lt;td&gt;
+                输出目标
+            &lt;/td&gt;
+            &lt;td&gt;
+                备注
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                root
+            &lt;/td&gt;
+            &lt;td&gt;
+                A1
+            &lt;/td&gt;
+            &lt;td&gt;
+                不适用
+            &lt;/td&gt;
+            &lt;td&gt;
+                A1
+            &lt;/td&gt;
+            &lt;td&gt;
+                root没有继承任何输出方式
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                x
+            &lt;/td&gt;
+            &lt;td&gt;
+                A-x1, A-x2
+            &lt;/td&gt;
+            &lt;td&gt;
+                true
+            &lt;/td&gt;
+            &lt;td&gt;
+                A1, A-x1, A-x2
+            &lt;/td&gt;
+            &lt;td&gt;
+                x和root的记录方式
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                x.y
+            &lt;/td&gt;
+            &lt;td&gt;
+                none
+            &lt;/td&gt;
+            &lt;td&gt;
+                true
+            &lt;/td&gt;
+            &lt;td&gt;
+                A1, A-x1, A-x2
+            &lt;/td&gt;
+            &lt;td&gt;
+                x和root的记录方式
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                x.y.z
+            &lt;/td&gt;
+            &lt;td&gt;
+                A-xyz1
+            &lt;/td&gt;
+            &lt;td&gt;
+                true
+            &lt;/td&gt;
+            &lt;td&gt;
+                A1, A-x1, A-x2, A-xyz1
+            &lt;/td&gt;
+            &lt;td&gt;
+                x, x.y.z和root的记录方式
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                security
+            &lt;/td&gt;
+            &lt;td&gt;
+                A-sec
+            &lt;/td&gt;
+            &lt;td&gt;
+                false
+            &lt;/td&gt;
+            &lt;td&gt;
+                A-sec
+            &lt;/td&gt;
+            &lt;td&gt;
+                因为additivity属性为false，没有任何记录方式累加
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                security.access
+            &lt;/td&gt;
+            &lt;td&gt;
+                none
+            &lt;/td&gt;
+            &lt;td&gt;
+                true
+            &lt;/td&gt;
+            &lt;td&gt;
+                A-sec
+            &lt;/td&gt;
+            &lt;td&gt;
+                因为security的additivity属性为false，因此只有security的记录方式
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Log For log4net (四) - Logger（记录器）</title>
+      <link>http://yuliu.org/2007/04/log_for_log4net_4_logger/</link>
+      <pubDate>Fri, 27 Apr 2007 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2007/04/log_for_log4net_4_logger</guid>
+	  <description>&lt;p&gt;前三节主要翻译和学习了配置文件的写法。从这一节将计划翻译Logger（第四节）、记录方式（第五节）、布局（第六节）和过滤器（第七节）。&lt;/p&gt;
+
+&lt;p&gt;原文地址：&lt;a href=&quot;http://logging.apache.org/log4net/release/manual/introduction.html#hierarchy&quot;&gt;Loggers and Appenders&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;log4net主要包含三个主要部分，记录器(loggers)、记录方式（appenders）和布局（layouts）。通过这三个部件，开发者可以根据消息类型和等级记录消息，并在运行时刻控制消息的格式和输入方式。这些部件使用过滤器(filters)控制记录方式的行为，使用renderers把对象转换为字符串。&lt;/p&gt;
+
+&lt;h1&gt;Logger hierarchy（记录器层次结构）&lt;/h1&gt;
+
+&lt;p&gt;使用记录API相比System.Console.WriteLine最大的优势在于可以禁用某些特定消息并让其他消息畅通无阻。它把所有可能记录的消息按开发者规定的元素进行归类。&lt;/p&gt;
+
+&lt;p&gt;记录器是已命名的实体。名字大小写敏感并且遵守夏磊层次命名规则：&lt;/p&gt;
+
+&lt;p&gt;如果记录器A的名字以其他记录器B的名字加上.为前缀，那么它就是其他记录器的后代（A是B的后代）。记录器被称为他直接子记录器的父亲。&lt;/p&gt;
+
+&lt;p&gt;这个层次结构和.NET中的命名空间、类层次结构类似。在下面我们可以看见这样将非常方便。&lt;/p&gt;
+
+&lt;p&gt;例如：名为&quot;Foo.Bar&quot;的记录器是&quot;Foo.Bar.Baz&quot;记录器的父亲。类似的，”System”是&quot;System.Text&quot;的父亲和&quot;System.Text.StringBuilder&quot;的祖先。这种命名方式对于程序来说是相当熟悉的。&lt;/p&gt;
+
+&lt;p&gt;根记录器（root logger）位于层次结构的顶端。它在以下三方面表现出特别之处。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;它总是存在的。&lt;/li&gt;
+&lt;li&gt;他不能通过名字获取。&lt;/li&gt;
+&lt;li&gt;它总被指定在某个等级。&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;p&gt;记录器可以通过log4net.LogManger类的静态方法获得。GetLogger方法以欲获取的记录器名称为参数，如下所示：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;namespace log4net
+{
+    public class LogManager
+    {
+        public static ILog GetLogger(string name);
+        public static ILog GetLogger(Type type);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;GetLogger方法也可以接受欲获取记录器的完整类型为名称的Type类型参数。&lt;/p&gt;
+
+&lt;p&gt;记录器返回ILog接口，它代表了返回给开发者的记录器。ILog接口定义如下&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;namespace log4net
+{
+    public interface ILog
+    {
+        /* Test if a level is enabled for logging */
+        bool IsDebugEnabled { get; }
+        bool IsInfoEnabled { get; }
+        bool IsWarnEnabled { get; }
+        bool IsErrorEnabled { get; }
+        bool IsFatalEnabled { get; }
+        /* Log a message object */
+        void Debug(object message);
+        void Info(object message);
+        void Warn(object message);
+        void Error(object message);
+        void Fatal(object message);
+        /* Log a message object and exception */
+        void Debug(object message, Exception t);
+        void Info(object message, Exception t);
+        void Warn(object message, Exception t);
+        void Error(object message, Exception t);
+        void Fatal(object message, Exception t);
+        /* Log a message string using the System.String.Format syntax */
+        void DebugFormat(string format, params object[] args);
+        void InfoFormat(string format, params object[] args);
+        void WarnFormat(string format, params object[] args);
+        void ErrorFormat(string format, params object[] args);
+        void FatalFormat(string format, params object[] args);
+        /* Log a message string using the System.String.Format syntax */
+        void DebugFormat(IFormatProvider provider, string format, params object[] args);
+        void InfoFormat(IFormatProvider provider, string format, params object[] args);
+        void WarnFormat(IFormatProvider provider, string format, params object[] args);
+        void ErrorFormat(IFormatProvider provider, string format, params object[] args);
+        void FatalFormat(IFormatProvider provider, string format, params object[] args);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;记录器可以被指定等级。等级是log4net.Core.Level类的实例。下列等级依照递增优先级被定义。&lt;/p&gt;
+
+&lt;p&gt;ALL DEBUG INFO WARN ERROR FATAL OFF&lt;/p&gt;
+
+&lt;p&gt;如果一个记录器没有被指定等级，那么它继承它最近的父类的等级。&lt;/p&gt;
+
+&lt;p&gt;未指定等级的记录器X 继承 从X向上到根记录器的路线中第一个被直接指定等级的记录器的等级。&lt;/p&gt;
+
+&lt;p&gt;为了保证所有的记录器能够继承一个等级，所以根记录器总被指定一个等级，默认为DEBUG。下面4个表格是根据上面规则分配和继承等级的例子。&lt;/p&gt;
+
+&lt;table border=&quot;1&quot;&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                记录器名
+            &lt;/td&gt;
+            &lt;td&gt;
+                被指定等级
+            &lt;/td&gt;
+            &lt;td&gt;
+                继承等级
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                root
+            &lt;/td&gt;
+            &lt;td&gt;
+                Proot
+            &lt;/td&gt;
+            &lt;td&gt;
+                Proot
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                X
+            &lt;/td&gt;
+            &lt;td&gt;
+                none
+            &lt;/td&gt;
+            &lt;td&gt;
+                Proot
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                X.Y
+            &lt;/td&gt;
+            &lt;td&gt;
+                none
+            &lt;/td&gt;
+            &lt;td&gt;
+                Proot
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                X.Y.Z
+            &lt;/td&gt;
+            &lt;td&gt;
+                none
+            &lt;/td&gt;
+            &lt;td&gt;
+                proot
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+
+&lt;p&gt;上面例子中只有根记录器被指定了等级Proot，因此其他记录器X, X.Y, X.Y.Z均继承了等级Proot。&lt;/p&gt;
+
+&lt;table border=&quot;1&quot;&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                记录器名
+            &lt;/td&gt;
+            &lt;td&gt;
+                被指定等级
+            &lt;/td&gt;
+            &lt;td&gt;
+                继承等级
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                root
+            &lt;/td&gt;
+            &lt;td&gt;
+                Proot
+            &lt;/td&gt;
+            &lt;td&gt;
+                Proot
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                X
+            &lt;/td&gt;
+            &lt;td&gt;
+                Px
+            &lt;/td&gt;
+            &lt;td&gt;
+                Px
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                X.Y
+            &lt;/td&gt;
+            &lt;td&gt;
+                Pxy
+            &lt;/td&gt;
+            &lt;td&gt;
+                Pxy
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                X.Y.Z
+            &lt;/td&gt;
+            &lt;td&gt;
+                Pxyz
+            &lt;/td&gt;
+            &lt;td&gt;
+                pxyz
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+
+&lt;p&gt;上面的例子中，每个记录器都被指定了等级，因此没有继承的等级。&lt;/p&gt;
+
+&lt;table border=&quot;1&quot;&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                记录器名
+            &lt;/td&gt;
+            &lt;td&gt;
+                被指定等级
+            &lt;/td&gt;
+            &lt;td&gt;
+                继承等级
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                root
+            &lt;/td&gt;
+            &lt;td&gt;
+                Proot
+            &lt;/td&gt;
+            &lt;td&gt;
+                Proot
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                X
+            &lt;/td&gt;
+            &lt;td&gt;
+                Px
+            &lt;/td&gt;
+            &lt;td&gt;
+                Px
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                X.Y
+            &lt;/td&gt;
+            &lt;td&gt;
+                none
+            &lt;/td&gt;
+            &lt;td&gt;
+                Px
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                X.Y.Z
+            &lt;/td&gt;
+            &lt;td&gt;
+                Pxyz
+            &lt;/td&gt;
+            &lt;td&gt;
+                pxyz
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+
+&lt;p&gt;上面的例子中，根记录器、X记录器、X.Y.Z记录器分别被分配了等级Proot、Px、Pxyz。X.Y记录器继承父亲X的等级Px。&lt;/p&gt;
+
+&lt;table border=&quot;1&quot;&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                记录器名
+            &lt;/td&gt;
+            &lt;td&gt;
+                被指定等级
+            &lt;/td&gt;
+            &lt;td&gt;
+                继承等级
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                root
+            &lt;/td&gt;
+            &lt;td&gt;
+                Proot
+            &lt;/td&gt;
+            &lt;td&gt;
+                Proot
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                X
+            &lt;/td&gt;
+            &lt;td&gt;
+                Px
+            &lt;/td&gt;
+            &lt;td&gt;
+                Px
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                X.Y
+            &lt;/td&gt;
+            &lt;td&gt;
+                none
+            &lt;/td&gt;
+            &lt;td&gt;
+                Px
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                X.Y.Z
+            &lt;/td&gt;
+            &lt;td&gt;
+                none
+            &lt;/td&gt;
+            &lt;td&gt;
+                Px
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+
+&lt;p&gt;上面的例子中，根记录器、X记录器分别被分配了等级Proot、Px。X.Y和X.Y.Z记录器继承它们最近的被指定等级的记录器的等级。&lt;/p&gt;
+
+&lt;p&gt;记录请求通过调用记录器实例（使用log4net.ILog）的printing方法调用，printing方法包括Debug, Info, Warn, Error和Fatal。&lt;/p&gt;
+
+&lt;p&gt;通常，printing方法决定了记录请求的等级。例如，存在记录器实例log，那么log.Info(“…”)将发出等级为INFO的记录请求。&lt;/p&gt;
+
+&lt;p&gt;如果记录请求的等级高于或者等于记录器的等级将被允许。相反，请求将被禁止。没有指定等级的记录器将从层次结构中继承一个。这个规则归纳如下。&lt;/p&gt;
+
+&lt;p&gt;L&gt;=K时，等级（指定或者继承）为K的记录器允许等级为L的记录请求。&lt;/p&gt;
+
+&lt;p&gt;这条规则是log4net的核心。它基于有序的规则，标准等级规则下，DEBUG&amp;lt;INFO&amp;lt;WARN&amp;lt;ERROR&amp;lt;FATAL。调用使用相同名称为参数的log4net.LogManager.GetLogger方法将返回完全相同的记录器的应用。例如&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ILog x = LogManager.GetLogger(&quot;wombat&quot;);
+ILog y = LogManager.GetLogger(&quot;wombat&quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;X和y指向完全相同的记录器。&lt;/p&gt;
+
+&lt;p&gt;因此，配置一个记录器并在代码中的某个地方不通过传递引用而获取相同的记录器成为可能。与生物学的父亲总是先于后代的基本原理不同，log4net记录器能够以任何顺序被配置。但是，即使父记录器晚于子记录器被配置，他也总是先被找到并链接到它的后代。&lt;/p&gt;
+
+&lt;p&gt;log4net环境通常在程序初始化时被配置。通常偏爱使用配置文件的方式，这个将在后面讨论（翻译调换了顺序，配置见前几节）&lt;/p&gt;
+
+&lt;p&gt;log4net使通过组件命名记录器很简单。它可以通过在每个类中实例化记录器实现，记录器的名字为每个类的完整名称。这是一个定义记录器有用和直接的方法。随着输出的记录带有产生它的记录器的名字，这种命名规则简化了确认记录消息的来源方法。但是，这只是一种普遍的命名记录器的方法。Log4net不限制其他的命名方式。开发人员可以任意给记录器取名。&lt;/p&gt;
+
+&lt;p&gt;然而，按所在类命名记录器是目前已知的最好的方法。他给开发者明确指出了记录消息的来源。更重要的是这样可是使用程序的设计来设计记录器的层次结构。希望其中一些思想已进入到程序的设计中。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Log For log4net (三) - 配置语法</title>
+      <link>http://yuliu.org/2007/04/log_for_log4net_3_configuration_grammar/</link>
+      <pubDate>Fri, 27 Apr 2007 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2007/04/log_for_log4net_3_configuration_grammar</guid>
+	  <description>&lt;p&gt;接&lt;a href=&quot;/2007/04/log_for_log4net_2_configuration_attribute_file&quot;&gt;上篇&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;注：这是log4net配置文档的最后一部份，描述了配置文档的语法&lt;/p&gt;
+
+&lt;p&gt;对于其中的renderer的意义不是很清楚&lt;/p&gt;
+
+&lt;p&gt;原文地址：&lt;a href=&quot;http://logging.apache.org/log4net/release/manual/configuration.html&quot;&gt;log4net Manual - Configuration&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;log4net使用log4net.Config.XmlConfigurator配置读取器来解析XML，这一部分描述XmlConfigurator的语法&lt;/p&gt;
+
+&lt;p&gt;下面是一个有效的XML配置，根元素必须是&lt;log4net&gt;，这并不意味着这个元素不能嵌入到其他元素里面。详见配置文件节。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;log4net&amp;gt;
+    &amp;lt;appender name=&quot;ConsoleAppender&quot; type=&quot;log4net.Appender.ConsoleAppender&quot; &amp;gt;
+        &amp;lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&amp;gt;
+            &amp;lt;conversionPattern value=&quot;%date [%thread] %-5level %logger [%ndc] - %message%newline&quot; /&amp;gt;
+        &amp;lt;/layout&amp;gt;
+    &amp;lt;/appender&amp;gt;
+    &amp;lt;root&amp;gt;
+        &amp;lt;level value=&quot;INFO&quot; /&amp;gt;
+        &amp;lt;appender-ref ref=&quot;ConsoleAppender&quot; /&amp;gt;
+    &amp;lt;/root&amp;gt;
+&amp;lt;/log4net&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;log4net&gt;节支持下列属性&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;debug：可选属性，值为true或者false，默认为false。指定为true时允许log4net的内部调试&lt;/li&gt;
+&lt;li&gt;update：可选属性，值为Merge或者Overwrite，默认为Merge。指定为Overwrite时将在应用此配置之前重置库中的配置。&lt;/li&gt;
+&lt;li&gt;threshold：可选属性，值必须是已在库中已注册的等级名，默认为ALL。这个属性用来在整个库中限制需要记录的等级，不管记录到任何地方。&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;&lt;log4net&gt;支持下列子元素&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;appender：0或者多个，定义记录方式（appender）&lt;/li&gt;
+&lt;li&gt;logger：0或者多个，定义记录器（logger）的配置。&lt;/li&gt;
+&lt;li&gt;renderer：0或者多个，定义一个对象renderer（不知道怎么意思）&lt;/li&gt;
+&lt;li&gt;root：0个或者1个，定义根记录器&lt;/li&gt;
+&lt;li&gt;param：0或者多个，库特定参数。&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1&gt;Appenders&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;appender name=&quot;ConsoleAppender&quot; type=&quot;log4net.Appender.ConsoleAppender&quot; &amp;gt;
+    &amp;lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&amp;gt;
+        &amp;lt;conversionPattern value=&quot;%date [%thread] %-5level %logger [%ndc] - %message%newline&quot; /&amp;gt;
+    &amp;lt;/layout&amp;gt;
+&amp;lt;/appender&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;appender&gt;节支持下列属性&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;name：必须属性，字符串表示的appender名称，名称必须在所有记录方式中唯一，它在记录器的&lt;appender-ref&gt;元素中被引用，用来指定记录方式。&lt;/li&gt;
+&lt;li&gt;type：必须属性，值为记录器类型名，如果记录器不在log4net组件集中，必须给出完整的组件集名称。&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;&lt;appender&gt;节支持下列子元素&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;appender-ref：0或者多个，允许记录方式引用其他记录方式，不被所有记录方式支持。&lt;/li&gt;
+&lt;li&gt;filter：0或者多个，定义记录方式的过滤器&lt;/li&gt;
+&lt;li&gt;layout：0个或者1个，定义记录方式的布局&lt;/li&gt;
+&lt;li&gt;param：0或者多个，记录方式特定参数。&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;例子参见&lt;a href=&quot;http://logging.apache.org/log4net/release/config-examples.html&quot;&gt;Example Appender Configuration&lt;/a&gt;文档&lt;/p&gt;
+
+&lt;h1&gt;Filters（过滤器）&lt;/h1&gt;
+
+&lt;p&gt;filter只可以定义为&lt;appender&gt;元素的子元素&lt;/p&gt;
+
+&lt;p&gt;&lt;filter&gt;节支持下列属性&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;type：必须属性，值为过滤器的类型名称。如果过滤器不在log4net组件集中，必须给出完整的组件集名称。&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;&lt;filter&gt;节支持下列子元素&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;param：0或者多个，filter特定参数&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;过滤器组成一个串来规定能够通过的事件，每个过滤器能够指定接受和处理的事件、拒绝和停止处理的事件或者允许事件到下一个过滤器。如果事件达到filter串的尽头而且没有被拒绝，那么它将被隐式的被记录器接受。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;filter type=&quot;log4net.Filter.LevelRangeFilter&quot;&amp;gt;
+    &amp;lt;levelMin value=&quot;INFO&quot; /&amp;gt;
+    &amp;lt;levelMax value=&quot;FATAL&quot; /&amp;gt;
+&amp;lt;/filter&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这个过滤器将会拒绝等级低于INFO或者高于FATAL的事件，其他事件包括INFO和FATAL将会被记录。&lt;/p&gt;
+
+&lt;p&gt;如果我们只想允许消息中包含特定字符（如“database”）的事件被记录，那么可以使用下面的过滤器&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;filter type=&quot;log4net.Filter.StringMatchFilter&quot;&amp;gt;
+    &amp;lt;stringToMatch value=&quot;database&quot; /&amp;gt;
+&amp;lt;/filter&amp;gt;
+&amp;lt;filter type=&quot;log4net.Filter.DenyAllFilter&quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上面的例子中，第一个过滤器将会检查时间消息中是否包含“database”，如果包含，过滤器将接受消息并停止过滤，事件被记录。如果不包含，事件被传递到下一个过滤器处理，如果没有下一个过滤器，时间会被隐式的记录。如果我们不想不符合过滤要求的事件被隐式记录，可以在最后加上log4net.Filter.DenyAllFilter，他将拒绝所有到达它的事件。&lt;/p&gt;
+
+&lt;p&gt;如果我们希望记录消息中包含“database”或者“ldap”的事件，可以使用下列过滤器&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;filter type=&quot;log4net.Filter.StringMatchFilter&quot;&amp;gt;
+    &amp;lt;stringToMatch value=&quot;database&quot;/&amp;gt;
+&amp;lt;/filter&amp;gt;
+&amp;lt;filter type=&quot;log4net.Filter.StringMatchFilter&quot;&amp;gt;
+    &amp;lt;stringToMatch value=&quot;ldap&quot;/&amp;gt;
+&amp;lt;/filter&amp;gt;
+&amp;lt;filter type=&quot;log4net.Filter.DenyAllFilter&quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1&gt;Layouts&lt;/h1&gt;
+
+&lt;p&gt;Layout只可以定义为&lt;appender&gt;元素的子元素&lt;/p&gt;
+
+&lt;p&gt;&lt;layout&gt;节支持下列属性&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;type：必须属性，值为layout的类型名称。如果过滤器不在log4net组件集中，必须给出完整的组件集名称。&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;&lt;layout&gt;节支持下列子元素&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;param：0或者多个，filter特定参数&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;下面的例子表示了怎样使用log4net.Layout.PatternLayout来配置布局。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&amp;gt;
+    &amp;lt;conversionPattern value=&quot;%date [%thread] %-5level %logger [%ndc] - %message%newline&quot; /&amp;gt;
+&amp;lt;/layout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1&gt;Root Logger（根记录器）&lt;/h1&gt;
+
+&lt;p&gt;root logger只可以定义为&lt;log4net&gt;元素的子元素，它在记录器层次结构的根部，其他记录器都继承自他。&lt;/p&gt;
+
+&lt;p&gt;根记录器的例子&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;root&amp;gt;
+    &amp;lt;level value=&quot;INFO&quot; /&amp;gt;
+    &amp;lt;appender-ref ref=&quot;ConsoleAppender&quot; /&amp;gt;
+&amp;lt;/root&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;root&gt;节不支持属性&lt;/p&gt;
+
+&lt;p&gt;&lt;root&gt;节支持下列子元素&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;appender-ref：0或者多个，允许记录器通过记录方式的名称引用记录方式&lt;/li&gt;
+&lt;li&gt;level：0个或者1个，定义记录器的记录等级，记录器只记录大于或等于这一等级的事件&lt;/li&gt;
+&lt;li&gt;param：0或者多个，记录器特定参数&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1&gt;Loggers（记录器）&lt;/h1&gt;
+
+&lt;p&gt;logger只可以定义为&lt;log4net&gt;元素的子元素&lt;/p&gt;
+
+&lt;p&gt;一个记录器的例子&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;logger name=&quot;LoggerName&quot;&amp;gt;
+    &amp;lt;level value=&quot;DEBUG&quot; /&amp;gt;
+    &amp;lt;appender-ref ref=&quot;ConsoleAppender&quot; /&amp;gt;
+&amp;lt;/logger&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;logger&gt;节支持下列属性&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;name：必须属性，制定记录器的名称&lt;/li&gt;
+&lt;li&gt;additivity：可选属性，值为true或者false，默认为true。指定为false时将禁止记录器继承父记录器的记录方式。&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;&lt;logger&gt;节支持下列子元素&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;appender-ref：0或者多个，允许记录器通过记录方式的名称引用记录方式&lt;/li&gt;
+&lt;li&gt;level：0个或者1个，定义记录器的记录等级，记录器只记录大于或等于这一等级的事件&lt;/li&gt;
+&lt;li&gt;param：0或者多个，记录器特定参数&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1&gt;Renderers（映射？）&lt;em&gt;不太懂&lt;/em&gt;&lt;/h1&gt;
+
+&lt;p&gt;Renderer只可以定义为&lt;log4net&gt;元素的子元素&lt;/p&gt;
+
+&lt;p&gt;一个renderer例子&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;renderer renderingClass=&quot;MyClass.MyRenderer&quot; renderedClass=&quot;MyClass.MyFunkyObject&quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;renderer&gt;节支持下列属性&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;renderingClass：必须属性，值为该renderer的类型名称，如果类型不在log4net组件集中，必须给出完整的组件集名称。它是为被render的类型负责的类型&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;renderedClass：必须属性，值为该renderer的目标类型名称，如果类型不在log4net组件集中。它是被render的的类型。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;&lt;renderer&gt;节支持子元素&lt;/p&gt;
+
+&lt;h1&gt;Parameters（参数）&lt;/h1&gt;
+
+&lt;p&gt;parameter只可以定义为&lt;log4net&gt;元素的子元素&lt;/p&gt;
+
+&lt;p&gt;一个parameter例子&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;param name=&quot;ConversionPattern&quot; value=&quot;%date [%thread] %-5level %logger [%ndc] - %message%newline&quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;param&gt;节支持下列属性&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;name：必须属性，值为传递到父对象中的parameter的名称&lt;/li&gt;
+&lt;li&gt;value：可选属性，该属性的值是一个被转换成参数（parameter）的值的字符串。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;type：可选属性，该属性的值是一个用来创建和设置参数（parameter）的值的类型名称。如果类型不在log4net组件集中，必须给出完整的组件集名称。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;value和type必须制定其中一个&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;&lt;param&gt;节支持下列子元素&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;param：0或者多个，参数特定参数&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;一个使用嵌套参数元素的例子&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;param name=&quot;evaluator&quot; type=&quot;log4net.spi.LevelEvaluator&quot;&amp;gt;
+    &amp;lt;param name=&quot;Threshold&quot; value=&quot;WARN&quot;/&amp;gt;
+&amp;lt;param&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt; 扩展参数 &lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;配置参数直接映射对象的可写属性，可用的属性依赖于被配置对象的实际类型。log4net SDK文档包含了log4net组件集中所有部件的API参考。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt; 紧凑参数语法 &lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;所有的参数可以使用参数名作为他们的元素名&lt;/p&gt;
+
+&lt;p&gt;例如&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;param name=&quot;evaluator&quot; type=&quot;log4net.spi.LevelEvaluator&quot;&amp;gt;
+    &amp;lt;param name=&quot;Threshold&quot; value=&quot;WARN&quot;/&amp;gt;
+&amp;lt;param&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可以写成&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;evaluator type=&quot;log4net.spi.LevelEvaluator&quot;&amp;gt;
+    &amp;lt;threshold value=&quot;WARN&quot;/&amp;gt;
+&amp;lt;evaluator&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Log For log4net (二) - 配置特性与配置文件</title>
+      <link>http://yuliu.org/2007/04/log_for_log4net_2_configuration_attribute_file/</link>
+      <pubDate>Fri, 27 Apr 2007 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2007/04/log_for_log4net_2_configuration_attribute_file</guid>
+	  <description>&lt;p&gt;接&lt;a href=&quot;/2007/04/log_for_log4net_1_configuration_summary&quot;&gt;上篇&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;注：Attribute译为“特性”，Property译为“属性”&lt;/p&gt;
+
+&lt;p&gt;原文地址：&lt;a href=&quot;http://logging.apache.org/log4net/release/manual/configuration.html&quot;&gt;log4net Manual - Configuration&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1&gt;配置特性&lt;/h1&gt;
+
+&lt;p&gt;log4net除可以通过编程配置外还可以利用组件级别的特性进行配置&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt; XmlConfiguratorAttribute &lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;log4net.Config.XmlConfiguratorAttribute允许通过下列属性对XmlConfigurator进行配置。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;configFile&lt;/em&gt;：指定对XmlConfigurator进使用的配置文件名，文件路径相对于程序的根文件夹(AppDomain.CurrentDomain.BaseDirectory)&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;ConfigFileExtension&lt;/em&gt;：指定配置文件的扩展名，组件集文件名加上指定的扩展名通常即配置文件名。例如从TestApp.exe中读取的组件制定ConfigFileExtension属性为log4net，则配置文件名为TestApp.exe.log4net。其效果与制定configFile属性为TestApp.exe.log4net相同。&lt;/p&gt;
+
+&lt;p&gt;配置文件的路径为程序根文件夹(AppDomain.CurrentDomain.BaseDirectory)。&lt;/p&gt;
+
+&lt;p&gt;这个属性不能与configFile属性一起使用。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Watch&lt;/em&gt;：如果这个属性设为true，程序将会监视配置文件并在文件变化时重新载入配置。&lt;/p&gt;
+
+&lt;p&gt;如果configFile和ConfigFileExtension属性均没有指定，log4net将会使用应用程序配置文件（例如TestApp.exe.config）&lt;/p&gt;
+
+&lt;p&gt;示例用法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// Configure log4net using the .config file
+[assembly: log4net.Config.XmlConfigurator(Watch=true)]
+// This will cause log4net to look for a configuration file
+// called TestApp.exe.config in the application base
+// directory (i.e. the directory containing TestApp.exe)
+// The config file will be watched for changes.
+
+// Configure log4net using the .log4net file
+[assembly: log4net.Config.XmlConfigurator(ConfigFileExtension=&quot;log4net&quot;,Watch=true)]
+// This will cause log4net to look for a configuration file
+// called TestApp.exe.log4net in the application base
+// directory (i.e. the directory containing TestApp.exe)
+// The config file will be watched for changes.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;特性在一个组件集中只能使用一次&lt;/p&gt;
+
+&lt;p&gt;使用特性可以清晰的指定应用程序从何处加载配置文件，但特性是完全被动的，将不会起任何作用，他们只是一些信息。因此如果你使用了配置特性必须调用log4net允让它读取特性，简单的调用LogManager.GetLogger便可以使程序集中的特性能够被读取和处理。&lt;em&gt;因此程序启动后尽早调用logging方法是必要的，而且必须在任何外部的组件集在读取和调用之前。&lt;/em&gt;&lt;/p&gt;
+
+&lt;h1&gt;配置文件&lt;/h1&gt;
+
+&lt;p&gt;典型的log4net配置是通过文件，文件可以通过两种方式读取&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;使用.NET System.Configuration API&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;直接读取内容&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;p&gt;&lt;strong&gt; .config文件 &lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;System.Configuration API只在配置数据在应用程序的config文件中时才起作用，如MyApp.exe.config或者Web.config.因为System.Configuration API不支持载入config文件中configuration外的标记时使用log4net.Config.XmlConfigurator.ConfigureAndWatch方法，使用System.Configuration API最大的有点在于它相比直接读取需要较低的权限。&lt;/p&gt;
+
+&lt;p&gt;使用System.Configuration API进行配置的唯一方法是调用log4net.Config.XmlConfigurator.Configure() 方法或者 the log4net.Config.XmlConfigurator.Configure(ILoggerRepository) 方法.&lt;/p&gt;
+
+&lt;p&gt;为了能够把配置数据嵌入到.config文件中，节的名字必须在configSections元素中注册到.NET解释器，还必须指定log4net.Config.Log4NetConfigurationSectionHandler用来解释这一配置节。其中类型必须是完整的组件集名因为它被.NET config文件解释器读取而不是log4net。必须指定正确的log4net组件集名。下面的配置文件示范了正确的方式&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&amp;gt;
+&amp;lt;configuration&amp;gt;
+    &amp;lt;configSections&amp;gt;
+        &amp;lt;section name=&quot;log4net&quot; type=&quot;log4net.Config.Log4NetConfigurationSectionHandler, log4net&quot; /&amp;gt;
+    &amp;lt;/configSections&amp;gt;
+    &amp;lt;log4net&amp;gt;
+        &amp;lt;appender name=&quot;ConsoleAppender&quot; type=&quot;log4net.Appender.ConsoleAppender&quot; &amp;gt;
+            &amp;lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&amp;gt;
+                &amp;lt;conversionPattern value=&quot;%date [%thread] %-5level %logger [%ndc] - %message%newline&quot; /&amp;gt;
+            &amp;lt;/layout&amp;gt;
+        &amp;lt;/appender&amp;gt;
+        &amp;lt;root&amp;gt;
+            &amp;lt;level value=&quot;INFO&quot; /&amp;gt;
+            &amp;lt;appender-ref ref=&quot;ConsoleAppender&quot; /&amp;gt;
+        &amp;lt;/root&amp;gt;
+    &amp;lt;/log4net&amp;gt;
+&amp;lt;/configuration&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上面的理智中，指定了log4net组件集，他必须位于.NET运行时能够找到的地方，例如与程序相同的文件夹。如果log4net组件集位于GAC中，完整的组件集名还包括文化、版本和公钥。&lt;/p&gt;
+
+&lt;p&gt;当用.config文件来配置时，节名即XML元素名必须为log4net。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt; 直接读取内容 &lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;XmlConfigurator能够直接读取XML文件并用它来配置log4net，包括.config文件如MyApp.exe.config或者Web.config。
+不使用直接读取的唯一原因是应用程序的权限不能直接读取文件。因此必须使用NET configuration APIs&lt;/p&gt;
+
+&lt;p&gt;包含配置数据的文件可以通过任何接受System.IO.FileInfo对象的log4net.Config.XmlConfigurator方法指定。因为文件系统能够用于监测并通知文件的变化，所以ConfigureAndWatch 方法被用于监测配置文件并在未见改变时重载它配置log4net。&lt;/p&gt;
+
+&lt;p&gt;此外，log4net.Config.XmlConfiguratorAttribute可以用于指定配置文件。&lt;/p&gt;
+
+&lt;p&gt;配置从文件中的log4net节读取，文件中只能有一个log4net元素但是它可以位于XML中的任意等级，例如根元素&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&amp;gt;
+&amp;lt;log4net&amp;gt;
+    &amp;lt;appender name=&quot;ConsoleAppender&quot; type=&quot;log4net.Appender.ConsoleAppender&quot; &amp;gt;
+        &amp;lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&amp;gt;
+            &amp;lt;conversionPattern value=&quot;%date [%thread] %-5level %logger [%ndc] - %message%newline&quot; /&amp;gt;
+        &amp;lt;/layout&amp;gt;
+    &amp;lt;/appender&amp;gt;
+    &amp;lt;root&amp;gt;
+        &amp;lt;level value=&quot;INFO&quot; /&amp;gt;
+        &amp;lt;appender-ref ref=&quot;ConsoleAppender&quot; /&amp;gt;
+    &amp;lt;/root&amp;gt;
+&amp;lt;/log4net&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;或者嵌入其他元素间。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&amp;gt;
+&amp;lt;configuration&amp;gt;
+    &amp;lt;configSections&amp;gt;
+        &amp;lt;section name=&quot;log4net&quot; type=&quot;System.Configuration.IgnoreSectionHandler&quot; /&amp;gt;
+    &amp;lt;/configSections&amp;gt;
+    &amp;lt;log4net&amp;gt;
+        &amp;lt;appender name=&quot;ConsoleAppender&quot; type=&quot;log4net.Appender.ConsoleAppender&quot; &amp;gt;
+            &amp;lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&amp;gt;
+                &amp;lt;conversionPattern value=&quot;%date [%thread] %-5level %logger [%ndc] - %message%newline&quot; /&amp;gt;
+            &amp;lt;/layout&amp;gt;
+        &amp;lt;/appender&amp;gt;
+        &amp;lt;root&amp;gt;
+            &amp;lt;level value=&quot;INFO&quot; /&amp;gt;
+            &amp;lt;appender-ref ref=&quot;ConsoleAppender&quot; /&amp;gt;
+        &amp;lt;/root&amp;gt;
+    &amp;lt;/log4net&amp;gt;
+&amp;lt;/configuration&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上面的配置文件显示了怎么样把配置数据嵌入到.config文件中尽管文件能够被log4net直接读取。值得注意的是.NET config文件解释器如果发现没有在configSections元素注册的元素将会抛出一个异常。因此，上面的例子将log4net节注册，但是指定的处理类型为System.Configuration.IgnoreSectionHandler.这个内建的类表示已使用另外的方法来读取配置节。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Log For log4net (一) - 配置概述</title>
+      <link>http://yuliu.org/2007/04/log_for_log4net_1_configuration_summary/</link>
+      <pubDate>Fri, 27 Apr 2007 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2007/04/log_for_log4net_1_configuration_summary</guid>
+	  <description>&lt;p&gt;最近在写程序时，觉得对程序进行log很有必要。比如一个程序试运行时，可以通过log了解程序的运行情况等。.NET 框架下有&lt;a href=&quot;http://www.cnblogs.com/Terrylee/archive/2006/12/03/opensource_framework_and_resource_recommendation_Log.html&quot;&gt;很多开源的log工具&lt;/a&gt;，log4net就是其中的代表。&lt;/p&gt;
+
+&lt;p&gt;以前学习英语的东西，都是只了解了一个大概。这次决定试试通过翻译英文文档来学习log4net，看看能不能有更多的收获。学习的过程就叫Log For log4net吧，好像有一点绕口:-)&lt;/p&gt;
+
+&lt;p&gt;第一部分选取了log4net手册的Configuration节。这一节比较长，打算分两次看完。&lt;/p&gt;
+
+&lt;p&gt;注：1 代码中的英文注释将保留；2 log译为“记录”；logger译为“记录器”&lt;/p&gt;
+
+&lt;p&gt;原文地址：&lt;a href=&quot;http://logging.apache.org/log4net/release/manual/configuration.html&quot;&gt;log4net Manual - Configuration&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;配置&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;对应用程序进行记录需要一定量的规划和工作。观察说明大约4成的代码是用来完成记录工作，即使中等规模的程序也需要在代码中嵌入上千行的记录语句。因此有必要自动维护记录代码。&lt;/p&gt;
+
+&lt;p&gt;log4net环境是完全可程序化配置的，但是使用XML格式的配置文件对它进行配置将会更灵活方便。&lt;/p&gt;
+
+&lt;p&gt;让我们看看是怎样在例子程序MyApp中使用log4net来完成记录。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;译注：这里的MyApp为控制台应用程序。&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;using Com.Foo;
+// Import log4net classes.
+using log4net;
+using log4net.Config;
+public class MyApp 
+{
+    // Define a static logger variable so that it references the
+    // Logger instance named &quot;MyApp&quot;.
+    private static readonly ILog log = ager.GetLogger(typeof(MyApp));
+    static void Main(string[] args) 
+    {
+        // Set up a simple configuration that logs on the console.
+        BasicConfigurator.Configure();
+        log.Info(&quot;Entering application.&quot;);
+        Bar bar = new Bar();
+        bar.DoIt();
+        log.Info(&quot;Exiting application.&quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;MyApp首先声明导入log4net的相关类，然后定义了一个静态记录器变量，传入参数是该类的类名。&lt;/p&gt;
+
+&lt;p&gt;在MyApp中使用了下面的Bar类&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;using log4net;
+namespace Com.Foo
+{
+    public class Bar
+    {
+        private static readonly ILog log = nager.GetLogger(typeof(Bar));
+        public void DoIt()
+        {
+            log.Debug(&quot;Did it again!&quot;);
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;BasicConfigurator.Configure()方法创建了一个简单的log4net配置，这个方法增加了一个到控制台的根记录器，输入格式可以使用PatternLayout来设置，例如&lt;code&gt;%-4timestamp [%thread] %-5level %logger %ndc - %message%newline&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;默认情况下，根记录器被分配到Level.DEBUG&lt;/p&gt;
+
+&lt;p&gt;上述代码的输出如下&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;0    [main] INFO  MyApp  - Entering application.
+36   [main] DEBUG Com.Foo.Bar  - Did it again!
+51   [main] INFO  MyApp  - Exiting application.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们注意到在log4net中，子记录器只会连接到他们存在的上级。这里，名为Com.Foo.Bar的记录器直接连接到根记录器，因而将忽略未使用的Com或者Com.Foo的记录器。这种方法明显改进了性能和降低了log4net的内存使用。&lt;/p&gt;
+
+&lt;p&gt;MyApp类通过调用BasicConfigurator.Configure()方法来配置log4net，其他类只需要导入log4net命名空间，获取他们需要的记录器进行记录。&lt;/p&gt;
+
+&lt;p&gt;上面的例子总是输入相同的记录信息。当然，可以简单的修改MyApp使之在运行时刻控制记录。下面是一个轻微修改版本。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;using Com.Foo;
+// Import log4net classes.
+using log4net;
+using log4net.Config;
+public class MyApp 
+{
+    private static readonly ILog log = ager.GetLogger(typeof(MyApp));
+    static void Main(string[] args) 
+    {
+        // BasicConfigurator replaced with XmlConfigurator.
+        XmlConfigurator.Configure(new .IO.FileInfo(args[0]));
+        log.Info(&quot;Entering application.&quot;);
+        Bar bar = new Bar();
+        bar.DoIt();
+        log.Info(&quot;Exiting application.&quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这个版本的MyApp使用XmlConfigurator来解析配置文件和建立记录环境，配置文件的路径通过命令行制定。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;译注：不知道怎么赋值给命令行参数，我是直接传递log4net的配置文件的名称。&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;下面是一个简单的配置文件，它的效果与上面的基于BasicConfigurator的例子完全相同。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;log4net&amp;gt;
+    &amp;lt;!-- A1 is set to be a ConsoleAppender --&amp;gt;
+    &amp;lt;appender name=&quot;A1&quot; type=&quot;log4net.Appender.ConsoleAppender&quot;&amp;gt;
+        &amp;lt;!-- A1 uses PatternLayout --&amp;gt;
+        &amp;lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&amp;gt;
+            &amp;lt;conversionPattern value=&quot;%-4timestamp ad] %-5level %logger %ndc - %message%newline&quot; /&amp;gt;
+        &amp;lt;/layout&amp;gt;
+    &amp;lt;/appender&amp;gt;
+    &amp;lt;!-- Set root logger level to DEBUG and its only appender to 
+    &amp;lt;root&amp;gt;
+        &amp;lt;level value=&quot;DEBUG&quot; /&amp;gt;
+        &amp;lt;appender-ref ref=&quot;A1&quot; /&amp;gt;
+    &amp;lt;/root&amp;gt;
+&amp;lt;/log4net&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果我们不再想记录任何Com.Foo命名空间中类的记录输出，可以参照下面的配置文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;log4net&amp;gt;
+    &amp;lt;!-- A1 is set to be a ConsoleAppender --&amp;gt;
+    &amp;lt;appender name=&quot;A1&quot; type=&quot;log4net.Appender.ConsoleAppender&quot;&amp;gt;
+        &amp;lt;!-- A1 uses PatternLayout --&amp;gt;
+        &amp;lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&amp;gt;
+            &amp;lt;!-- Print the date in ISO 8601 format --&amp;gt;
+            &amp;lt;conversionPattern value=&quot;%date ad] %-5level %logger %ndc - %message%newline&quot; /&amp;gt;
+        &amp;lt;/layout&amp;gt;
+    &amp;lt;/appender&amp;gt;
+    &amp;lt;!-- Set root logger level to DEBUG and its only appender to 
+    &amp;lt;root&amp;gt;
+        &amp;lt;level value=&quot;DEBUG&quot; /&amp;gt;
+        &amp;lt;appender-ref ref=&quot;A1&quot; /&amp;gt;
+    &amp;lt;/root&amp;gt;
+    &amp;lt;!-- Print only messages of level WARN or above in the package o --&amp;gt;
+    &amp;lt;logger name=&quot;Com.Foo&quot;&amp;gt;
+        &amp;lt;level value=&quot;WARN&quot; /&amp;gt;
+    &amp;lt;/logger&amp;gt;
+&amp;lt;/log4net&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;输出将会是这样：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;2000-09-07 14:07:41,508 [main] INFO  MyApp - Entering application.
+2000-09-07 14:07:41,529 [main] INFO  MyApp - Exiting application.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;因为记录器Com.Foo.Bar没有分配级别，它将继承配置文件中已分配为Warn级别的Com.Foo的级别，Bar.DoIt方法中记录语句的级别为DEBUG，低于WARN，因此DoIt方法的记录请求将被禁止。&lt;/p&gt;
+
+&lt;p&gt;下面是使用多记录方式的配置文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;log4net&amp;gt;
+    &amp;lt;appender name=&quot;Console&quot; type=&quot;log4net.Appender.ConsoleAppender&quot;&amp;gt;
+        &amp;lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&amp;gt;
+            &amp;lt;!-- Pattern to output the caller's file name and line number --&amp;gt;
+            &amp;lt;conversionPattern value=&quot;%5level [%thread] (%file:%line) - %message%newline&quot; /&amp;gt;
+        &amp;lt;/layout&amp;gt;
+    &amp;lt;/appender&amp;gt;
+    &amp;lt;appender name=&quot;RollingFile&quot; type=&quot;log4net.Appender.RollingFileAppender&quot;&amp;gt;
+        &amp;lt;file value=&quot;example.log&quot; /&amp;gt;
+        &amp;lt;appendToFile value=&quot;true&quot; /&amp;gt;
+        &amp;lt;maximumFileSize value=&quot;100KB&quot; /&amp;gt;
+        &amp;lt;maxSizeRollBackups value=&quot;2&quot; /&amp;gt;
+        &amp;lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&amp;gt;
+            &amp;lt;conversionPattern value=&quot;%level %thread %logger - %message%newline&quot; /&amp;gt;
+        &amp;lt;/layout&amp;gt;
+    &amp;lt;/appender&amp;gt;
+    &amp;lt;root&amp;gt;
+        &amp;lt;level value=&quot;DEBUG&quot; /&amp;gt;
+        &amp;lt;appender-ref ref=&quot;Console&quot; /&amp;gt;
+        &amp;lt;appender-ref ref=&quot;RollingFile&quot; /&amp;gt;
+    &amp;lt;/root&amp;gt;
+&amp;lt;/log4net&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行它控制台将会出现如下输出&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;INFO [main] (MyApp.cs:16) - Entering application.
+DEBUG [main] (Bar.cs:12) - Doing it again!
+INFO [main] (MyApp.cs:19) - Exiting application.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;指的注意的是，因为根记录器有第二个记录方式，记录也会被输出到example.log文件，文件将会被回滚当他达到100KB，当回滚发生时，旧版本的example.log将会被重命名为example.log.1&lt;/p&gt;
+
+&lt;p&gt;注意，实现这些不同的记录行为并不需要重新编译程序。我们可以轻松的将记录输出到Email地址、Windows的事件记录器，或者远程的log4net服务器。&lt;/p&gt;
+
+&lt;p&gt;更多的使用XmlConfigurator实现多输出方式的例子 &lt;a href=&quot;http://logging.apache.org/log4net/release/config-examples.html&quot;&gt;点击这里&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>使用Javascript 调用.NET WEB服务</title>
+      <link>http://yuliu.org/2007/04/using_dotnet_web_service_by_javascript/</link>
+      <pubDate>Sun, 22 Apr 2007 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2007/04/using_dotnet_web_service_by_javascript</guid>
+	  <description>&lt;p&gt;过去使用Javascript调用服务器端代码时，后台代码一直都是放在普通的ASPX页面的Page_Load方法内，一直觉得这种方式不是很好，每实现一个功能都要一个新的页面来实现，也许还有其他问题。如果能够使用WEB服务的话，就可以解决上述问题，如可以在一个Web服务页面内放置多个函数和代码，解决web服务调用验证等。&lt;/p&gt;
+
+&lt;p&gt;在网上搜索Javascript调用web服务的方法，找到一篇&lt;a href=&quot;http://www.ibm.com/developerworks/cn/webservices/ws-wsajax/&quot;&gt;使用 Ajax 调用 SOAP Web 服务&lt;/a&gt;，但总是感觉好像太复杂了，要使用到它的Web Services JavaScript Library。另外一种我知道的方法就是使用ASP.NET Ajax，使用这个库调用web服务很简单并且实现的功能也很强。但是如果不使用这么重量的库能不能直接使用Javascript调用WEB服务呢？&lt;/p&gt;
+
+&lt;p&gt;一个偶然的机会，我发现使用ASP.NET编写的Web服务格式是这样的。加入名为Demo的asmx页面中有一个Web方法为foo()。那么调用它的时候，在地址栏显示的地址是Demo.asmx/foo。那么在Javascript能不能直接post（get）到服务器的这个页面呢？答案是可以，从而这样很简单的就实现了通过Javascript 调用WEB服务，也不需要其他库的支持。&lt;/p&gt;
+
+&lt;p&gt;下面用一个例子简单实现Javascript 调用WEB服务，假设WEB应用程序的Services/Demo.asmx中存在foo方法返回&quot;Hello World&quot;。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[WebMethod]
+public string foo()
+{
+    return &quot;Hello World&quot;;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;直接通过&lt;code&gt;Services/Demo.asmx/foo&lt;/code&gt;访问，得到下面结果，是一个XML文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&amp;gt; 
+&amp;lt;string xmlns=&quot;http://sacranto.blogspot.com/&quot;&amp;gt;Hello World&amp;lt;/string&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在Javascript中的调用如下：（Javascript中使用了&lt;a href=&quot;http://jquery.org/&quot;&gt;jQuery&lt;/a&gt;库，这个库与是否调用WEB服务没有关系，下同）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$(document).ready(function() {
+    $(&quot;#btnFoo&quot;).click(function(){
+        $.post(&quot;Services/Demo.asmx/foo&quot;,
+            function(res){
+                alert($(res).text());
+            }
+        );
+    });
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这段代码用于显示返回xml中的字符，IE7和FF2的结果不同，个人认为FF2的好一些。不知道IE6和其他浏览器的结果怎么样？
+&lt;img src=&quot;http://fs.yuliu.org/images/essay/2007/using_dotnet_web_service_by_javascript_001.jpg&quot; alt=&quot;IE截图&quot; /&gt;
+&lt;img src=&quot;http://fs.yuliu.org/images/essay/2007/using_dotnet_web_service_by_javascript_002.jpg&quot; alt=&quot;FF截图&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;那么能不能直接传递参数给WEB服务呢？在ASP.NET WEB服务中，答案仍然是可以（使用其他语言编写的WEB服务应该也可以吧）。借助于WebService.Context 获取当前请求的ASP.NET HttpContext，它封装了由 HTTP 服务器用来处理Web 请求的所有HTTP 特定的上下文。&lt;/p&gt;
+
+&lt;p&gt;修改请求的Javascript代码，多了传递参数的一行。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$(document).ready(function() {
+    $(&quot;#btnFoo&quot;).click(function(){
+        $.post(&quot;Services/Demo.asmx/foo&quot;,
+            {name:'sacranto',age:'24'},
+            function(res){
+                alert($(res).text());
+            }
+        );
+    });
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这样在web服务页面中，可以通过如下代码访问传递的参数&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;string name = Context.Request.Form[&quot;name&quot;];
+int age = Convert.ToInt32(Context.Request.Form[&quot;age&quot;]);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;解决了传递参数的问题，救下来就是返回值了。web服务直接返回的都是xml，我们也可以利用Respone返回其他格式，如text/plain。例如线面的fooText方法就返回了纯文本，记得把方法改成无返回值。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[WebMethod]
+public void fooText()
+{
+    string name = Context.Request.Form[&quot;name&quot;];
+    int age = Convert.ToInt32(Context.Request.Form[&quot;age&quot;]);
+    Context.Response.Expires = -1;       
+    Context.Response.ContentType = &quot;text/plain&quot;;
+    Context.Response.Write(&quot;Hello &quot; + name + &quot;, your age is &quot; + oString());
+    Context.Response.End();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在Javascript中的调用与上面基本相同，只是回调类型是text，直接使用即可。这也意味着text可以直接是json字符串了。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$(&quot;#btnFooText&quot;).click(function(){
+    $.post(&quot;Services/Demo.asmx/fooText&quot;,
+        {name:'sacranto',age:'24'},
+        function(res){
+            alert(res);
+        }
+    );
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;看看结果
+&lt;img src=&quot;http://fs.yuliu.org/images/essay/2007/using_dotnet_web_service_by_javascript_003.jpg&quot; alt=&quot;json结果&quot; /&gt;
+使用Javascript 调用.NET WEB服务，是不是很简单呢?&lt;/p&gt;
+
+&lt;p&gt;PS：据说这种方法使用 http://localhost/... 访问就正常, 但用域名会出错。　我试了用IP是没有问题的，用域名？我还没有域名呢 :-)&lt;/p&gt;
+
+&lt;p&gt;解决方法：
+在Web.config里面加上就可以了.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;webServices&amp;gt; 
+    &amp;lt;protocols&amp;gt; 
+        &amp;lt;add name=&quot;HttpPost&quot; /&amp;gt; 
+        &amp;lt;add name=&quot;HttpGet&quot; /&amp;gt; 
+    &amp;lt;/protocols&amp;gt; 
+&amp;lt;/webServices&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Javascript 的命名空间、类、属性和方法</title>
+      <link>http://yuliu.org/2007/04/namespace_class_property_function_in_javascript/</link>
+      <pubDate>Sat, 21 Apr 2007 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2007/04/namespace_class_property_function_in_javascript</guid>
+	  <description>&lt;p&gt;今天在网上看了一些实现Javascript 的命名空间、类、属性和方法的文章，下面是我自己尝试的代码，由于对Javascript这种prototype型的语言的理解不是很深，理解可能有误，还好实现应该没有问题的:-)&lt;/p&gt;
+
+&lt;h1&gt;1. 命名空间&lt;/h1&gt;
+
+&lt;p&gt;分为两个部分。第一个部分是注册函数，另外一部分是声明命名空间&lt;/p&gt;
+
+&lt;p&gt;命名空间注册函数，参照yui的方式，注意这种方式下所有的命名空间的第一级都是sacranto。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var sacranto = {};
+sacranto.namespace=function(ns){
+    if(!ns||!ns.length){
+        return null;
+    }
+    var levels = ns.split(&quot;.&quot;);
+    var nsobj=sacranto;
+    for(var i=(levels[0] == anto&quot;)?1:0;i&amp;lt;levels.length;i++){
+        nsobj[levels[i]]=nsobj[levels[i]]||{};
+        nsobj = nsobj[levels[i]];
+    }
+    return nsobj;
+};  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;声明命名空间的语句，这样我们就注册了一个sacranto.demo命名空间。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sacranto.namespace(&quot;demo&quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1&gt;2. 类&lt;/h1&gt;
+
+&lt;p&gt;对于prototype类型的语言，函数其实就是类，声明一个函数其实就声明了一个类，并且他还是是类的静态构造函数。下面的语句声明了一个类，静态构造函数里面什么也没有做。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sacranto.demo.aclass = function(){};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1&gt;3. 类的属性和方法&lt;/h1&gt;
+
+&lt;p&gt;这里就需要使用到prototype这个特性了&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sacranto.demo.aclass.prototype = {
+    //属性
+    version: &quot;1.0&quot;,
+    //方法
+    bar: function(s){
+        return &quot;hello &quot; + s;
+    }
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1&gt;4. 静态方法&lt;/h1&gt;
+
+&lt;p&gt;仿佛在javascript里面应该没有静态方法这个概念吧。我的理解是这样的&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;//我理解的静态方法，其实是另外一个类和它的静态构造函数。
+sacranto.demo.aclass.foo=function(s){
+    return &quot;hello &quot;+s;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;OK，完成，测试一下吧&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;window.onload = function(){
+    var aobj=new sacranto.demo.aclass();
+    alert(aobj.bar(&quot;world&quot;));                    //成功
+    //alert(sacranto.demo.aclass.bar(&quot;world&quot;));    //失败
+    alert(sacranto.demo.aclass.foo(&quot;world&quot;));    //成功
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;延伸阅读：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.crockford.com/javascript/private.html&quot;&gt;Private Members in JavaScript&lt;/a&gt;　英文：讨论了类中的私有成员&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://dev.csdn.net/article/84/84222.shtm&quot;&gt;prototype的一个优势也是缺点&lt;/a&gt;    中文：prototype实现类的属性和方法，以及在运行时刻会改变的特点。&lt;/p&gt;
+
+&lt;p&gt;PS：取消 使用IE打开包括JavaScript 的本地web页时收到安全警告 方法&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;在 工具 菜单上, 单击 Internet选项&lt;/li&gt;
+&lt;li&gt;单击 高级 选项卡&lt;/li&gt;
+&lt;li&gt;在 设置 列表, 确定依次选中 安全--允许活动内容在本机上的文件中运行。此选项允许您运行脚本和 ActiveX 控件在 InternetExplorer 中&lt;/li&gt;
+&lt;li&gt;在 文件 菜单上, 单击 关闭&lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>配置iBatis.NET DataMapper</title>
+      <link>http://yuliu.org/2007/04/ibatis_net_datamapper_configuration/</link>
+      <pubDate>Wed, 18 Apr 2007 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2007/04/ibatis_net_datamapper_configuration</guid>
+	  <description>&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;在&lt;a href=&quot;http://ibatis.apache.org/dotnetdownloads.cgi&quot;&gt;iBatis.Net的官方网站&lt;/a&gt;下载iBatis.NET DataMapper 1.6.1。这个是今年4月6号的最新版本，也是快一年以来的第一次更新。&lt;br/&gt;
+下载的Release的版本解压缩以后看起来很杂乱，dll、xml和xsd等一大堆。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;为了能够在Visual中编写映射文件和配置文件时使用智能提示和校验，首先把provider.xsd、SqlMap.xsd和SqlMapConfig.xsd拷贝0到&lt;code&gt;[VS安装目录]\Xml\Schemas&lt;/code&gt;，这个路径是相对于VS 2005的，其他版本参看文档4.2.4节。&lt;br/&gt;
+注：iBatis.NET的文档是需要单独下载的，不在Release包里面，下面提到的文档均是1.6.1版本的文档。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用iBatis.NET之前需要在VS的工程中添加对IBatisNet.DataMapper.dll引用，添加它的同时，它会自动将IBatisNet.Common.dll和Castle.DynamicProxy.dll添加到工程的bin目录下。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;编写SqlMap.config文件，并将其置于跟目录下,一般是Web.config(WEB应用程序)或者App.config(winform)所在的文件夹。下面是一个简单示例，修改自iBatis.NET文档。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; &amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;
+ &amp;lt;sqlMapConfig xmlns=&quot;http://ibatis.apache.org/dataMapper&quot;
+ xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; &amp;gt;
+   &amp;lt;properties resource=&quot;properties.config&quot;/&amp;gt;
+   &amp;lt;settings&amp;gt;
+     &amp;lt;setting useStatementNamespaces=&quot;true&quot;/&amp;gt;
+     &amp;lt;setting cacheModelsEnabled=&quot;true&quot;/&amp;gt;
+     &amp;lt;setting validateSqlMap=&quot;false&quot;/&amp;gt;
+   &amp;lt;/settings&amp;gt;
+
+   &amp;lt;database&amp;gt;
+     &amp;lt;provider name=&quot;sqlServer2.0&quot;/&amp;gt;
+     &amp;lt;dataSource name=&quot;iBatisExt&quot;  connectionString=&quot;user password=sa;data source=10.14.91.244;database=northwind;&quot;/&amp;gt;
+   &amp;lt;/database&amp;gt;
+
+   &amp;lt;sqlMaps&amp;gt;
+     &amp;lt;sqlMap resource=&quot;${root}Maps/Categories.xml&quot;/&amp;gt;
+   &amp;lt;/sqlMaps&amp;gt;
+ &amp;lt;/sqlMapConfig&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+其中首先指定Properties文件的位置，此处的Properties.config与SqlMap.config位于相同位置，Properties文件一般用来定义“名称-值”对，例如下面使用到的${root}就是在Properties.config中定义的，这里使用的Properties文件如下，很简单：
+
+&lt;pre&gt;&lt;code&gt; &amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&amp;gt;
+ &amp;lt;settings&amp;gt;
+   &amp;lt;add key=&quot;root&quot; value=&quot;./&quot; /&amp;gt;
+ &amp;lt;/settings&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Setting用于给定ibatis.net的一些属性，例如useStatementNamespaces是是否允许使用map文件中的命名空间，文档中的示例为false，注意把它改成true，因为下面的程序使用了map文件中的命名空间。&lt;br/&gt;
+database用于配置映射的数据源，Provider我改成了sqlServer2.0。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;把定义数据源的providers.config拷贝到与SqlMap.config相同的目录下，打开providers.config，修改其中的&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; &amp;lt;provider
+     name=&quot;sqlServer2.0&quot;
+     enabled=&quot;false&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+为
+
+&lt;pre&gt;&lt;code&gt; &amp;lt;provider
+     name=&quot;sqlServer2.0&quot;
+     enabled=&quot;true&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这里默认情况下，也就是从Release文件夹拷贝过来的providers.config是不打开sqlServer2.0，这个地方害我修改了半天。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;编写映射文件、实体类就完成了iBatis的配置。如果你不想自己编写映射文件、实体类，Go on&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;我找到了一个iBatis.NET的CodeSmith模板，名字叫做IBatisNetGen，个人觉得很好用，它直接生成了映射文件、实体类、DAO接口和DAO层。注意在使用时制定他们的命名空间，免得生成后自己去修改。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用上述模板注意有一个地方需要修改，就是在把DAO模板里面需要把SqlMapperFmt属性改为你自己的Mapper类，如本文中使用iBatis.NET默认的Mapper.Instance()。
+&lt;img src=&quot;http://fs.yuliu.org/images/essay/2007/ibatis_net_datamapper_configuration_001.jpg&quot; alt=&quot;iBates属性&quot; /&gt;
+如果使用到了多数据库，要用不同的SqlMap文件，并编写不同的Mapper类，如这里完成了一个使用AnotherSqlMap.config文件的AnotherSqlMapper类（参考文档Example 4.4），注意红色的行与iBatis.net中文档4.4.1.1节有一点区别，4.4.1.1节的语句不能直接用于替换文档中的Example 4.4的对应语句，必须做红色标示的修改。奇怪一下文档为什么不前后一致呢？&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; using IBatisNet.Common.Utilities;
+ using IBatisNet.DataMapper;
+ using IBatisNet.DataMapper.Configuration;
+
+ namespace Demo
+ {
+     public class AnotherSqlMapper
+     {
+         private static volatile ISqlMapper _mapper = null;
+
+         protected static void Configure(object obj)
+         {
+             _mapper = null;
+         }
+
+         protected static void InitMapper()
+         {
+             ConfigureHandler handler = new gureHandler(Configure);
+             DomSqlMapBuilder builder = new DomSqlMapBuilder();
+             _mapper = er.ConfigureAndWatch(&quot;AnotherSqlMap.config&quot;,handler);
+         }
+
+         public static ISqlMapper Instance()
+         {
+             if (_mapper == null)
+             {
+                 lock (typeof(SqlMapper))
+                 {
+                     if (_mapper == null)
+                     {
+                         InitMapper();
+                     }
+                 }
+             }
+             return _mapper;
+         }
+
+         public static ISqlMapper Get()
+         {
+             return Instance();
+         }
+     }
+ }
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;配置完成，以Northwind中的Categories表为例，实体类Categories。C#获取全部记录的调用语句。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; ICategoriesDao catDao=new CategoriesDao();
+         IList&amp;lt;Categories&amp;gt; cats = catDao.FindAll();
+         gvCategories.DataSource = cats;
+         gvCategories.DataBind();
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>Subversion 服务器的建立</title>
+      <link>http://yuliu.org/2007/03/setup_of_subversion_server/</link>
+      <pubDate>Fri, 30 Mar 2007 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2007/03/setup_of_subversion_server</guid>
+	  <description>&lt;p&gt;作为一个非专业的程序设计人员，原来编程序要进行版本控制总是使用winrar压缩，今天尝试了一下Subversion（SVN），感觉的确很好用，以后就用它代替rar了。不知道用来对word文档或者其他的进行控制行不行。使用SVN首先要建立SVN服务器。这方面教程网上很多，写这篇blog的目的是帮助自己记录，免得以后到处找资料，如果对你有一点用就更好了。Subversion有一本很好的图书教程&lt;a href=&quot;http://svnbook.subversion.org.cn/1.1/index.html&quot;&gt;使用Subversion进行版本控制&lt;/a&gt;  免费PDF或者HTML，多语言版本，内容齐全，同时意味着复杂，这也是写这篇blog的原因。&lt;/p&gt;
+
+&lt;p&gt;这篇blog的目的是 &lt;strong&gt;&lt;em&gt;照着它操作即可以配置出局域网内可以直接使用的Subversion服务器&lt;/em&gt;&lt;/strong&gt; 。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;下载Subversion服务器，地址&lt;a href=&quot;http://subversion.tigris.org/servlets/ProjectDocumentList?folderID=91&quot;&gt;http://subversion.tigris.org/servlets/ProjectDocumentList?folderID=91&lt;/a&gt;　选择setup.exe结尾的安装版本，如果你喜欢非安装版本也可以，自己配置环境变量的路径就可以了。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;安装Subversion 客户端TortoiseSVN，地址&lt;a href=&quot;http://tortoisesvn.net/downloads&quot;&gt;http://tortoisesvn.net/downloads&lt;/a&gt;，同样选择安装版本，有需要可以同时下载语言包。客户端不是必须的，但是使用它可以在图形化界面下进行操作。TortoiseSVN是比较流行的Windows下的客户端。安装后没有自己的界面，而是直接集成在资源管理器（右键菜单）里面。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;建立版本库（Repository），既存放文件的地方。使用TortoiseSVN到欲建立版本库的目录如E:\svn\repository右击，TortoiseSVN——在此创建版本库。选择本地文件系统。另外一种BDB方式没用过。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;启动Subversion服务器。这里我们直接使用Subversion服务器，其他参看图书教程。启动服务器有两种方式&lt;/p&gt;
+
+&lt;p&gt; a. 命令行输入&lt;code&gt;svnserve -d -r E:\svn\repository&lt;/code&gt;启动服务。这个是临时方法，即命令行窗口在使用过程中不能关闭，关闭服务器就停止了。&lt;/p&gt;
+
+&lt;p&gt; b. 把subversion当作windows的服务。命令行输入 &lt;code&gt;sc create svnservice binpath= &quot;\&quot;e:\program files\Subversion\bin\svnserve.exe\&quot; --service -r E:\svn\repository&quot; displayname= &quot;SVNService&quot; depend= Tcpip&lt;/code&gt;。binbinpath指向svnserve.exe所在目录。后面一个指向刚刚建立的版本库。注意语句里面的空格不要随意增减减少，否则会出错。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;导入工程。选择工程的根文件夹，右击--TortoiseSVN——导入。版本库URL填写Subversion所在服务器IP及欲建立工程目录如&lt;code&gt;svn://10.14.91.244/PISDKDemoProject&lt;/code&gt;，导入信息中输入对项目的描述，如图
+&lt;img src=&quot;http://fs.yuliu.org/images/essay/2007/setup_of_subversion_server_001.jpg&quot; alt=&quot;导入工程&quot; /&gt;
+这一步同样可以在装有TortoiseSVN的客户端上面进行操作。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;浏览服务器&lt;br/&gt;
+右键——TortoiseSVN——版本库浏览器，输入服务器地址&lt;code&gt;svn://10.14.91.244&lt;/code&gt;，便可看到服务器上面项目
+&lt;img src=&quot;http://fs.yuliu.org/images/essay/2007/setup_of_subversion_server_001.jpg&quot; alt=&quot;版本库浏览&quot; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;签出程序，找到欲下载程序的目录。&lt;br/&gt;
+右键——SVN检出，紧接着输入服务器URL和路径如&lt;code&gt;svn://10.14.91.244/PISDKDemoProject&lt;/code&gt;。&lt;br/&gt;
+这样便可以看见目录图标上面有一个小勾。便表示目录已经和服务器绑定了，从而实习下载或者提交等操作。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>PI-SDK错误-2147220424的解决方法</title>
+      <link>http://yuliu.org/2007/03/solution_to_pi_sdk_error_2147220424/</link>
+      <pubDate>Thu, 29 Mar 2007 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2007/03/solution_to_pi_sdk_error_2147220424</guid>
+	  <description>&lt;p&gt;最近有不少人通过IM问我关于PI-SDK开发的问题，正好我也好久没有看了，把原来学习的时候写的一个利用PI-SDK读取snapshot和archive的例子拿出来重温了一下。调试运行结果竟然不通过，记得原来这个例子是OK的，看了以下错误出在Server对象的Open方法上，这个方法是用于连接数据库的。仔细看了SDK的文档，连接字符串的写法、用户名和密码均正确，但是就是连不上，每运行到这里就跑出异常-2147220424。异常提示“ServerID returned from server does not match that currently configured on this machine. The server at the path for the opened handle may have changed. ”我理解的大意是服务器的句柄变化，返回的ServerID和机器的当前配置不同。记起前几天把实验用的PI数据库重装过，难道是这个原因不成。但是怎么解决呢？文档和Google均没有找到好的答案。&lt;/p&gt;
+
+&lt;p&gt;首先，利用PI-API连接数据库，在权限允许的情况下，读写均没有问题，虽然PI-API和PI-SDK使用两套不同的登录方式，但是这样至少说明我的机器和数据库的连接是没有问题的。&lt;/p&gt;
+
+&lt;p&gt;接着，按照Troubleshooting PI client connection problems上的方法使用AboutPI-SDK对话框测试登录，结果仍然可以。但是回到程序就是不行。&lt;/p&gt;
+
+&lt;p&gt;最后，另外写了一个程序重新连接数据库，仍然报相同的错误，可能是因为Com组件的信息是保存在注册表，登录时仍然使用了以前保存的信息。既然猜想登录信息保存在注册表，那么直接去注册表中更改一下信息不是就好了，可惜不知道改哪里。&lt;/p&gt;
+
+&lt;p&gt;正在这是灵光一现，想着干嘛这么复杂。直接利用AboutPI-SDK对话框新建一个连接，再把原来的那个连接给删掉不是应该就可以删除注册表中的原来连接信息了吗？搞定。这个时候相同的程序，open方法使用相同的语句登录上了数据库。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;估计这个是一个SDK的小BUG，如果以前连接过PI数据库、在PI数据库重装以后，必须更新本机的SDK在注册表中信息，更新方法很简单。使用AboutPI-SDK对话框新建一个连接，再把原来的那个连接给删掉。&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>聚合聊天工具 Miranda32</title>
+      <link>http://yuliu.org/2007/03/integrated_im_tools_miranda32/</link>
+      <pubDate>Thu, 29 Mar 2007 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2007/03/integrated_im_tools_miranda32</guid>
+	  <description>&lt;p&gt;自安装Windows2003 SP2后，因为QQ键盘保护导致系统死机所以一直没有使用QQ。也许是QQ意识到了键盘保护引起的这些问题，推出了最新版本的QQ，它能在安装时候让你选择是否使用键盘保护。但是我一直不使用原版的QQ，乱七八糟的东西太多，从最初的木子，到珊瑚虫再到现在的飘云版。但是飘云还没有推出最新版的修改版，只好作罢。&lt;/p&gt;
+
+&lt;p&gt;但是实际又不允许我不使用QQ，周围使用它的人太多了。于是找了下有没有能够兼容QQ的聊天工具，网络的那种我不喜欢，聊天还要开个网页、老板来了怎么办？:-) 于是找到Giam最新测试版，稳定版好像不支持QQ，用着不怎么顺手，最后发现了这款聚合聊天工具&lt;a href=&quot;http://miranda-im.org/&quot;&gt;Miranda32&lt;/a&gt;.如果遇到同样问题的人可以尝试一下它。&lt;/p&gt;
+
+&lt;p&gt;最好是下测试版的，我使用的是Miranda IM v0.7.0 Test Build #20，集成了很多常用的插件。也许你觉得它不够美观，No..，它可以美化界面，添加插件，总之你需要自己动手。（最近喜欢上了这种类型的软件，Firefox就不说了。foobar2000、irfanView等）。下面几篇文章是我配置的时候参照的&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://blog.wdicc.com/mim/Miranda%20IM.htm&quot;&gt;Miranda IM使用简介&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://blog.donews.com/sogoo/archive/2006/05/05/857636.aspx&quot;&gt;Miranda IM 常见使用问题解答&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.cnmim.cn/search/node/%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A8&quot;&gt;Miranda 新手入门&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://miranda.lifevine.org/faq&quot;&gt;Miranda IM 常见使用问题解答&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;或者直接上Google搜索Miranda。下面是我的界面&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2007/integrated_im_tools_miranda32_001.jpg&quot; alt=&quot;联系人界面&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2007/integrated_im_tools_miranda32_002.jpg&quot; alt=&quot;聊天界面&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;你肯定很关心这一点，它的内存占用怎么样。我利用它开了两个QQ，MSN和Gtalk，有近15个插件，Windows 2003的任务管理器显示占用内存是30M。至于多不多就要自己判断了。&lt;/p&gt;
+
+&lt;p&gt;此外如果使用IEView插件，在使用表情的时候会发现那几个表情不会动，这个和Miranda无关，到IE设置--高级--多媒体--选择在网页中播放动画。&lt;/p&gt;
+
+&lt;p&gt;PS：blogspot在中国又被封了，如果要封为什么又要解封呢？不解&lt;/p&gt;
+
+&lt;p&gt;又一个PS：&lt;a href=&quot;http://kunshou.blogspot.com/2007/03/foxyproxy.html&quot;&gt;这里&lt;/a&gt;是一个简单的方法让你突破封锁，如果封锁能够简单的突破，封锁又有什么意义呢？又一个不解&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>利用PI-SDK读取和写入snapshot或者archive的示例</title>
+      <link>http://yuliu.org/2007/03/demo_to_read_write_snapshot_and_archive_using_pisdk/</link>
+      <pubDate>Thu, 29 Mar 2007 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2007/03/demo_to_read_write_snapshot_and_archive_using_pisdk</guid>
+	  <description>&lt;p&gt;一个很简单的程序。实现PI-SDK读取和写入snapshot或者archive。以测试读取和写入int和float的数据，bool和string类型没有测试，估计需要修改，但是原理是一样的。界面如图，从上到下，从左到右操作就可以了。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2007/demo_to_read_write_snapshot_and_archive_using_pisdk_001.jpg&quot; alt=&quot;程序界面&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;很简单的版权说明，呵呵&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;×××××××××××××××××××××××××××××××××××××××××××××
+利用PI-SDK读取和写入snapshot或者archive的示例
+(c) 皮生 (http://blog.yuliu.org) 2007
+最后更新 - 3/29/2007 20:55
+These code are provided AS IS. You can copy it, use it, and distribute it as long as this statement are not removed.
+
+×××××××××××××××××××××××××××××××××××××××××××××
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;下载地址：&lt;a href=&quot;http://fs.yuliu.org/files/essay/PISDKDemo.zip&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Word 2007调整表格中公式显示格式的宏</title>
+      <link>http://yuliu.org/2007/03/word2007_macro_to_adjust_formula_style_in_table/</link>
+      <pubDate>Thu, 22 Mar 2007 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2007/03/word2007_macro_to_adjust_formula_style_in_table</guid>
+	  <description>&lt;p&gt;最近要写一个报告，正好体验了一把Word 2007，改变的确很大，界面的报道已经很多了，google、baidu搜索不知道有多少结果。我比较关心其中公式编辑器的改变，不像以前的版本使用MathType的简化版来做为公式编辑器，word 2007使用普通文本来而不是对象来描述公式（以前的版本使用嵌入对象来描述，这个方法现在仍然被支持），所以它能很好的嵌入在普通文本里面。更为重要的是据说为了新的公式编辑器，微软使用了TeX的标准和设计新的数学字体。通过实践，果然word 2007生成的公式比以前的美观了很多。下面两个你能猜出来哪个是新公式编辑器写的吗？&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2007/word2007_macro_to_adjust_formula_style_in_table_001.jpg&quot; alt=&quot;公式&quot; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Sub 公式格式()
+    On Error GoTo Err
+    Dim oTable As Table
+    Set oTable = Selection.Tables(1)
+    Dim oCell As Cell
+    For Each oCell In oTable.Range.Cells
+        Dim intMathNumber As Integer
+        intMathNumber = oCell.Range.OMaths.Count
+        If intMathNumber &amp;gt; 0 Then
+            For i = 1 To intMathNumber
+                oCell.Range.OMaths(i).ParentOMath.Type = wdOMathInline
+            Next
+        End If
+    Next
+    Exit Sub
+Err:
+    MsgBox (&quot;没有选中表格&quot;)
+End Sub
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;word 2007虽然有不少进步，但是也有不足之处，&lt;/p&gt;
+
+&lt;p&gt;第一是录制宏好像不怎么方便，右键菜单不能用，还有那个PP菜单上的很多东西也不能点，这个好像相比2003有了很大的退步。&lt;/p&gt;
+
+&lt;p&gt;第二就是公式的编号问题，word 2007中好像取消了公式编号，所以这个成了一个麻烦事，微软研究院的&lt;a href=&quot;http://research.microsoft.com/en-us/people/dongyu/&quot;&gt;Dong Yu&lt;/a&gt;好像也对这个问题有点奇怪，于是写了一个&lt;a href=&quot;http://research.microsoft.com/en-us/people/dongyu/Office2007EqnNumber.txt&quot;&gt;宏&lt;/a&gt;来完成这个任务，虽然我觉得不是很好用，word 2007怎么会不提供这个功能呢？&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>微软网站的Windows 2003 sp2兼容应用程序列表</title>
+      <link>http://yuliu.org/2007/03/compatible_softwares_of_windows_2003sp2_in_microsoft_website/</link>
+      <pubDate>Sun, 18 Mar 2007 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2007/03/compatible_softwares_of_windows_2003sp2_in_microsoft_website</guid>
+	  <description>&lt;p&gt;在这篇&lt;a href=&quot;/2007/03/abnormal_shutdown_when_upgrading_to_2003sp2&quot;&gt;Blog&lt;/a&gt;中令我写到升级到Windows 2003 sp2后，QQ因为它采用的键盘保护技术导致系统死机的问题。&lt;/p&gt;
+
+&lt;p&gt;今天在微软的官方网站上看到了&lt;a href=&quot;http://support.microsoft.com/default.aspx?scid=kb;en-us;926031&amp;amp;sd=rss&amp;amp;spid=3198#appliesto&quot;&gt;Windows 2003 sp2兼容应用程序列表（英文）&lt;/a&gt;，文章提到微软的测试人员测试了1500+个应用程序，测试结果包括两类，一类是通过检测的软件及其版本；另外一类当然是有问题的，提供了问题描述和可能的解决方法。&lt;/p&gt;
+
+&lt;p&gt;在这两个名单里面，我都没有看到Tencent或者QQ的名字。不过在有问题列表里面看到了许多微软自己的产品如Exchange Server 2003、ISA Server 2004等。比较引起我注意的是Microsoft Management Console (MMC) 3.0好像也可能有问题，这个我一般用的比较多像IIS，组策略等都是通过它打开的吧。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Windows 2003下安装965主板集成显卡（GMA3000）驱动程序</title>
+      <link>http://yuliu.org/2007/03/gma3000_driver_installation_of_965_mainboard_in_windows_2003/</link>
+      <pubDate>Fri, 16 Mar 2007 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2007/03/gma3000_driver_installation_of_965_mainboard_in_windows_2003</guid>
+	  <description>&lt;p&gt;一台&lt;a href=&quot;http://www1.ap.dell.com/content/products/productdetails.aspx/optix_745?c=cn&amp;amp;l=zh&amp;amp;s=bsd&amp;amp;cs=cnbsd1&quot;&gt;DELL OptiPlex 745&lt;/a&gt;的商用台式机因为需要重新安装了Windows 2003系统，安装好以后插入自带的驱动程序盘，发现没有2003的驱动。那么先用xp的驱动试一下吧，主板的还好，到了显卡，出现了下面的对话框&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2007/gma3000_driver_installation_of_965_mainboard_in_windows_2003_001.jpg&quot; alt=&quot;error message&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;不知道是什么显卡，打开Everest（这个软件还真是好用），一看显示芯片是965主板集成的GMA3000（我的945集成的还是GMA950，到了965一下子就跳到3000了。难道是性能有很大的提升？）。知道了芯片就好办了，DELL、Intel和驱动之家查了一圈下来，竟然都没有它在2003下面的驱动，不是商用台式机吗？怎么也应该提供2003的驱动吧。没办法，只好试试在设备管理器里面能不能更新他的驱动，还好这个手段OK，重启。&lt;/p&gt;
+
+&lt;p&gt;重启以后进入系统，……%￥#@！系统竟然变成了640*480*4bit的界面，而且调整分辨率也没有用，无论怎么调都停留在这个分辨率。那还不如不要装呢，不转之前还能跳到1280*1024，只是界面拖动的时候会有尾迹。于是只好在google漫无边际的搜索。&lt;/p&gt;
+
+&lt;p&gt;最后在&lt;a href=&quot;http://softwarecommunity.intel.com/isn/Community/en-US/forums/thread/30225949.aspx&quot;&gt;Intel&lt;/a&gt;的论坛看到了一个相似的问题，照着一位坛友的方法修改，重启进入系统，终于看到了如愿的界面。&lt;/p&gt;
+
+&lt;p&gt;解决方法很简单：修改注册表 &lt;code&gt;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management&lt;/code&gt; 下的 &lt;code&gt;LargeSystemCache&lt;/code&gt;为&lt;code&gt;0&lt;/code&gt;（数字零）&lt;/p&gt;
+
+&lt;p&gt;如果你修改了还不行，尝试一下重新在设备管理中更新一下驱动程序。&lt;/p&gt;
+
+&lt;p&gt;&quot;LargeSystemCache&quot;是用来制定系统是否使用大缓存，通常来说，打开该选项会使系统性能得到相当的提升，但也有可能会使某些应用程序性能降低。需要注意的是必须有256M以上的内存，激活LargeSystemCache才能起到正面作用。不知道这个和驱动有什么具体的冲突。&lt;/p&gt;
+
+&lt;p&gt;PS：Windows 2003 下面安装Intel High Definition audio声卡之前先到微软下载这个 &lt;a href=&quot;http://www.microsoft.com/downloads/details.aspx?FamilyID=d0934d06-15b3-4a65-8c52-746beb24e86c&amp;amp;displaylang=zh-cn&quot;&gt;补丁（中文版）&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>升级到Windows 2003 sp2及系统不正常死机的初探</title>
+      <link>http://yuliu.org/2007/03/abnormal_shutdown_when_upgrading_to_2003sp2/</link>
+      <pubDate>Thu, 15 Mar 2007 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2007/03/abnormal_shutdown_when_upgrading_to_2003sp2</guid>
+	  <description>&lt;p&gt;经历过XP的sp2升级经验以后，确认不会因为升级产生某些不可控的危害以后，我决定把我的2003操作系统升级到sp2 :) ，可是，却发生了...&lt;/p&gt;
+
+&lt;p&gt;首先在&lt;a href=&quot;http://www.microsoft.com/downloads/details.aspx?FamilyID=95ac1610-c232-4644-b828-c55eec605d55&amp;amp;DisplayLang=en&quot;&gt;微软的下载中心&lt;/a&gt;下载大约400M的升级包，还有一种是可以刻录成光盘的下载文件，个头也比较大，估计500M左右，我选择了这个比较小的。&lt;/p&gt;
+
+&lt;p&gt;升级过程还算比较快，比Visual Studio 2005 sp1的安装快多了，而且不会出现快安装完说什么数字签名不对重来的那种情况。&lt;/p&gt;
+
+&lt;p&gt;升级完成以后进入系统，一切还比较顺畅，仿佛跟原来的没有什么区别，正在此时，电脑停止了反应，鼠标不能动，Tab键没有反应，Task manager也掉不出来，只能按Reset键重新启动，当我认为这是一个意外，重新启动机器以后，过了不到５分钟，又出现了同样的状况。我知道，某个地方出问题了&lt;/p&gt;
+
+&lt;p&gt;按照先软后硬的次序，Ghost恢复了系统（可怜我得重新安装那么一大坨软件啊），还是崩溃。接着怀疑是温度过高，拿出everest进行压力测试，温度竟然达到了110°。赶快检查cpu，把风扇拆了好好清洗了以下，又找来硅脂重新涂好，开机再测，温度是降下来了，70°左右（P4就是这样的，没用过扣肉）。正以为大功告成之时，系统又停止了响应。&lt;/p&gt;
+
+&lt;p&gt;想着就算把电脑拿去修也是一件麻烦的事情，这个死机又是不一定的，到时候怎么给别人说。就在郁闷的时候，我偶然间“终于”得到了答案。用everest进行压力测试的时候，CPU占用率会达到100%。而进行这个测试有的时候会死机，有的时候不会死机。而两者的区别我能察觉到就是QQ的打开与否。难道是QQ的原因。&lt;/p&gt;
+
+&lt;p&gt;于是上网google了以下。在这个&lt;a href=&quot;http://webnews.giga.net.tw/article/news.microsoft.com/microsoft.public.cn.windows.server.setup/3713&quot;&gt;新闻组&lt;/a&gt;看到一个人和我相同的状况。他的解决方法是&lt;strong&gt;&lt;em&gt;删除了键盘保护的两个文件&lt;/em&gt;&lt;/strong&gt;。这个两个文件又在哪里呢。&lt;a href=&quot;http://blogs.itecn.net/blogs/winvista/archive/2006/09/03/3604.aspx&quot;&gt;这篇文章&lt;/a&gt;指出了是哪两个键盘保护文件导致QQ在Vista下面死机，他的解决方法是删除这个两个文件，我没有这么极端，而是把他们的名字改了。这两个文件是QQ安装文件夹下的&lt;strong&gt;&lt;em&gt;npkcrypt.sys&lt;/em&gt;&lt;/strong&gt;和&lt;strong&gt;&lt;em&gt;npkcusb.sys&lt;/em&gt;&lt;/strong&gt;两个文件。改了以后登录QQ，通知键盘保护失效，强迫让你用软键盘输入前三位密码。&lt;/p&gt;
+
+&lt;p&gt;在网上搜索这两个文件，基本上都和腾讯QQ有联系，他们用来在输入QQ密码时进行键盘保护，腾讯是这样吹的：“采用了国际先进的nProtect键盘加密保护技术，能最大限度地防止用户的密码输入不被病毒、键盘记录程序所窃取，大大提高了QQ用户的帐号安全性。”但是好像网上对这个的破解不只一个两个，&lt;a href=&quot;http://bbs.zol.com.cn/index20060211/index_284_249.html&quot;&gt;这里&lt;/a&gt;是一个比较概念的，没有给出代码，而&lt;a href=&quot;http://blog.csdn.net/DL88250/archive/2006/12/13/1440394.aspx&quot;&gt;这里&lt;/a&gt;则直接给出了破解的C程序代码。不过我没有确认，有感兴趣的可以尝试以下。&lt;/p&gt;
+
+&lt;p&gt;我不否认腾讯为防止QQ号被盗而做出的努力，但是使用如此复杂而又低层甚至危险的技术（至少再我看来），却不在安装的时候通知用户，而安装了以后又不让用户能够选择是否使用，导致我为了这个问题而浪费了两天的时间。&lt;/p&gt;
+
+&lt;p&gt;PS：我觉得密码保护通过一些逻辑手段基本上已经起到了比较好的效果了，没有必要这么复杂以致引起系统死机。&lt;/p&gt;
+
+&lt;p&gt;中国的软件商总喜欢把用户当成傻瓜。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>A Data Driven Switch Menu On CodeProject.com</title>
+      <link>http://yuliu.org/2006/12/a_data_driven_switch_menu_on_codeproject/</link>
+      <pubDate>Wed, 20 Dec 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/12/a_data_driven_switch_menu_on_codeproject</guid>
+	  <description>&lt;p&gt;Yesterday, I write a article on how to make a switch menu with javascript. Today I read a article on codeproject.com named &lt;a href=&quot;http://www.codeproject.com/useritems/navpanel.asp&quot;&gt;How To Implement a NavigationPanel Using AJAX&lt;/a&gt;. The author do a really good work to make a Ajax data driven navigation panel by asp.net and SQL Server. With the source code of the article we can move data source to XML files and so on.&lt;/p&gt;
+
+&lt;p&gt;I decorated the code in my last article. Unfortunately, if you use Firefox to browse it, the style of code looks ugly. I used the open source code coloried tool wriiten by javascript &lt;a href=&quot;http://www.dreamprojections.com/SyntaxHighlighter/&quot;&gt;dp.SyntaxHighlighter&lt;/a&gt;. I am tring to modify it to satify my requirement better the whole day but with little result.&lt;/p&gt;
+
+&lt;p&gt;what a bad day!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Switch Menu In Javascript</title>
+      <link>http://yuliu.org/2006/12/switch_menu_in_javascript/</link>
+      <pubDate>Tue, 19 Dec 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/12/switch_menu_in_javascript</guid>
+	  <description>&lt;p&gt;I formerly choose &lt;a href=&quot;http://ajax.asp.net/ajaxtoolkit/Accordion/Accordion.aspx&quot;&gt;Accordion Control&lt;/a&gt; in Microsoft Ajax Control toolkit in my application. I like menu with such switching  style. The control is well in it's appearance. For example, we can set frames per second of switching animation and fading transition effect.&lt;/p&gt;
+
+&lt;p&gt;However, I encountered the problem when I set  AsyncPostBackTrigger of updatepanel to the LinkButton inside the accordion. If do this, there will be a error at runtime said that  LinkButton1 is not exist. I found a lot of developer have the same confusion at the official forum of asp.net but I can't get answer of it. I think this is may be control name changed when it is in a panel.&lt;/p&gt;
+
+&lt;p&gt;I tried another way to solve this problem is to put accordion in a updatapanel. Unfortunately, It still din not work due to LinkButton can't raised event.&lt;/p&gt;
+
+&lt;p&gt;Because I can't get the solution of it. I decided to write a switch menu in such style although the self-made one will be simple without any animation or fading effect.&lt;/p&gt;
+
+&lt;p&gt;We know we can use CSS style.display attribute to display or hide the div, control and so on. So it's not difficult to make a simple switch menu in Javascript. At first we made menu in html&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;ul id=&quot;nav-secondary&quot;&amp;gt;
+    &amp;lt;li id=&quot;Menu1&quot;&amp;gt;&amp;lt;a href=&quot;#&quot; onclick=&quot;SwitchMenu('Menu1','nav-secondary')&quot;&amp;gt;Menu 1&amp;lt;/a&amp;gt;
+        &amp;lt;ul style=&quot;display: none;&quot;&amp;gt;
+            &amp;lt;li&amp;gt;&amp;lt;a href=&quot;#&quot; id=&quot;A1&quot;&amp;gt;Sub Menu 1.1&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;&amp;lt;a href=&quot;#&quot; id=&quot;A6&quot;&amp;gt;Sub Menu 1.2&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;/ul&amp;gt;
+    &amp;lt;/li&amp;gt;
+    &amp;lt;li id=&quot;Menu2&quot;&amp;gt;&amp;lt;a href=&quot;#&quot; onclick=&quot;SwitchMenu('Menu2','nav-secondary')&quot;&amp;gt;Menu 2&amp;lt;/a&amp;gt;
+        &amp;lt;ul style=&quot;display: none;&quot;&amp;gt;
+            &amp;lt;li&amp;gt;&amp;lt;a href=&quot;#&quot; id=&quot;A5&quot;&amp;gt;Sub Menu 2.1&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;&amp;lt;a href=&quot;#&quot; id=&quot;A7&quot;&amp;gt;Sub Menu 2.2&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;/ul&amp;gt;
+    &amp;lt;/li&amp;gt;
+    &amp;lt;li id=&quot;Menu3&quot;&amp;gt;&amp;lt;a href=&quot;#&quot; onclick=&quot;SwitchMenu('Menu3','nav-secondary')&quot;&amp;gt;Menu 3&amp;lt;/a&amp;gt;
+        &amp;lt;ul style=&quot;display: none;&quot;&amp;gt;
+            &amp;lt;li&amp;gt;&amp;lt;a href=&quot;#&quot; id=&quot;A2&quot;&amp;gt;Sub Menu 3.1&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;&amp;lt;a href=&quot;#&quot; id=&quot;A3&quot;&amp;gt;Sub Menu 3.2&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;&amp;lt;a href=&quot;#&quot; id=&quot;A4&quot;&amp;gt;Sub Menu 3.3&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;/ul&amp;gt;
+    &amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;SwitchMenu is defined in the Javascript to display or hide the sub menu. note is added. the statement used to set CSS class is optional&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var currentMenu;                             //Global variable: current menu
+//Parameter obj is the menu you clicked, container is the container layer of menu
+function SwitchMenu(obj,container){
+    if(document.getElementById(container)){  
+        if (currentMenu!=null) {
+            //Clear css style of current menu
+            currentMenu.className=&quot;&quot;;       
+        }       
+        //Get the target menu you clicked     
+        var targetMenu = document.getElementById(obj);      
+        //Get sub-menu of target menu        
+        var secondaryMenu= targetMenu.getElementsByTagName(&quot;UL&quot;)[0];    
+        var secondaryMenus = document.getElementById(container).getElementsByTagName(&quot;UL&quot;); //get all submenus   
+        if (secondaryMenu==null) {                                  //No sub menu                                 
+            for (var i=0; i&amp;lt;secondaryMenus.length; i++){    
+                 //Hide all sub menu                       
+                secondaryMenus[i].style.display = &quot;none&quot;;                          
+            }
+            //Set target menu css class
+            targetMenu.className=&quot;active&quot;;                          
+        }else{                                                                               //Sub menu Exist
+            //Click the  menu which sub-menu is hide
+            if(secondaryMenu.style.display == &quot;none&quot;){                             
+                for (var i=0; i&amp;lt;secondaryMenus.length; i++){                            
+                    secondaryMenus[i].style.display = &quot;none&quot;;       //Hide all sub menu                     
+                }
+                secondaryMenu.style.display = &quot;block&quot;;              //Display sub-menu u clicked             
+                targetMenu.className=&quot;active&quot;;                            //Set target menu css class         
+            }else{                                                  //Click the  menu which sub-menu is displayed   
+                secondaryMenu.style.display = &quot;none&quot;;               //Hide it    
+                targetMenu.className=&quot;&quot;;    
+            }
+        }
+        currentMenu = document.getElementById(obj);     //Set current menu (global variable)
+    }
+} 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ok, run it in your browser. it works fine, right?&lt;/p&gt;
+
+&lt;p&gt;Maybe additional css make appearance better&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/* SECONDARY NAVIGATION - vertical navigation */
+#nav-secondary, #nav-secondary ul {position:static}
+#nav-secondary, #nav-secondary li {list-style: none;margin:0;padding:0;background:#fff}
+#nav-secondary {padding-top:0;border-top: 1px solid #ccc;margin-top: 1px}
+#nav-secondary a {line-height:1.8;padding: 5px 0 5px 23px;background: #fff url(&quot;images/sprites.gif&quot;) no-repeat 10px -695px;font: bold 86% arial;display:block}
+#nav-secondary a, #nav-secondary a:link, #nav-secondary a:visited, #nav-secondary a:hover, #nav-secondary a:active {text-decoration:none;cursor:pointer} 
+#nav-secondary a:link {color:#000} 
+#nav-secondary a:visited {color:#000} 
+#nav-secondary a:hover {color:#c00;background: #fee url(&quot;images/sprites.gif&quot;) no-repeat 10px -695px} 
+#nav-secondary li.active a:link, #nav-secondary li.active a:visited, #nav-secondary li.active a:hover, #nav-secondary li.active a:active {color:#c00} 
+#nav-secondary li {border-top: 1px solid #fff;border-bottom: 1px solid #ccc}
+
+/* SECONDARY NAVIGATION - 2nd TIER */
+#nav-secondary ul {margin: 0 0 1em 23px;padding:0}
+#nav-secondary li.active li a, #nav-secondary li.active li a:link, #nav-secondary li.active li a:visited {line-height:1.5;background: #fff url(&quot;images/sprites.gif&quot;) no-repeat 0 -798px;padding:0 0 0 12px;font-weight:normal;width:auto;color:#000;width:130px;display:block}
+#nav-secondary li.active li a:hover, #nav-secondary li.active li a:active {color: #c00}
+#nav-secondary li.active li {border: none;margin:0}
+#nav-secondary li.active li.active a:link, 
+#nav-secondary li.active li.active a:visited, 
+#nav-secondary li.active li.active a:hover, 
+#nav-secondary li.active li.active a:active {font-weight:bold} 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;These are the final snap in my FireFox2 and IE7&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2006/switch_menu_in_javascript_001.jpg&quot; alt=&quot;snap of fx2 and ie7&quot; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Some Tips From Atlas To Microsoft Ajax RC1</title>
+      <link>http://yuliu.org/2006/12/some_tips_from_atlas_to_microsoft_ajax_rc1/</link>
+      <pubDate>Mon, 18 Dec 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/12/some_tips_from_atlas_to_microsoft_ajax_rc1</guid>
+	  <description>&lt;p&gt;These days I am busy on move a old atlas application to newer Microsoft Ajax RC1. During This process I encountered some problem and get some tips.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Trigger.ControlEventName&lt;/code&gt; in UpdatePanel are modified to &lt;code&gt;Trigger.AsyncPostBackTrigger&lt;/code&gt;. I think this is more meanningful. it also add &lt;code&gt;PostBackTrigger&lt;/code&gt; propery to force control refresh in updatepanel.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;$&lt;/code&gt; changed to &lt;code&gt;$get&lt;/code&gt; which is short of &lt;code&gt;Document.GetElementByID&lt;/code&gt; in order to conflict to other ajax library such as prototype. Add shortcut &lt;code&gt;$addHandler&lt;/code&gt; to listen event of control in client script&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Page.RegisterStarupScript&lt;/code&gt; is moved to &lt;code&gt;System.Web.UI.ScriptManager.RegisterStartupScript&lt;/code&gt;. The function add a paremeter of Control.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The biggest change affected me is PageMothods which I used to communicate between javascript and server code. Now It must be public and static. In former application I use lots of un-static method in it. I could not change all of these function to static. so I use &lt;code&gt;RegisterStarupScript&lt;/code&gt; instead of it to pass server data to javascript.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>Switch Menu In Javascript</title>
+      <link>http://yuliu.org/2006/12/switch_menu_in-javascript/</link>
+      <pubDate>Fri, 08 Dec 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/12/switch_menu_in-javascript</guid>
+	  <description>&lt;p&gt;These days I am busy on move a old atlas application to newer Microsoft Ajax RC1. During This process I encountered some problem and get some tips.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Trigger.ControlEventName&lt;/code&gt; in UpdatePanel are modified to &lt;code&gt;Trigger.AsyncPostBackTrigger&lt;/code&gt;. I think this is more meanningful. it also add &lt;code&gt;PostBackTrigger&lt;/code&gt; propery to force control refresh in updatepanel.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;$&lt;/code&gt; changed to &lt;code&gt;$get&lt;/code&gt; which is short of &lt;code&gt;Document.GetElementByID&lt;/code&gt; in order to conflict to other ajax library such as prototype. Add shortcut &lt;code&gt;$addHandler&lt;/code&gt; to listen event of control in client script&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Page.RegisterStarupScript&lt;/code&gt; is moved to &lt;code&gt;System.Web.UI.ScriptManager.RegisterStartupScript&lt;/code&gt;. The function add a paremeter of Control.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The biggest change affected me is PageMothods which I used to communicate between javascript and server code. Now It must be public and static. In former application I use lots of un-static method in it. I could not change all of these function to static. so I use &lt;code&gt;RegisterStarupScript&lt;/code&gt; instead of it to pass server data to javascript.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>LYC Anniversary 4</title>
+      <link>http://yuliu.org/2006/12/lyc_anniversary_4/</link>
+      <pubDate>Fri, 08 Dec 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/12/lyc_anniversary_4</guid>
+	  <description>&lt;p&gt;Lyc is not short for china new star but the  abbreviation for my girlfriend' name and mine. Today is 4 anniversary of us. I still remember 4 years ago what  a nervous man I am when I went along with her. Although we had displeasure ever, now we are harmonious and deeply love each other.&lt;/p&gt;
+
+&lt;p&gt;No more word I express and want to express. Congratulation and wish we be more and more better!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Auto-Activate ActiveX Controls in The Web Page</title>
+      <link>http://yuliu.org/2006/12/auto_activate_activex_controls_in_the_web_page/</link>
+      <pubDate>Fri, 08 Dec 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/12/auto_activate_activex_controls_in_the_web_page</guid>
+	  <description>&lt;p&gt;Microsoft has made changes to the way that newest Internet Explorer handles some content in Web pages due to security reason. When Internet Explorer encounters a page with ActiveX controls (such as a page using PI-ActiveView to show .pdi file), the control may require a single click to activate. (the newest Internet Explorer represent If user installed &lt;a href=&quot;http://support.microsoft.com/kb/912945/en-us&quot;&gt;security update 912812&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Let us take PI-ActiveView as a example.When you open the page embed .pdi, a tooltip will appear to prompt you that the control should be clicked to first activate before it can interact.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2006/auto_activate_activex_controls_in_the_web_page-001.jpg&quot; alt=&quot;activex control activate&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When a control is inactive, the following effects occur&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Dynamic HTML events related to user interaction, such as onblur and onclick, are blocked.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The control does not respond to window messages generated by the keyboard or mouse, such as WM_CLICK and WM_KEYPRESS, and so on.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;An overlay window, created on the control's OLE site, prevents keyboard and mouse messages from reaching the inactive control.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;This requirement to click to activate will happen each time you refresh or visit the Web page. This is a annoying to user. Fortunately, developers can rewrite web pages so that users are never presented with a tooltip when they visit the page acording &lt;a href=&quot;http://msdn.microsoft.com/library/default.asp?url=/workshop/author/dhtml/overview/activating_activex.asp&quot;&gt;the artilcel on MSDN&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The article's keystone is using script(jscript or vbscript) to load controls from external script files, Then web pages will load interactive controls that respond immediately to user input. Be careful that the script written inline programmatically, for example with the &lt;a href=&quot;http://msdn.microsoft.com/workshop/author/dhtml/reference/methods/writeln.asp&quot;&gt;writeln&lt;/a&gt; function, the loaded control will behave as if it was loaded by the HTML document itself and will require activation.&lt;/p&gt;
+
+&lt;p&gt;The detail way is stated clearly in the above article. I need not to copy them here. ^-^&lt;/p&gt;
+
+&lt;p&gt;PS: I have a question. The requirement to click to activate ActiveX controls is due to security reason. will this solution make us go back to un-secure time we do not install update and need not to click to activate !&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Install Software Do Not Support Your Windows Edition</title>
+      <link>http://yuliu.org/2006/12/install_software_do_not_support_your_windows_edition/</link>
+      <pubDate>Thu, 07 Dec 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/12/install_software_do_not_support_your_windows_edition</guid>
+	  <description>&lt;p&gt;Today I need install Adobe Premiere Pro 2 that does only support windows XP. Need I change my OS just to use it, no I do not want to do it. I went to the Internet to fetch some information. At first I just want to see if there is some mod to force it work on windows 2003. A method that replaced 1033.mst is recommend. this is the simplest way to install the software.&lt;/p&gt;
+
+&lt;p&gt;However &lt;a href=&quot;http://blazinggin.spaces.live.com/&quot;&gt;another article&lt;/a&gt; attracted me more than simplest way is to modify the install package using Orca.exe. It is a database table editor for creating and editing Windows Installer packages and merge modules provided by Microsoft. The tool provides a graphical interface for validation, highlighting the particular entries where validation errors or warnings occur. More information and the way how to get it in &lt;a href=&quot;http://msdn.microsoft.com/library/default.asp?url=/library/en-us/msi/setup/orca_exe.asp&quot;&gt;Orca.exe&lt;/a&gt; or &lt;a href=&quot;http://msdn.microsoft.com/library/default.asp?url=/library/en-us/msi/setup/windows_installer_development_tools.asp&quot;&gt;Windows Installer Development Tools&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Orca.exe is a good tool. Under the help of it we can install software do not support your windows edition if the install file of  it is in .msi format  such as Adobe Premiere Pro 2. After you finished install Orca.exe, do follow instruction to hack it.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Using Orca.exe to open Adobe Premiere Pro 2.0.msi (NOTE: not the setup.exe, this is just a encapsulation of msi file)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Find &quot;LaunchCondition&quot;  node in the left Column. this is the setup launch condition that can be seen from the name.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Modify&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; ((VersionNT&amp;gt;500) AND (ServicePackLevel&amp;gt;=2)) OR ((VersionNT64) AND (ServicePackLevel&amp;gt;=1))
+&lt;/code&gt;&lt;/pre&gt;
+
+to
+
+&lt;pre&gt;&lt;code&gt; (1==1) OR ((VersionNT&amp;gt;500) AND (ServicePackLevel&amp;gt;=2)) OR ((VersionNT64) AND (ServicePackLevel&amp;gt;=1))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;just add 1==1 to make this condition always is true to let the setup run.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;p&gt;There are other condition under &quot;LaunchCondition&quot; ,  such as adminUser, Screen....., We can change them if need, But we need not in installing Adobe Premiere Pro 2.&lt;/p&gt;
+
+&lt;p&gt;Remember this is just a hack to install software do not support your windows edition. Maybe you can't use the soft even finish install.  ^-^ Below is VersionNT value in Windows Sedation. windows98 and 98 is not NT edition of windows series. VersionNT value of Vista seem to be 600.&lt;/p&gt;
+
+&lt;table border=&quot;1&quot; cellpadding=&quot;2&quot;&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Product&lt;/th&gt;
+            &lt;th&gt;Version&lt;/th&gt;
+            &lt;th&gt;VersionNT value&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Windows NT&lt;/td&gt;
+            &lt;td&gt;4 4.0&lt;/td&gt;
+            &lt;td&gt;400&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Windows 2000&lt;/td&gt;
+            &lt;td&gt;5.0&lt;/td&gt;
+            &lt;td&gt;500&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Windows XP&lt;/td&gt;
+            &lt;td&gt;5.1&lt;/td&gt;
+            &lt;td&gt;501&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Windows 2003&lt;/td&gt;
+            &lt;td&gt;5.2&lt;/td&gt;
+            &lt;td&gt;502&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Tip On Distributing PI-ActiveView Automated ActiveX Installation</title>
+      <link>http://yuliu.org/2006/12/tip_on_distributing_pi_activeview_automated_activex_installation/</link>
+      <pubDate>Wed, 06 Dec 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/12/tip_on_distributing_pi_activeview_automated_activex_installation</guid>
+	  <description>&lt;p&gt;In previous environment, I always use PI-ActiveView in the machines which has already installed PI-ActiveView and PI-ProcessBook, So I had never care distributing problem until I want to navigate the website use PI-ActiveView to see PDI files embed in it. the result is web page can not display it.&lt;/p&gt;
+
+&lt;p&gt;I remember someone ever told that this problem can be solved by automated ActiveX installation because of in the fact it's a ActiveX Control. Open the document of it is my choice and select the setting up automated web installation. Follow the instruction of it. so easy, isn't it?&lt;/p&gt;
+
+&lt;p&gt;Open the IE (not firefox for using ActiveX) and modify the security option about &quot;unsigned ActiveX control&quot; to &quot;prompt&quot; because ActiveX file we made has not signed. this is a temporary solution. I suggest u modify it back to prevent malicious ie plugin. This Time I got the ActiveX installation prompt, However when I click sure to install it, there is no response just displaying nothing.&lt;/p&gt;
+
+&lt;p&gt;All process seems right following the document. Finally I spent 2 hours to fix the problem and this is the tip what I want to give. Because I placed .cab files in the sub-directory of home directory,  Pay attention to this procedure of cabwizard&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2006/tip_on_distributing_pi_activeview_automated_activex_installation_001.jpg&quot; alt=&quot;PI-ActiveView Cabinet Wizard&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Remember to add sub-folder that your cab file placed in to the Full path. What caused me waste 2 hours is here.  In fact, the notion above is clear but I do not carefully read it.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>PlaySC.com Is Shutdown</title>
+      <link>http://yuliu.org/2006/12/playsc_com_is_shutdown/</link>
+      <pubDate>Wed, 06 Dec 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/12/playsc_com_is_shutdown</guid>
+	  <description>&lt;p&gt;Maybe this is a old news but I just got it when I can't open the website. I found the reason and knew that it is shutdown at May from Internet. It makes me a little frustrated because this is my favorite website when I in the grade 4 at university, I was a enthusiastic Starcraft fan that time and played it everyday. Logging in to PlaySC.com is as usual as eating, sleeping. PlaySC is a new comer and small that time and I am the first round member of it , We discuss sc tactics and knew some sc gamer. Although I left the game because I think I should not concentrate on games to influence my study and life, I pay attention to it like I do in Starcraft. I knew the website become more and more popular in china sc area. I am happy for seeing it.&lt;/p&gt;
+
+&lt;p&gt;As PlaySC.com is shutdown, I also be depressed to feel I am not young, the game like starcraft, diablo I played is replaced by Warcraft, Wow; the entertainment star such as Jacky, Maggie has less influence than Jay and a lot who I can't call their name.&lt;/p&gt;
+
+&lt;p&gt;It also makes me remember that I saw a TV programs called Old Song Recommendation not long ago. every song is popular when I am young and I still feel they are euphonious but nowadays they are out of date in younger's thinking.&lt;/p&gt;
+
+&lt;p&gt;How time flies! My childhood has gone and I had to take more responsibility to myself and society. Hope I have prepared it.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Add In-Site Search To Your Blogger Beta</title>
+      <link>http://yuliu.org/2006/12/add_in_site_search_to_your_blogger_beta/</link>
+      <pubDate>Tue, 05 Dec 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/12/add_in_site_search_to_your_blogger_beta</guid>
+	  <description>&lt;p&gt;In my blogger beta default template, there is no in-site search function in my blog and I can not find it in widgets supported. So I am surprised and frustrated that blogger beta has not such normal function. I am not sure whether other default themes has it.&lt;/p&gt;
+
+&lt;p&gt;Today I navigated a &lt;a href=&quot;http://sunr.blogspot.com/&quot;&gt;blog&lt;/a&gt; which give lot's of blogger beta hack skills and found a mount of useful information there. However this function is not mentioned in it, is this is a special to me? Fortunately I saw a &quot;search this blog&quot; button in it, then I open the source of the website. I got the search code below.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;form id=&quot;searchthis&quot; action=&quot;http://sunr.blogspot.com/search&quot; style=&quot;display: inline;&quot; method=&quot;get&quot;&amp;gt; 
+&amp;lt;input id=&quot;b-query&quot; name=&quot;q&quot; type=&quot;text&quot;/&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;input id=&quot;b-searchbtn&quot; alt=&quot;Search This Blog&quot; src=&quot;http://sunrrr.googlepages.com/btn_search_this.gif&quot; title=&quot;Search this blog&quot; type=&quot;image&quot;/&amp;gt; &amp;lt;/p&amp;gt;
+&amp;lt;/form&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ok this is the code we want, just change the blogger name above with your blog address. then add a widget of HTML in template and copy them into it.&lt;/p&gt;
+
+&lt;p&gt;Try it!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>小议过量空气系数</title>
+      <link>http://yuliu.org/2006/12/a_few_points_about_excess_air_coefficient/</link>
+      <pubDate>Tue, 05 Dec 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/12/a_few_points_about_excess_air_coefficient</guid>
+	  <description>&lt;p&gt;今天因为需要，计算了一下燃气轮机的过量空气系数（excess air coefficient），得出的结论让我有一点惊讶，达到了13左右。而我对过量空气系数的印象一直停留在1.2左右。看了一下计算过程和单位换算，应该没有错，于是查了一下一本燃气轮机教程，上面写到过量空气系数的范围是30-80. 虽然书的历史长了一点，但是数值估计还是差不多的，所以那么我计算的13应该是在可以接受的范围内，1.2是锅炉燃烧的的过量空气系数。我们先看看为什么锅炉的过量空气会取得比较小呢？&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;减小排烟热损失：排烟热损失是锅炉热损失中最主要的一项。为了保护设备，锅炉的排烟温度一般高于空气的露点，如果过量空气系数太大会造成排烟量太大。所以比较小的过量空气系数能够降低该项损失。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;降低NOX的生成和排放：因为燃烧过程中的温度比较高，如果空气系数比较大，那么会造成空气中多余的氮和氧结合生成NOX。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;p&gt;上述两个是锅炉中采用较低过量空气系数的主要原因。这两个问题在燃气轮机中同样存在，那么这两个问题是怎么解决的呢？&lt;/p&gt;
+
+&lt;p&gt;第一个还比较好办，现在大多数燃气轮机是用于联合循环发电，他的排烟损失可以通过余热锅炉来吸收从而最大限度的挽回。那么第二个问题呢？一般来说低污染物排放是燃气轮机及其联合循环相比传统燃煤循环的优势之一（这个应该首先归功于燃气轮机及其联合循环使用优质燃料）。查了一下资料，有以下办法：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;在燃烧室注入一定比例的水或蒸汽，虽然对效率有影响，但是降低燃烧火焰温度可以有效的降低Nox的排放，N0X的排放可自140～220ppm降低至25～42ppm。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用低氮燃烧的方法，先使用一定量的空气与燃气混合燃烧，接着燃烧后的燃气再于空气混合。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;GE提出的贫油预混燃烧的燃烧室可以有效的将Nox排放降低。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;炉内脱硝还可以使用选择性催化还原法（SCR），但是这个造价很高，只应用排放要求十分严格的场合。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;p&gt;以上的方法也基本上可以用于锅炉的降低NOX的排放。&lt;/p&gt;
+
+&lt;p&gt;至于为什么要采用这么麻烦的方法而不是减小过量空气系数来降低NOX呢？我想应该是因为燃烧后的燃气温度非常高，如果不采用大量的过量空气，燃气透平的金属不足以支持如此高的进口温度。&lt;/p&gt;
+
+&lt;p&gt;参考文献： 【1】国内外燃气轮机发电现况和21世纪展望 《面向21世纪电机工程科技发展战略研讨会论文集 》&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>A Normal Problem In China -- Train Delay</title>
+      <link>http://yuliu.org/2006/12/a_normal_problem_in_china_train_delay/</link>
+      <pubDate>Mon, 04 Dec 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/12/a_normal_problem_in_china_train_delay</guid>
+	  <description>&lt;p&gt;I do not know whether train delay in other country than china is a normal thing, but it's quite ordinary in china although the railway department has improved their service now.&lt;/p&gt;
+
+&lt;p&gt;Today I take train from Shanghai to Hangzhou. A tour should take one and half a hour from 5:30 - 7:00 PM. I got to the South Shanghai Railway station at 4:40 on time, but when I waiting in the room,   unfortunately a moment later screen displayed that the train will delay, I am familiar with it as frequently train taker. but a little surprised to me the delay time is unsure. This is unacceptable to be because I can't go out for supper if I do not know when would train come. I don't think the delay time is totally unknown to railway workers. Although there is not accurate time, but must be a range. It is a monopoly mentality that just say sorry from broadcast and have not any practical action include their responsibility to forecast delay time. Finally after waiting in the room for almost one hour I got up the train at 6:20 and the train leave Shanghai at 6:40 which time I had arrived the destination if on time. when I arrived at Hangzhou, It's 8:20. the train delayed 1 hour and 20 minutes  to a trip just 1 hour 30 minutes. this is not a special case, I encounter this condition about 2 month ago in the same train.&lt;/p&gt;
+
+&lt;p&gt;I search some compensation for train delay from Internet. In Sweden, they passed a law to ensure this. Euro are prepare for it. I understand there is lot's of reason for train delay,  but the behavior such irresponsible like not giving any practical action include their responsibility to forecast delay time is makes me frustrated and angry.&lt;/p&gt;
+
+&lt;p&gt;China had developed a lot and fast in hardware however, there is a great delay in software like service. Hope it can be better!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Two Simple Hack Tips on Blogger Beta</title>
+      <link>http://yuliu.org/2006/12/two_simple_hack_tips_on_blogger_beta/</link>
+      <pubDate>Fri, 01 Dec 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/12/two_simple_hack_tips_on_blogger_beta</guid>
+	  <description>&lt;p&gt;Because I am a freshman to Blogger Beta. I found two tips to make my new blog better.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;The fisrt one is to hide navbar.&lt;br/&gt;
+you can add code below&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; #navbar-iframe { height: 0px; visibility: hidden; display: none }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;to &lt;code&gt;head--&amp;lt;b:skin&amp;gt;&lt;/code&gt; section in your HTML. the HTML is under template settings.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The second one is to open new window in Link List widget.&lt;br/&gt;
+By default there is not option that you can config it. so links in Link List widget will open in current window. However this is also could be solved it HTML code.&lt;br/&gt;
+At first, remember to check the option Expand Widget Templates . Then find the section&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; &amp;lt;b:widget id='LinkList1' locked='false' title='Blog Links' type='LinkList'&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+change links
+
+&lt;pre&gt;&lt;code&gt; &amp;lt;li&amp;gt;&amp;lt;a expr:href='data:link.target' &amp;gt;&amp;lt;data:link.name/&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+to
+
+&lt;pre&gt;&lt;code&gt; &amp;lt;li&amp;gt;&amp;lt;a expr:href='data:link.target' target='_blank'&amp;gt;&amp;lt;data:link.name/&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;p&gt;Finnally, Open your blog and try it.&lt;/p&gt;
+
+&lt;p&gt;Hope these two simple hack tips is useful to you!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Wikipedia CD 1.0 （BT下载链接已失效）</title>
+      <link>http://yuliu.org/2006/11/wikipedia_cd_1/</link>
+      <pubDate>Thu, 30 Nov 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/11/wikipedia_cd_1</guid>
+	  <description>&lt;p&gt;维基百科在中国的命运真可谓一波三折，前段时间仿佛看着已经解封了，在大家庆祝了一段时间以后突然又不能访问了。这样的一个好东西在各个方面（政治方面暂且不论）给于我的帮助是很大的，可惜了。&lt;/p&gt;
+
+&lt;p&gt;维基百科CD给于我们用另外一种方式接触它的机会，也许有的网友会认为这个是不是专门给中国用户制作的呢？以前我也是这样认为的，但是看了介绍以后发现完全不是这样的。&lt;/p&gt;
+
+&lt;p&gt;以下翻译自&lt;a href=&quot;http://www.bittorrent.com/users/jpettitt/torrents/Wikipedia_CD_1.0/779c3b64448f0b438a80cad8d202cec84f4e0bf5/index.html&quot;&gt;BitTorrent.com的介绍（已失效）&lt;/a&gt;：&lt;/p&gt;
+
+&lt;p&gt;CD包含了2000条投票选择的文章，特别关注于学生和儿童（地理、科学、恐龙、植物和动物）。所有条目是英语维基百科上的为SOS儿童工作的志愿者选取的，适合儿童阅读的并且清除了脚本。CD包含了极少的图片。CD的细节为：&lt;/p&gt;
+
+&lt;p&gt;从优秀文章，标志性文章和主要列表（例如所有国家，所有首都等）选取了大约2500篇文章。&lt;/p&gt;
+
+&lt;p&gt;垃圾文章、学生难于理解的、模拟两个的文章和肤浅的文章被遗弃或者重新排序。&lt;/p&gt;
+
+&lt;p&gt;使用早先讨论通过的存在争议条目的（如基督教等）版本&lt;/p&gt;
+
+&lt;p&gt;没有包括文章的链接，外部链接被标识为纯文本，链接表和无用的节被移除.&lt;/p&gt;
+
+&lt;p&gt;编辑上的公告和到其他语言的链接等被移除。&lt;/p&gt;
+
+&lt;p&gt;维基百科的标志引文SOS没有得到授权所以不会出现在CD中，但是2007版的CD已经得到授权并且会出现维基百科的标志&lt;/p&gt;
+
+&lt;p&gt;CD中大概有130页在一个小公告栏中增加了内容，增加的内容关注于SOS儿童（例如 在条目Africa中，增加了内容“SOS已经在大约123个国家开展工作”，见下图。这些提示遵循不影响选择的文章的内容的原则。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2006/wikipedia_cd_1_001.png&quot; alt=&quot;内容和原则&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;最终版本中有一个用于收集目的的完整的SOS儿童网站的镜像。&lt;/p&gt;
+
+&lt;p&gt;自动运行拼写检查。 BT下载链接 &lt;a href=&quot;http://torrentfreak.com/torrents/wpcd.zip.torrent&quot;&gt;Wikipedia CD 1.0 （已失效）&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;PS: 除开Wikipedia CD，这里还有一个Wikipedia的选择叫做Encyclopodia, SF上的一个开源工程&lt;a href=&quot;http://encyclopodia.sourceforge.net/en/index.html&quot;&gt;Wikipedia on your iPod&lt;/a&gt;。可惜我没有iPod要不一定试一下。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>About PI-API Error -10401</title>
+      <link>http://yuliu.org/2006/11/pi_api_error_10401/</link>
+      <pubDate>Thu, 30 Nov 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/11/pi_api_error_10401</guid>
+	  <description>&lt;p&gt;Today I wanted to insert data to PI by using a .net class which boxed PI-API I created it before. I used function pisn_putsnapshotx, but it doesn't work with error code -10401.&lt;/p&gt;
+
+&lt;p&gt;In PI-API Documents, there is no comment about this error code. so I had to found the reason by myself. I used default point &quot;sinusoid&quot; as test point and try to insert data into it. it works Fine. Then I compare tag property of &quot;sinusoid&quot; and my problem tag, I notice defference on DataAccess.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sinusoid: o:rw g:rw w:rw
+Problem tag: o:rw g:r w:r
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;OK, I guess this is the reason, I chaged Problem tag's property to o:rw g:rw w:rw, then I use pisn_putsnapshotx function to insert data, works well.&lt;/p&gt;
+
+&lt;p&gt;So &lt;em&gt;error code -10401 is a access level problem&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;there is two way to solve it now.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;As said above, change property to o:rw g:rw w:rw.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Add login information in your code by using pilg_login or piut_login&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;p&gt;PS: I can't use pilg_login because no entry point in piapi32.dll when I P/Invoke it. I do not know why. But I found piut_login is always OK.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>China First Warcraft 3 Network Live Broadcast</title>
+      <link>http://yuliu.org/2006/11/china_first_warcraft3_network_live_broadcast/</link>
+      <pubDate>Thu, 30 Nov 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/11/china_first_warcraft3_network_live_broadcast</guid>
+	  <description>&lt;p&gt;Everyone who played starcraft or concerned about Electronic Competition would know Electronic Competition in starcraft have great development. Korean government have confirm its legal position and contribution to national economics. yellow, nada and oov had become star in Korea. but war3 and war3 player has less Influence.&lt;/p&gt;
+
+&lt;p&gt;China had develop starcraft before, but there is still great distance between Chinese and Korean player. as Sky(a famous Chinese war3 player) continually won two championship in WCG which represent highest award in Electronic Competition. China decided to make  breakthrough in war3 even in Electronic competition so that Chinese government would confirm its legal position.
+Nowadays China hold a China-Korea war3 star competition to expand Electronic Competition influence in china. the most significant feature of this competition is live Network Broadcast by a software called ppstream, so many gamer could see it through Internet. I think this is a good try to develop China Electronic Competition. The emcee of live broadcast give me such feeling as young and humor. It's the style I like. But I found that emcee give so strong Chinese bias although they are Chinese, So do I. it makes me a little displeasure because I think they should take neutrality in their position. If you are just a audience you can express your whole feeling but you are not. However I still like this game although I love starcraft more than war3 and hope it can expand Electronic Competition influence in china.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>远程桌面连接windows 2000</title>
+      <link>http://yuliu.org/2006/11/remote_desktop_to_windows2000/</link>
+      <pubDate>Wed, 29 Nov 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/11/remote_desktop_to_windows2000</guid>
+	  <description>&lt;p&gt;知道windows远程桌面是从XP开始的，一直觉得这个是个好东西，使用起来很方便，最近需要远程桌面连接windows 2000的机子，才知道2000也可以使用远程连接，但是设置要稍微麻烦一点。&lt;/p&gt;
+
+&lt;p&gt;首先Windows 2000的各个版本对远程桌面的支持不一样的，Pro版只能连接另外的计算机而不能被其他计算机连接，Server版本以上的就双向都可以了,还好我这台是Server版的.&lt;/p&gt;
+
+&lt;p&gt;欲远程桌面连接到2000(下面都是指Server以上的版本).
+首先要在添加删除程序里面添加Windows组件&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2006/remote_desktop_to_windows2000_001.jpg&quot; alt=&quot;添加组件&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;然后再控制面板--〉管理工具--〉服务中启动下列服务&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2006/remote_desktop_to_windows2000_002.jpg&quot; alt=&quot;启动服务&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;把启动类型改成自动，然后点击启动按钮就好了&lt;/p&gt;
+
+&lt;p&gt;如果这样改了以后还不能被连接上，那么可能还需要去注册表里面修改一下，开启被连接选项，这个在XP和2003里面可以通过右击我的电脑--〉远程改，但是在2000里面这样不行，google了一下，可以通过直接改注册表实现这个功能。在注册表&lt;code&gt;HKEY_LOCAL_MACHINE--&amp;gt;SYSTEM--&amp;gt;CURRENTCONTROLSET--&amp;gt;CONTROL-- &amp;gt;TERMINAL SERVICE&lt;/code&gt;中修改(如果不存在就添加)&lt;code&gt;fDenyTSConnections&lt;/code&gt;的值为0&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2006/remote_desktop_to_windows2000_003.jpg&quot; alt=&quot;修改注册表&quot; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
+

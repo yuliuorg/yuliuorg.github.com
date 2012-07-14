@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="刘昱" />
+		
+		<title>刘昱 | Log For log4net (五) - Appenders(记录方式) </title>
+		
+		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
+		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+		<script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+		<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+		<!--[if IE]>
+		<script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+		<![endif]-->		
+		<script type="text/javascript" src="/media/script/default.js"></script>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33277878-1']);
+			_gaq.push(['_setDomainName', 'yuliu.org']);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_trackPageLoadTime']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+
+		<div id="container">
+			<header>
+			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
+			<h1>刘 昱</h1>
+			<h2>核能动力系统设计工程师</h2>
+			</header>
+			<nav>
+			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
+			<span><a title="简历" class="" href="http://yuliu.org/vitae/">简历</a></span>
+			<span><a title="文章" class="" href="http://yuliu.org/publication/">文章</a></span>
+			<span><a title="关于" class="" href="http://yuliu.org/about/">关于</a></span>
+			<span><a title="留言" class="" href="http://yuliu.org/guestbook/">留言</a></span>
+			<span><a title="链接" class="" href="http://yuliu.org/links/">链接</a></span>
+			<span><a title="杂货铺" class="" href="http://yuliu.org/essay">杂货铺</a></span>
+			</nav>
+			<div id="main" role="main">
+				<article class="content">
+				<section class="title">
+<h1>Log For log4net (五) - Appenders(记录方式)</h1>
+</section>
+<section class="post">
+<p>原文地址：<a href="http://logging.apache.org/log4net/release/manual/introduction.html#appenders">Appenders</a></p>
+
+<p>选择和禁止记录请求只是log4net框架的一部份。log4net允许将记录请求输出到不同的目的地。在log4net中，输出目的地叫做Appender（记录方式）。记录方式必须继承log4net.Appenders.IAppender接口。</p>
+
+<p>log4net中定义了下面的记录方式： (链接到英文的log4net SDK)</p>
+
+<table border="1">
+    <tbody>
+        <tr>
+            <td>
+                类型
+            </td>
+            <td>
+                描述
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a target="_blank" href="http://logging.apache.org/log4net/release/sdk/log4net.Appender.AdoNetAppender.html">
+                    log4net.Appender.AdoNetAppender</a>
+            </td>
+            <td>
+                把记录通过SQL语句或者存储过程保存到数据库中
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a target="_blank" href="http://logging.apache.org/log4net/release/sdk/log4net.Appender.AnsiColorTerminalAppender.html">
+                    log4net.Appender.AnsiColorTerminalAppender</a>
+            </td>
+            <td>
+                把记录进行颜色高亮，并输出到ANSI终端窗口
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a target="_blank" href="http://logging.apache.org/log4net/release/sdk/log4net.Appender.AspNetTraceAppender.html">
+                    log4net.Appender.AspNetTraceAppender</a>
+            </td>
+            <td>
+                将记录输出到ASP追踪页面，他们被返回到ASP页面或者追踪页面的底部。
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a target="_blank" href="http://logging.apache.org/log4net/release/sdk/log4net.Appender.BufferingForwardingAppender.html">
+                    log4net.Appender.BufferingForwardingAppender</a>
+            </td>
+            <td>
+                缓存送到子记录器的记录
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a target="_blank" href="http://logging.apache.org/log4net/release/sdk/log4net.Appender.ColoredConsoleAppender.html">
+                    log4net.Appender.ColoredConsoleAppender</a>
+            </td>
+            <td>
+                把记录输出到程序的控制台。事件信息可以输出到标准输出流，也可以输出到标准错误流。事件可以包含为每个等级定义的结构化文本和背景颜色。
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a target="_blank" href="http://log4net.Appender.ConsoleAppender">log4net.Appender.ConsoleAppender</a>
+            </td>
+            <td>
+                把记录输出到程序的控制台。事件信息可以输出到标准输出流，也可以输出到标准错误流。
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a target="_blank" href="http://logging.apache.org/log4net/release/sdk/log4net.Appender.EventLogAppender.html">
+                    log4net.Appender.EventLogAppender</a>
+            </td>
+            <td>
+                把记录输出到Windows事件日志
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a target="_blank" href="http://logging.apache.org/log4net/release/sdk/log4net.Appender.FileAppender.html">
+                    log4net.Appender.FileAppender</a>
+            </td>
+            <td>
+                把记录输出到文件系统的文件中
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a target="_blank" href="http://logging.apache.org/log4net/release/sdk/log4net.Appender.ForwardingAppender.html">
+                    log4net.Appender.ForwardingAppender</a>
+            </td>
+            <td>
+                把记录送到子记录器
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a target="_blank" href="http://logging.apache.org/log4net/release/sdk/log4net.Appender.LocalSyslogAppender.html">
+                    log4net.LocalSyslogAppender</a>
+            </td>
+            <td>
+                把记录输出到本地系统日志服务（UNIX）
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a target="_blank" href="http://logging.apache.org/log4net/release/sdk/log4net.Appender.MemoryAppender.html">
+                    log4net.Appender.MemoryAppender</a>
+            </td>
+            <td>
+                把记录保存到内存缓存中
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a target="_blank" href="http://logging.apache.org/log4net/release/sdk/log4net.Appender.NetSendAppender.html">
+                    log4net.Appender.NetSendAppender</a>
+            </td>
+            <td>
+                把时间输出到Windows消息服务，这些消息在用户终端中显示
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a target="_blank" href="http://logging.apache.org/log4net/release/sdk/log4net.Appender.OutputDebugStringAppender.html">
+                    log4net.Appender.OutputDebugStringAppender</a>
+            </td>
+            <td>
+                把记录输出到调试器。如果程序没有调试器，将会输出到系统调试器。如果系统没有调试器并且系统调试器被禁用，记录被忽略
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a target="_blank" href="http://logging.apache.org/log4net/release/sdk/log4net.Appender.RemoteSyslogAppender.html">
+                    log4net.Appender.RemoteSyslogAppender</a>
+            </td>
+            <td>
+                把记录通过UDP网络输出到远程系统记录服务。
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a target="_blank" href="http://logging.apache.org/log4net/release/sdk/log4net.Appender.RemotingAppender.html">
+                    log4net.Appender.RemotingAppender</a>
+            </td>
+            <td>
+                通过.NET Remoting把记录输出到远程接收器
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a target="_blank" href="http://logging.apache.org/log4net/release/sdk/log4net.Appender.RollingFileAppender.html">
+                    log4net.Appender.RollingFileAppender</a>
+            </td>
+            <td>
+                把记录输出到文件系统的文件中。RollingFileAppender可以通过配置日期或者文件大小的限制把记录配置输出到多个文件。
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a target="_blank" href="http://logging.apache.org/log4net/release/sdk/log4net.Appender.SmtpAppender.html">
+                    log4net.Appender.SmtpAppender</a>
+            </td>
+            <td>
+                把记录发送到制定邮箱地址
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a target="_blank" href="http://logging.apache.org/log4net/release/sdk/log4net.Appender.SmtpPickupDirAppender.html">
+                    log4net.Appender.SmtpPickupDirAppender</a>
+            </td>
+            <td>
+                把SMTP消息记录到制定目录的文件中，这些文件可已通过像IIS SMTP代理这样的SMTP代理读取和发送
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a target="_blank" href="http://logging.apache.org/log4net/release/sdk/log4net.Appender.TelnetAppender.html">
+                    log4net.Appender.TelnetAppender</a>
+            </td>
+            <td>
+                用户通过Telnet连接来获取记录
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a target="_blank" href="http://logging.apache.org/log4net/release/sdk/log4net.Appender.TraceAppender.html">
+                    log4net.Appender.TraceAppender</a>
+            </td>
+            <td>
+                把记录输出到.NET追踪系统
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a target="_blank" href="http://logging.apache.org/log4net/release/sdk/log4net.Appender.UdpAppender.html">
+                    log4net.Appender.UdpAppender</a>
+            </td>
+            <td>
+                把记录当成无状态UDP数据包发送到使用UDP客户端的远程主机或者组。
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<p>一个记录器能够使用道中输出方式。</p>
+
+<p>每条记录器允许的记录请求将被输出到记录器所有的记录方式，包括记录器层次结构中上级的记录器的记录方式。换句话说，记录方式具备继承加成的特性。例如，如果在根控制器上增加了一个控制台记录方式，那么所有被允许的记录请求将至少被输出到控制台。如果记录器增加了一个文件记录方式X，所有X和X的后代通过的记录请求将被输出到文件和控制台。可以将记录器的additivity属性标记为false来避免记录方式的集成加成特性。</p>
+
+<p>下面总结了记录方式的加成特性。</p>
+
+<p>记录器X的记录语句将会输出到X和他祖先的所有记录方式。这就是“继承加成”</p>
+
+<p>但是，如果X的祖先Y，设置了additivity属性为false，那么X的的记录将会输出到X到Y（包括X和Y）之间的所有记录方式，但不会输出到Y的祖先的记录方式。</p>
+
+<p>记录器的默认additivity属性为true。</p>
+
+<p>下面是一个例子</p>
+
+<table border="1">
+    <tbody>
+        <tr>
+            <td>
+                记录器名
+            </td>
+            <td>
+                记录方式
+            </td>
+            <td>
+                additivity属性
+            </td>
+            <td>
+                输出目标
+            </td>
+            <td>
+                备注
+            </td>
+        </tr>
+        <tr>
+            <td>
+                root
+            </td>
+            <td>
+                A1
+            </td>
+            <td>
+                不适用
+            </td>
+            <td>
+                A1
+            </td>
+            <td>
+                root没有继承任何输出方式
+            </td>
+        </tr>
+        <tr>
+            <td>
+                x
+            </td>
+            <td>
+                A-x1, A-x2
+            </td>
+            <td>
+                true
+            </td>
+            <td>
+                A1, A-x1, A-x2
+            </td>
+            <td>
+                x和root的记录方式
+            </td>
+        </tr>
+        <tr>
+            <td>
+                x.y
+            </td>
+            <td>
+                none
+            </td>
+            <td>
+                true
+            </td>
+            <td>
+                A1, A-x1, A-x2
+            </td>
+            <td>
+                x和root的记录方式
+            </td>
+        </tr>
+        <tr>
+            <td>
+                x.y.z
+            </td>
+            <td>
+                A-xyz1
+            </td>
+            <td>
+                true
+            </td>
+            <td>
+                A1, A-x1, A-x2, A-xyz1
+            </td>
+            <td>
+                x, x.y.z和root的记录方式
+            </td>
+        </tr>
+        <tr>
+            <td>
+                security
+            </td>
+            <td>
+                A-sec
+            </td>
+            <td>
+                false
+            </td>
+            <td>
+                A-sec
+            </td>
+            <td>
+                因为additivity属性为false，没有任何记录方式累加
+            </td>
+        </tr>
+        <tr>
+            <td>
+                security.access
+            </td>
+            <td>
+                none
+            </td>
+            <td>
+                true
+            </td>
+            <td>
+                A-sec
+            </td>
+            <td>
+                因为security的additivity属性为false，因此只有security的记录方式
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://yuliu.org">刘昱</a>
+</span>
+<span class="time">
+	/
+	
+	<time datetime="2007-04-27">2007-04-27</time> 发表
+	
+</span>
+<br />
+
+<span class="categories">
+	分类： 
+	
+	<a href="http://yuliu.org/essay/categories.html#计算机" title="计算机">计算机</a>&nbsp;/
+	
+</span>
+
+
+<span class="tags">
+	标签： 
+	
+	<a href="http://yuliu.org/essay/tags.html#log4net" title="log4net">log4net</a>&nbsp;
+	
+	<a href="http://yuliu.org/essay/tags.html#.net" title=".net">.net</a>&nbsp;
+	
+</span>
+
+</section>
+
+<section class="comment">
+<a href="#" id="show_disqus_comment" onclick="return false;">更多信息，请点击查看评论</a>
+<div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+$(function(){
+		$('section.comment #show_disqus_comment').on('click',function(){
+			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
+			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+			var disqus_url = 'http://yuliu.org/2007/04/log_for_log4net_5_appenders/';
+			// var disqus_developer = 1; 
+			var that = this;
+			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			var src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			PSJS.loadScript(src, function(){$(that).remove()});
+			});
+		});
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		$(document).keydown(function(e) {
+			var url = false;
+			if (e.which == 37 || e.which == 74) {  // Left arrow and J
+				
+				url = 'http://yuliu.org/2007/04/log_for_log4net_4_logger/';
+				
+			}
+			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+				
+				url = 'http://yuliu.org/2007/06/harmonized_N475/';
+				
+			}
+			if (url) {
+				window.location = url;
+			}
+		});
+	})
+</script>
+
+
+				</article>
+				<div id="toc"></div>
+			</div>
+		</div>
+	</body>
+</html>

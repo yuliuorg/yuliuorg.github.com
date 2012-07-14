@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="刘昱" />
+		
+		<title>刘昱 | Log For log4net (二) - 配置特性与配置文件 </title>
+		
+		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
+		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+		<script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+		<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+		<!--[if IE]>
+		<script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+		<![endif]-->		
+		<script type="text/javascript" src="/media/script/default.js"></script>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33277878-1']);
+			_gaq.push(['_setDomainName', 'yuliu.org']);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_trackPageLoadTime']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+
+		<div id="container">
+			<header>
+			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
+			<h1>刘 昱</h1>
+			<h2>核能动力系统设计工程师</h2>
+			</header>
+			<nav>
+			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
+			<span><a title="简历" class="" href="http://yuliu.org/vitae/">简历</a></span>
+			<span><a title="文章" class="" href="http://yuliu.org/publication/">文章</a></span>
+			<span><a title="关于" class="" href="http://yuliu.org/about/">关于</a></span>
+			<span><a title="留言" class="" href="http://yuliu.org/guestbook/">留言</a></span>
+			<span><a title="链接" class="" href="http://yuliu.org/links/">链接</a></span>
+			<span><a title="杂货铺" class="" href="http://yuliu.org/essay">杂货铺</a></span>
+			</nav>
+			<div id="main" role="main">
+				<article class="content">
+				<section class="title">
+<h1>Log For log4net (二) - 配置特性与配置文件</h1>
+</section>
+<section class="post">
+<p>接<a href="/2007/04/log_for_log4net_1_configuration_summary">上篇</a></p>
+
+<p>注：Attribute译为“特性”，Property译为“属性”</p>
+
+<p>原文地址：<a href="http://logging.apache.org/log4net/release/manual/configuration.html">log4net Manual - Configuration</a></p>
+
+<h1>配置特性</h1>
+
+<p>log4net除可以通过编程配置外还可以利用组件级别的特性进行配置</p>
+
+<p><strong> XmlConfiguratorAttribute </strong></p>
+
+<p>log4net.Config.XmlConfiguratorAttribute允许通过下列属性对XmlConfigurator进行配置。</p>
+
+<p><em>configFile</em>：指定对XmlConfigurator进使用的配置文件名，文件路径相对于程序的根文件夹(AppDomain.CurrentDomain.BaseDirectory)</p>
+
+<p><em>ConfigFileExtension</em>：指定配置文件的扩展名，组件集文件名加上指定的扩展名通常即配置文件名。例如从TestApp.exe中读取的组件制定ConfigFileExtension属性为log4net，则配置文件名为TestApp.exe.log4net。其效果与制定configFile属性为TestApp.exe.log4net相同。</p>
+
+<p>配置文件的路径为程序根文件夹(AppDomain.CurrentDomain.BaseDirectory)。</p>
+
+<p>这个属性不能与configFile属性一起使用。</p>
+
+<p><em>Watch</em>：如果这个属性设为true，程序将会监视配置文件并在文件变化时重新载入配置。</p>
+
+<p>如果configFile和ConfigFileExtension属性均没有指定，log4net将会使用应用程序配置文件（例如TestApp.exe.config）</p>
+
+<p>示例用法</p>
+
+<pre><code>// Configure log4net using the .config file
+[assembly: log4net.Config.XmlConfigurator(Watch=true)]
+// This will cause log4net to look for a configuration file
+// called TestApp.exe.config in the application base
+// directory (i.e. the directory containing TestApp.exe)
+// The config file will be watched for changes.
+
+// Configure log4net using the .log4net file
+[assembly: log4net.Config.XmlConfigurator(ConfigFileExtension="log4net",Watch=true)]
+// This will cause log4net to look for a configuration file
+// called TestApp.exe.log4net in the application base
+// directory (i.e. the directory containing TestApp.exe)
+// The config file will be watched for changes.
+</code></pre>
+
+<p>特性在一个组件集中只能使用一次</p>
+
+<p>使用特性可以清晰的指定应用程序从何处加载配置文件，但特性是完全被动的，将不会起任何作用，他们只是一些信息。因此如果你使用了配置特性必须调用log4net允让它读取特性，简单的调用LogManager.GetLogger便可以使程序集中的特性能够被读取和处理。<em>因此程序启动后尽早调用logging方法是必要的，而且必须在任何外部的组件集在读取和调用之前。</em></p>
+
+<h1>配置文件</h1>
+
+<p>典型的log4net配置是通过文件，文件可以通过两种方式读取</p>
+
+<ol>
+<li><p>使用.NET System.Configuration API</p></li>
+<li><p>直接读取内容</p></li>
+</ol>
+
+
+<p><strong> .config文件 </strong></p>
+
+<p>System.Configuration API只在配置数据在应用程序的config文件中时才起作用，如MyApp.exe.config或者Web.config.因为System.Configuration API不支持载入config文件中configuration外的标记时使用log4net.Config.XmlConfigurator.ConfigureAndWatch方法，使用System.Configuration API最大的有点在于它相比直接读取需要较低的权限。</p>
+
+<p>使用System.Configuration API进行配置的唯一方法是调用log4net.Config.XmlConfigurator.Configure() 方法或者 the log4net.Config.XmlConfigurator.Configure(ILoggerRepository) 方法.</p>
+
+<p>为了能够把配置数据嵌入到.config文件中，节的名字必须在configSections元素中注册到.NET解释器，还必须指定log4net.Config.Log4NetConfigurationSectionHandler用来解释这一配置节。其中类型必须是完整的组件集名因为它被.NET config文件解释器读取而不是log4net。必须指定正确的log4net组件集名。下面的配置文件示范了正确的方式</p>
+
+<pre><code>&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;configuration&gt;
+    &lt;configSections&gt;
+        &lt;section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net" /&gt;
+    &lt;/configSections&gt;
+    &lt;log4net&gt;
+        &lt;appender name="ConsoleAppender" type="log4net.Appender.ConsoleAppender" &gt;
+            &lt;layout type="log4net.Layout.PatternLayout"&gt;
+                &lt;conversionPattern value="%date [%thread] %-5level %logger [%ndc] - %message%newline" /&gt;
+            &lt;/layout&gt;
+        &lt;/appender&gt;
+        &lt;root&gt;
+            &lt;level value="INFO" /&gt;
+            &lt;appender-ref ref="ConsoleAppender" /&gt;
+        &lt;/root&gt;
+    &lt;/log4net&gt;
+&lt;/configuration&gt;
+</code></pre>
+
+<p>上面的理智中，指定了log4net组件集，他必须位于.NET运行时能够找到的地方，例如与程序相同的文件夹。如果log4net组件集位于GAC中，完整的组件集名还包括文化、版本和公钥。</p>
+
+<p>当用.config文件来配置时，节名即XML元素名必须为log4net。</p>
+
+<p><strong> 直接读取内容 </strong></p>
+
+<p>XmlConfigurator能够直接读取XML文件并用它来配置log4net，包括.config文件如MyApp.exe.config或者Web.config。
+不使用直接读取的唯一原因是应用程序的权限不能直接读取文件。因此必须使用NET configuration APIs</p>
+
+<p>包含配置数据的文件可以通过任何接受System.IO.FileInfo对象的log4net.Config.XmlConfigurator方法指定。因为文件系统能够用于监测并通知文件的变化，所以ConfigureAndWatch 方法被用于监测配置文件并在未见改变时重载它配置log4net。</p>
+
+<p>此外，log4net.Config.XmlConfiguratorAttribute可以用于指定配置文件。</p>
+
+<p>配置从文件中的log4net节读取，文件中只能有一个log4net元素但是它可以位于XML中的任意等级，例如根元素</p>
+
+<pre><code>&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;log4net&gt;
+    &lt;appender name="ConsoleAppender" type="log4net.Appender.ConsoleAppender" &gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+            &lt;conversionPattern value="%date [%thread] %-5level %logger [%ndc] - %message%newline" /&gt;
+        &lt;/layout&gt;
+    &lt;/appender&gt;
+    &lt;root&gt;
+        &lt;level value="INFO" /&gt;
+        &lt;appender-ref ref="ConsoleAppender" /&gt;
+    &lt;/root&gt;
+&lt;/log4net&gt;
+</code></pre>
+
+<p>或者嵌入其他元素间。</p>
+
+<pre><code>&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;configuration&gt;
+    &lt;configSections&gt;
+        &lt;section name="log4net" type="System.Configuration.IgnoreSectionHandler" /&gt;
+    &lt;/configSections&gt;
+    &lt;log4net&gt;
+        &lt;appender name="ConsoleAppender" type="log4net.Appender.ConsoleAppender" &gt;
+            &lt;layout type="log4net.Layout.PatternLayout"&gt;
+                &lt;conversionPattern value="%date [%thread] %-5level %logger [%ndc] - %message%newline" /&gt;
+            &lt;/layout&gt;
+        &lt;/appender&gt;
+        &lt;root&gt;
+            &lt;level value="INFO" /&gt;
+            &lt;appender-ref ref="ConsoleAppender" /&gt;
+        &lt;/root&gt;
+    &lt;/log4net&gt;
+&lt;/configuration&gt;
+</code></pre>
+
+<p>上面的配置文件显示了怎么样把配置数据嵌入到.config文件中尽管文件能够被log4net直接读取。值得注意的是.NET config文件解释器如果发现没有在configSections元素注册的元素将会抛出一个异常。因此，上面的例子将log4net节注册，但是指定的处理类型为System.Configuration.IgnoreSectionHandler.这个内建的类表示已使用另外的方法来读取配置节。</p>
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://yuliu.org">刘昱</a>
+</span>
+<span class="time">
+	/
+	
+	<time datetime="2007-04-27">2007-04-27</time> 发表
+	
+</span>
+<br />
+
+<span class="categories">
+	分类： 
+	
+	<a href="http://yuliu.org/essay/categories.html#计算机" title="计算机">计算机</a>&nbsp;/
+	
+</span>
+
+
+<span class="tags">
+	标签： 
+	
+	<a href="http://yuliu.org/essay/tags.html#log4net" title="log4net">log4net</a>&nbsp;
+	
+	<a href="http://yuliu.org/essay/tags.html#.net" title=".net">.net</a>&nbsp;
+	
+</span>
+
+</section>
+
+<section class="comment">
+<a href="#" id="show_disqus_comment" onclick="return false;">更多信息，请点击查看评论</a>
+<div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+$(function(){
+		$('section.comment #show_disqus_comment').on('click',function(){
+			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
+			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+			var disqus_url = 'http://yuliu.org/2007/04/log_for_log4net_2_configuration_attribute_file/';
+			// var disqus_developer = 1; 
+			var that = this;
+			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			var src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			PSJS.loadScript(src, function(){$(that).remove()});
+			});
+		});
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		$(document).keydown(function(e) {
+			var url = false;
+			if (e.which == 37 || e.which == 74) {  // Left arrow and J
+				
+				url = 'http://yuliu.org/2007/04/log_for_log4net_1_configuration_summary/';
+				
+			}
+			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+				
+				url = 'http://yuliu.org/2007/04/log_for_log4net_3_configuration_grammar/';
+				
+			}
+			if (url) {
+				window.location = url;
+			}
+		});
+	})
+</script>
+
+
+				</article>
+				<div id="toc"></div>
+			</div>
+		</div>
+	</body>
+</html>

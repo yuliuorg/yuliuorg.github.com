@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="刘昱" />
+		
+		<title>刘昱 | 小议过量空气系数 </title>
+		
+		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
+		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+		<script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+		<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+		<!--[if IE]>
+		<script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+		<![endif]-->		
+		<script type="text/javascript" src="/media/script/default.js"></script>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33277878-1']);
+			_gaq.push(['_setDomainName', 'yuliu.org']);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_trackPageLoadTime']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+
+		<div id="container">
+			<header>
+			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
+			<h1>刘 昱</h1>
+			<h2>核能动力系统设计工程师</h2>
+			</header>
+			<nav>
+			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
+			<span><a title="简历" class="" href="http://yuliu.org/vitae/">简历</a></span>
+			<span><a title="文章" class="" href="http://yuliu.org/publication/">文章</a></span>
+			<span><a title="关于" class="" href="http://yuliu.org/about/">关于</a></span>
+			<span><a title="留言" class="" href="http://yuliu.org/guestbook/">留言</a></span>
+			<span><a title="链接" class="" href="http://yuliu.org/links/">链接</a></span>
+			<span><a title="杂货铺" class="" href="http://yuliu.org/essay">杂货铺</a></span>
+			</nav>
+			<div id="main" role="main">
+				<article class="content">
+				<section class="title">
+<h1>小议过量空气系数</h1>
+</section>
+<section class="post">
+<p>今天因为需要，计算了一下燃气轮机的过量空气系数（excess air coefficient），得出的结论让我有一点惊讶，达到了13左右。而我对过量空气系数的印象一直停留在1.2左右。看了一下计算过程和单位换算，应该没有错，于是查了一下一本燃气轮机教程，上面写到过量空气系数的范围是30-80. 虽然书的历史长了一点，但是数值估计还是差不多的，所以那么我计算的13应该是在可以接受的范围内，1.2是锅炉燃烧的的过量空气系数。我们先看看为什么锅炉的过量空气会取得比较小呢？</p>
+
+<ol>
+<li><p>减小排烟热损失：排烟热损失是锅炉热损失中最主要的一项。为了保护设备，锅炉的排烟温度一般高于空气的露点，如果过量空气系数太大会造成排烟量太大。所以比较小的过量空气系数能够降低该项损失。</p></li>
+<li><p>降低NOX的生成和排放：因为燃烧过程中的温度比较高，如果空气系数比较大，那么会造成空气中多余的氮和氧结合生成NOX。</p></li>
+</ol>
+
+
+<p>上述两个是锅炉中采用较低过量空气系数的主要原因。这两个问题在燃气轮机中同样存在，那么这两个问题是怎么解决的呢？</p>
+
+<p>第一个还比较好办，现在大多数燃气轮机是用于联合循环发电，他的排烟损失可以通过余热锅炉来吸收从而最大限度的挽回。那么第二个问题呢？一般来说低污染物排放是燃气轮机及其联合循环相比传统燃煤循环的优势之一（这个应该首先归功于燃气轮机及其联合循环使用优质燃料）。查了一下资料，有以下办法：</p>
+
+<ol>
+<li><p>在燃烧室注入一定比例的水或蒸汽，虽然对效率有影响，但是降低燃烧火焰温度可以有效的降低Nox的排放，N0X的排放可自140～220ppm降低至25～42ppm。</p></li>
+<li><p>使用低氮燃烧的方法，先使用一定量的空气与燃气混合燃烧，接着燃烧后的燃气再于空气混合。</p></li>
+<li><p>GE提出的贫油预混燃烧的燃烧室可以有效的将Nox排放降低。</p></li>
+<li><p>炉内脱硝还可以使用选择性催化还原法（SCR），但是这个造价很高，只应用排放要求十分严格的场合。</p></li>
+</ol>
+
+
+<p>以上的方法也基本上可以用于锅炉的降低NOX的排放。</p>
+
+<p>至于为什么要采用这么麻烦的方法而不是减小过量空气系数来降低NOX呢？我想应该是因为燃烧后的燃气温度非常高，如果不采用大量的过量空气，燃气透平的金属不足以支持如此高的进口温度。</p>
+
+<p>参考文献： 【1】国内外燃气轮机发电现况和21世纪展望 《面向21世纪电机工程科技发展战略研讨会论文集 》</p>
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://yuliu.org">刘昱</a>
+</span>
+<span class="time">
+	/
+	
+	<time datetime="2006-12-05">2006-12-05</time> 发表
+	
+</span>
+<br />
+
+<span class="categories">
+	分类： 
+	
+	<a href="http://yuliu.org/essay/categories.html#热能工程" title="热能工程">热能工程</a>&nbsp;/
+	
+</span>
+
+
+<span class="tags">
+	标签： 
+	
+	<a href="http://yuliu.org/essay/tags.html#燃气轮机" title="燃气轮机">燃气轮机</a>&nbsp;
+	
+</span>
+
+</section>
+
+<section class="comment">
+<a href="#" id="show_disqus_comment" onclick="return false;">更多信息，请点击查看评论</a>
+<div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+$(function(){
+		$('section.comment #show_disqus_comment').on('click',function(){
+			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
+			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+			var disqus_url = 'http://yuliu.org/2006/12/a_few_points_about_excess_air_coefficient/';
+			// var disqus_developer = 1; 
+			var that = this;
+			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			var src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			PSJS.loadScript(src, function(){$(that).remove()});
+			});
+		});
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		$(document).keydown(function(e) {
+			var url = false;
+			if (e.which == 37 || e.which == 74) {  // Left arrow and J
+				
+				url = 'http://yuliu.org/2006/12/a_normal_problem_in_china_train_delay/';
+				
+			}
+			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+				
+				url = 'http://yuliu.org/2006/12/add_in_site_search_to_your_blogger_beta/';
+				
+			}
+			if (url) {
+				window.location = url;
+			}
+		});
+	})
+</script>
+
+
+				</article>
+				<div id="toc"></div>
+			</div>
+		</div>
+	</body>
+</html>

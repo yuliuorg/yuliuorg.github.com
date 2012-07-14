@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="刘昱" />
+		
+		<title>刘昱 | 使用C#进行基于PI的开发（一） </title>
+		
+		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
+		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+		<script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+		<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+		<!--[if IE]>
+		<script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+		<![endif]-->		
+		<script type="text/javascript" src="/media/script/default.js"></script>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33277878-1']);
+			_gaq.push(['_setDomainName', 'yuliu.org']);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_trackPageLoadTime']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+
+		<div id="container">
+			<header>
+			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
+			<h1>刘 昱</h1>
+			<h2>核能动力系统设计工程师</h2>
+			</header>
+			<nav>
+			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
+			<span><a title="简历" class="" href="http://yuliu.org/vitae/">简历</a></span>
+			<span><a title="文章" class="" href="http://yuliu.org/publication/">文章</a></span>
+			<span><a title="关于" class="" href="http://yuliu.org/about/">关于</a></span>
+			<span><a title="留言" class="" href="http://yuliu.org/guestbook/">留言</a></span>
+			<span><a title="链接" class="" href="http://yuliu.org/links/">链接</a></span>
+			<span><a title="杂货铺" class="" href="http://yuliu.org/essay">杂货铺</a></span>
+			</nav>
+			<div id="main" role="main">
+				<article class="content">
+				<section class="title">
+<h1>使用C#进行基于PI的开发（一）</h1>
+</section>
+<section class="post">
+<p>根据PI的SDK的文档,从这里开始下手吧,这个文档的版本有点早,大概是2002年的,里面没有.net的例子,还好里面大多数是VB的例子,我想应该可以直接搬过来吧.于是开始动手.</p>
+
+<p>首先欲基于PI-SDK开发PI数据库,必须先安装PI-SDK,然后再VS中新建了一个aspnet网站,添加引用:PI-SDK 1.2 Type Library 和 PISDKCommon 1.2 Type Library</p>
+
+<p>接着看文档上面VB的例子代码是</p>
+
+<pre><code>Option Explicit
+Dim srv as Server
+Dim pt As PIPoint
+for Each srv In Servers
+Combo1.AddItem srv.Name
+Next srv
+</code></pre>
+
+<p>为了把这两个地方改成能运行得C#代码还花费了不少力气,因为原来没有做的东西都是很简单的.net东西,基本上没有用到过和COM组件进行交互.首先说什么不能实例花,接着又说什么Servers不行,花了很多时间在PISDK下面找了一个能实例化的类PISDKClass,后来又发现原来Servers 是这个对象的一个属性.</p>
+
+<pre><code>private PISDK.IPISDK piSDK= new PISDK.PISDKClass();
+private PISDK.Server _piServer;
+private PISDK.PIPoint _piPoint;
+</code></pre>
+
+<p>在Page_Load事件枚举所有的数据源,添加到DropSownlist.</p>
+
+<pre><code>foreach(PISDK.Server item in piSDK.Servers)
+{
+DropDownList1.Items.Add(srv.Name);
+}
+</code></pre>
+
+<p>设置_piServer为dropdown里面选中的数据库</p>
+
+<pre><code>_piServer = piSDK.Servers[DropDownList1.Text];
+</code></pre>
+
+<p>然后下面接着防置一个文本框来读取用户输入的Tag点,Tag有点相当于普通数据库的字段.但是又不一样,关于这个暂时不细说了</p>
+
+<p>和一个ListBox来得到这个Tag的所有属性.代码如下:</p>
+
+<pre><code>_piPoint = _piServer.PIPoints[tbxTagName.Text];
+ListBox1.Items.Clear();
+foreach (PISDK.PointAttribute ptatr in _piPoint.PointAttributes)
+{
+ListBox1.Items.Add(ptatr.Name);
+}
+</code></pre>
+
+<p>读取Tag属性的值可以用下述属性.</p>
+
+<pre><code>tbxAttValue.Text = _piPoint.PointAttributes[ListBox1.Text].Value.ToString();
+</code></pre>
+
+<p>如果要更新这个属性的值呢?仍然很简单</p>
+
+<pre><code>PISDK.PointAttribute ptatr;
+_piPoint = _piServer.PIPoints[tbxTagName.Text];
+ptatr = _piPoint.PointAttributes[lblAttrName.Text];
+_piPoint.PointAttributes.ReadOnly = false;
+ptatr.Value = tbxAttValue.Text;
+_piPoint.PointAttributes.ReadOnly = true;
+blNotion.Text = "更新成功！";
+</code></pre>
+
+<p>其实最后一句想用MessageBox可惜在asp.net下面一直找不到好的使用MessageBox的方法,原来在CodeProject上面找了一个,但是因为后来发现在Atlas的updatepanel中不能使用,也就作罢了</p>
+
+<p>OK,上面就是我根据SDK-Manual里面的一个Basic例子,用C#改写了一下,实现了和例子一样的功能,虽然今天花费了不少时间,最后做出来的东西看起来却很简单,不过自己感受到了收获,第一次发文到首页,有点紧张,呵呵!</p>
+
+<p>下面是一个简单的截图和SDK截图的对比：</p>
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://yuliu.org">刘昱</a>
+</span>
+<span class="time">
+	/
+	
+	<time datetime="2011-03-11">2011-03-11</time> 发表
+	
+</span>
+<br />
+
+<span class="categories">
+	分类： 
+	
+	<a href="http://yuliu.org/essay/categories.html#计算机" title="计算机">计算机</a>&nbsp;/
+	
+</span>
+
+
+<span class="tags">
+	标签： 
+	
+	<a href="http://yuliu.org/essay/tags.html#C#" title="C#">C#</a>&nbsp;
+	
+	<a href="http://yuliu.org/essay/tags.html#PI数据库" title="PI数据库">PI数据库</a>&nbsp;
+	
+	<a href="http://yuliu.org/essay/tags.html#程序设计" title="程序设计">程序设计</a>&nbsp;
+	
+</span>
+
+</section>
+
+<section class="comment">
+<a href="#" id="show_disqus_comment" onclick="return false;">更多信息，请点击查看评论</a>
+<div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+$(function(){
+		$('section.comment #show_disqus_comment').on('click',function(){
+			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
+			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+			var disqus_url = 'http://yuliu.org/2011/03/pi_development_using_csharp/';
+			// var disqus_developer = 1; 
+			var that = this;
+			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			var src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			PSJS.loadScript(src, function(){$(that).remove()});
+			});
+		});
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		$(document).keydown(function(e) {
+			var url = false;
+			if (e.which == 37 || e.which == 74) {  // Left arrow and J
+				
+				url = 'http://yuliu.org/2011/03/pi_actieview_and_windows2003/';
+				
+			}
+			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+				
+				url = 'http://yuliu.org/2011/03/pi_development_using_csharp_2/';
+				
+			}
+			if (url) {
+				window.location = url;
+			}
+		});
+	})
+</script>
+
+
+				</article>
+				<div id="toc"></div>
+			</div>
+		</div>
+	</body>
+</html>

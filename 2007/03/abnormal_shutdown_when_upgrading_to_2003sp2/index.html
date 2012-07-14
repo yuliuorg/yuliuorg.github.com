@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="刘昱" />
+		
+		<title>刘昱 | 升级到Windows 2003 sp2及系统不正常死机的初探 </title>
+		
+		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
+		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+		<script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+		<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+		<!--[if IE]>
+		<script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+		<![endif]-->		
+		<script type="text/javascript" src="/media/script/default.js"></script>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33277878-1']);
+			_gaq.push(['_setDomainName', 'yuliu.org']);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_trackPageLoadTime']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+
+		<div id="container">
+			<header>
+			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
+			<h1>刘 昱</h1>
+			<h2>核能动力系统设计工程师</h2>
+			</header>
+			<nav>
+			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
+			<span><a title="简历" class="" href="http://yuliu.org/vitae/">简历</a></span>
+			<span><a title="文章" class="" href="http://yuliu.org/publication/">文章</a></span>
+			<span><a title="关于" class="" href="http://yuliu.org/about/">关于</a></span>
+			<span><a title="留言" class="" href="http://yuliu.org/guestbook/">留言</a></span>
+			<span><a title="链接" class="" href="http://yuliu.org/links/">链接</a></span>
+			<span><a title="杂货铺" class="" href="http://yuliu.org/essay">杂货铺</a></span>
+			</nav>
+			<div id="main" role="main">
+				<article class="content">
+				<section class="title">
+<h1>升级到Windows 2003 sp2及系统不正常死机的初探</h1>
+</section>
+<section class="post">
+<p>经历过XP的sp2升级经验以后，确认不会因为升级产生某些不可控的危害以后，我决定把我的2003操作系统升级到sp2 :) ，可是，却发生了...</p>
+
+<p>首先在<a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=95ac1610-c232-4644-b828-c55eec605d55&amp;DisplayLang=en">微软的下载中心</a>下载大约400M的升级包，还有一种是可以刻录成光盘的下载文件，个头也比较大，估计500M左右，我选择了这个比较小的。</p>
+
+<p>升级过程还算比较快，比Visual Studio 2005 sp1的安装快多了，而且不会出现快安装完说什么数字签名不对重来的那种情况。</p>
+
+<p>升级完成以后进入系统，一切还比较顺畅，仿佛跟原来的没有什么区别，正在此时，电脑停止了反应，鼠标不能动，Tab键没有反应，Task manager也掉不出来，只能按Reset键重新启动，当我认为这是一个意外，重新启动机器以后，过了不到５分钟，又出现了同样的状况。我知道，某个地方出问题了</p>
+
+<p>按照先软后硬的次序，Ghost恢复了系统（可怜我得重新安装那么一大坨软件啊），还是崩溃。接着怀疑是温度过高，拿出everest进行压力测试，温度竟然达到了110°。赶快检查cpu，把风扇拆了好好清洗了以下，又找来硅脂重新涂好，开机再测，温度是降下来了，70°左右（P4就是这样的，没用过扣肉）。正以为大功告成之时，系统又停止了响应。</p>
+
+<p>想着就算把电脑拿去修也是一件麻烦的事情，这个死机又是不一定的，到时候怎么给别人说。就在郁闷的时候，我偶然间“终于”得到了答案。用everest进行压力测试的时候，CPU占用率会达到100%。而进行这个测试有的时候会死机，有的时候不会死机。而两者的区别我能察觉到就是QQ的打开与否。难道是QQ的原因。</p>
+
+<p>于是上网google了以下。在这个<a href="http://webnews.giga.net.tw/article/news.microsoft.com/microsoft.public.cn.windows.server.setup/3713">新闻组</a>看到一个人和我相同的状况。他的解决方法是<strong><em>删除了键盘保护的两个文件</em></strong>。这个两个文件又在哪里呢。<a href="http://blogs.itecn.net/blogs/winvista/archive/2006/09/03/3604.aspx">这篇文章</a>指出了是哪两个键盘保护文件导致QQ在Vista下面死机，他的解决方法是删除这个两个文件，我没有这么极端，而是把他们的名字改了。这两个文件是QQ安装文件夹下的<strong><em>npkcrypt.sys</em></strong>和<strong><em>npkcusb.sys</em></strong>两个文件。改了以后登录QQ，通知键盘保护失效，强迫让你用软键盘输入前三位密码。</p>
+
+<p>在网上搜索这两个文件，基本上都和腾讯QQ有联系，他们用来在输入QQ密码时进行键盘保护，腾讯是这样吹的：“采用了国际先进的nProtect键盘加密保护技术，能最大限度地防止用户的密码输入不被病毒、键盘记录程序所窃取，大大提高了QQ用户的帐号安全性。”但是好像网上对这个的破解不只一个两个，<a href="http://bbs.zol.com.cn/index20060211/index_284_249.html">这里</a>是一个比较概念的，没有给出代码，而<a href="http://blog.csdn.net/DL88250/archive/2006/12/13/1440394.aspx">这里</a>则直接给出了破解的C程序代码。不过我没有确认，有感兴趣的可以尝试以下。</p>
+
+<p>我不否认腾讯为防止QQ号被盗而做出的努力，但是使用如此复杂而又低层甚至危险的技术（至少再我看来），却不在安装的时候通知用户，而安装了以后又不让用户能够选择是否使用，导致我为了这个问题而浪费了两天的时间。</p>
+
+<p>PS：我觉得密码保护通过一些逻辑手段基本上已经起到了比较好的效果了，没有必要这么复杂以致引起系统死机。</p>
+
+<p>中国的软件商总喜欢把用户当成傻瓜。</p>
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://yuliu.org">刘昱</a>
+</span>
+<span class="time">
+	/
+	
+	<time datetime="2007-03-15">2007-03-15</time> 发表
+	
+</span>
+<br />
+
+<span class="categories">
+	分类： 
+	
+	<a href="http://yuliu.org/essay/categories.html#计算机" title="计算机">计算机</a>&nbsp;/
+	
+</span>
+
+
+<span class="tags">
+	标签： 
+	
+	<a href="http://yuliu.org/essay/tags.html#系统" title="系统">系统</a>&nbsp;
+	
+	<a href="http://yuliu.org/essay/tags.html#windows" title="windows">windows</a>&nbsp;
+	
+</span>
+
+</section>
+
+<section class="comment">
+<a href="#" id="show_disqus_comment" onclick="return false;">更多信息，请点击查看评论</a>
+<div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+$(function(){
+		$('section.comment #show_disqus_comment').on('click',function(){
+			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
+			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+			var disqus_url = 'http://yuliu.org/2007/03/abnormal_shutdown_when_upgrading_to_2003sp2/';
+			// var disqus_developer = 1; 
+			var that = this;
+			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			var src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			PSJS.loadScript(src, function(){$(that).remove()});
+			});
+		});
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		$(document).keydown(function(e) {
+			var url = false;
+			if (e.which == 37 || e.which == 74) {  // Left arrow and J
+				
+				url = 'http://yuliu.org/2006/12/a_data_driven_switch_menu_on_codeproject/';
+				
+			}
+			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+				
+				url = 'http://yuliu.org/2007/03/gma3000_driver_installation_of_965_mainboard_in_windows_2003/';
+				
+			}
+			if (url) {
+				window.location = url;
+			}
+		});
+	})
+</script>
+
+
+				</article>
+				<div id="toc"></div>
+			</div>
+		</div>
+	</body>
+</html>

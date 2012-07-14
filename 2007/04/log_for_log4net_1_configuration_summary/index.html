@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="刘昱" />
+		
+		<title>刘昱 | Log For log4net (一) - 配置概述 </title>
+		
+		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
+		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+		<script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+		<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+		<!--[if IE]>
+		<script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+		<![endif]-->		
+		<script type="text/javascript" src="/media/script/default.js"></script>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33277878-1']);
+			_gaq.push(['_setDomainName', 'yuliu.org']);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_trackPageLoadTime']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+
+		<div id="container">
+			<header>
+			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
+			<h1>刘 昱</h1>
+			<h2>核能动力系统设计工程师</h2>
+			</header>
+			<nav>
+			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
+			<span><a title="简历" class="" href="http://yuliu.org/vitae/">简历</a></span>
+			<span><a title="文章" class="" href="http://yuliu.org/publication/">文章</a></span>
+			<span><a title="关于" class="" href="http://yuliu.org/about/">关于</a></span>
+			<span><a title="留言" class="" href="http://yuliu.org/guestbook/">留言</a></span>
+			<span><a title="链接" class="" href="http://yuliu.org/links/">链接</a></span>
+			<span><a title="杂货铺" class="" href="http://yuliu.org/essay">杂货铺</a></span>
+			</nav>
+			<div id="main" role="main">
+				<article class="content">
+				<section class="title">
+<h1>Log For log4net (一) - 配置概述</h1>
+</section>
+<section class="post">
+<p>最近在写程序时，觉得对程序进行log很有必要。比如一个程序试运行时，可以通过log了解程序的运行情况等。.NET 框架下有<a href="http://www.cnblogs.com/Terrylee/archive/2006/12/03/opensource_framework_and_resource_recommendation_Log.html">很多开源的log工具</a>，log4net就是其中的代表。</p>
+
+<p>以前学习英语的东西，都是只了解了一个大概。这次决定试试通过翻译英文文档来学习log4net，看看能不能有更多的收获。学习的过程就叫Log For log4net吧，好像有一点绕口:-)</p>
+
+<p>第一部分选取了log4net手册的Configuration节。这一节比较长，打算分两次看完。</p>
+
+<p>注：1 代码中的英文注释将保留；2 log译为“记录”；logger译为“记录器”</p>
+
+<p>原文地址：<a href="http://logging.apache.org/log4net/release/manual/configuration.html">log4net Manual - Configuration</a></p>
+
+<p><strong>配置</strong></p>
+
+<p>对应用程序进行记录需要一定量的规划和工作。观察说明大约4成的代码是用来完成记录工作，即使中等规模的程序也需要在代码中嵌入上千行的记录语句。因此有必要自动维护记录代码。</p>
+
+<p>log4net环境是完全可程序化配置的，但是使用XML格式的配置文件对它进行配置将会更灵活方便。</p>
+
+<p>让我们看看是怎样在例子程序MyApp中使用log4net来完成记录。</p>
+
+<p><em>译注：这里的MyApp为控制台应用程序。</em></p>
+
+<pre><code>using Com.Foo;
+// Import log4net classes.
+using log4net;
+using log4net.Config;
+public class MyApp 
+{
+    // Define a static logger variable so that it references the
+    // Logger instance named "MyApp".
+    private static readonly ILog log = ager.GetLogger(typeof(MyApp));
+    static void Main(string[] args) 
+    {
+        // Set up a simple configuration that logs on the console.
+        BasicConfigurator.Configure();
+        log.Info("Entering application.");
+        Bar bar = new Bar();
+        bar.DoIt();
+        log.Info("Exiting application.");
+    }
+}
+</code></pre>
+
+<p>MyApp首先声明导入log4net的相关类，然后定义了一个静态记录器变量，传入参数是该类的类名。</p>
+
+<p>在MyApp中使用了下面的Bar类</p>
+
+<pre><code>using log4net;
+namespace Com.Foo
+{
+    public class Bar
+    {
+        private static readonly ILog log = nager.GetLogger(typeof(Bar));
+        public void DoIt()
+        {
+            log.Debug("Did it again!");
+        }
+    }
+}
+</code></pre>
+
+<p>BasicConfigurator.Configure()方法创建了一个简单的log4net配置，这个方法增加了一个到控制台的根记录器，输入格式可以使用PatternLayout来设置，例如<code>%-4timestamp [%thread] %-5level %logger %ndc - %message%newline</code>.</p>
+
+<p>默认情况下，根记录器被分配到Level.DEBUG</p>
+
+<p>上述代码的输出如下</p>
+
+<pre><code>0    [main] INFO  MyApp  - Entering application.
+36   [main] DEBUG Com.Foo.Bar  - Did it again!
+51   [main] INFO  MyApp  - Exiting application.
+</code></pre>
+
+<p>我们注意到在log4net中，子记录器只会连接到他们存在的上级。这里，名为Com.Foo.Bar的记录器直接连接到根记录器，因而将忽略未使用的Com或者Com.Foo的记录器。这种方法明显改进了性能和降低了log4net的内存使用。</p>
+
+<p>MyApp类通过调用BasicConfigurator.Configure()方法来配置log4net，其他类只需要导入log4net命名空间，获取他们需要的记录器进行记录。</p>
+
+<p>上面的例子总是输入相同的记录信息。当然，可以简单的修改MyApp使之在运行时刻控制记录。下面是一个轻微修改版本。</p>
+
+<pre><code>using Com.Foo;
+// Import log4net classes.
+using log4net;
+using log4net.Config;
+public class MyApp 
+{
+    private static readonly ILog log = ager.GetLogger(typeof(MyApp));
+    static void Main(string[] args) 
+    {
+        // BasicConfigurator replaced with XmlConfigurator.
+        XmlConfigurator.Configure(new .IO.FileInfo(args[0]));
+        log.Info("Entering application.");
+        Bar bar = new Bar();
+        bar.DoIt();
+        log.Info("Exiting application.");
+    }
+}
+</code></pre>
+
+<p>这个版本的MyApp使用XmlConfigurator来解析配置文件和建立记录环境，配置文件的路径通过命令行制定。</p>
+
+<p><em>译注：不知道怎么赋值给命令行参数，我是直接传递log4net的配置文件的名称。</em></p>
+
+<p>下面是一个简单的配置文件，它的效果与上面的基于BasicConfigurator的例子完全相同。</p>
+
+<pre><code>&lt;log4net&gt;
+    &lt;!-- A1 is set to be a ConsoleAppender --&gt;
+    &lt;appender name="A1" type="log4net.Appender.ConsoleAppender"&gt;
+        &lt;!-- A1 uses PatternLayout --&gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+            &lt;conversionPattern value="%-4timestamp ad] %-5level %logger %ndc - %message%newline" /&gt;
+        &lt;/layout&gt;
+    &lt;/appender&gt;
+    &lt;!-- Set root logger level to DEBUG and its only appender to 
+    &lt;root&gt;
+        &lt;level value="DEBUG" /&gt;
+        &lt;appender-ref ref="A1" /&gt;
+    &lt;/root&gt;
+&lt;/log4net&gt;
+</code></pre>
+
+<p>如果我们不再想记录任何Com.Foo命名空间中类的记录输出，可以参照下面的配置文件</p>
+
+<pre><code>&lt;log4net&gt;
+    &lt;!-- A1 is set to be a ConsoleAppender --&gt;
+    &lt;appender name="A1" type="log4net.Appender.ConsoleAppender"&gt;
+        &lt;!-- A1 uses PatternLayout --&gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+            &lt;!-- Print the date in ISO 8601 format --&gt;
+            &lt;conversionPattern value="%date ad] %-5level %logger %ndc - %message%newline" /&gt;
+        &lt;/layout&gt;
+    &lt;/appender&gt;
+    &lt;!-- Set root logger level to DEBUG and its only appender to 
+    &lt;root&gt;
+        &lt;level value="DEBUG" /&gt;
+        &lt;appender-ref ref="A1" /&gt;
+    &lt;/root&gt;
+    &lt;!-- Print only messages of level WARN or above in the package o --&gt;
+    &lt;logger name="Com.Foo"&gt;
+        &lt;level value="WARN" /&gt;
+    &lt;/logger&gt;
+&lt;/log4net&gt;
+</code></pre>
+
+<p>输出将会是这样：</p>
+
+<pre><code>2000-09-07 14:07:41,508 [main] INFO  MyApp - Entering application.
+2000-09-07 14:07:41,529 [main] INFO  MyApp - Exiting application.
+</code></pre>
+
+<p>因为记录器Com.Foo.Bar没有分配级别，它将继承配置文件中已分配为Warn级别的Com.Foo的级别，Bar.DoIt方法中记录语句的级别为DEBUG，低于WARN，因此DoIt方法的记录请求将被禁止。</p>
+
+<p>下面是使用多记录方式的配置文件</p>
+
+<pre><code>&lt;log4net&gt;
+    &lt;appender name="Console" type="log4net.Appender.ConsoleAppender"&gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+            &lt;!-- Pattern to output the caller's file name and line number --&gt;
+            &lt;conversionPattern value="%5level [%thread] (%file:%line) - %message%newline" /&gt;
+        &lt;/layout&gt;
+    &lt;/appender&gt;
+    &lt;appender name="RollingFile" type="log4net.Appender.RollingFileAppender"&gt;
+        &lt;file value="example.log" /&gt;
+        &lt;appendToFile value="true" /&gt;
+        &lt;maximumFileSize value="100KB" /&gt;
+        &lt;maxSizeRollBackups value="2" /&gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+            &lt;conversionPattern value="%level %thread %logger - %message%newline" /&gt;
+        &lt;/layout&gt;
+    &lt;/appender&gt;
+    &lt;root&gt;
+        &lt;level value="DEBUG" /&gt;
+        &lt;appender-ref ref="Console" /&gt;
+        &lt;appender-ref ref="RollingFile" /&gt;
+    &lt;/root&gt;
+&lt;/log4net&gt;
+</code></pre>
+
+<p>运行它控制台将会出现如下输出</p>
+
+<pre><code>INFO [main] (MyApp.cs:16) - Entering application.
+DEBUG [main] (Bar.cs:12) - Doing it again!
+INFO [main] (MyApp.cs:19) - Exiting application.
+</code></pre>
+
+<p>指的注意的是，因为根记录器有第二个记录方式，记录也会被输出到example.log文件，文件将会被回滚当他达到100KB，当回滚发生时，旧版本的example.log将会被重命名为example.log.1</p>
+
+<p>注意，实现这些不同的记录行为并不需要重新编译程序。我们可以轻松的将记录输出到Email地址、Windows的事件记录器，或者远程的log4net服务器。</p>
+
+<p>更多的使用XmlConfigurator实现多输出方式的例子 <a href="http://logging.apache.org/log4net/release/config-examples.html">点击这里</a></p>
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://yuliu.org">刘昱</a>
+</span>
+<span class="time">
+	/
+	
+	<time datetime="2007-04-27">2007-04-27</time> 发表
+	
+</span>
+<br />
+
+<span class="categories">
+	分类： 
+	
+	<a href="http://yuliu.org/essay/categories.html#计算机" title="计算机">计算机</a>&nbsp;/
+	
+</span>
+
+
+<span class="tags">
+	标签： 
+	
+	<a href="http://yuliu.org/essay/tags.html#log4net" title="log4net">log4net</a>&nbsp;
+	
+	<a href="http://yuliu.org/essay/tags.html#.net" title=".net">.net</a>&nbsp;
+	
+</span>
+
+</section>
+
+<section class="comment">
+<a href="#" id="show_disqus_comment" onclick="return false;">更多信息，请点击查看评论</a>
+<div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+$(function(){
+		$('section.comment #show_disqus_comment').on('click',function(){
+			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
+			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+			var disqus_url = 'http://yuliu.org/2007/04/log_for_log4net_1_configuration_summary/';
+			// var disqus_developer = 1; 
+			var that = this;
+			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			var src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			PSJS.loadScript(src, function(){$(that).remove()});
+			});
+		});
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		$(document).keydown(function(e) {
+			var url = false;
+			if (e.which == 37 || e.which == 74) {  // Left arrow and J
+				
+				url = 'http://yuliu.org/2007/04/using_dotnet_web_service_by_javascript/';
+				
+			}
+			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+				
+				url = 'http://yuliu.org/2007/04/log_for_log4net_2_configuration_attribute_file/';
+				
+			}
+			if (url) {
+				window.location = url;
+			}
+		});
+	})
+</script>
+
+
+				</article>
+				<div id="toc"></div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="刘昱" />
+		
+		<title>刘昱 | 我的Vim（Vim-of-pisheng) </title>
+		
+		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
+		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+		<script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+		<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+		<!--[if IE]>
+		<script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+		<![endif]-->		
+		<script type="text/javascript" src="/media/script/default.js"></script>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33277878-1']);
+			_gaq.push(['_setDomainName', 'yuliu.org']);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_trackPageLoadTime']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+
+		<div id="container">
+			<header>
+			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
+			<h1>刘 昱</h1>
+			<h2>核能动力系统设计工程师</h2>
+			</header>
+			<nav>
+			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
+			<span><a title="简历" class="" href="http://yuliu.org/vitae/">简历</a></span>
+			<span><a title="文章" class="" href="http://yuliu.org/publication/">文章</a></span>
+			<span><a title="关于" class="" href="http://yuliu.org/about/">关于</a></span>
+			<span><a title="留言" class="" href="http://yuliu.org/guestbook/">留言</a></span>
+			<span><a title="链接" class="" href="http://yuliu.org/links/">链接</a></span>
+			<span><a title="杂货铺" class="" href="http://yuliu.org/essay">杂货铺</a></span>
+			</nav>
+			<div id="main" role="main">
+				<article class="content">
+				<section class="title">
+<h1>我的Vim（Vim-of-pisheng)</h1>
+</section>
+<section class="post">
+<h1>1 Vim初始安装</h1>
+
+<p>主要是因为采用了Vundle的插件管理方式，因此一般使用下述步骤。</p>
+
+<ul>
+<li>下载安装</li>
+<li>修改<code>.vimrc或\_vimrc</code>文件</li>
+<li>安装Vundle插件管理软件</li>
+<li>通过Vundle安装和管理插件<br/>
+Vundle插件名需要区分大小写</li>
+</ul>
+
+
+<h1>2 vim的基本配置</h1>
+
+<p>这一部分具体可以参考<code>.vimrc或\_vimrc</code>文件，设置中均进行了注释。</p>
+
+<h1>3 Vim插件</h1>
+
+<ol>
+<li><p><a href="http://www.vim.org/scripts/script.php?script_id=3458">Vundle</a><br/>
+vim插件管理包，需要git和curl的支持</p></li>
+<li><p><a href="http://www.vim.org/scripts/script.php?script_id=1708">FencView</a><br/>
+自动检测文件编码，也可以手动选择文件编码。<br/>
+需要<a href="http://mbbill.googlepages.com/iconv.dll">iconv.dll</a>的支持，在系统PATH路径下。</p></li>
+<li><p><a href="http://www.vim.org/scripts/script.php?script_id=2657">VOom</a><br/>
+部分标记语言的标题自动摘要<br/>
+需要python 2.X的支持，不能使用64位的。</p></li>
+<li><p><a href="https://github.com/tpope/vim-markdown">Markdown</a><br/>
+提供markdown着色功能
+为了便于识别两个空格表示的换行，修改<code>~\.vim\bundle\vim-markdown\syntax\markdown.vim</code>，在96行增加</p>
+
+<pre><code> hi def link markdownLineBreak             Todo
+</code></pre>
+
+<p>markdownLineBreak其实在原始vim中已经定义，没有着色而已</p></li>
+<li><p><a href="http://www.vim.org/scripts/script.php?script_id=1658">The NERD tree</a><br/>
+一个文件浏览器插件，方便在vim中直接切换文件</p></li>
+<li><p><a href="http://www.vim.org/scripts/script.php?script_id=1218">NERDCommenter</a><br/>
+代码快速注释/取消注释插件</p></li>
+<li><p><a href="http://www.vim.org/scripts/script.php?script_id=1984">FuzzyFinder</a><br/>
+buffer、文件、命令...的快速切换和浏览器，神器。<br/>
+需要L9插件的支持</p></li>
+<li><p><a href="http://www.vim.org/scripts/script.php?script_id=3252">L9</a><br/>
+vim脚本库。</p></li>
+<li><p><a href="http://www.vim.org/scripts/script.php?script_id=3227">Simple-Javascript-Indenter</a><br/>
+javascript缩进插件，支持OOP和jQuery</p></li>
+<li><p><a href="http://www.vim.org/scripts/script.php?script_id=2416">jQuery</a><br/>
+jQuery语法支持，包括关键字，和CSS选择器</p></li>
+<li><p><a href="http://www.vim.org/scripts/script.php?script_id=2620">neocomplcache</a><br/>
+自动完成插件，不需要ctags，但是可能占用较大的内存。</p></li>
+<li><p><a href="http://www.vim.org/scripts/script.php?script_id=4043">neocomplcache-snippets_complete</a><br/>
+提供在neocomplcache使用和snipMate.vim相似的功能。</p></li>
+</ol>
+
+
+<h1>4 Vim的配色</h1>
+
+<p>个人在gui下喜欢使用torte的colorscheme，但是原始版本的配色没有考虑Pmenu的样式，使得Pmenu的色调很不搭（背景是粉红)。</p>
+
+<p>打开<code>colors\torte.vim</code>，在文件最后加入下面几行。</p>
+
+<pre><code>hi Pmenu guifg=#c0c0c0 guibg=#404080
+hi PmenuSel guifg=#c0c0c0 guibg=#2050d0
+hi PmenuSbar guifg=blue guibg=darkgray
+hi PmenuThumb guifg=#c0c0c0
+</code></pre>
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://yuliu.org">刘昱</a>
+</span>
+<span class="time">
+	/
+	
+	<time datetime="2012-07-10">2012-07-10</time> 更新
+	
+</span>
+<br />
+
+<span class="categories">
+	分类： 
+	
+	<a href="http://yuliu.org/essay/categories.html#计算机" title="计算机">计算机</a>&nbsp;/
+	
+</span>
+
+
+<span class="tags">
+	标签： 
+	
+	<a href="http://yuliu.org/essay/tags.html#vim" title="vim">vim</a>&nbsp;
+	
+	<a href="http://yuliu.org/essay/tags.html#插件" title="插件">插件</a>&nbsp;
+	
+</span>
+
+</section>
+
+<section class="comment">
+<a href="#" id="show_disqus_comment" onclick="return false;">更多信息，请点击查看评论</a>
+<div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+$(function(){
+		$('section.comment #show_disqus_comment').on('click',function(){
+			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
+			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+			var disqus_url = 'http://yuliu.org/2012/06/vim_of_pisheng/';
+			// var disqus_developer = 1; 
+			var that = this;
+			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			var src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			PSJS.loadScript(src, function(){$(that).remove()});
+			});
+		});
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		$(document).keydown(function(e) {
+			var url = false;
+			if (e.which == 37 || e.which == 74) {  // Left arrow and J
+				
+				url = 'http://yuliu.org/2012/06/git_and_github/';
+				
+			}
+			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+				
+				url = 'http://yuliu.org/2012/07/jekyll_notes/';
+				
+			}
+			if (url) {
+				window.location = url;
+			}
+		});
+	})
+</script>
+
+
+				</article>
+				<div id="toc"></div>
+			</div>
+		</div>
+	</body>
+</html>

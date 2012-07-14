@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="刘昱" />
+		
+		<title>刘昱 | git和github </title>
+		
+		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
+		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+		<script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+		<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+		<!--[if IE]>
+		<script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+		<![endif]-->		
+		<script type="text/javascript" src="/media/script/default.js"></script>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33277878-1']);
+			_gaq.push(['_setDomainName', 'yuliu.org']);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_trackPageLoadTime']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+
+		<div id="container">
+			<header>
+			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
+			<h1>刘 昱</h1>
+			<h2>核能动力系统设计工程师</h2>
+			</header>
+			<nav>
+			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
+			<span><a title="简历" class="" href="http://yuliu.org/vitae/">简历</a></span>
+			<span><a title="文章" class="" href="http://yuliu.org/publication/">文章</a></span>
+			<span><a title="关于" class="" href="http://yuliu.org/about/">关于</a></span>
+			<span><a title="留言" class="" href="http://yuliu.org/guestbook/">留言</a></span>
+			<span><a title="链接" class="" href="http://yuliu.org/links/">链接</a></span>
+			<span><a title="杂货铺" class="" href="http://yuliu.org/essay">杂货铺</a></span>
+			</nav>
+			<div id="main" role="main">
+				<article class="content">
+				<section class="title">
+<h1>git和github</h1>
+</section>
+<section class="post">
+<h1>1 git</h1>
+
+<p>一个版本管理和控制工具</p>
+
+<h1>2 github</h1>
+
+<h2>2.1 配置和使用github</h2>
+
+<h2>2.2 github pages</h2>
+
+<p>github提供了github pages的服务，不仅可以方便的为项目建立介绍页面，也可以用来建立个人页面。gitHub pages分两种，一种是你的gitHub用户名建立的[username].github.com这样的User &amp; Organization Pages，另一种是依附项目的Project Pages。</p>
+
+<h3>User &amp; Organization Pages</h3>
+
+<p>首先建立一个repo，名称只能是[username].github.com。每个用户名下面只能建立一个。该repo下master分支中的内容将被用作用户&amp;组织页（站）内容。</p>
+
+<p>创建好repo之后，commit一个index.html文件，然后push到master分支即可。如果是第一次使用页面，大概需要10分钟左右才能生效，之后的更改则会立即生效。</p>
+
+<p>生效之后就可以访问[username].github.com，将会看到上传的index.html页面。</p>
+
+<h3>Project Pages</h3>
+
+<p>Project Pages放在项目相同的repo中，但是使用 gh-pages分支。其默认地址为[username].github.com/[projectname]。</p>
+
+<h3>yuliu.org的个人页设置</h3>
+
+<p>个人偏好通过本地的jekyll生成site后直接放入repo中，而不是使用github的jekyll引擎。
+因此，本地目录的组织结构如下</p>
+
+<pre><code>root \[ -&gt; "source" \]
+|- markdown files
+|- html \[ -&gt; "master" \]
+</code></pre>
+
+<p>root目录指向git repo的source分支，html目录用来指向相同repo的master分支。</p>
+
+<h4>实现上述结构的方法</h4>
+
+<p>首先在root目录初始化一个repo。（$ 为cmd提示符）</p>
+
+<pre><code># 初始化本地repo
+$ git init
+# 提交文件
+$ git add .
+$ git commit -m "init"
+</code></pre>
+
+<p>通过上述命令建立了一个包含所有源文件的master分支，接着重命名该分支并push到服务器（remote）</p>
+
+<pre><code># 将本地master重命名为source
+$ git branch -m master source
+# 将github repo添加为origin
+$ git remote add origin git@github.com:[username]/[username].github.com.git
+# 将source分支push到服务器repo
+$ git push -u origin source
+</code></pre>
+
+<p>这样repo中只有一个分支：source，见者创建master分支。如果root目录存在html目录，先删除该html目录</p>
+
+<pre><code># 获取一个github repo的副本到html
+$ git clone git@github.com:[username]/[username].github.com.git html
+$ cd html
+# 建立一个独立的分支
+$ git symbolic-ref HEAD refs/heads/master
+$ rm .git/index
+$ git clean -fdx
+</code></pre>
+
+<p>现在master分支已经建立好，每当有新内容生成，只需要commit &amp; push到服务器即可</p>
+
+<pre><code>$ git add .
+$ git commit -m "updated"
+$ git push -u origin master
+</code></pre>
+
+<h2>2.3 自定义域名</h2>
+
+<p>github page中，要想让username.github.com能通过你自己的域名来访问，需要在项目的根目录下新建一个名为CNAME的文件，文件内容为域名或者子域名名称，例如：</p>
+
+<pre><code>yuliu.org
+</code></pre>
+
+<p>接着需要设置域名的DNS（这不是立即生效的），对于顶级域名需要建立一条 A记录 到 204.232.175.78。注意不是使用CNAME形式，否则可能对其他服务（例如email）造成影响。</p>
+
+<p>对于子域名最好使用CNAME记录，指向[username].github.com</p>
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://yuliu.org">刘昱</a>
+</span>
+<span class="time">
+	/
+	
+	<time datetime="2012-06-29">2012-06-29</time> 发表
+	
+</span>
+<br />
+
+<span class="categories">
+	分类： 
+	
+	<a href="http://yuliu.org/essay/categories.html#计算机" title="计算机">计算机</a>&nbsp;/
+	
+</span>
+
+
+<span class="tags">
+	标签： 
+	
+	<a href="http://yuliu.org/essay/tags.html#git" title="git">git</a>&nbsp;
+	
+	<a href="http://yuliu.org/essay/tags.html#github" title="github">github</a>&nbsp;
+	
+</span>
+
+</section>
+
+<section class="comment">
+<a href="#" id="show_disqus_comment" onclick="return false;">更多信息，请点击查看评论</a>
+<div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+$(function(){
+		$('section.comment #show_disqus_comment').on('click',function(){
+			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
+			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+			var disqus_url = 'http://yuliu.org/2012/06/git_and_github/';
+			// var disqus_developer = 1; 
+			var that = this;
+			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			var src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			PSJS.loadScript(src, function(){$(that).remove()});
+			});
+		});
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		$(document).keydown(function(e) {
+			var url = false;
+			if (e.which == 37 || e.which == 74) {  // Left arrow and J
+				
+				url = 'http://yuliu.org/2011/05/modify_ip_dns_gateway_in_cento/';
+				
+			}
+			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+				
+				url = 'http://yuliu.org/2012/06/vim_of_pisheng/';
+				
+			}
+			if (url) {
+				window.location = url;
+			}
+		});
+	})
+</script>
+
+
+				</article>
+				<div id="toc"></div>
+			</div>
+		</div>
+	</body>
+</html>

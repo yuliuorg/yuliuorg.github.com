@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="刘昱" />
+		
+		<title>刘昱 | Switch Menu In Javascript </title>
+		
+		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
+		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+		<script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+		<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+		<!--[if IE]>
+		<script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+		<![endif]-->		
+		<script type="text/javascript" src="/media/script/default.js"></script>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33277878-1']);
+			_gaq.push(['_setDomainName', 'yuliu.org']);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_trackPageLoadTime']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+
+		<div id="container">
+			<header>
+			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
+			<h1>刘 昱</h1>
+			<h2>核能动力系统设计工程师</h2>
+			</header>
+			<nav>
+			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
+			<span><a title="简历" class="" href="http://yuliu.org/vitae/">简历</a></span>
+			<span><a title="文章" class="" href="http://yuliu.org/publication/">文章</a></span>
+			<span><a title="关于" class="" href="http://yuliu.org/about/">关于</a></span>
+			<span><a title="留言" class="" href="http://yuliu.org/guestbook/">留言</a></span>
+			<span><a title="链接" class="" href="http://yuliu.org/links/">链接</a></span>
+			<span><a title="杂货铺" class="" href="http://yuliu.org/essay">杂货铺</a></span>
+			</nav>
+			<div id="main" role="main">
+				<article class="content">
+				<section class="title">
+<h1>Switch Menu In Javascript</h1>
+</section>
+<section class="post">
+<p>I formerly choose <a href="http://ajax.asp.net/ajaxtoolkit/Accordion/Accordion.aspx">Accordion Control</a> in Microsoft Ajax Control toolkit in my application. I like menu with such switching  style. The control is well in it's appearance. For example, we can set frames per second of switching animation and fading transition effect.</p>
+
+<p>However, I encountered the problem when I set  AsyncPostBackTrigger of updatepanel to the LinkButton inside the accordion. If do this, there will be a error at runtime said that  LinkButton1 is not exist. I found a lot of developer have the same confusion at the official forum of asp.net but I can't get answer of it. I think this is may be control name changed when it is in a panel.</p>
+
+<p>I tried another way to solve this problem is to put accordion in a updatapanel. Unfortunately, It still din not work due to LinkButton can't raised event.</p>
+
+<p>Because I can't get the solution of it. I decided to write a switch menu in such style although the self-made one will be simple without any animation or fading effect.</p>
+
+<p>We know we can use CSS style.display attribute to display or hide the div, control and so on. So it's not difficult to make a simple switch menu in Javascript. At first we made menu in html</p>
+
+<pre><code>&lt;ul id="nav-secondary"&gt;
+    &lt;li id="Menu1"&gt;&lt;a href="#" onclick="SwitchMenu('Menu1','nav-secondary')"&gt;Menu 1&lt;/a&gt;
+        &lt;ul style="display: none;"&gt;
+            &lt;li&gt;&lt;a href="#" id="A1"&gt;Sub Menu 1.1&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#" id="A6"&gt;Sub Menu 1.2&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li id="Menu2"&gt;&lt;a href="#" onclick="SwitchMenu('Menu2','nav-secondary')"&gt;Menu 2&lt;/a&gt;
+        &lt;ul style="display: none;"&gt;
+            &lt;li&gt;&lt;a href="#" id="A5"&gt;Sub Menu 2.1&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#" id="A7"&gt;Sub Menu 2.2&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li id="Menu3"&gt;&lt;a href="#" onclick="SwitchMenu('Menu3','nav-secondary')"&gt;Menu 3&lt;/a&gt;
+        &lt;ul style="display: none;"&gt;
+            &lt;li&gt;&lt;a href="#" id="A2"&gt;Sub Menu 3.1&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#" id="A3"&gt;Sub Menu 3.2&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#" id="A4"&gt;Sub Menu 3.3&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>SwitchMenu is defined in the Javascript to display or hide the sub menu. note is added. the statement used to set CSS class is optional</p>
+
+<pre><code>var currentMenu;                             //Global variable: current menu
+//Parameter obj is the menu you clicked, container is the container layer of menu
+function SwitchMenu(obj,container){
+    if(document.getElementById(container)){  
+        if (currentMenu!=null) {
+            //Clear css style of current menu
+            currentMenu.className="";       
+        }       
+        //Get the target menu you clicked     
+        var targetMenu = document.getElementById(obj);      
+        //Get sub-menu of target menu        
+        var secondaryMenu= targetMenu.getElementsByTagName("UL")[0];    
+        var secondaryMenus = document.getElementById(container).getElementsByTagName("UL"); //get all submenus   
+        if (secondaryMenu==null) {                                  //No sub menu                                 
+            for (var i=0; i&lt;secondaryMenus.length; i++){    
+                 //Hide all sub menu                       
+                secondaryMenus[i].style.display = "none";                          
+            }
+            //Set target menu css class
+            targetMenu.className="active";                          
+        }else{                                                                               //Sub menu Exist
+            //Click the  menu which sub-menu is hide
+            if(secondaryMenu.style.display == "none"){                             
+                for (var i=0; i&lt;secondaryMenus.length; i++){                            
+                    secondaryMenus[i].style.display = "none";       //Hide all sub menu                     
+                }
+                secondaryMenu.style.display = "block";              //Display sub-menu u clicked             
+                targetMenu.className="active";                            //Set target menu css class         
+            }else{                                                  //Click the  menu which sub-menu is displayed   
+                secondaryMenu.style.display = "none";               //Hide it    
+                targetMenu.className="";    
+            }
+        }
+        currentMenu = document.getElementById(obj);     //Set current menu (global variable)
+    }
+} 
+</code></pre>
+
+<p>Ok, run it in your browser. it works fine, right?</p>
+
+<p>Maybe additional css make appearance better</p>
+
+<pre><code>/* SECONDARY NAVIGATION - vertical navigation */
+#nav-secondary, #nav-secondary ul {position:static}
+#nav-secondary, #nav-secondary li {list-style: none;margin:0;padding:0;background:#fff}
+#nav-secondary {padding-top:0;border-top: 1px solid #ccc;margin-top: 1px}
+#nav-secondary a {line-height:1.8;padding: 5px 0 5px 23px;background: #fff url("images/sprites.gif") no-repeat 10px -695px;font: bold 86% arial;display:block}
+#nav-secondary a, #nav-secondary a:link, #nav-secondary a:visited, #nav-secondary a:hover, #nav-secondary a:active {text-decoration:none;cursor:pointer} 
+#nav-secondary a:link {color:#000} 
+#nav-secondary a:visited {color:#000} 
+#nav-secondary a:hover {color:#c00;background: #fee url("images/sprites.gif") no-repeat 10px -695px} 
+#nav-secondary li.active a:link, #nav-secondary li.active a:visited, #nav-secondary li.active a:hover, #nav-secondary li.active a:active {color:#c00} 
+#nav-secondary li {border-top: 1px solid #fff;border-bottom: 1px solid #ccc}
+
+/* SECONDARY NAVIGATION - 2nd TIER */
+#nav-secondary ul {margin: 0 0 1em 23px;padding:0}
+#nav-secondary li.active li a, #nav-secondary li.active li a:link, #nav-secondary li.active li a:visited {line-height:1.5;background: #fff url("images/sprites.gif") no-repeat 0 -798px;padding:0 0 0 12px;font-weight:normal;width:auto;color:#000;width:130px;display:block}
+#nav-secondary li.active li a:hover, #nav-secondary li.active li a:active {color: #c00}
+#nav-secondary li.active li {border: none;margin:0}
+#nav-secondary li.active li.active a:link, 
+#nav-secondary li.active li.active a:visited, 
+#nav-secondary li.active li.active a:hover, 
+#nav-secondary li.active li.active a:active {font-weight:bold} 
+</code></pre>
+
+<p>These are the final snap in my FireFox2 and IE7</p>
+
+<p><img src="http://fs.yuliu.org/images/essay/2006/switch_menu_in_javascript_001.jpg" alt="snap of fx2 and ie7" /></p>
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://yuliu.org">刘昱</a>
+</span>
+<span class="time">
+	/
+	
+	<time datetime="2006-12-19">2006-12-19</time> 发表
+	
+</span>
+<br />
+
+<span class="categories">
+	分类： 
+	
+	<a href="http://yuliu.org/essay/categories.html#计算机" title="计算机">计算机</a>&nbsp;/
+	
+</span>
+
+
+<span class="tags">
+	标签： 
+	
+	<a href="http://yuliu.org/essay/tags.html#javascript" title="javascript">javascript</a>&nbsp;
+	
+</span>
+
+</section>
+
+<section class="comment">
+<a href="#" id="show_disqus_comment" onclick="return false;">更多信息，请点击查看评论</a>
+<div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+$(function(){
+		$('section.comment #show_disqus_comment').on('click',function(){
+			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
+			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+			var disqus_url = 'http://yuliu.org/2006/12/switch_menu_in_javascript/';
+			// var disqus_developer = 1; 
+			var that = this;
+			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			var src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			PSJS.loadScript(src, function(){$(that).remove()});
+			});
+		});
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		$(document).keydown(function(e) {
+			var url = false;
+			if (e.which == 37 || e.which == 74) {  // Left arrow and J
+				
+				url = 'http://yuliu.org/2006/12/some_tips_from_atlas_to_microsoft_ajax_rc1/';
+				
+			}
+			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+				
+				url = 'http://yuliu.org/2006/12/a_data_driven_switch_menu_on_codeproject/';
+				
+			}
+			if (url) {
+				window.location = url;
+			}
+		});
+	})
+</script>
+
+
+				</article>
+				<div id="toc"></div>
+			</div>
+		</div>
+	</body>
+</html>

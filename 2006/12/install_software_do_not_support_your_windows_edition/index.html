@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="刘昱" />
+		
+		<title>刘昱 | Install Software Do Not Support Your Windows Edition </title>
+		
+		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
+		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+		<script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+		<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+		<!--[if IE]>
+		<script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+		<![endif]-->		
+		<script type="text/javascript" src="/media/script/default.js"></script>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33277878-1']);
+			_gaq.push(['_setDomainName', 'yuliu.org']);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_trackPageLoadTime']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+
+		<div id="container">
+			<header>
+			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
+			<h1>刘 昱</h1>
+			<h2>核能动力系统设计工程师</h2>
+			</header>
+			<nav>
+			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
+			<span><a title="简历" class="" href="http://yuliu.org/vitae/">简历</a></span>
+			<span><a title="文章" class="" href="http://yuliu.org/publication/">文章</a></span>
+			<span><a title="关于" class="" href="http://yuliu.org/about/">关于</a></span>
+			<span><a title="留言" class="" href="http://yuliu.org/guestbook/">留言</a></span>
+			<span><a title="链接" class="" href="http://yuliu.org/links/">链接</a></span>
+			<span><a title="杂货铺" class="" href="http://yuliu.org/essay">杂货铺</a></span>
+			</nav>
+			<div id="main" role="main">
+				<article class="content">
+				<section class="title">
+<h1>Install Software Do Not Support Your Windows Edition</h1>
+</section>
+<section class="post">
+<p>Today I need install Adobe Premiere Pro 2 that does only support windows XP. Need I change my OS just to use it, no I do not want to do it. I went to the Internet to fetch some information. At first I just want to see if there is some mod to force it work on windows 2003. A method that replaced 1033.mst is recommend. this is the simplest way to install the software.</p>
+
+<p>However <a href="http://blazinggin.spaces.live.com/">another article</a> attracted me more than simplest way is to modify the install package using Orca.exe. It is a database table editor for creating and editing Windows Installer packages and merge modules provided by Microsoft. The tool provides a graphical interface for validation, highlighting the particular entries where validation errors or warnings occur. More information and the way how to get it in <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/msi/setup/orca_exe.asp">Orca.exe</a> or <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/msi/setup/windows_installer_development_tools.asp">Windows Installer Development Tools</a>.</p>
+
+<p>Orca.exe is a good tool. Under the help of it we can install software do not support your windows edition if the install file of  it is in .msi format  such as Adobe Premiere Pro 2. After you finished install Orca.exe, do follow instruction to hack it.</p>
+
+<ol>
+<li><p>Using Orca.exe to open Adobe Premiere Pro 2.0.msi (NOTE: not the setup.exe, this is just a encapsulation of msi file)</p></li>
+<li><p>Find "LaunchCondition"  node in the left Column. this is the setup launch condition that can be seen from the name.</p></li>
+<li><p>Modify</p>
+
+<pre><code> ((VersionNT&gt;500) AND (ServicePackLevel&gt;=2)) OR ((VersionNT64) AND (ServicePackLevel&gt;=1))
+</code></pre>
+
+to
+
+<pre><code> (1==1) OR ((VersionNT&gt;500) AND (ServicePackLevel&gt;=2)) OR ((VersionNT64) AND (ServicePackLevel&gt;=1))
+</code></pre>
+
+<p>just add 1==1 to make this condition always is true to let the setup run.</p></li>
+</ol>
+
+
+<p>There are other condition under "LaunchCondition" ,  such as adminUser, Screen....., We can change them if need, But we need not in installing Adobe Premiere Pro 2.</p>
+
+<p>Remember this is just a hack to install software do not support your windows edition. Maybe you can't use the soft even finish install.  ^-^ Below is VersionNT value in Windows Sedation. windows98 and 98 is not NT edition of windows series. VersionNT value of Vista seem to be 600.</p>
+
+<table border="1" cellpadding="2">
+    <tbody>
+        <tr>
+            <th>Product</th>
+            <th>Version</th>
+            <th>VersionNT value</th>
+        </tr>
+        <tr>
+            <td>Windows NT</td>
+            <td>4 4.0</td>
+            <td>400</td>
+        </tr>
+        <tr>
+            <td>Windows 2000</td>
+            <td>5.0</td>
+            <td>500</td>
+        </tr>
+        <tr>
+            <td>Windows XP</td>
+            <td>5.1</td>
+            <td>501</td>
+        </tr>
+        <tr>
+            <td>Windows 2003</td>
+            <td>5.2</td>
+            <td>502</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://yuliu.org">刘昱</a>
+</span>
+<span class="time">
+	/
+	
+	<time datetime="2006-12-07">2006-12-07</time> 发表
+	
+</span>
+<br />
+
+<span class="categories">
+	分类： 
+	
+	<a href="http://yuliu.org/essay/categories.html#计算机" title="计算机">计算机</a>&nbsp;/
+	
+</span>
+
+
+<span class="tags">
+	标签： 
+	
+	<a href="http://yuliu.org/essay/tags.html#Windows" title="Windows">Windows</a>&nbsp;
+	
+</span>
+
+</section>
+
+<section class="comment">
+<a href="#" id="show_disqus_comment" onclick="return false;">更多信息，请点击查看评论</a>
+<div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+$(function(){
+		$('section.comment #show_disqus_comment').on('click',function(){
+			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
+			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+			var disqus_url = 'http://yuliu.org/2006/12/install_software_do_not_support_your_windows_edition/';
+			// var disqus_developer = 1; 
+			var that = this;
+			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			var src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			PSJS.loadScript(src, function(){$(that).remove()});
+			});
+		});
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		$(document).keydown(function(e) {
+			var url = false;
+			if (e.which == 37 || e.which == 74) {  // Left arrow and J
+				
+				url = 'http://yuliu.org/2006/12/tip_on_distributing_pi_activeview_automated_activex_installation/';
+				
+			}
+			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+				
+				url = 'http://yuliu.org/2006/12/auto_activate_activex_controls_in_the_web_page/';
+				
+			}
+			if (url) {
+				window.location = url;
+			}
+		});
+	})
+</script>
+
+
+				</article>
+				<div id="toc"></div>
+			</div>
+		</div>
+	</body>
+</html>

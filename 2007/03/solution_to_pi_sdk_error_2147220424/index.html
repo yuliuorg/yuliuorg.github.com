@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="刘昱" />
+		
+		<title>刘昱 | PI-SDK错误-2147220424的解决方法 </title>
+		
+		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
+		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+		<script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+		<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+		<!--[if IE]>
+		<script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+		<![endif]-->		
+		<script type="text/javascript" src="/media/script/default.js"></script>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33277878-1']);
+			_gaq.push(['_setDomainName', 'yuliu.org']);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_trackPageLoadTime']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+
+		<div id="container">
+			<header>
+			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
+			<h1>刘 昱</h1>
+			<h2>核能动力系统设计工程师</h2>
+			</header>
+			<nav>
+			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
+			<span><a title="简历" class="" href="http://yuliu.org/vitae/">简历</a></span>
+			<span><a title="文章" class="" href="http://yuliu.org/publication/">文章</a></span>
+			<span><a title="关于" class="" href="http://yuliu.org/about/">关于</a></span>
+			<span><a title="留言" class="" href="http://yuliu.org/guestbook/">留言</a></span>
+			<span><a title="链接" class="" href="http://yuliu.org/links/">链接</a></span>
+			<span><a title="杂货铺" class="" href="http://yuliu.org/essay">杂货铺</a></span>
+			</nav>
+			<div id="main" role="main">
+				<article class="content">
+				<section class="title">
+<h1>PI-SDK错误-2147220424的解决方法</h1>
+</section>
+<section class="post">
+<p>最近有不少人通过IM问我关于PI-SDK开发的问题，正好我也好久没有看了，把原来学习的时候写的一个利用PI-SDK读取snapshot和archive的例子拿出来重温了一下。调试运行结果竟然不通过，记得原来这个例子是OK的，看了以下错误出在Server对象的Open方法上，这个方法是用于连接数据库的。仔细看了SDK的文档，连接字符串的写法、用户名和密码均正确，但是就是连不上，每运行到这里就跑出异常-2147220424。异常提示“ServerID returned from server does not match that currently configured on this machine. The server at the path for the opened handle may have changed. ”我理解的大意是服务器的句柄变化，返回的ServerID和机器的当前配置不同。记起前几天把实验用的PI数据库重装过，难道是这个原因不成。但是怎么解决呢？文档和Google均没有找到好的答案。</p>
+
+<p>首先，利用PI-API连接数据库，在权限允许的情况下，读写均没有问题，虽然PI-API和PI-SDK使用两套不同的登录方式，但是这样至少说明我的机器和数据库的连接是没有问题的。</p>
+
+<p>接着，按照Troubleshooting PI client connection problems上的方法使用AboutPI-SDK对话框测试登录，结果仍然可以。但是回到程序就是不行。</p>
+
+<p>最后，另外写了一个程序重新连接数据库，仍然报相同的错误，可能是因为Com组件的信息是保存在注册表，登录时仍然使用了以前保存的信息。既然猜想登录信息保存在注册表，那么直接去注册表中更改一下信息不是就好了，可惜不知道改哪里。</p>
+
+<p>正在这是灵光一现，想着干嘛这么复杂。直接利用AboutPI-SDK对话框新建一个连接，再把原来的那个连接给删掉不是应该就可以删除注册表中的原来连接信息了吗？搞定。这个时候相同的程序，open方法使用相同的语句登录上了数据库。</p>
+
+<p><strong><em>估计这个是一个SDK的小BUG，如果以前连接过PI数据库、在PI数据库重装以后，必须更新本机的SDK在注册表中信息，更新方法很简单。使用AboutPI-SDK对话框新建一个连接，再把原来的那个连接给删掉。</em></strong></p>
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://yuliu.org">刘昱</a>
+</span>
+<span class="time">
+	/
+	
+	<time datetime="2007-03-29">2007-03-29</time> 发表
+	
+</span>
+<br />
+
+<span class="categories">
+	分类： 
+	
+	<a href="http://yuliu.org/essay/categories.html#计算机" title="计算机">计算机</a>&nbsp;/
+	
+</span>
+
+
+<span class="tags">
+	标签： 
+	
+	<a href="http://yuliu.org/essay/tags.html#PI" title="PI">PI</a>&nbsp;
+	
+</span>
+
+</section>
+
+<section class="comment">
+<a href="#" id="show_disqus_comment" onclick="return false;">更多信息，请点击查看评论</a>
+<div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+$(function(){
+		$('section.comment #show_disqus_comment').on('click',function(){
+			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
+			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+			var disqus_url = 'http://yuliu.org/2007/03/solution_to_pi_sdk_error_2147220424/';
+			// var disqus_developer = 1; 
+			var that = this;
+			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			var src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			PSJS.loadScript(src, function(){$(that).remove()});
+			});
+		});
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		$(document).keydown(function(e) {
+			var url = false;
+			if (e.which == 37 || e.which == 74) {  // Left arrow and J
+				
+				url = 'http://yuliu.org/2007/03/integrated_im_tools_miranda32/';
+				
+			}
+			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+				
+				url = 'http://yuliu.org/2007/03/setup_of_subversion_server/';
+				
+			}
+			if (url) {
+				window.location = url;
+			}
+		});
+	})
+</script>
+
+
+				</article>
+				<div id="toc"></div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="刘昱" />
+		
+		<title>刘昱 | 配置iBatis.NET DataMapper </title>
+		
+		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
+		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+		<script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+		<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+		<!--[if IE]>
+		<script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+		<![endif]-->		
+		<script type="text/javascript" src="/media/script/default.js"></script>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33277878-1']);
+			_gaq.push(['_setDomainName', 'yuliu.org']);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_trackPageLoadTime']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+
+		<div id="container">
+			<header>
+			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
+			<h1>刘 昱</h1>
+			<h2>核能动力系统设计工程师</h2>
+			</header>
+			<nav>
+			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
+			<span><a title="简历" class="" href="http://yuliu.org/vitae/">简历</a></span>
+			<span><a title="文章" class="" href="http://yuliu.org/publication/">文章</a></span>
+			<span><a title="关于" class="" href="http://yuliu.org/about/">关于</a></span>
+			<span><a title="留言" class="" href="http://yuliu.org/guestbook/">留言</a></span>
+			<span><a title="链接" class="" href="http://yuliu.org/links/">链接</a></span>
+			<span><a title="杂货铺" class="" href="http://yuliu.org/essay">杂货铺</a></span>
+			</nav>
+			<div id="main" role="main">
+				<article class="content">
+				<section class="title">
+<h1>配置iBatis.NET DataMapper</h1>
+</section>
+<section class="post">
+<ol>
+<li><p>在<a href="http://ibatis.apache.org/dotnetdownloads.cgi">iBatis.Net的官方网站</a>下载iBatis.NET DataMapper 1.6.1。这个是今年4月6号的最新版本，也是快一年以来的第一次更新。<br/>
+下载的Release的版本解压缩以后看起来很杂乱，dll、xml和xsd等一大堆。</p></li>
+<li><p>为了能够在Visual中编写映射文件和配置文件时使用智能提示和校验，首先把provider.xsd、SqlMap.xsd和SqlMapConfig.xsd拷贝0到<code>[VS安装目录]\Xml\Schemas</code>，这个路径是相对于VS 2005的，其他版本参看文档4.2.4节。<br/>
+注：iBatis.NET的文档是需要单独下载的，不在Release包里面，下面提到的文档均是1.6.1版本的文档。</p></li>
+<li><p>使用iBatis.NET之前需要在VS的工程中添加对IBatisNet.DataMapper.dll引用，添加它的同时，它会自动将IBatisNet.Common.dll和Castle.DynamicProxy.dll添加到工程的bin目录下。</p></li>
+<li><p>编写SqlMap.config文件，并将其置于跟目录下,一般是Web.config(WEB应用程序)或者App.config(winform)所在的文件夹。下面是一个简单示例，修改自iBatis.NET文档。</p>
+
+<pre><code> &lt;?xml version="1.0" encoding="utf-8"?&gt;
+ &lt;sqlMapConfig xmlns="http://ibatis.apache.org/dataMapper"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" &gt;
+   &lt;properties resource="properties.config"/&gt;
+   &lt;settings&gt;
+     &lt;setting useStatementNamespaces="true"/&gt;
+     &lt;setting cacheModelsEnabled="true"/&gt;
+     &lt;setting validateSqlMap="false"/&gt;
+   &lt;/settings&gt;
+
+   &lt;database&gt;
+     &lt;provider name="sqlServer2.0"/&gt;
+     &lt;dataSource name="iBatisExt"  connectionString="user password=sa;data source=10.14.91.244;database=northwind;"/&gt;
+   &lt;/database&gt;
+
+   &lt;sqlMaps&gt;
+     &lt;sqlMap resource="${root}Maps/Categories.xml"/&gt;
+   &lt;/sqlMaps&gt;
+ &lt;/sqlMapConfig&gt;
+</code></pre>
+
+其中首先指定Properties文件的位置，此处的Properties.config与SqlMap.config位于相同位置，Properties文件一般用来定义“名称-值”对，例如下面使用到的${root}就是在Properties.config中定义的，这里使用的Properties文件如下，很简单：
+
+<pre><code> &lt;?xml version="1.0" encoding="utf-8" ?&gt;
+ &lt;settings&gt;
+   &lt;add key="root" value="./" /&gt;
+ &lt;/settings&gt;
+</code></pre>
+
+<p>Setting用于给定ibatis.net的一些属性，例如useStatementNamespaces是是否允许使用map文件中的命名空间，文档中的示例为false，注意把它改成true，因为下面的程序使用了map文件中的命名空间。<br/>
+database用于配置映射的数据源，Provider我改成了sqlServer2.0。</p></li>
+<li><p>把定义数据源的providers.config拷贝到与SqlMap.config相同的目录下，打开providers.config，修改其中的</p>
+
+<pre><code> &lt;provider
+     name="sqlServer2.0"
+     enabled="false"
+</code></pre>
+
+为
+
+<pre><code> &lt;provider
+     name="sqlServer2.0"
+     enabled="true"
+</code></pre>
+
+<p>这里默认情况下，也就是从Release文件夹拷贝过来的providers.config是不打开sqlServer2.0，这个地方害我修改了半天。</p></li>
+<li><p>编写映射文件、实体类就完成了iBatis的配置。如果你不想自己编写映射文件、实体类，Go on</p></li>
+<li><p>我找到了一个iBatis.NET的CodeSmith模板，名字叫做IBatisNetGen，个人觉得很好用，它直接生成了映射文件、实体类、DAO接口和DAO层。注意在使用时制定他们的命名空间，免得生成后自己去修改。</p></li>
+<li><p>使用上述模板注意有一个地方需要修改，就是在把DAO模板里面需要把SqlMapperFmt属性改为你自己的Mapper类，如本文中使用iBatis.NET默认的Mapper.Instance()。
+<img src="http://fs.yuliu.org/images/essay/2007/ibatis_net_datamapper_configuration_001.jpg" alt="iBates属性" />
+如果使用到了多数据库，要用不同的SqlMap文件，并编写不同的Mapper类，如这里完成了一个使用AnotherSqlMap.config文件的AnotherSqlMapper类（参考文档Example 4.4），注意红色的行与iBatis.net中文档4.4.1.1节有一点区别，4.4.1.1节的语句不能直接用于替换文档中的Example 4.4的对应语句，必须做红色标示的修改。奇怪一下文档为什么不前后一致呢？</p>
+
+<pre><code> using IBatisNet.Common.Utilities;
+ using IBatisNet.DataMapper;
+ using IBatisNet.DataMapper.Configuration;
+
+ namespace Demo
+ {
+     public class AnotherSqlMapper
+     {
+         private static volatile ISqlMapper _mapper = null;
+
+         protected static void Configure(object obj)
+         {
+             _mapper = null;
+         }
+
+         protected static void InitMapper()
+         {
+             ConfigureHandler handler = new gureHandler(Configure);
+             DomSqlMapBuilder builder = new DomSqlMapBuilder();
+             _mapper = er.ConfigureAndWatch("AnotherSqlMap.config",handler);
+         }
+
+         public static ISqlMapper Instance()
+         {
+             if (_mapper == null)
+             {
+                 lock (typeof(SqlMapper))
+                 {
+                     if (_mapper == null)
+                     {
+                         InitMapper();
+                     }
+                 }
+             }
+             return _mapper;
+         }
+
+         public static ISqlMapper Get()
+         {
+             return Instance();
+         }
+     }
+ }
+</code></pre></li>
+<li><p>配置完成，以Northwind中的Categories表为例，实体类Categories。C#获取全部记录的调用语句。</p>
+
+<pre><code> ICategoriesDao catDao=new CategoriesDao();
+         IList&lt;Categories&gt; cats = catDao.FindAll();
+         gvCategories.DataSource = cats;
+         gvCategories.DataBind();
+</code></pre></li>
+</ol>
+
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://yuliu.org">刘昱</a>
+</span>
+<span class="time">
+	/
+	
+	<time datetime="2007-04-18">2007-04-18</time> 发表
+	
+</span>
+<br />
+
+<span class="categories">
+	分类： 
+	
+	<a href="http://yuliu.org/essay/categories.html#计算机" title="计算机">计算机</a>&nbsp;/
+	
+</span>
+
+
+<span class="tags">
+	标签： 
+	
+	<a href="http://yuliu.org/essay/tags.html#iBatis" title="iBatis">iBatis</a>&nbsp;
+	
+	<a href="http://yuliu.org/essay/tags.html#.net" title=".net">.net</a>&nbsp;
+	
+	<a href="http://yuliu.org/essay/tags.html#数据库" title="数据库">数据库</a>&nbsp;
+	
+</span>
+
+</section>
+
+<section class="comment">
+<a href="#" id="show_disqus_comment" onclick="return false;">更多信息，请点击查看评论</a>
+<div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+$(function(){
+		$('section.comment #show_disqus_comment').on('click',function(){
+			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
+			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+			var disqus_url = 'http://yuliu.org/2007/04/ibatis_net_datamapper_configuration/';
+			// var disqus_developer = 1; 
+			var that = this;
+			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			var src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			PSJS.loadScript(src, function(){$(that).remove()});
+			});
+		});
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		$(document).keydown(function(e) {
+			var url = false;
+			if (e.which == 37 || e.which == 74) {  // Left arrow and J
+				
+				url = 'http://yuliu.org/2007/03/setup_of_subversion_server/';
+				
+			}
+			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+				
+				url = 'http://yuliu.org/2007/04/namespace_class_property_function_in_javascript/';
+				
+			}
+			if (url) {
+				window.location = url;
+			}
+		});
+	})
+</script>
+
+
+				</article>
+				<div id="toc"></div>
+			</div>
+		</div>
+	</body>
+</html>
