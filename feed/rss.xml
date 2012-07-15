@@ -6,8 +6,8 @@
     <atom:link href="http://yuliu.org/feed/rss.xml" rel="self" type="application/rss+xml" />
 	<description>刘昱 | 核能动力系统工程师</description>
     <language>zh-cn</language>
-    <pubDate>Sat, 14 Jul 2012 23:08:13 +0800</pubDate>
-    <lastBuildDate>Sat, 14 Jul 2012 23:08:13 +0800</lastBuildDate>
+    <pubDate>Sun, 15 Jul 2012 10:29:00 +0800</pubDate>
+    <lastBuildDate>Sun, 15 Jul 2012 10:29:00 +0800</lastBuildDate>
 
     
     <item>
@@ -263,12 +263,14 @@ $ git push -u origin master
 	  <guid>http://yuliu.org/2011/05/modify_ip_dns_gateway_in_cento</guid>
 	  <description>&lt;h1&gt;一、CentOS修改IP地址&lt;/h1&gt;
 
-
 &lt;p&gt;修改对应网卡的IP地址的配置文件&lt;/p&gt;
 
-&lt;p&gt;vi /etc/sysconfig/network-scripts/ifcfg-eth0&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vi /etc/sysconfig/network-scripts/ifcfg-eth0
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;blockquote&gt;#描述网卡对应的设备别名，例如ifcfg-eth0的文件中它为eth0
+&lt;p&gt;内容&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#描述网卡对应的设备别名，例如ifcfg-eth0的文件中它为eth0
 DEVICE=eth0
 #设置网卡获得ip地址的方式，选项为static，dhcp或bootp，对应静态指定的 ip地址,通过dhcp协议获得的ip地址，通过bootp协议获得的ip地址
 BOOTPROTO=static
@@ -282,47 +284,45 @@ IPV6INIT=no
 IPV6_AUTOCONF=no
 #网卡对应的网络掩码
 NETMASK=255.255.255.0
-ONBOOT=yes #系统启动时是否设置此网络接口，设置为yes时，系统启动时激活此设备&lt;/blockquote&gt;
-
-
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+ONBOOT=yes #系统启动时是否设置此网络接口，设置为yes时，系统启动时激活此设备
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h1&gt;二、CentOS 修改网关&lt;/h1&gt;
 
-
 &lt;p&gt;修改对应网卡的网关的配置文件&lt;/p&gt;
 
-&lt;p&gt;vi /etc/sysconfig/network&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vi /etc/sysconfig/network
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;blockquote&gt;#表示系统是否使用网络，一般设置为yes。如果设为no，则不能使用网络，而且很多系统服务程序将无法启动
+&lt;p&gt;内容&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#表示系统是否使用网络，一般设置为yes。如果设为no，则不能使用网络，而且很多系统服务程序将无法启动
 NETWORKING=yes
 #设置本机的主机名，这里设置的主机名要和/etc/hosts中设置的主机名对应
 HOSTNAME=localhost.localdomain
 #设置本机连接的网关的IP地址。例如，网关为192.168.1.1
-GATEWAY=192.168.1.1&lt;/blockquote&gt;
-
+GATEWAY=192.168.1.1
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h1&gt;三、CentOS 修改DNS&lt;/h1&gt;
 
-
 &lt;p&gt;修改对应网卡的DNS的配置文件&lt;/p&gt;
 
-&lt;p&gt;vi /etc/resolv.conf&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vi /etc/resolv.conf
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;blockquote&gt;#OPENDNS
-nameserver 208.67.222.222
+&lt;h2&gt;OPENDNS&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;nameserver 208.67.222.222
 nameserver 208.67.220.220
 nameserver 192.168.1.1
-search localdomain&lt;/blockquote&gt;
-
+search localdomain
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h1&gt;四、重启网络&lt;/h1&gt;
 
-
-&lt;blockquote&gt;/etc/init.d/network restart&lt;/blockquote&gt;
-
-
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/etc/init.d/network restart
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
@@ -340,23 +340,23 @@ search localdomain&lt;/blockquote&gt;
 
 &lt;p&gt;流程第一篇写得很清楚了，照着一步一步来就是、随便上几张图吧。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5628.jpg&quot; title=&quot;日立160G 5400rpm SATA硬盘&quot; alt=&quot;日立160G 5400rpm SATA硬盘&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2011/disassembly_of_asus_notebook_f8sa_001.jpg&quot; title=&quot;日立160G 5400rpm SATA硬盘&quot; alt=&quot;日立160G 5400rpm SATA硬盘&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5427.jpg&quot; title=&quot;hynix 1G DDR2 667 内存&quot; alt=&quot;hynix 1G DDR2 667 内存&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2011/disassembly_of_asus_notebook_f8sa_002.jpg&quot; title=&quot;hynix 1G DDR2 667 内存&quot; alt=&quot;hynix 1G DDR2 667 内存&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5621.jpg&quot; title=&quot;笔记本内存 安装&quot; alt=&quot;笔记本内存 安装&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2011/disassembly_of_asus_notebook_f8sa_003.jpg&quot; title=&quot;笔记本内存 安装&quot; alt=&quot;笔记本内存 安装&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5608.jpg&quot; title=&quot;INTEL T7500 CPU&quot; alt=&quot;INTEL T7500 CPU&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2011/disassembly_of_asus_notebook_f8sa_004.jpg&quot; title=&quot;INTEL T7500 CPU&quot; alt=&quot;INTEL T7500 CPU&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5618.jpg&quot; title=&quot;CPU安装&quot; alt=&quot;CPU安装&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2011/disassembly_of_asus_notebook_f8sa_005.jpg&quot; title=&quot;CPU安装&quot; alt=&quot;CPU安装&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5426.jpg&quot; title=&quot;CPU+散热器+内存+HD2600显卡&quot; alt=&quot;CPU+散热器+内存+HD2600显卡&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2011/disassembly_of_asus_notebook_f8sa_006.jpg&quot; title=&quot;CPU+散热器+内存+HD2600显卡&quot; alt=&quot;CPU+散热器+内存+HD2600显卡&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5604.jpg&quot; title=&quot;INTEL 4965AGN 无线网卡&quot; alt=&quot;INTEL 4965AGN 无线网卡&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2011/disassembly_of_asus_notebook_f8sa_007.jpg&quot; title=&quot;INTEL 4965AGN 无线网卡&quot; alt=&quot;INTEL 4965AGN 无线网卡&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5600.jpg&quot; title=&quot;显示器接头&quot; alt=&quot;显示器接头&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2011/disassembly_of_asus_notebook_f8sa_008.jpg&quot; title=&quot;显示器接头&quot; alt=&quot;显示器接头&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://ffs.nuclear2power.com/wp-content/uploads/2011/05/IMG_5589.jpg&quot; title=&quot;电源开关&quot; alt=&quot;电源开关&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2011/disassembly_of_asus_notebook_f8sa_009.jpg&quot; title=&quot;电源开关&quot; alt=&quot;电源开关&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;拆电源开关上面这一块老费劲了，没想到更成为了终点，后面的前盖折腾了半天愣是没有弄下来。看来这200块钱果然是个技术加体力活啊~，还是周末提去售后吧。&lt;/p&gt;
 
@@ -528,252 +528,6 @@ Tips 2：安装中如果出现不能复制文件，是因为原系统为vista，
 &lt;li&gt;&lt;p&gt;之后我的电脑就OK了~大家有什么问题还欢迎补充&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-</description>
-    </item>
-    
-    <item>
-      <title>使用C#进行基于PI的开发（三）- 应用PISDK和PIAPI从PI数据库读取数据</title>
-      <link>http://yuliu.org/2011/03/pi_development_using_csharp_3/</link>
-      <pubDate>Fri, 11 Mar 2011 00:00:00 +0800</pubDate>
-      <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://yuliu.org/2011/03/pi_development_using_csharp_3</guid>
-	  <description>&lt;p&gt;上次说了这次的题目是对PI数据库中的数据进行读取和写入，可是为了等了这么久呢?出了自己比较懒以外,遇到了一点麻烦也是一个原因呢?后面又说&lt;/p&gt;
-
-&lt;h1&gt;1 应用SDK从PI数据库读取数据&lt;/h1&gt;
-
-&lt;p&gt;我们知道PI数据库的数据分别存储在Snapshot或者Archive中,一个是快照一个是档案文件,这样做是为了方便PI数据库对数据进行压缩.那么自然对数据库的读取也分为对Snapshot和Archive读取.snapshot和archive的值都是用PIValue的形式表示的， PIValue对象包括了数值和时间。应用SDK从数据库中获取snapshop或者archive的值很简单。
-首先连接数据库，声明一个PIServer：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;_piServer = piSDK.Servers.DefaultServer；
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;然后利用PIServer的Points属性访回一个点的集合，再通过tagName来获取点：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;PIPoint pt = _piServer.PIPoints[tbxTagName.Text];
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;如果是使用Snapshot，直接声明一个PIValue通过PIPoint的Snapshot属性来返回值：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;pv = pt.Data.Snapshot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;然后我们就可以通过PIValue的Value属性和TimeStamp属性来获取snapshot的值和该值对应的时间了。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;tbxValue.Text = pv.Value.ToString();
-tbxTime.Text = pv.TimeStamp.LocalDate.ToString();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;如果要读取Archive的值，那么要稍微麻烦一点，应为你要给定读取的时间和模式，PIPoint对象的ArcValue方法是用来获取Archive的值，帮助的说明如下：&lt;/p&gt;
-
-&lt;p&gt;object.ArcValue TimeStamp, Mode, AsynchStatus&lt;/p&gt;
-
-&lt;p&gt;这个应该是VB的语法吧，我们可以看出他有三个参数。第一个是时间，C#中我们可以直接传一个DateTime格式的数据进去，当然你也可以使用 PITime对象表示的时间，或者一个字符串。Mode代表取出的模式，因为PI数据库并不是每个时间都存有数据的，所以在你可以选择模式是读取你输入时间的当前点，后面一个点，前面一个点或者插值表示的时间。最后一个参数不解，文档里面没有说明，VB的例子则直接没有传这个参数，应该是一个可选参数，我的处理方法如下。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;RetrievalTypeConstants rtType;
-rtType = (RetrievalTypeConstants)piSDK.PIConstants[&quot;RetrievalTypeConstants&quot;][cbxValue.Text].Value;
-pv = pt.Data.ArcValue(dt, rtType, new PISDKCommon.PIAsynchStatus());
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;RetrievalTypeConstants 就是表示存取模式的，我这里使用过一个下拉列表框获得可用的模式的，最后一个参数是通过传一个新的实例下去，这里不知道这样和不合理，反正可以读出数据我就没有管了，又没有达人解释一下怎么处理这种VB的可选参数的情况呢？我学着VSTS的那种Type.Missing又不可以。&lt;/p&gt;
-
-&lt;p&gt;然后读出来的PIValue同样包含一个数值和一个时间，现在我想大家应该理解为什么PIValue里面要包含一个时间了吧。&lt;/p&gt;
-
-&lt;p&gt;我觉得应用SDK很简单，感觉和开发Excel很象，都是调用Com，也挺符合.net的开发习惯的，文档也好，每个对象还有一个详细的VB例子，虽然不是.net的，但是也可以大致了解得差不多。&lt;/p&gt;
-
-&lt;h1&gt;2 应用SDK向PI数据库写入数据&lt;/h1&gt;
-
-&lt;p&gt;在PIData对象中有一个UpdateValue方法和UpdateValues方法，顾名思义，一个是更新单个数据，一个是更新一批数据。但是文档里面红红的标着Not Implemented两个单词，心顿时凉了，考虑到文档的版本比我实际使用的SDK版本第一点，去Object Browser里面搜索了一下，果然找到了这个方法&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public virtual void UpdateValue(object newValue, object TimeStamp, PISDK.DataMergeConstants MergeType, PISDKCommon.PIAsynchStatus asynchStatus)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;这些参数的意思没有文档也挺好理解的，这里就不说了，可是当我尝试用这个方法去更新数据库的时候，一样抛出了Not Implemented的错误，当时心里非常的郁闷，这个也就是开头我说到的麻烦。我的SDK的版本是1.2.0，问了一个比较有经验的人，他说他没有遇到过不能写入的问题，等有时间去问问他，看看是不是版本的问题，如果有人能写入的，请给我说一下你们的版本；&lt;/p&gt;
-
-&lt;h1&gt;3 应用API从PI数据库读取数据&lt;/h1&gt;
-
-&lt;p&gt;SDK不行，还好我们还有PI-API，这个感觉和Win32 API挺象的吧，都是一写用C写的函数，PISDK其实就是把PIAPI包装了一下，可惜我对P/Invoke不怎么熟悉，如果大家对这个也不熟悉的话，我觉得这两篇文章还是不错，作为预备知识。&lt;/p&gt;
-
-&lt;p&gt;在C#中通过P/Invoke调用Win32 DLL
-如何在C#中使用Win32和其他库&lt;/p&gt;
-
-&lt;p&gt;这两篇文章看了我还是颇有收获的，至少知道引用类型在传递的时候不需要ref关键字，因为在.net中本身就是按地址传递的，呵呵，可能是基础知识太差。&lt;/p&gt;
-
-&lt;p&gt;不过看API的文档和SDK的文档相比真是天壤之别，API文档只有一个简单的概述，例子也没有，参数的说明更是往往只有一句话，不过还好吧，我慢慢的试还是试出来了一些。&lt;/p&gt;
-
-&lt;p&gt;对于数据读取和写入还是分为snapshot和archive，就是两个不同的函数，参数也差不多类似。&lt;/p&gt;
-
-&lt;p&gt;PI-API函数是按组分开的，有Point函数，Archive函数和snapshot函数等。&lt;/p&gt;
-
-&lt;p&gt;从archive数据库读取数据有两个，一个是扩展函数，功能多一些，所以我们在这里使用的是扩展函数来读取数据，其文档的声明如下：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;int32 PIPROC piar_getarcvaluex(
-int32 ptnum,
-int32 mode,
-float64 PIPTR *drval,
-int32 PIPTR *ival,
-void PIPTR *bval,
-uint32 PIPTR *bsize,
-int32 PIPTR *istat,
-int16 PIPTR *flags,
-PITIMESTAMP PIPTR *time);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;int32,uint32这些都是PIAPI里面自己定义的类型，从名字可以很简单的看出他们对应32位整数，32位无符号整数，在C#中这些，.net已经给我们定制好了，还比较方便。&lt;/p&gt;
-
-&lt;p&gt;PITIMESTAMP 是一个结构体，定义很简单，我们直接在C#中定制一个类似的结构就好了。&lt;/p&gt;
-
-&lt;p&gt;ptnum是PI tag号对应的一个Int32位的整数来代表数据库中的一个点，可以通过API函数pipt_findpoint把Tag名字转换成ptnum。&lt;/p&gt;
-
-&lt;p&gt;mode和SDK里面的模式很类似，就是看是读取前面一个点，还是后面一个点的值。&lt;/p&gt;
-
-&lt;p&gt;如果读取出来的是浮点值，drval就是这个值；如果读取出来的是整型值，ival就是这个值；bval是一个字符串，bsize是这个字符串的缓冲区大小，istat是代表数值量的值，flags文档上面的说明是&lt;/p&gt;
-
-&lt;p&gt;Data quality flag mask不解。time是值对应的时间，相当于SDK里面的pv.TimeStamp.LocalDate。&lt;/p&gt;
-
-&lt;p&gt;对于字符串，这里我看了半天，因为string类型是一个不定长的字符串，所以是不能用在这个地方的，这个地方的bval应该是使用 StringBuilder,StringBuilder.Capacity就表示了bsize，这一点还是冲上面那两篇文章看到的，真是基础差，呵呵。&lt;/p&gt;
-
-&lt;p&gt;对于void指针，我是把它处理成为object类型，因为我们基本上不用到字符串的值，所以这里我也没有测试，达人指导一下，呵呵。综上，我的C#格式的函数是&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[DllImport(&quot;piapi32.dll&quot;, CharSet = CharSet.Ansi, SetLastError = true, CallingConvention = CallingConvention.StdCall)]
-public static extern Int32 piar_getarcvaluex(
-Int32 ptnum,
-Int32 mode,
-ref Double drval,
-ref Int32 ival,
-[MarshalAs(UnmanagedType.AsAny)] object bval,
-ref UInt32 bsize,
-ref Int32 istat,
-ref Int16 flags,
-ref PITime.PITIMESTAMP time);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;第五个参数必须Mashall成AsAny类型，要不直接使用object类型是不行的。那么我怎么知道他是Any类型呢？因为文档上面VB的函数调用声明是bVal As Any,这也是一点灵感吧。至于返回的Int32值是代表调用是否成功的，就和win32  API类似吧。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>使用C#进行基于PI的开发（二）--常用对象的学习</title>
-      <link>http://yuliu.org/2011/03/pi_development_using_csharp_2/</link>
-      <pubDate>Fri, 11 Mar 2011 00:00:00 +0800</pubDate>
-      <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://yuliu.org/2011/03/pi_development_using_csharp_2</guid>
-	  <description>&lt;p&gt;&lt;a href=&quot;/2011/03/pi_development_using_csharp/&quot;&gt;上一次&lt;/a&gt;的例子是通过PI-SDK获取Tag的属性并且修改它，我想更重要的是怎么取出Tag的值和进行更新吧。在进行尝试之前看了看文档，了解了一下PISDK的对象结构，下面这一张就是PISDK的结构图&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://ffs.nuclear2power.com/wp-content/uploads/2011/03/PISDKModel.jpg&quot; title=&quot;PISDKModel&quot; alt=&quot;PISDKModel&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;简要了解在例子中要用到的对象，并把它们的描述进行了简单的翻译，我想翻译的目的应该是帮助自己更好的进行学习，给出英文对照。不妥之处，忘大牛们指正：&lt;/p&gt;
-
-&lt;blockquote&gt;&lt;p&gt;The Server object represents a single server (data archive). Server objects are retrieved from the Servers collection and provide access to the basic entities represented on each server, such as points, point classes, digital states, users, and groups. Some basic properties are available from the Server object as initially retrieved from the Servers collection.&lt;/p&gt;
-
-&lt;p&gt;Typically a program will require a network connection to the server. Connections are established either by calling the Open method of the Server object explicitly or by accessing a property or calling a method of the Server object that requires server access, forcing an implicit connection.
-Many of the services available through the Server object are accessed through its properties which return other objects. For example, the PIPoints property provides a PIPoints collection object for accessing the various points on a server.&lt;/p&gt;&lt;/blockquote&gt;
-
-&lt;p&gt;服务器（Server）对象表示了一个单独的PI数据库服务器，服务器对象可从服务器集合中获得并且提供了访问每个数据库中的实体的方法，这些实体包括点，点集合，数字量（开关量），用户和组。服务器对象提供了一些基本的属性从而在服务器集合中队服务器进行初始化。&lt;/p&gt;
-
-&lt;p&gt;一般地，程序连接到服务器需要网络连接属性，这个连接可以通过服务器对象的Open方法显式的进行，也可以通过服务器对象的某个属性或方法连接需要验证的服务器来进行一个隐式的连接。&lt;/p&gt;
-
-&lt;p&gt;上面这一段有点不太懂，直到目前我都没有用过显式的Open方法，都是通过&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;_piServer = piSDK.Servers.DefaultServer;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;这种所谓的隐式方法来连接，这个是不是就是所谓的隐式连接？因为在PISDK安装的时候指定了一个PI数据源，所以DefaultServer就是这个？所以我访问的时候都不需要输入用户或者密码&lt;/p&gt;
-
-&lt;p&gt;我们可以通过服务器对象的属性来返回其他的对象从而获得很多服务。例如，通过服务器对象的PIPoints属性返回的PIPoints集合的对象来访问数据库里面的不同的点。&lt;/p&gt;
-
-&lt;blockquote&gt;&lt;p&gt;A PIConstant collection maps display strings to PI-SDK enumerations.  This provides a way for an application to display strings indicating choices of behavior for a user to select particular actions.  The application then retrieves the associated constant and passes it to a particular method being called. A PIConstant collection contains members, stored and accessed as NamedValue objects that represent the display string (the name) and the constant (the value).  A PIConstant collection is retrieved using PISDK.PIConstants.Item.&lt;/p&gt;&lt;/blockquote&gt;
-
-&lt;p&gt;PIConstant集合映射字符串到PI-SDK枚举。（使字符串和枚举的项一一对应）。它为程序提供了字符串来代表用户选择的一个特殊的操作，然后程序可以把这个字符串对应的值获得并且把它传送到使用的方法里面去。PIConstant集合包含了Members（不知道什么意思），存贮和访问NamedValue对象。NamedValue对象是一个字符串（名字）-常量（数值）对。PIConstant集合中的对象通过PISDK.PIConstants.Item来获取&lt;/p&gt;
-
-&lt;p&gt;我觉得这个PIConstant集合就是相当于在C#中用DialogueResult枚举中用OK代表某个具体的意思。具体代表的东西我们不用关心，知道是什么就可以了。NamedValue就是一个字符串-常量对，有点像一个字典吧，最后一句话说PISDK.PIConstants.Item来获取PIContant,但是我在C#中PISDK.PIConstants没有Item属性，反而使直接通过PISDK.PIConstants[Name]取到。同时NamedValue是在PISDKCommon命名空间下面&lt;/p&gt;
-
-&lt;blockquote&gt;&lt;p&gt;The PIPoint object represents a point on a PI Server.  The PIPoint is the primary access point to data on the Server as well as configuration of a point's properties.&lt;/p&gt;
-
-&lt;p&gt;PIPoint对象表征PI数据库里面的点，PIPoint是访问数据库里面点的值和属性的主要方法。&lt;/p&gt;
-
-&lt;p&gt;The PIData object is associated with a single PIPoint and is used to send and retrieve values to and from the server.  It is accessed through the Data property of the PIPoint.&lt;/p&gt;&lt;/blockquote&gt;
-
-&lt;p&gt;PIData对象是和单独的PIPoint联系的，它从服务器获取数据或者写回数据到服务器。它通过PIPoint的Data属性得到。&lt;/p&gt;
-
-&lt;p&gt;本来翻译完这些准备再把例子试验一下的，但是没有时间了，下次吧！先作一下铺垫。&lt;/p&gt;
-
-&lt;p&gt;这些英文文字都是来源于PI的Manual，版权归OSISOFT所有，与我无关，至于我翻译的中文文字只是简单的鹦鹉学舌，版权仍然是OSISOFT的。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>使用C#进行基于PI的开发（一）</title>
-      <link>http://yuliu.org/2011/03/pi_development_using_csharp/</link>
-      <pubDate>Fri, 11 Mar 2011 00:00:00 +0800</pubDate>
-      <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://yuliu.org/2011/03/pi_development_using_csharp</guid>
-	  <description>&lt;p&gt;根据PI的SDK的文档,从这里开始下手吧,这个文档的版本有点早,大概是2002年的,里面没有.net的例子,还好里面大多数是VB的例子,我想应该可以直接搬过来吧.于是开始动手.&lt;/p&gt;
-
-&lt;p&gt;首先欲基于PI-SDK开发PI数据库,必须先安装PI-SDK,然后再VS中新建了一个aspnet网站,添加引用:PI-SDK 1.2 Type Library 和 PISDKCommon 1.2 Type Library&lt;/p&gt;
-
-&lt;p&gt;接着看文档上面VB的例子代码是&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Option Explicit
-Dim srv as Server
-Dim pt As PIPoint
-for Each srv In Servers
-Combo1.AddItem srv.Name
-Next srv
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;为了把这两个地方改成能运行得C#代码还花费了不少力气,因为原来没有做的东西都是很简单的.net东西,基本上没有用到过和COM组件进行交互.首先说什么不能实例花,接着又说什么Servers不行,花了很多时间在PISDK下面找了一个能实例化的类PISDKClass,后来又发现原来Servers 是这个对象的一个属性.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;private PISDK.IPISDK piSDK= new PISDK.PISDKClass();
-private PISDK.Server _piServer;
-private PISDK.PIPoint _piPoint;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;在Page_Load事件枚举所有的数据源,添加到DropSownlist.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;foreach(PISDK.Server item in piSDK.Servers)
-{
-DropDownList1.Items.Add(srv.Name);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;设置_piServer为dropdown里面选中的数据库&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;_piServer = piSDK.Servers[DropDownList1.Text];
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;然后下面接着防置一个文本框来读取用户输入的Tag点,Tag有点相当于普通数据库的字段.但是又不一样,关于这个暂时不细说了&lt;/p&gt;
-
-&lt;p&gt;和一个ListBox来得到这个Tag的所有属性.代码如下:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;_piPoint = _piServer.PIPoints[tbxTagName.Text];
-ListBox1.Items.Clear();
-foreach (PISDK.PointAttribute ptatr in _piPoint.PointAttributes)
-{
-ListBox1.Items.Add(ptatr.Name);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;读取Tag属性的值可以用下述属性.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;tbxAttValue.Text = _piPoint.PointAttributes[ListBox1.Text].Value.ToString();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;如果要更新这个属性的值呢?仍然很简单&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;PISDK.PointAttribute ptatr;
-_piPoint = _piServer.PIPoints[tbxTagName.Text];
-ptatr = _piPoint.PointAttributes[lblAttrName.Text];
-_piPoint.PointAttributes.ReadOnly = false;
-ptatr.Value = tbxAttValue.Text;
-_piPoint.PointAttributes.ReadOnly = true;
-blNotion.Text = &quot;更新成功！&quot;;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;其实最后一句想用MessageBox可惜在asp.net下面一直找不到好的使用MessageBox的方法,原来在CodeProject上面找了一个,但是因为后来发现在Atlas的updatepanel中不能使用,也就作罢了&lt;/p&gt;
-
-&lt;p&gt;OK,上面就是我根据SDK-Manual里面的一个Basic例子,用C#改写了一下,实现了和例子一样的功能,虽然今天花费了不少时间,最后做出来的东西看起来却很简单,不过自己感受到了收获,第一次发文到首页,有点紧张,呵呵!&lt;/p&gt;
-
-&lt;p&gt;下面是一个简单的截图和SDK截图的对比：&lt;/p&gt;
 </description>
     </item>
     
@@ -3406,6 +3160,259 @@ Nowadays China hold a China-Korea war3 star competition to expand Electronic Com
 &lt;p&gt;如果这样改了以后还不能被连接上，那么可能还需要去注册表里面修改一下，开启被连接选项，这个在XP和2003里面可以通过右击我的电脑--〉远程改，但是在2000里面这样不行，google了一下，可以通过直接改注册表实现这个功能。在注册表&lt;code&gt;HKEY_LOCAL_MACHINE--&amp;gt;SYSTEM--&amp;gt;CURRENTCONTROLSET--&amp;gt;CONTROL-- &amp;gt;TERMINAL SERVICE&lt;/code&gt;中修改(如果不存在就添加)&lt;code&gt;fDenyTSConnections&lt;/code&gt;的值为0&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2006/remote_desktop_to_windows2000_003.jpg&quot; alt=&quot;修改注册表&quot; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>使用C#进行基于PI的开发（三）- 应用PISDK和PIAPI从PI数据库读取数据</title>
+      <link>http://yuliu.org/2006/06/pi_development_using_csharp_3/</link>
+      <pubDate>Mon, 19 Jun 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/06/pi_development_using_csharp_3</guid>
+	  <description>&lt;p&gt;上次说了这次的题目是对PI数据库中的数据进行读取和写入，可是为了等了这么久呢?出了自己比较懒以外,遇到了一点麻烦也是一个原因呢?后面又说&lt;/p&gt;
+
+&lt;h1&gt;1 应用SDK从PI数据库读取数据&lt;/h1&gt;
+
+&lt;p&gt;我们知道PI数据库的数据分别存储在Snapshot或者Archive中,一个是快照一个是档案文件,这样做是为了方便PI数据库对数据进行压缩.那么自然对数据库的读取也分为对Snapshot和Archive读取.snapshot和archive的值都是用PIValue的形式表示的， PIValue对象包括了数值和时间。应用SDK从数据库中获取snapshop或者archive的值很简单。
+首先连接数据库，声明一个PIServer：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;_piServer = piSDK.Servers.DefaultServer；
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后利用PIServer的Points属性访回一个点的集合，再通过tagName来获取点：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;PIPoint pt = _piServer.PIPoints[tbxTagName.Text];
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果是使用Snapshot，直接声明一个PIValue通过PIPoint的Snapshot属性来返回值：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pv = pt.Data.Snapshot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后我们就可以通过PIValue的Value属性和TimeStamp属性来获取snapshot的值和该值对应的时间了。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tbxValue.Text = pv.Value.ToString();
+tbxTime.Text = pv.TimeStamp.LocalDate.ToString();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果要读取Archive的值，那么要稍微麻烦一点，应为你要给定读取的时间和模式，PIPoint对象的ArcValue方法是用来获取Archive的值，帮助的说明如下：&lt;/p&gt;
+
+&lt;p&gt;object.ArcValue TimeStamp, Mode, AsynchStatus&lt;/p&gt;
+
+&lt;p&gt;这个应该是VB的语法吧，我们可以看出他有三个参数。第一个是时间，C#中我们可以直接传一个DateTime格式的数据进去，当然你也可以使用 PITime对象表示的时间，或者一个字符串。Mode代表取出的模式，因为PI数据库并不是每个时间都存有数据的，所以在你可以选择模式是读取你输入时间的当前点，后面一个点，前面一个点或者插值表示的时间。最后一个参数不解，文档里面没有说明，VB的例子则直接没有传这个参数，应该是一个可选参数，我的处理方法如下。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;RetrievalTypeConstants rtType;
+rtType = (RetrievalTypeConstants)piSDK.PIConstants[&quot;RetrievalTypeConstants&quot;][cbxValue.Text].Value;
+pv = pt.Data.ArcValue(dt, rtType, new PISDKCommon.PIAsynchStatus());
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;RetrievalTypeConstants 就是表示存取模式的，我这里使用过一个下拉列表框获得可用的模式的，最后一个参数是通过传一个新的实例下去，这里不知道这样和不合理，反正可以读出数据我就没有管了，又没有达人解释一下怎么处理这种VB的可选参数的情况呢？我学着VSTS的那种Type.Missing又不可以。&lt;/p&gt;
+
+&lt;p&gt;然后读出来的PIValue同样包含一个数值和一个时间，现在我想大家应该理解为什么PIValue里面要包含一个时间了吧。&lt;/p&gt;
+
+&lt;p&gt;我觉得应用SDK很简单，感觉和开发Excel很象，都是调用Com，也挺符合.net的开发习惯的，文档也好，每个对象还有一个详细的VB例子，虽然不是.net的，但是也可以大致了解得差不多。&lt;/p&gt;
+
+&lt;h1&gt;2 应用SDK向PI数据库写入数据&lt;/h1&gt;
+
+&lt;p&gt;在PIData对象中有一个UpdateValue方法和UpdateValues方法，顾名思义，一个是更新单个数据，一个是更新一批数据。但是文档里面红红的标着Not Implemented两个单词，心顿时凉了，考虑到文档的版本比我实际使用的SDK版本第一点，去Object Browser里面搜索了一下，果然找到了这个方法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public virtual void UpdateValue(object newValue, object TimeStamp, PISDK.DataMergeConstants MergeType, PISDKCommon.PIAsynchStatus asynchStatus)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这些参数的意思没有文档也挺好理解的，这里就不说了，可是当我尝试用这个方法去更新数据库的时候，一样抛出了Not Implemented的错误，当时心里非常的郁闷，这个也就是开头我说到的麻烦。我的SDK的版本是1.2.0，问了一个比较有经验的人，他说他没有遇到过不能写入的问题，等有时间去问问他，看看是不是版本的问题，如果有人能写入的，请给我说一下你们的版本；&lt;/p&gt;
+
+&lt;h1&gt;3 应用API从PI数据库读取数据&lt;/h1&gt;
+
+&lt;p&gt;SDK不行，还好我们还有PI-API，这个感觉和Win32 API挺象的吧，都是一写用C写的函数，PISDK其实就是把PIAPI包装了一下，可惜我对P/Invoke不怎么熟悉，如果大家对这个也不熟悉的话，我觉得这两篇文章还是不错，作为预备知识。&lt;/p&gt;
+
+&lt;p&gt;在C#中通过P/Invoke调用Win32 DLL
+如何在C#中使用Win32和其他库&lt;/p&gt;
+
+&lt;p&gt;这两篇文章看了我还是颇有收获的，至少知道引用类型在传递的时候不需要ref关键字，因为在.net中本身就是按地址传递的，呵呵，可能是基础知识太差。&lt;/p&gt;
+
+&lt;p&gt;不过看API的文档和SDK的文档相比真是天壤之别，API文档只有一个简单的概述，例子也没有，参数的说明更是往往只有一句话，不过还好吧，我慢慢的试还是试出来了一些。&lt;/p&gt;
+
+&lt;p&gt;对于数据读取和写入还是分为snapshot和archive，就是两个不同的函数，参数也差不多类似。&lt;/p&gt;
+
+&lt;p&gt;PI-API函数是按组分开的，有Point函数，Archive函数和snapshot函数等。&lt;/p&gt;
+
+&lt;p&gt;从archive数据库读取数据有两个，一个是扩展函数，功能多一些，所以我们在这里使用的是扩展函数来读取数据，其文档的声明如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;int32 PIPROC piar_getarcvaluex(
+int32 ptnum,
+int32 mode,
+float64 PIPTR *drval,
+int32 PIPTR *ival,
+void PIPTR *bval,
+uint32 PIPTR *bsize,
+int32 PIPTR *istat,
+int16 PIPTR *flags,
+PITIMESTAMP PIPTR *time);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;int32,uint32这些都是PIAPI里面自己定义的类型，从名字可以很简单的看出他们对应32位整数，32位无符号整数，在C#中这些，.net已经给我们定制好了，还比较方便。&lt;/p&gt;
+
+&lt;p&gt;PITIMESTAMP 是一个结构体，定义很简单，我们直接在C#中定制一个类似的结构就好了。&lt;/p&gt;
+
+&lt;p&gt;ptnum是PI tag号对应的一个Int32位的整数来代表数据库中的一个点，可以通过API函数pipt_findpoint把Tag名字转换成ptnum。&lt;/p&gt;
+
+&lt;p&gt;mode和SDK里面的模式很类似，就是看是读取前面一个点，还是后面一个点的值。&lt;/p&gt;
+
+&lt;p&gt;如果读取出来的是浮点值，drval就是这个值；如果读取出来的是整型值，ival就是这个值；bval是一个字符串，bsize是这个字符串的缓冲区大小，istat是代表数值量的值，flags文档上面的说明是&lt;/p&gt;
+
+&lt;p&gt;Data quality flag mask不解。time是值对应的时间，相当于SDK里面的pv.TimeStamp.LocalDate。&lt;/p&gt;
+
+&lt;p&gt;对于字符串，这里我看了半天，因为string类型是一个不定长的字符串，所以是不能用在这个地方的，这个地方的bval应该是使用 StringBuilder,StringBuilder.Capacity就表示了bsize，这一点还是冲上面那两篇文章看到的，真是基础差，呵呵。&lt;/p&gt;
+
+&lt;p&gt;对于void指针，我是把它处理成为object类型，因为我们基本上不用到字符串的值，所以这里我也没有测试，达人指导一下，呵呵。综上，我的C#格式的函数是&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[DllImport(&quot;piapi32.dll&quot;, CharSet = CharSet.Ansi, SetLastError = true, CallingConvention = CallingConvention.StdCall)]
+public static extern Int32 piar_getarcvaluex(
+Int32 ptnum,
+Int32 mode,
+ref Double drval,
+ref Int32 ival,
+[MarshalAs(UnmanagedType.AsAny)] object bval,
+ref UInt32 bsize,
+ref Int32 istat,
+ref Int16 flags,
+ref PITime.PITIMESTAMP time);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;第五个参数必须Mashall成AsAny类型，要不直接使用object类型是不行的。那么我怎么知道他是Any类型呢？因为文档上面VB的函数调用声明是bVal As Any,这也是一点灵感吧。至于返回的Int32值是代表调用是否成功的，就和win32  API类似吧。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>使用C#进行基于PI的开发（二）--常用对象的学习</title>
+      <link>http://yuliu.org/2006/06/pi_development_using_csharp_2/</link>
+      <pubDate>Thu, 01 Jun 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/06/pi_development_using_csharp_2</guid>
+	  <description>&lt;p&gt;&lt;a href=&quot;/2011/03/pi_development_using_csharp/&quot;&gt;上一次&lt;/a&gt;的例子是通过PI-SDK获取Tag的属性并且修改它，我想更重要的是怎么取出Tag的值和进行更新吧。在进行尝试之前看了看文档，了解了一下PISDK的对象结构，下面这一张就是PISDK的结构图&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2006/pi_development_using_csharp_2_001.jpg&quot; alt=&quot;PISDKModel&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;简要了解在例子中要用到的对象，并把它们的描述进行了简单的翻译，我想翻译的目的应该是帮助自己更好的进行学习，给出英文对照。不妥之处，忘大牛们指正：&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt;The Server object represents a single server (data archive). Server objects are retrieved from the Servers collection and provide access to the basic entities represented on each server, such as points, point classes, digital states, users, and groups. Some basic properties are available from the Server object as initially retrieved from the Servers collection.&lt;/p&gt;
+
+&lt;p&gt;Typically a program will require a network connection to the server. Connections are established either by calling the Open method of the Server object explicitly or by accessing a property or calling a method of the Server object that requires server access, forcing an implicit connection.
+Many of the services available through the Server object are accessed through its properties which return other objects. For example, the PIPoints property provides a PIPoints collection object for accessing the various points on a server.&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;服务器（Server）对象表示了一个单独的PI数据库服务器，服务器对象可从服务器集合中获得并且提供了访问每个数据库中的实体的方法，这些实体包括点，点集合，数字量（开关量），用户和组。服务器对象提供了一些基本的属性从而在服务器集合中队服务器进行初始化。&lt;/p&gt;
+
+&lt;p&gt;一般地，程序连接到服务器需要网络连接属性，这个连接可以通过服务器对象的Open方法显式的进行，也可以通过服务器对象的某个属性或方法连接需要验证的服务器来进行一个隐式的连接。&lt;/p&gt;
+
+&lt;p&gt;上面这一段有点不太懂，直到目前我都没有用过显式的Open方法，都是通过&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;_piServer = piSDK.Servers.DefaultServer;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这种所谓的隐式方法来连接，这个是不是就是所谓的隐式连接？因为在PISDK安装的时候指定了一个PI数据源，所以DefaultServer就是这个？所以我访问的时候都不需要输入用户或者密码&lt;/p&gt;
+
+&lt;p&gt;我们可以通过服务器对象的属性来返回其他的对象从而获得很多服务。例如，通过服务器对象的PIPoints属性返回的PIPoints集合的对象来访问数据库里面的不同的点。&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt;A PIConstant collection maps display strings to PI-SDK enumerations.  This provides a way for an application to display strings indicating choices of behavior for a user to select particular actions.  The application then retrieves the associated constant and passes it to a particular method being called. A PIConstant collection contains members, stored and accessed as NamedValue objects that represent the display string (the name) and the constant (the value).  A PIConstant collection is retrieved using PISDK.PIConstants.Item.&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;PIConstant集合映射字符串到PI-SDK枚举。（使字符串和枚举的项一一对应）。它为程序提供了字符串来代表用户选择的一个特殊的操作，然后程序可以把这个字符串对应的值获得并且把它传送到使用的方法里面去。PIConstant集合包含了Members（不知道什么意思），存贮和访问NamedValue对象。NamedValue对象是一个字符串（名字）-常量（数值）对。PIConstant集合中的对象通过PISDK.PIConstants.Item来获取&lt;/p&gt;
+
+&lt;p&gt;我觉得这个PIConstant集合就是相当于在C#中用DialogueResult枚举中用OK代表某个具体的意思。具体代表的东西我们不用关心，知道是什么就可以了。NamedValue就是一个字符串-常量对，有点像一个字典吧，最后一句话说PISDK.PIConstants.Item来获取PIContant,但是我在C#中PISDK.PIConstants没有Item属性，反而使直接通过PISDK.PIConstants[Name]取到。同时NamedValue是在PISDKCommon命名空间下面&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt;The PIPoint object represents a point on a PI Server.  The PIPoint is the primary access point to data on the Server as well as configuration of a point's properties.&lt;/p&gt;
+
+&lt;p&gt;PIPoint对象表征PI数据库里面的点，PIPoint是访问数据库里面点的值和属性的主要方法。&lt;/p&gt;
+
+&lt;p&gt;The PIData object is associated with a single PIPoint and is used to send and retrieve values to and from the server.  It is accessed through the Data property of the PIPoint.&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;PIData对象是和单独的PIPoint联系的，它从服务器获取数据或者写回数据到服务器。它通过PIPoint的Data属性得到。&lt;/p&gt;
+
+&lt;p&gt;本来翻译完这些准备再把例子试验一下的，但是没有时间了，下次吧！先作一下铺垫。&lt;/p&gt;
+
+&lt;p&gt;这些英文文字都是来源于PI的Manual，版权归OSISOFT所有，与我无关，至于我翻译的中文文字只是简单的鹦鹉学舌，版权仍然是OSISOFT的。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>使用C#进行基于PI的开发（一）</title>
+      <link>http://yuliu.org/2006/05/pi_development_using_csharp/</link>
+      <pubDate>Tue, 30 May 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/05/pi_development_using_csharp</guid>
+	  <description>&lt;p&gt;根据PI的SDK的文档,从这里开始下手吧,这个文档的版本有点早,大概是2002年的,里面没有.net的例子,还好里面大多数是VB的例子,我想应该可以直接搬过来吧.于是开始动手.&lt;/p&gt;
+
+&lt;p&gt;首先欲基于PI-SDK开发PI数据库,必须先安装PI-SDK,然后再VS中新建了一个aspnet网站,添加引用:PI-SDK 1.2 Type Library 和 PISDKCommon 1.2 Type Library&lt;/p&gt;
+
+&lt;p&gt;接着看文档上面VB的例子代码是&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Option Explicit
+Dim srv as Server
+Dim pt As PIPoint
+for Each srv In Servers
+Combo1.AddItem srv.Name
+Next srv
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;为了把这两个地方改成能运行得C#代码还花费了不少力气,因为原来没有做的东西都是很简单的.net东西,基本上没有用到过和COM组件进行交互.首先说什么不能实例花,接着又说什么Servers不行,花了很多时间在PISDK下面找了一个能实例化的类PISDKClass,后来又发现原来Servers 是这个对象的一个属性.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;private PISDK.IPISDK piSDK= new PISDK.PISDKClass();
+private PISDK.Server _piServer;
+private PISDK.PIPoint _piPoint;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在Page_Load事件枚举所有的数据源,添加到DropSownlist.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;foreach(PISDK.Server item in piSDK.Servers)
+{
+DropDownList1.Items.Add(srv.Name);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;设置_piServer为dropdown里面选中的数据库&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;_piServer = piSDK.Servers[DropDownList1.Text];
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后下面接着防置一个文本框来读取用户输入的Tag点,Tag有点相当于普通数据库的字段.但是又不一样,关于这个暂时不细说了&lt;/p&gt;
+
+&lt;p&gt;和一个ListBox来得到这个Tag的所有属性.代码如下:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;_piPoint = _piServer.PIPoints[tbxTagName.Text];
+ListBox1.Items.Clear();
+foreach (PISDK.PointAttribute ptatr in _piPoint.PointAttributes)
+{
+ListBox1.Items.Add(ptatr.Name);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;读取Tag属性的值可以用下述属性.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tbxAttValue.Text = _piPoint.PointAttributes[ListBox1.Text].Value.ToString();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果要更新这个属性的值呢?仍然很简单&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;PISDK.PointAttribute ptatr;
+_piPoint = _piServer.PIPoints[tbxTagName.Text];
+ptatr = _piPoint.PointAttributes[lblAttrName.Text];
+_piPoint.PointAttributes.ReadOnly = false;
+ptatr.Value = tbxAttValue.Text;
+_piPoint.PointAttributes.ReadOnly = true;
+blNotion.Text = &quot;更新成功！&quot;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其实最后一句想用MessageBox可惜在asp.net下面一直找不到好的使用MessageBox的方法,原来在CodeProject上面找了一个,但是因为后来发现在Atlas的updatepanel中不能使用,也就作罢了&lt;/p&gt;
+
+&lt;p&gt;OK,上面就是我根据SDK-Manual里面的一个Basic例子,用C#改写了一下,实现了和例子一样的功能,虽然今天花费了不少时间,最后做出来的东西看起来却很简单,不过自己感受到了收获,第一次发文到首页,有点紧张,呵呵!&lt;/p&gt;
+
+&lt;p&gt;下面是一个简单的截图和SDK截图的对比：&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;我的
+&lt;img src=&quot;http://fs.yuliu.org/images/essay/2006/pi_development_using_csharp_001.jpg&quot; alt=&quot;截图&quot; /&gt;
+SDK的VB例子
+&lt;img src=&quot;http://fs.yuliu.org/images/essay/2006/pi_development_using_csharp_002.jpg&quot; alt=&quot;SDK截图&quot; /&gt;&lt;/p&gt;
 </description>
     </item>
     
