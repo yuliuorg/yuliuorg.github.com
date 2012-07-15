@@ -4,7 +4,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="author" content="刘昱" />
 		
-		<title>刘昱 | A Data Driven Switch Menu On CodeProject.com </title>
+		<title>刘昱 | whatwhat的安装 </title>
 		
 		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
 		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
@@ -49,14 +49,45 @@
 			<div id="main" role="main">
 				<article class="content">
 				<section class="title">
-<h1>A Data Driven Switch Menu On CodeProject.com</h1>
+<h1>whatwhat的安装</h1>
 </section>
 <section class="post">
-<p>Yesterday, I write a article on how to make a switch menu with javascript. Today I read a article on codeproject.com named <a href="http://www.codeproject.com/useritems/navpanel.asp">How To Implement a NavigationPanel Using AJAX</a>. The author do a really good work to make a Ajax data driven navigation panel by asp.net and SQL Server. With the source code of the article we can move data source to XML files and so on.</p>
+<p>从http://cleverdevil.org/whatwhat把whatwhat拖下来以后</p>
 
-<p>I decorated the code in my last article. Unfortunately, if you use Firefox to browse it, the style of code looks ugly. I used the open source code coloried tool wriiten by javascript <a href="http://www.dreamprojections.com/SyntaxHighlighter/">dp.SyntaxHighlighter</a>. I am tring to modify it to satify my requirement better the whole day but with little result.</p>
+<p>首先配置dev.cfg中的数据库为</p>
 
-<p>what a bad day!</p>
+<pre><code># DATABASE
+sqlobject.dburi="notrans_sqlite:///g|/whatwhat/trunk/sqlplayground.db"
+</code></pre>
+
+<p>这里我使用的是sqlite</p>
+
+<p>然后安装textile，这一步很简单</p>
+
+<pre><code>easy_install textile
+</code></pre>
+
+<p>当然要保证你已经连上了互联网</p>
+
+<p>最后<code>python whatwhat-start.py</code>启动
+通过http://localhost:8080就可以访问了</p>
+
+<p>但是启动发现没有帐号登录</p>
+
+<p>通过Readme发现使用mysql或者pgsql的话，可以通过作者的sql来安装默认用户。</p>
+
+<p>但是在这里我们使用的是sqlite，只好自己通过catwalk来添加用户了</p>
+
+<p>输入tg-admin toolbox启动catwalk</p>
+
+<p>添加一个用户admin，一个组catwalk，再把两者关联起来，如下图</p>
+
+<p><img src="http://fs.yuliu.org/images/essay/2007/setup_whatwhat_001.jpg" alt="截图1" />
+<img src="http://fs.yuliu.org/images/essay/2007/setup_whatwhat_002.jpg" alt="截图2" />
+<img src="http://fs.yuliu.org/images/essay/2007/setup_whatwhat_003.jpg" alt="截图3" /></p>
+
+<p>这样就可以通过用户admin，密码admin登录了。
+密码在表中的保存是经过加密的</p>
 
 </section>
 <section class="meta">
@@ -66,7 +97,7 @@
 <span class="time">
 	/
 	
-	<time datetime="2006-12-20">2006-12-20</time> 发表
+	<time datetime="2007-01-30">2007-01-30</time> 发表
 	
 </span>
 <br />
@@ -82,7 +113,9 @@
 <span class="tags">
 	标签： 
 	
-	<a href="http://yuliu.org/essay/tags.html#程序设计" title="程序设计">程序设计</a>&nbsp;
+	<a href="http://yuliu.org/essay/tags.html#python" title="python">python</a>&nbsp;
+	
+	<a href="http://yuliu.org/essay/tags.html#TurboGears" title="TurboGears">TurboGears</a>&nbsp;
 	
 </span>
 
@@ -97,7 +130,7 @@ $(function(){
 		$('section.comment #show_disqus_comment').on('click',function(){
 			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
 			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
-			var disqus_url = 'http://yuliu.org/2006/12/a_data_driven_switch_menu_on_codeproject/';
+			var disqus_url = 'http://yuliu.org/2007/01/setup_whatwhat/';
 			// var disqus_developer = 1; 
 			var that = this;
 			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -116,12 +149,12 @@ $(function(){
 			var url = false;
 			if (e.which == 37 || e.which == 74) {  // Left arrow and J
 				
-				url = 'http://yuliu.org/2006/12/switch_menu_in_javascript/';
+				url = 'http://yuliu.org/2006/12/a_data_driven_switch_menu_on_codeproject/';
 				
 			}
 			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
 				
-				url = 'http://yuliu.org/2007/01/setup_whatwhat/';
+				url = 'http://yuliu.org/2007/03/abnormal_shutdown_when_upgrading_to_2003sp2/';
 				
 			}
 			if (url) {

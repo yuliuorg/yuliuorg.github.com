@@ -4,7 +4,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="author" content="刘昱" />
 		
-		<title>刘昱 | A Data Driven Switch Menu On CodeProject.com </title>
+		<title>刘昱 | C++(VC 2005)学习笔记 </title>
 		
 		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
 		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
@@ -49,14 +49,45 @@
 			<div id="main" role="main">
 				<article class="content">
 				<section class="title">
-<h1>A Data Driven Switch Menu On CodeProject.com</h1>
+<h1>C++(VC 2005)学习笔记</h1>
 </section>
 <section class="post">
-<p>Yesterday, I write a article on how to make a switch menu with javascript. Today I read a article on codeproject.com named <a href="http://www.codeproject.com/useritems/navpanel.asp">How To Implement a NavigationPanel Using AJAX</a>. The author do a really good work to make a Ajax data driven navigation panel by asp.net and SQL Server. With the source code of the article we can move data source to XML files and so on.</p>
+<h1>1. C++下面string、char *、char**的相互转化</h1>
 
-<p>I decorated the code in my last article. Unfortunately, if you use Firefox to browse it, the style of code looks ugly. I used the open source code coloried tool wriiten by javascript <a href="http://www.dreamprojections.com/SyntaxHighlighter/">dp.SyntaxHighlighter</a>. I am tring to modify it to satify my requirement better the whole day but with little result.</p>
+<pre><code>string str1="hello 你好";
+char *str2=const_cast&lt;char*&gt;(str1.c_str());
+char **str3=&amp;str2;
+</code></pre>
 
-<p>what a bad day!</p>
+<p>这些是可以的，但是</p>
+
+<pre><code>char **str4;
+*str4=const_cast&lt;char*&gt;(str1.c_str());
+</code></pre>
+
+<p>在使用的时候会提示str4没有定义，由于对于C++不熟悉，暂时不研究。</p>
+
+<h1>2. 包含lib文件的方法</h1>
+
+<pre><code>#pragma comment( lib , "file.lib" )
+</code></pre>
+
+<h1>3. 详见拙文CString和char*的相互转换</h1>
+
+<p>见本blog另外一篇<a href="/2005/12/transfer_between_cstring_and_char_star_in_vc2005">文章</a></p>
+
+<h1>4. 读入文本文件并将它显示到Edit Control</h1>
+
+<pre><code>CStdioFile inFile(FileName,CFile::modeRead|CFile::typeText);
+CString strLine,strAll;
+strAll="";
+while (inFile.ReadString(strLine))
+{
+strAll.AppendFormat("%s\r\n",strLine);   //必须加入/r/n才能在Edit Control中显示换行
+}
+inFile.Close(); 
+m_explanation=strAll;
+</code></pre>
 
 </section>
 <section class="meta">
@@ -66,7 +97,7 @@
 <span class="time">
 	/
 	
-	<time datetime="2006-12-20">2006-12-20</time> 发表
+	<time datetime="2005-12-25">2005-12-25</time> 发表
 	
 </span>
 <br />
@@ -82,7 +113,7 @@
 <span class="tags">
 	标签： 
 	
-	<a href="http://yuliu.org/essay/tags.html#程序设计" title="程序设计">程序设计</a>&nbsp;
+	<a href="http://yuliu.org/essay/tags.html#C++" title="C++">C++</a>&nbsp;
 	
 </span>
 
@@ -97,7 +128,7 @@ $(function(){
 		$('section.comment #show_disqus_comment').on('click',function(){
 			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
 			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
-			var disqus_url = 'http://yuliu.org/2006/12/a_data_driven_switch_menu_on_codeproject/';
+			var disqus_url = 'http://yuliu.org/2005/12/study_notes_of_cpp_vc2005/';
 			// var disqus_developer = 1; 
 			var that = this;
 			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -116,12 +147,12 @@ $(function(){
 			var url = false;
 			if (e.which == 37 || e.which == 74) {  // Left arrow and J
 				
-				url = 'http://yuliu.org/2006/12/switch_menu_in_javascript/';
+				url = 'http://yuliu.org/2005/12/recommendation_of_a_novel_days_with_airline_stewardess/';
 				
 			}
 			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
 				
-				url = 'http://yuliu.org/2007/01/setup_whatwhat/';
+				url = 'http://yuliu.org/2005/12/transfer_between_cstring_and_char_star_in_vc2005/';
 				
 			}
 			if (url) {

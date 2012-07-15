@@ -6,8 +6,8 @@
     <atom:link href="http://yuliu.org/feed/rss.xml" rel="self" type="application/rss+xml" />
 	<description>刘昱 | 核能动力系统工程师</description>
     <language>zh-cn</language>
-    <pubDate>Sun, 15 Jul 2012 10:29:00 +0800</pubDate>
-    <lastBuildDate>Sun, 15 Jul 2012 10:29:00 +0800</lastBuildDate>
+    <pubDate>Sun, 15 Jul 2012 13:26:07 +0800</pubDate>
+    <lastBuildDate>Sun, 15 Jul 2012 13:26:07 +0800</lastBuildDate>
 
     
     <item>
@@ -715,6 +715,52 @@ root  /home/wwwroot;
 &lt;p&gt;&lt;a href=&quot;http://www.vpser.net/manage/lnmp-pureftpd-cp.html&quot;&gt;lnmp之pureftpd管理面板安装教程[图文]&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;恩，还是很简单，先到这里。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>在VS 2008中使用非托管DLL以及DEP</title>
+      <link>http://yuliu.org/2008/01/unmanaged_dll_in_vs2008_and_dep/</link>
+      <pubDate>Sun, 20 Jan 2008 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2008/01/unmanaged_dll_in_vs2008_and_dep</guid>
+	  <description>&lt;p&gt;最近使用VS2008编译原来一个可以正常运行的程序时，出现下列错误，错误出现在使用未托管DLL处&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2008/unmanaged_dll_in_vs2008_and_dep_001.jpg&quot; alt=&quot;错误信息&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;找了很多地方，最后在MSDN论坛得到提示。&lt;/p&gt;
+
+&lt;p&gt;解决方案在&lt;a href=&quot;http://blogs.msdn.com/ed_maurer/archive/2007/12/14/nxcompat-and-the-c-compiler.aspx&quot;&gt;这篇帖子&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;简单的说出现这个错误的原因是vs2008的c#编译器生成的PE文件头增加了NXCOMPAT位，这个与DEP有关，DEP用于防止恶意软件注入进程。那么也就是说位托管的DLL在内存中属于为标记成为可执行的，因而出现了上述的错误。所以解决方案就是消除PE中的这个位。&lt;/p&gt;
+
+&lt;p&gt;启动Visual Studio 2008 Command Prompt，输入：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;editbin.exe /NXCOMPAT:NO &amp;lt;your binary&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果使用VS2008，则可以在工程属性中添加一个Post-build命令：&lt;/p&gt;
+
+&lt;p&gt;原文是这样的命令：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;call $(DevEnvDir)..\tools\vsvars32.bat
+editbin.exe /NXCOMPAT:NO $(TargetPath)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;但是在我这里直接引用仿佛不行，我修改成为下面这样&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;call &quot;（VS安装文件夹）\Common7\Tools\vsvars32.bat&quot;
+editbin.exe /NXCOMPAT:NO $(TargetPath)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;第一行为设置VS环境，这个设置主要是为了后一行的editbin.exe 命令而服务的。&lt;/p&gt;
+
+&lt;p&gt;同时在这样添加以后，还需要在工程属性页的Debug选项中选中下面这个选项。
+&lt;img src=&quot;http://fs.yuliu.org/images/essay/2008/unmanaged_dll_in_vs2008_and_dep_002.jpg&quot; alt=&quot;选项&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;要不在调试的时候仍然会出现错误。&lt;/p&gt;
+
+&lt;p&gt;我为了解决这个问题找了好几天，放在首页希望大家能够有个记忆，在遇到这个问题时候能够想起来。&lt;/p&gt;
 </description>
     </item>
     
@@ -2634,6 +2680,51 @@ End Sub
     </item>
     
     <item>
+      <title>whatwhat的安装</title>
+      <link>http://yuliu.org/2007/01/setup_whatwhat/</link>
+      <pubDate>Tue, 30 Jan 2007 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2007/01/setup_whatwhat</guid>
+	  <description>&lt;p&gt;从http://cleverdevil.org/whatwhat把whatwhat拖下来以后&lt;/p&gt;
+
+&lt;p&gt;首先配置dev.cfg中的数据库为&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# DATABASE
+sqlobject.dburi=&quot;notrans_sqlite:///g|/whatwhat/trunk/sqlplayground.db&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这里我使用的是sqlite&lt;/p&gt;
+
+&lt;p&gt;然后安装textile，这一步很简单&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;easy_install textile
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当然要保证你已经连上了互联网&lt;/p&gt;
+
+&lt;p&gt;最后&lt;code&gt;python whatwhat-start.py&lt;/code&gt;启动
+通过http://localhost:8080就可以访问了&lt;/p&gt;
+
+&lt;p&gt;但是启动发现没有帐号登录&lt;/p&gt;
+
+&lt;p&gt;通过Readme发现使用mysql或者pgsql的话，可以通过作者的sql来安装默认用户。&lt;/p&gt;
+
+&lt;p&gt;但是在这里我们使用的是sqlite，只好自己通过catwalk来添加用户了&lt;/p&gt;
+
+&lt;p&gt;输入tg-admin toolbox启动catwalk&lt;/p&gt;
+
+&lt;p&gt;添加一个用户admin，一个组catwalk，再把两者关联起来，如下图&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2007/setup_whatwhat_001.jpg&quot; alt=&quot;截图1&quot; /&gt;
+&lt;img src=&quot;http://fs.yuliu.org/images/essay/2007/setup_whatwhat_002.jpg&quot; alt=&quot;截图2&quot; /&gt;
+&lt;img src=&quot;http://fs.yuliu.org/images/essay/2007/setup_whatwhat_003.jpg&quot; alt=&quot;截图3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这样就可以通过用户admin，密码admin登录了。
+密码在表中的保存是经过加密的&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>A Data Driven Switch Menu On CodeProject.com</title>
       <link>http://yuliu.org/2006/12/a_data_driven_switch_menu_on_codeproject/</link>
       <pubDate>Wed, 20 Dec 2006 00:00:00 +0800</pubDate>
@@ -3164,6 +3255,22 @@ Nowadays China hold a China-Korea war3 star competition to expand Electronic Com
     </item>
     
     <item>
+      <title>Windows Update的存放文件夹</title>
+      <link>http://yuliu.org/2006/06/folder_of_windows_update/</link>
+      <pubDate>Fri, 23 Jun 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/06/folder_of_windows_update</guid>
+	  <description>&lt;p&gt;每次重新装系统都要重新下载补丁包，今天看了看补丁包的存放文件夹&lt;/p&gt;
+
+&lt;p&gt;原来是&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt;C:\WINDOWS\SoftwareDistribution\Download\Install&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;这个要在安装之前拷贝出来，否则更新完系统会自动删除这些文件&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>使用C#进行基于PI的开发（三）- 应用PISDK和PIAPI从PI数据库读取数据</title>
       <link>http://yuliu.org/2006/06/pi_development_using_csharp_3/</link>
       <pubDate>Mon, 19 Jun 2006 00:00:00 +0800</pubDate>
@@ -3413,6 +3520,1036 @@ blNotion.Text = &quot;更新成功！&quot;;
 &lt;img src=&quot;http://fs.yuliu.org/images/essay/2006/pi_development_using_csharp_001.jpg&quot; alt=&quot;截图&quot; /&gt;
 SDK的VB例子
 &lt;img src=&quot;http://fs.yuliu.org/images/essay/2006/pi_development_using_csharp_002.jpg&quot; alt=&quot;SDK截图&quot; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>google 发布 Google Web Toolkit</title>
+      <link>http://yuliu.org/2006/05/goole_web_toolkit_published/</link>
+      <pubDate>Thu, 18 May 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/05/goole_web_toolkit_published</guid>
+	  <description>&lt;p&gt;大公司都不甘在Web 2.0时代落后阿!&lt;/p&gt;
+
+&lt;p&gt;前段时间发现了Yui(Yahoo user interface)&lt;/p&gt;
+
+&lt;p&gt;接着Yahoo的首页换了,加入了更多的Ajax技术&lt;/p&gt;
+
+&lt;p&gt;Google就不用说了,推出的服务都是Web2.0的代表而且好评如潮&lt;/p&gt;
+
+&lt;p&gt;今天又看见了Google的&lt;a href=&quot;http://code.google.com/webtoolkit&quot;&gt;Google Web Toolkit&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;后面跟着&lt;em&gt;Build AJAX apps in the Java language&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;小看了一下，他是说Gwt编译器把Java程序编译成js+HTML，这个想法倒是挺牛的&lt;/p&gt;
+
+&lt;p&gt;这样的转换google列出了很多好处。&lt;/p&gt;
+
+&lt;p&gt;比较吸引我的事他将开发嵌入到Eclips里面去，运用java来开发，可以使用面向对象，方便调试等&lt;/p&gt;
+
+&lt;p&gt;这个算不算是没有好的ajax IDE的一个解决方法呢。&lt;/p&gt;
+
+&lt;p&gt;估计Google是不会为.net开发这样一个东西了，他正在和MS打口水战呢。&lt;/p&gt;
+
+&lt;p&gt;不过我们也不用灰心，我们不是有atlas吗&lt;/p&gt;
+
+&lt;p&gt;再说ajaxpro的作者也说他将为ajaxpro开发一些widget&lt;/p&gt;
+
+&lt;p&gt;现在需要js和c#的联系时候，我都是用的ajaxpro，如果能增加一些widget，当然不错&lt;/p&gt;
+
+&lt;p&gt;希望有一个象能调试C#那样调试Js的工具就好了（这个是用惯了VS的害处?）&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>得到数据库中某表的主键</title>
+      <link>http://yuliu.org/2006/05/get_primary_key_of_database_table/</link>
+      <pubDate>Wed, 10 May 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/05/get_primary_key_of_database_table</guid>
+	  <description>&lt;p&gt;搜索了半天总算搞到了&lt;/p&gt;
+
+&lt;p&gt;其实好像很简单的样子&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;select name
+from syscolumns a
+where exists (
+select *
+from sysindexkeys b
+where b.id=object_id(N'表名') and a.id=b.id and a.colid=b.colid) 
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>sqlparameter的使用</title>
+      <link>http://yuliu.org/2006/03/using_sqlparameter/</link>
+      <pubDate>Wed, 15 Mar 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/03/using_sqlparameter</guid>
+	  <description>&lt;p&gt;今天才学会在写SQL语句的时候可以不用那么多的+号&lt;/p&gt;
+
+&lt;p&gt;用sqlparameter很方便&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;string SelectSQL = &quot;select * from customers where customerid=@customerid&quot;;
+SqlCmd.Connection = SqlConn;
+SqlCmd.CommandText = SelectSQL;
+SqlCmd.Parameters.Add(&quot;@customerid&quot;, SqlDbType.NVarChar, 50).Value = &quot;alfki&quot;.ToUpper();
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>asp.net 2.0 基于SQL SERVER的角色配置</title>
+      <link>http://yuliu.org/2006/03/aspnet_2_role_configuration_based_on_sql_server/</link>
+      <pubDate>Thu, 09 Mar 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/03/aspnet_2_role_configuration_based_on_sql_server</guid>
+	  <description>&lt;p&gt;SQL SERVER Express就不用说了，因为默认的连接就是它&lt;/p&gt;
+
+&lt;p&gt;要支持其他版本的SQL SERVER，需要做以下的修改：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;visual studio 2005 command prompt下运行&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; aspnet_regsql
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在SQL SERVER数据库中增加一个角色数据库，名字可以自己取的，这里是aspnetdb.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;打开IIS的website-default web site，右击properties选择asp.net选项卡，然后单击edit global configuration&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;general标签下面修改连接字符串为&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; Data Source=数据库;Initial Catalog=aspnetdb;Persist Security Info=True;User ID=sa;Password=12345
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;p&gt;OK&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>(转帖)Windows2003使用技巧大放送</title>
+      <link>http://yuliu.org/2006/03/fwpost_tips_on_windows_2003_initial_installation_finish/</link>
+      <pubDate>Wed, 08 Mar 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/03/fwpost_tips_on_windows_2003_initial_installation_finish</guid>
+	  <description>&lt;p&gt;本来想加上原文地址的，但是由于时代久远，已不可寻。&lt;/p&gt;
+
+&lt;h1&gt;一、跳过磁盘检修等待时间&lt;/h1&gt;
+
+&lt;p&gt;一旦计算机因意外原因，例如突然停电或者死机的话，那么计算机下次重新启动的话，系统就会花10秒钟左右的时间，来运行磁盘扫描程序，检查磁盘是否有错误出现。要是你是一位惜时如金的人，肯定不会白白等待下去的。那就跟我一起来，跳过这段检查等待时间吧：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;在开始菜单中，依次执行“程序”/“附件”/“命令提示符”命令，将界面切换到DOS命令行状态下；&lt;/li&gt;
+&lt;li&gt;直接输入“CHKNTFS/T :0”命令，单击回车键后，系统就能自动将检查磁盘的等待时间修改为0了；&lt;/li&gt;
+&lt;li&gt;下次遇到异常情况，重新启动计算机后，系统再调用磁盘扫描程序时，就不需要等待了。&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;h1&gt;二、取消对网站的安全检查&lt;/h1&gt;
+
+&lt;p&gt;新安装好Windows Server 2003操作系统后，打开浏览器来查询网上信息时，发现IE总是“不厌其烦”地提示我们，是否需要将当前访问的网站添加到自己信任的站点中去；要是不信任的话，就无法打开指定网页；倘若信任的话，就必须单击“添加”按钮，将该网页添加到信任网站的列表中去。不过每次访问网页，都要经过这样的步骤，显然就太烦琐了。其实我们可以通过下面的方法来让IE取消对网站安全性的检查：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;依次执行“开始”/“设置”/“控制面板”命令，在打开的控制面板窗口中，用鼠标双击“添加和删除程序”图标，将界面切换到“添加和删除Windows组件”页面中；&lt;/li&gt;
+&lt;li&gt;用鼠标选中“Internet Explorer增强的安全配置”选项，继续单击下一步按钮，就能将该选项从系统中删除了；&lt;/li&gt;
+&lt;li&gt;再单击一下“完成”按钮，退出组件删除提示窗口。
+以后，再上网的时候，IE就不会自动去检查网站的安全性了，这样就能少了不少麻烦。&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;h1&gt;三、自动进入Windows Server 2003系统&lt;/h1&gt;
+
+&lt;p&gt;每次开机运行Windows Server 2003系统时，都需要同时按住Ctrl+Alt+Delete复合键，再输入登录密码，才能进入到系统中；要是需要频繁登录系统的话，大家可能就会受不了这样罗嗦的步骤了。此时，大家不妨按照下面的步骤，来让系统自动完成登录操作：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;在运行对话框中，输入注册表编辑命令regedit，来打开注册表编辑窗口；&lt;/li&gt;
+&lt;li&gt;在该窗口中，依次展开&lt;code&gt;HKEY_LOCAL_MACHINES\SOFTWARE\Microsoft\WindowsNT\Current Version\WinLogon&lt;/code&gt;键值；&lt;/li&gt;
+&lt;li&gt;在对应右边的子窗口中，用鼠标右键单击空白处，从弹出的快捷菜单中，依次执行“新建”/“字符串”命令，来创建一个字符串类型的键名，并将键名设置为&lt;code&gt;AutoAdminLogon&lt;/code&gt;，并将该键名的数值设置为“1”；&lt;/li&gt;
+&lt;li&gt;找到&lt;code&gt;DefaultDomainName&lt;/code&gt;键名，并用鼠标双击之，在随后出现的窗口中，输入要登录的域名，例如Department；&lt;/li&gt;
+&lt;li&gt;双击&lt;code&gt;DefaultUserName&lt;/code&gt;键名，在随后打开的窗口中，直接输入要登录到此域的用户名，例如“test”；&lt;/li&gt;
+&lt;li&gt;在WinLogon右边的子窗口中，用鼠标右键单击空白处，从弹出的快捷菜单中，依次执行“新建”/“字符串”命令，来创建一个字符串类型的键名，并将键名设置为&lt;code&gt;DefaultPassword&lt;/code&gt;，并将该键名的数值设置为用户登录系统的密码，例如用户test的登录密码为“123456”；&lt;/li&gt;
+&lt;li&gt;完成设置后，重新启动计算机时，我们会发现不需要再登录，就能自动进入到Windows Server 2003系统中了。以后要取消自动登录功能的话，可以将&lt;code&gt;AutoAdminLogon&lt;/code&gt;键值设置为“0”就可以了。&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;h1&gt;四、取消关机原因的提示&lt;/h1&gt;
+
+&lt;p&gt;在关闭Windows Server 2003操作系统时，系统会弹出一个提示窗口，要求大家选择关闭计算机的原因选项；尽管这种方法可以增强系统的安全性，确保用户更有效地管理和维护计算机；不过每次关机或者重新启动系统，都要选择关机原因，实在没有必要。所以，为了进快地关闭计算机，大家可以按下面步骤来取消关机原因的提示：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;打开控制面板窗口，双击“电源选项”图标，在随后出现的电源属性窗口中，进入到“高级”标签页面；&lt;/li&gt;
+&lt;li&gt;在该页面的“电源按钮”设置项处，将“在按下计算机电源按钮时”设置为“关机”，单击“确定”按钮，来退出设置框；&lt;/li&gt;
+&lt;li&gt;以后需要关机时，可以直接按下电源按键，就能直接关闭计算机了。当然，我们也能启用休眠功能键，来实现快速关机和开机；&lt;/li&gt;
+&lt;li&gt;要是系统中没有启用休眠模式的话，可以在控制面板窗口中，打开电源选项，进入到休眠标签页面，并在其中将“启用休眠”选项选中就可以了。&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;h1&gt;五、调用Windows XP风格界面&lt;/h1&gt;
+
+&lt;p&gt;安装完Windows Server 2003系统进入到桌面时，我们会发现系统桌面的显示样式为“Windows经典样式”。看惯了这种样式后，就会感觉到有点乏味，想不想改变一下桌面的显示风格？要是你企图通过显示属性的外观设置中，来调用其他风格界面时，就发现此“路”不通；通过组策略来调用时，发现只有当前样式可以选择。那么我们有没有办法来调用其他风格样式呢，例如Windows XP样式？按照下面方法，我们就能轻松实现调用目的：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;在系统的开始菜单中，依次展开控制面板、管理工具和服务窗口，在对应服务的右边子窗口中，用鼠标选中“Themes”选项；&lt;/li&gt;
+&lt;li&gt;仔细查看该选项的参数时，发现该服务在缺省状态下是被禁止使用的，因此我们就无法调用其他风格样式；&lt;/li&gt;
+&lt;li&gt;为此，我们必须启动该服务；用鼠标双击该服务选项，然后打开常规标签页，将对应该服务的启动类型设置为“自动”，再点一下“应用”按钮；&lt;/li&gt;
+&lt;li&gt;此时，“服务状态”设置项中的“启动”按钮就自动被激活了，单击该“启动”按钮，就能将系统中的Themes服务起用了；&lt;/li&gt;
+&lt;li&gt;返回到系统桌面，并用鼠标右键单击空白处，从快捷菜单中执行“属性”命令，再打开外观标签页面，在其中的“窗口和按钮”处，选中Windows
+XP样式或者其他显示样式。&lt;/li&gt;
+&lt;li&gt;至此，系统中的工具栏菜单、窗口等样式就会按照指定的风格来显示了。&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;h1&gt;六、调整Windows Media Player的播放模式&lt;/h1&gt;
+
+&lt;p&gt;要是在使用Windows Media Player播放音乐的同时，我们还打开了多个工作窗口，这样我们就会经常需要在工作窗口和WMP播放界面中来回切换，这样会大大影响工作效率。现在，可以通过下面方法来调整WMP的播放模式，让操作者不需要打开WMP的主界面就能控制音乐的播放，以便不影响其他工作窗口：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;用鼠标右键单击系统任务栏中的空白处，从打开的快捷菜单中，执行“工具栏”下面的“Windows Media Player”命令；&lt;/li&gt;
+&lt;li&gt;此后，Windows Media
+Player界面中的播放按钮就会自动缩小并显示在系统任务栏中了，利用这里的按钮，我们就能执行音乐的播放、暂停、上一首或者下一首命令了；&lt;/li&gt;
+&lt;li&gt;通过这种调整，我们再也用不着手忙脚乱地在程序窗口和WMP播放界面中，来回切换了。&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;h1&gt;七、为指定组添加新用户&lt;/h1&gt;
+
+&lt;p&gt;想在Windows Server 2003系统中添加新用户时，发现该系统控制面板窗口中却没有我们非常熟悉的“用户”图标，那么我们该从哪里着手，才能为系统的指定组添加新用户呢？呵呵，Windows Server 2003看来就是不一样！笔者经过几次摸索，发现为指定组添加新用户的方法，具体步骤如下：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;用鼠标右键单击桌面上的“我的电脑”图标，从打开的快捷菜单中，执行“管理”命令，弹出一个计算机管理窗口；&lt;/li&gt;
+&lt;li&gt;展开该窗口中的“本地用户和组”文件夹，然后选中该文件夹下面的“用户”选项，此时在右边的子窗口中，我们就能看到当前系统中已经存在的所有用户了，其中标有红色叉号的用户表示已经创建但并没有启用；&lt;/li&gt;
+&lt;li&gt;用鼠标右键单击右边子窗口的空白处，从右键菜单中执行“添加新用户”命令，在随后出现的窗口中，输入需要添加的用户的相关信息，最后单击一下“创建”按钮，来结束新用户的添加工作；&lt;/li&gt;
+&lt;li&gt;要想让该用户添加到指定组的话，可以选择“组”选项，再从右边的子窗口中，选中需要加入的组名称，并用鼠标右击之，执行快捷菜单中的“添加到组”命令；&lt;/li&gt;
+&lt;li&gt;在随后出现的界面中，再单击“添加”命令，将前面创建的用户添加进来就可以了。&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;h1&gt;八.禁用配置服务器向导&lt;/h1&gt;
+
+&lt;p&gt;由于不需要服务器设置功能，首先我们先禁止“配置你的服务器”（Manage Your Server）向导的出现，你可以在控制面板（Control Panel） -&gt; 管理员工具（Administrative Tools ）-&gt; 管理你的服务器（Manage Your Server）运行它，然后在窗口的左下角复选“登录时不要显示该页”（Don''t display this page at logon）。&lt;/p&gt;
+
+&lt;h1&gt;九.建立一个新的用户账号&lt;/h1&gt;
+
+&lt;p&gt;windows server 2003不支持类似于Windows XP的登录欢迎屏幕。你可以在首次进入系统后建立一个有你个性的新用户账号。&lt;/p&gt;
+
+&lt;p&gt;打开“开始”（Start） -&gt; “运行”（Run） -&gt; 键入“lusrmgr.msc ”，你将看到本地用户和组（Local Users and Groups ），&lt;/p&gt;
+
+&lt;p&gt;右键点击左边窗口的“用户”（Users），选择“新用户”（New User）.在弹出的对话框中输入账号信息,然后点击“建立”（Great）。这样你的账号就可用了，当然，你可以选择把你的账号添加到管理员组，右键点击你新建的用户。然后选择“属性”（Properties）-&gt; 点击“隶属于” on Member of tab -&gt; “添加”Add.. -&gt; “高级”Advanced -&gt; “现在查找”Find Now 。&lt;/p&gt;
+
+&lt;p&gt;在查找结果对话框中双击“管理员”（Administrators），在点击两次“确定”（Ok）后关闭“本地用户和组”（Local Users and Groups window ），现在你将可以注销Administrator用户用你自己的账号登录系统。&lt;/p&gt;
+
+&lt;h1&gt;十.禁用Internet Explorer Enhanced Security&lt;/h1&gt;
+
+&lt;p&gt;作为新windows组件出现的IE安全插件－－Internet Explorer Enhanced Security默认把你IE安全设置为最高。这样你将在访问站点弹出询问框并对你浏览网页及文件下载做出阻止的行为。我们其实不一定需要这个组件。&lt;/p&gt;
+
+&lt;p&gt;我们首先禁止询问框的出现,在弹出的对话框中复选”以后不要显示这个信息“ （In the future, do not show this message）&lt;/p&gt;
+
+&lt;p&gt;然后，我们可以在IE工具选项中自定义设置IE的安全级别。在”安全“（Security）选项卡上拉动滚动条把Internet区域安全设置为”中“（Medium），这个级别将适合大多数人，要是你有特别要求，这个步骤将不适合你。&lt;/p&gt;
+
+&lt;p&gt;通过对IE安全的设置，你现在安装可以上Sun''s Java VM!&lt;/p&gt;
+
+&lt;p&gt;当然，你甚至可以在控制面板－－添加程序－－添加或删除Windows组件中卸载Internet Explorer Enhanced Security 。&lt;/p&gt;
+
+&lt;h1&gt;十一.安装Java VM&lt;/h1&gt;
+
+&lt;p&gt;Windows server 2003没有集成MS Java VM或Sun Java VM,你可以自行下载并安装它。&lt;/p&gt;
+
+&lt;h1&gt;十二.禁止关机事件跟踪&lt;/h1&gt;
+
+&lt;p&gt;关机事件跟踪（Shutdown Event Tracker）也是Windows server 2003区别于其他工作站系统的一个设置，对于服务器来说这是一个必要的选择，但是对于工作站系统却没什么用，我们同样可以禁止它。&lt;/p&gt;
+
+&lt;p&gt;打开”开始“Start -&gt;”运行“ Run -&gt;输入”gpedit.msc “，在出现的窗口的左边部分，选择&lt;/p&gt;
+
+&lt;p&gt;”计算机配置“（Computer Configuration ）-&gt; ”管理模板“（Administrative Templates）-&gt; ”系统“（System）,在右边窗口双击“Shutdown Event Tracker” 在出现的对话框中选择“禁止”（Disabled），点击然后“确定”（OK）保存后退出这样，你将看到类似于windows 2000的关机窗口&lt;/p&gt;
+
+&lt;h1&gt;十三.启用硬件和DirectX加速&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;硬件加速：桌面点击右键－－属性（Properties） -&gt; 设置（Settings ）－－高级（ Advanced）－－疑难解答（Troubleshoot）。把该页面的硬件加速滚动条拉到“完全”（Full），最好点击“确定”（OK）保存退出。这期间可能出现一瞬的黑屏是完全正常。&lt;/li&gt;
+&lt;li&gt;DirectX加速：打开“开始”（Start） -&gt; “运行”（Run），键入“dxdiag”并回车打开“DirectX 诊断工具”（DirectX Tools），在“显示”（Display）页面，点击DirectDraw, Direct3D and AGP Texture 加速三个按钮启用加速。&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1&gt;十四.允许声音加速&lt;/h1&gt;
+
+&lt;p&gt;如果你使用的是Windows server 2003标准版请从第二步xx作，因为标准版已允许声音服务。
+- 打开“开始”（Start） -&gt; “运行”（Run），键入“Services.msc ”，在出现的窗口中找到“Windows Audio”并双击它，然后在启动模式（startup type）的下拉菜单选择“自动”（Automatic），并点击“应用”（Apply） -&gt;“开始”（Start） -&gt; “确定”（OK）
+- 打开“开始”（Start） -&gt; “运行”（Run），键入“dxdiag”并回车打开“DirectX 诊断工具”（DirectX Tools），在“Sound”（Display）页面，把“声音的硬件加速级别”（Hardware Sound Acceleration Level）滚动条拉到“完全加速”（ Full leration）。&lt;/p&gt;
+
+&lt;h1&gt;十五.启用桌面主题&lt;/h1&gt;
+
+&lt;p&gt;也许你对WINDOWS经典的桌面已经感到厌烦的话，你就要考虑启用桌面主题了，Windows server 2003默认是关闭此服务的。&lt;/p&gt;
+
+&lt;p&gt;打开“开始”（Start） -&gt; “运行”（Run），键入“Services.msc ”，在出现的窗口寻找Themes并双击它，&lt;/p&gt;
+
+&lt;p&gt;然后在启动模式（startup type ）的下拉菜单选择“自动”（Automatic），并点击“应用”（Apply）-&gt;“开始”（Start） -&gt; “确定”.&lt;/p&gt;
+
+&lt;p&gt;这样的xx作也是只能让你使用Windows自带的Luna主题的三个模式，假如你希望使用更多的第三方主题文件的话，你需要使用修改的Uxtheme.dll文件来支持它，关于修改的Uxtheme.dll文件，你可以在&lt;a href=&quot;http://vortex.winbeta.org/&quot;&gt;http://vortex.winbeta.org/&lt;/a&gt;找到更多。&lt;/p&gt;
+
+&lt;h1&gt;十六.允许内置的IMAPI CD-Burning服务和支持Windows影像设备服务&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;假如你希望启用Windows内置的IMAPI CD-Burning服务。做如下xx作：&lt;br/&gt;
+打开“开始”（Start） -&gt; “运行”（Run），键入“Services.msc ”，在出现的窗口中找到“IMAPI CD-Burning COM Service ”并双击它，然后在启动模式（startup type ）的下拉菜单选择“自动”（Automatic），并点击“应用”（Apply） -&gt;“开始”（Start） -&gt; “确定”（OK）&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;假如你有如数码相机和扫描仪之类的影像设备，你应该打开Windows Image Acquisition 服务。&lt;br/&gt;
+打开“开始”（Start） -&gt; “运行”（Run），键入“Services.msc ”，在出现的窗口中找到“Windows Image
+Acquisition (WIA) ”并双击它，然后在启动模式（startup type ）的下拉菜单选择“自动”（Automatic），并点击“应用”（Apply） -&gt;“开始”（Start） -&gt; “确定”（OK）&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1&gt;十七.高级设置&lt;/h1&gt;
+
+&lt;p&gt;我们可以修改一些windows server 2003的高级设置以适合工作站的应用环境。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;右键点击“我的电脑”（My Computer）－－属性（Properties）－－高级（Advanced）－－性能（Performance）－－设置（Setting）－－高级（Advanced），把“处理器计划”（Processor scheduling ）和内存使用（Memory usage）分配给“程序”（Programs）使用。然后点击“确定”（OK.）&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;禁用错误报告
+右键点击“我的电脑”（My Computer）－－属性（Properties）－－高级（Advanced）－－点击“错误报告”（Error Reporting ）按钮，在出现的窗口中把“禁用错误报告”（Disable Error Reporting）选上并复选“但在发生严重错误时通知我”（But, notify me when critical errors occur.）&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;调整虚拟内存
+正常运行Windows所需要的虚拟内存是作为物理内存的“后备力量”而存在的，虽然运行速度上硬盘不如内存，但在容量上内存是无法与硬盘相提并论的。所以我们一直是认为虚拟内存越大越好，其实事实上并不是这样的，尤其是安装Windows server 2003用做工作站的环境下并不承担高负荷工作的情况下，我们可以试试禁用虚拟内存。前提是你必须拥有512M物理内存以上。很多朋友担心如果禁用虚拟内存会不会象在Windows 9x环境下一样造成系统无法正常待机和休眠的情况，其实不会这样的，因为从windows xp开始它的虚拟内存（即pagefile.sys）是专用于数据交换的，待机模式时数据依旧保留在物理内存中，休眠模式也有其专用的休眠文件（Hiberfil.sys），所以绝对不会出现系统无法休眠的问题。而使用Windows server 2003的一些朋友经常会对其的关机和注销缓慢感到束手无策，在此我个人的解决办法就是禁用虚拟内存，这样你的注销和关机时间可能会加快很多。我今天做了测试，在加载虚拟内存的情况下注销用户重登陆windows的时间是3秒，关机是23秒。但是在禁用虚拟内存的情况下注销重登陆的时间减少到2秒，而关机时间缩短到3秒。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;右键点击“我的电脑”（My Computer）－－属性（Properties）－－高级（Advanced）－－性能（Performance）－－设置（Setting）－－高级（Advanced），点击“虚拟内存”（Virtual memory）部分的“更改”（Change），然后在出现的窗口选择“无分页文件”。重启系统即可。&lt;/p&gt;
+
+&lt;p&gt;注意：调整虚拟内存部分经过个人测试无任何问题，但是不保证在您的机器上也是这样，所以我不对此设置造成的任何后果承担责任。只是建议对Windows server 2003关机速度有怨言的朋友尝试。&lt;/p&gt;
+
+&lt;h1&gt;十八.自动登陆&lt;/h1&gt;
+
+&lt;p&gt;Windows Server 2003默认是使用&quot;CTRL-ATL-DEL to login&quot; 对话框来登陆Windows的，不过我们我们可以使用Windows XP的Tweak UI来使Server 2003自动登陆。下载Tweak UI&lt;/p&gt;
+
+&lt;p&gt;下载后直接执行tweakui.exe&lt;/p&gt;
+
+&lt;p&gt;在左边的面板中选择Logon -&gt; Autologon -&gt; 在右边勾选Log on automatically at system startup输入你的用户名和域名（如果没有就不写）&lt;/p&gt;
+
+&lt;p&gt;点击下面的Set Password，输入用户名的密码，然后点击OK。&lt;/p&gt;
+
+&lt;p&gt;虽然同样的功能通过修改注册表也能完成，但是修改注册表的方法密码在注册表中表现的是明文，而Tweak UI在注册表中不会留下明文的密码，所以推荐使用Tweak UI来完成这项工作。&lt;/p&gt;
+
+&lt;h1&gt;十九.安装DirectX 9a&lt;/h1&gt;
+
+&lt;p&gt;在Windows Server 2003上安装DirectX 9a和在其他版本的Windows上安装DirectX 9a的方法是一样的。安装之前先启用DirectX and Graphics Acceleration。&lt;/p&gt;
+
+&lt;h1&gt;二十.隐藏文件&lt;/h1&gt;
+
+&lt;p&gt;Windows Server 2003默认情况下是显示所有的文件夹的，如果你不想这样，可以通过一下方法来隐藏：打开任意一个文件夹，选择Tools -&gt; Folder Options -&gt; View，选择Do not show hidden files and folders，点击OK。&lt;/p&gt;
+
+&lt;p&gt;在Windows Server 2003中，已经安装了Windows Media Player 9，点击Start -&gt; Programs -&gt; Accessories -&gt; Entertainment -&gt; Windows Media Player就可以打开它。&lt;/p&gt;
+
+&lt;h1&gt;二十一.启用 ASP 支持&lt;/h1&gt;
+
+&lt;p&gt;Windows Server 2003 默认安装，是不安装 IIS 6 的，需要另外安装。安装完 IIS 6，还需要单独开启对于 ASP 的支持。方法是：控制面板 -&gt; 管理工具 -&gt; Web服务扩展 -&gt; Active Server Pages -&gt; 允许&lt;/p&gt;
+
+&lt;h1&gt;二十二.启用摄像机，摄像头或者扫描仪等设备&lt;/h1&gt;
+
+&lt;p&gt;在运行中输入Services.msc并回车，找到并双击Windows Image Acquisition (WIA) 服务，设置启动类型为Automatic点击Apply后点击Start然后点击OK。&lt;/p&gt;
+
+&lt;h1&gt;二十三.在Win 2003中配置NAT服务器&lt;/h1&gt;
+
+&lt;p&gt;如何通过使用Windows Server 2003来配置网络地址转换(NAT)服务器。Windows Server 2003“路由和远程访问”服务包括NAT路由协议。如果将NAT路由协议安装和配置在运行“路 由和远程访问”的服务器上，则使用专用Internet协议(IP)地址的内部网络客户端可以通过NAT服务器的外部接口访问Internet。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;如何配置路由和远程访问NAT服务器&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;当内部网络客户端发送要连接Internet的请求时，NAT协议驱动程序会截取该请求，并将其转发到目标Internet服务器。所有请求看上去都像是来自NAT服务器的外部IP地址。这样就隐藏您的内部IP地址配置。&lt;/p&gt;
+
+&lt;p&gt;配置“路由和远程访问”NAT服务器：&lt;/p&gt;
+
+&lt;p&gt;在管理工具菜单中，选中“路由和远程访问”。&lt;/p&gt;
+
+&lt;p&gt;在“路由和远程访问”MMC中，展开您的服务器名称（其中服务器名称是您要配置服务器的名称，然后展开左窗格中的IP路由。&lt;/p&gt;
+
+&lt;p&gt;选中常规，然后选择新建路由协议。&lt;/p&gt;
+
+&lt;p&gt;单击NAT/基本防火墙复选框，将其选中，然后点确定。&lt;/p&gt;
+
+&lt;p&gt;右键单击左窗格中的NAT/基本防火墙，然后单击新建接口。&lt;/p&gt;
+
+&lt;p&gt;单击表示内部网络接口的接口，然后单击确定。&lt;/p&gt;
+
+&lt;p&gt;在“网络地址转换”属性中，单击“专用接口连接到专用网络”，然后单击确定。&lt;/p&gt;
+
+&lt;p&gt;右键单击左窗格中的NAT/基本防火墙，然后点新建接口。&lt;/p&gt;
+
+&lt;p&gt;单击表示外部网络接口的接口，然后点确定。&lt;/p&gt;
+
+&lt;p&gt;在“网络地址转换”属性中，单击“公用接口连接到Internet”。&lt;/p&gt;
+
+&lt;p&gt;单击“在此接口上启用NAT”复选框，将其选中，点确定。&lt;/p&gt;
+
+&lt;p&gt;NAT服务器可以自动为内部网络客户端分配IP地址。如果您没有已给内部网络上的客户端分配了地址信息的DHCP服务器，则可能会需要使用此功能。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;如何配置路由和远程访问NAT服务器以分配IP地址和执行代理DNS查询NAT服务器还可以代表NAT客户端执行域名系统(DNS)查询。“路由和远程访问”NAT服务器对包括在客户端请求中的Internet主机名进行解析，然后将该IP地址转发给该客户端。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;要配置“路由和远程访问”NAT服务器来分配IP地址并且代表内部网络客户端执行代理DNS查询，请按以下步骤操作：&lt;/p&gt;
+
+&lt;p&gt;右键单击左窗格中的NAT/基本防火墙，然后单击属性。&lt;/p&gt;
+
+&lt;p&gt;单击地址分配选项卡，然后单击“使用DHCP自动分配IP地址”复选框，将其选中。&lt;/p&gt;
+
+&lt;p&gt;在IP地址框中，键入网络ID。&lt;/p&gt;
+
+&lt;p&gt;在掩码框中，键入子网掩码。&lt;/p&gt;
+
+&lt;p&gt;选择名称解析选项卡，然后单击“使用域名系统(DNS)的客户端”复选框，将其选中。&lt;/p&gt;
+
+&lt;p&gt;如果您使用请求拨号接口连接到Internet，请单击“当名称需要解析时连接到公用网络”复选框，将其选中。&lt;/p&gt;
+
+&lt;p&gt;在请求拨号接口框中，选中要拨号的接口。&lt;/p&gt;
+
+&lt;p&gt;选择应用，然后单击确定。&lt;/p&gt;
+
+&lt;p&gt;备注：完成这些基本配置步骤之后，内部网络客户端就可以访问Internet上的服务器了。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;如何配置基于Windows Server 2003的计算机以使用NAT服务器&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;单击开始，指向控制面板，指向网络连接，然后单击本地连接。&lt;/p&gt;
+
+&lt;p&gt;单击属性。&lt;/p&gt;
+
+&lt;p&gt;单击Internet协议(TCP/IP)。&lt;/p&gt;
+
+&lt;p&gt;单击属性。&lt;/p&gt;
+
+&lt;p&gt;在“默认网关”框中，键入NAT服务器的内部IP地址。&lt;/p&gt;
+
+&lt;p&gt;备注：如果计算机从“动态主机配置协议”(DHCP)服务器接收它的IP地址，请单击高级，单击IP设置选项卡，单击网关下的添加，键入NAT服务器的内部IP地址，单击添加，单击确定，然后继续进行第6步。&lt;/p&gt;
+
+&lt;p&gt;单击确定，单击确定，然后单击关闭。&lt;/p&gt;
+
+&lt;h1&gt;二十四.在Win 2003中为SMTP服务配置本地域&lt;/h1&gt;
+
+&lt;p&gt;SMTP服务域用于组织要传递的消息。SMTP虚拟服务器至少有一个域：默认的本地域。&lt;/p&gt;
+
+&lt;p&gt;本地域是由本地SMTP服务器提供服务的域名系统(DNS)域。到达SMTP服务器的包含本地域名的消息或者在本地传送到Drop文件夹，或者与不可传递的(NDR)报告一起返回给发送方。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;如何重命名默认域&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;默认域用于给来自不含有域的地址的消息加盖戳记。SMTP虚拟服务器必须有一个默认域。无法删除此默认域。&lt;/p&gt;
+
+&lt;p&gt;默认情况下，在“控制面板”系统工具的计算机名选项卡中指定的名称被用作默认域名。也可以指定一个唯一的名称作为SMTP服务的默认域名。&lt;/p&gt;
+
+&lt;p&gt;要重命名默认域，请按照下列步骤xx作：&lt;/p&gt;
+
+&lt;p&gt;启动MicrosoftInternet信息服务(IIS)管理器或打开IIS管理单元。&lt;/p&gt;
+
+&lt;p&gt;展开Server_name，其中Server_name是服务器的名称，然后展开所需的SMTP虚拟服务器（例如，默认SMTP虚拟服务器）。&lt;/p&gt;
+
+&lt;p&gt;单击域。&lt;/p&gt;
+
+&lt;p&gt;在右窗格中，右击默认域，然后单击重命名。&lt;/p&gt;
+
+&lt;p&gt;键入要使用的名称，然后按ENTER键。&lt;/p&gt;
+
+&lt;p&gt;退出IIS管理器或关闭IIS管理单元。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;如何配置别名域&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;别名域是默认域的别名。可以使用与默认域相同的设置来设置别名域。SMTP服务接收的别名域的消息放置在为默认域指定的Drop文件夹中。&lt;/p&gt;
+
+&lt;p&gt;要配置别名域，请按照下列步骤xx作：&lt;/p&gt;
+
+&lt;p&gt;启动IIS管理器或打开IIS管理单元。&lt;/p&gt;
+
+&lt;p&gt;展开Server_name，其中Server_name是服务器的名称，然后展开所需的SMTP虚拟服务器（例如，默认SMTP虚拟服务器）。&lt;/p&gt;
+
+&lt;p&gt;右键单击域，指向新建，然后单击域。&lt;/p&gt;
+
+&lt;p&gt;“新建SMTP域向导”启动。&lt;/p&gt;
+
+&lt;p&gt;单击别名，然后单击下一步。&lt;/p&gt;
+
+&lt;p&gt;在名称框中键入别名域的名称，然后单击完成。&lt;/p&gt;
+
+&lt;p&gt;退出IIS管理器或关闭IIS管理单元。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;如何指定Drop文件夹&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;对于默认域，您必须指定一个放置所有传入消息的文件夹。SMTP服务将别名域的消息放在默认域所使用的Drop文件夹中。&lt;/p&gt;
+
+&lt;p&gt;默认情况下，Drop文件夹位于Inetpub\Mailroot文件夹中。您可以将任何文件夹指定为Drop文件夹，只要该文件夹是安装SMTP服务的计算机上的本地文件夹，而且没有指定为Pickup文件夹。&lt;/p&gt;
+
+&lt;p&gt;要更改Drop文件夹的位置，请按照下列步骤xx作：&lt;/p&gt;
+
+&lt;p&gt;启动IIS管理器或打开IIS管理单元。&lt;/p&gt;
+
+&lt;p&gt;展开Server_name，其中Server_name是服务器的名称，然后展开所需的SMTP虚拟服务器（例如，默认SMTP虚拟服务器）。&lt;/p&gt;
+
+&lt;p&gt;单击域。&lt;/p&gt;
+
+&lt;p&gt;在右窗格中，右击默认域，然后单击属性。&lt;/p&gt;
+
+&lt;p&gt;单击浏览，找到要用作Drop文件的文件夹，然后单击确定。&lt;/p&gt;
+
+&lt;p&gt;单击确定。&lt;/p&gt;
+
+&lt;h1&gt;二十五.为Win 2003中添加LPT端口&lt;/h1&gt;
+
+&lt;p&gt;默认情况下，在Windows Server 2003中存在3个 LPT可用端口，它们是 LPT1、LPT2 和 LPT3。可以添加附加LPT端口直到LPT9。添加附加 LPT 端口后，该端口作为可用打印机端口显示在“添加打印机向导”中。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;如何添加附加LPT端口&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;单击开始\运行。&lt;/p&gt;
+
+&lt;p&gt;注意：“注册表编辑器”使用不当可造成严重问题，这些问题可能需要重新安装操作系统。Microsoft 不保证能够解决因为“注册表编辑器”使用不当而产生的问题。使用“注册表编辑器”需要您自担风险。&lt;/p&gt;
+
+&lt;p&gt;在打开框键入regedit，然后单击确定。&lt;/p&gt;
+
+&lt;p&gt;找到并单击下面的注册表项：&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Ports&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;当前 LPT 端口显示在右窗格中。&lt;/p&gt;
+
+&lt;p&gt;在编辑菜单上，指向新建，然后单击字符串值。&lt;/p&gt;
+
+&lt;p&gt;键入新值名称。键入 LPT#，其中 # 是所要添加 LPT 端口的序号，然后按 ENTER。例如，键入 LPT4。&lt;/p&gt;
+
+&lt;p&gt;在文件菜单上，退出“注册表编辑器”。&lt;/p&gt;
+
+&lt;p&gt;单击开始\运行。&lt;/p&gt;
+
+&lt;p&gt;在打开框键入cmd，单击确定。&lt;/p&gt;
+
+&lt;p&gt;停止然后重新启动假脱机服务。为此，请在命令提示符下键入下列命令，在每行后按ENTER 键：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;net stop spooler
+net start spooler
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;键入exit退出命令提示符。&lt;/p&gt;
+
+&lt;h1&gt;二十六.加快启动和运行速度&lt;/h1&gt;
+
+&lt;p&gt;修改注册表，减少预读取，减少进度条等待时间：开始→运行→regedit启动注册表编辑器，&lt;code&gt;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters&lt;/code&gt;，有一个键值名&lt;code&gt;为EnablePrefetcher&lt;/code&gt;，它的值是3,把它改为“1”或“5”。
+找到 &lt;code&gt;HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control&lt;/code&gt;，
+将 &lt;code&gt;WaitToKillServiceTimeout&lt;/code&gt; 设为：1000或更小。 ( 原设定值：20000 )
+找到 &lt;code&gt;HKEY_CURRENT_USER\Control Panel\Desktop&lt;/code&gt; 键，将右边视窗的WaitToKillAppTimeout 改为 1000， ( 原设定值：20000 )即关闭程序时仅等待1秒。
+将 &lt;code&gt;HungAppTimeout&lt;/code&gt; 值改为：200( 原设定值：5000 )，表示程序出错时等待0.5秒。&lt;/p&gt;
+
+&lt;h1&gt;二十七.让系统自动关闭停止回应的程式&lt;/h1&gt;
+
+&lt;p&gt;打开注册表 &lt;code&gt;HKEY_CURRENT_USER\Control Panel\Desktop&lt;/code&gt; 键，
+将 &lt;code&gt;AutoEndTasks&lt;/code&gt; 值设为 1。 ( 原设定值：0 )&lt;/p&gt;
+
+&lt;h1&gt;二十八.禁用系统服务Qos&lt;/h1&gt;
+
+&lt;p&gt;开始菜单→运行→键入 gpedit.msc ，出现“组策略”窗口， 展开 &quot;管理模板”→“网络” ， 展开 &quot;QoS 数据包调度程序&quot;，在右边窗右键单击“限制可保留带宽&quot; ，在属性中的“设置”中有“限制可保留带宽&quot; ，选择“已禁用”，确定即可。当上述修改完成并应用后，用户在网络连接的属性对话框内的一般属性标签栏中如果能够看到&quot;QoS Packet Scheduler（QoS 数据包调度程序）&quot;。说明修改成功，否则说明修改失败。&lt;/p&gt;
+
+&lt;h1&gt;二十九.改变窗口弹出的速度&lt;/h1&gt;
+
+&lt;p&gt;找到&lt;code&gt;HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics&lt;/code&gt;子键分支，在右边的窗口中找到MinAniMate键值，其类型为REG_SZ，默认情况下此健值的值为1，表示打开窗口显示的动画，把它改为0，则禁止动画显示，接下来从开始菜单中选择“注销”命令，激活刚才所作的修改。&lt;/p&gt;
+
+&lt;h1&gt;三十.运行大型软件时系统反应缓慢&lt;/h1&gt;
+
+&lt;p&gt;服务器和工作站对系统资源的要求是不相同的，如果我们平时要运行诸如Photoshop、3DSMAX等软件，则应当将系统资源重新分配，修改为类似Windows XP的状态。&lt;/p&gt;
+
+&lt;p&gt;设置步骤是：进入“控制面板→系统”选择“高级”选项卡，在“性能”栏里点“设置”按钮，选择“高级”选项卡，在“处理器计划”和“内存使用”两栏中均选择“程序”，最后点“确定”并重新启动计算机即可。&lt;/p&gt;
+
+&lt;h1&gt;三十一.解决播放电影时画面粗糙&lt;/h1&gt;
+
+&lt;p&gt;很多朋友都有这样的“遭遇”：自己的电脑配置相当好，安装了Windows 2003时显卡也能够被自动识别并安装，可是播放电影时画面非常粗糙，安装最新版显卡驱动后画面质量依然如故。其实这是因为Windows 2003默认的显示选项没有根据个人用户的需要进行优化所致。&lt;/p&gt;
+
+&lt;p&gt;解决方法很简单：在桌面上点右键，依次进入“显示属性→设置→高级→疑难解答”，将“硬件加速”游标向右拖至“完全”，点“确定”退出。然后依次进入“开始→所有程序→附件→系统工具→系统信息”，选择“工具→DirectX诊断工具”(由于程序搜集系统信息，所以需要稍微等待一下，可能出现闪屏)，选择“显示”选项卡，依次启用“DirectDraw Acceleration”和“Direct3D Acceleration”项，点“退出”即可。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1&gt;这个应该是另外一篇的招数&lt;/h1&gt;
+
+&lt;h2&gt;1 安全为首 加固系统防护&lt;/h2&gt;
+
+&lt;p&gt;操作系统的安全性无疑受大家关注最多，虽然Windows 2003稳定的性能受到越来越多用户的青睐，但面对层出不穷的新病毒，加强安全性依旧是当务之急。通常，我们只需要某些细微的改动就能使系统安全提升一个台阶，大家看看下面几点您做到了么？&lt;br/&gt;
+- 用户口令设置&lt;br/&gt;
+为管理员帐户设置一个密码，在很大程度上可以避免口令攻击。密码设置的字符长度应当在8位以上，最好是字母、数字、特殊字符的组合，如“psp53，@pq”、“skdfksadf10@”等，可以有效地防止暴力破解。最好不要用自己的生日、手机号码、电话号码等做口令。　　&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;删除默认共享&lt;br/&gt;
+删除Windows 2003系统默认的隐藏共享同样可以有效提升系统的安全系数，单击“开始→运行”，输入“gpedit.msc”后回车，打开组策略编辑器。依次展开“用户配置→Windows 设置→脚本（登录/注销）”，双击登录项，然后添加“delshare.bat”（参数不需要添加），从而删除Windows Server 2003默认的共享。接下来再禁用IPC连接：打开注册表编辑器，依次展开&lt;code&gt;HKEY_LOCAL_MACHINESYSTEMCurrentControlSetControlLsa&lt;/code&gt;分支，在右侧窗口中找到“restrictanonymous”子键，将其值改为“1”即可。　&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;关闭自动播放功能&lt;br/&gt;
+自动播放功能不仅对光驱起作用，而且对其它驱动器也起作用，这样很容易被黑客利用来执行黑客程序。打开组策略编辑器，依次展开“计算机配置→管理模板→系统”，在右侧窗口中找到“关闭自动播放”选项并双击，在打开的对话框中选择“已启用”，然后在“关闭自动播放”后面的下拉菜单中选择“所有驱动器”，按“确定”即可生效。　　&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;清空远程可访问的注册表路径&lt;br/&gt;
+将远程可访问的注册表路径设置为空，这样可以有效防止黑客利用扫描器通过远程注册表读取计算机的系统信息及其它信息。打开组策略编辑器，依次展开“计算机配置→Windows 设置→安全设置→安全选项”，在右侧窗口中找到“网络访问：可远程访问的注册表路径”，将可远程访问的注册表路径和子路径内容全部删除。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h2&gt;2 排除隐患 教你防堵妙招&lt;/h2&gt;
+
+&lt;p&gt;除了安全设置以外，Windows 2003由于先天性的原因，还存在不少安全隐患，如果不将这些隐患“堵住”，也有可能会给整个系统带来不必要的麻烦。下面小编就介绍部分Windows 2003中不常见的安全隐患防堵方法，希望能对各位带来帮助!&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;堵住自动保存隐患&lt;br/&gt;
+Windows 2003操作系统在调用应用程序出错时，系统中的Dr. Watson会自动将一些重要的调试信息保存起来，以便日后维护系统时查看。不过这些信息很有可能被黑客“瞄上”，一旦瞄上的话，各种重要的调试信息就会暴露无疑。为了堵住Dr. Watson自动保存调试信息的隐患，我们可以按如下步骤来实现：  &lt;br/&gt;
+打开开始菜单，选中“运行”命令，在随后打开的运行对话框中，输入注册表编辑命令“regedit”命令，打开一个注册表编辑窗口；在该窗口中，用鼠标依次展开&lt;code&gt;HKEY_local_machine\software\Microsoft\WindowsdowsNT\CurrentVersion\AeDebug&lt;/code&gt;分支，在对应&lt;code&gt;AeDebug&lt;/code&gt;键值的右边子窗口中，用鼠标双击Auto值，在弹出的参数设置窗口中，将其数值重新设置为“0”。&lt;br/&gt;
+打开系统的Windows资源管理器窗口，并在其中依次展开Documents and Settings文件夹、All Users文件夹、Shared Documents文件夹、DrWatson文件夹，最后将对应DrWatson中的User.dmp文件、Drwtsn32.log文件删除掉。&lt;br/&gt;
+完成上面的设置后，重新启动一下系统，就可以堵住自动保存隐患了。&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h2&gt;3 安全防护&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;堵住资源共享隐患&lt;br/&gt;
+为了给局域网用户相互之间传输信息带来方便，Windows Server 2003系统很是“善解人意”地为各位提供了文件和打印共享功能，不过我们在享受该功能带来便利的同时，共享功能也会“引狼入室”，“大度”地向黑客们敞开了不少漏洞，给系统造成了很大的不安全性。所以，如果不需要在本机实现文件、打印共享的话，大家千万要将功能关闭，以便堵住资源共享隐患，下面就是关闭共享功能的具体步骤：&lt;br/&gt;
+执行控制面板菜单项下面的“网络连接”命令，在随后出现的窗口中，用鼠标右键单击一下“本地连接”图标；在打开的快捷菜单中，单击“属性”命令，这样就能打开一个“Internet协议（TCP/IP）”属性设置对话框；在该界面中取消“Microsoft网络的文件和打印机共享”这个选项；如此一来，本地计算机就没有办法对外提供文件与打印共享服务了，这样黑客自然也就少了攻击系统的“通道”。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;堵住用户切换隐患&lt;br/&gt;
+Windows 2003系统为我们提供了快速用户切换功能，利用该功能我们可以很轻松地登录到系统中。不过在享受这种轻松时，系统也存在安装隐患，例如我们要是执行系统“开始”菜单中的“注销”命令来，快速“切换用户”时，再用传统的方式来登录系统的话，系统很有可能会本次登录，错误地当作是对计算机系统的一次暴力“袭击”，这样Windows2003系统就可能将当前登录的帐号当作非法帐号，将它锁定起来，这显然不是我们所需要的；不过，我们可以按如下步骤来堵住用户切换时，产生的安全隐患：&lt;br/&gt;
+在Windows 2003系统桌面中，打开开始菜单下面的控制面板命令，找到下面的“管理工具”命令，再执行下级菜单中的“计算机管理”命令，找到“用户帐户”图标，并在随后出现的窗口中单击“更改用户登录或注销的方式”；在打开的设置窗口中，将“使用快速用户切换”选项取消掉就可以了。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;堵住页面交换隐患&lt;br/&gt;
+Windows 2003操作系统即使在正常工作的情况下，也有可能会向黑客或者其他访问者泄漏重要的机密信息，特别是一些重要的帐号信息。也许我们永远不会想到要查看一下，那些可能会泄漏隐私信息的文件，不过黑客对它们倒是很关心的哟！Windows 2003操作系统中的页面交换文件中，其实就隐藏了不少重要隐私信息，这些信息都是在动态中产生的，要是不及时将它们清除，就很有可能成为黑客的入侵突破口；为此，我们必须按照下面的方法，来让Windows 2003操作系统在关闭系统时，自动将系统工作时产生的页面文件全部删除掉:&lt;br/&gt;
+打开注册表编辑器，在该窗口的左边区域中，用鼠标依次单击&lt;code&gt;HKEY_local_machine\system\currentcontrolset\control\sessionmanager\memory management&lt;/code&gt;键值，找到右边区域中的&lt;code&gt;ClearPageFileAtShutdown&lt;/code&gt;键值，并用鼠标双击之，在随后打开的数值设置窗口中，将该DWORD值重新修改为“1”。&lt;br/&gt;
+完成设置后，退出注册表编辑窗口，并重新启动计算机系统，就能让上面的设置生效了。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>让asp.net startkit使用SQL server 2005</title>
+      <link>http://yuliu.org/2006/02/aspnet_startkit_and_sql_server_2005/</link>
+      <pubDate>Tue, 28 Feb 2006 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2006/02/aspnet_startkit_and_sql_server_2005</guid>
+	  <description>&lt;p&gt;在MSDN上面下了一个aspnet 2.0的startkit&lt;/p&gt;
+
+&lt;p&gt;里面使用的都是sql server 2005 express的数据库&lt;/p&gt;
+
+&lt;p&gt;但是我没有安装它。只安装了sql server 2005&lt;/p&gt;
+
+&lt;p&gt;直接运行会出现错误&lt;/p&gt;
+
+&lt;p&gt;关于这个问题郁闷了半天。&lt;/p&gt;
+
+&lt;p&gt;后来发现其实只要在web.config修改下面的&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;connectionString=&quot;Data Source=.\SQLExpress;Integrated Security=True;User Instance=True;AttachDBFilename=|DataDirectory|CommerceDB.mdf&quot; providerName=&quot;System.Data.SqlClient&quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;为&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;connectionString=&quot;Data Source=sqlserver2005数据库实例名;AttachDbFilename=|DataDirectory|CommerceDB.mdf;User ID=sa;Password=******&quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;就可以了&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>各种程序设计语言之我见</title>
+      <link>http://yuliu.org/2005/12/my_views_on_programme_languages/</link>
+      <pubDate>Sat, 31 Dec 2005 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2005/12/my_views_on_programme_languages</guid>
+	  <description>&lt;p&gt;我在YDY BBS上面的回帖，乱其八糟写了很多，索性转到Blog上面来。&lt;/p&gt;
+
+&lt;p&gt;具体应用具体分析吧。语言的选取和你的需要绝对是有很大的关系&lt;/p&gt;
+
+&lt;p&gt;我从最初学习的vb.net到现在最常使用的C#(其实.net平台下的这两种语言几乎一样)，在做windows form和web form开发的时候都感到非常的方便，并且我个人认为功能强大到无所不能，因为他们天生设计就是为了RAD（快速软件开发）的，用他们开发的效率比使用C++高4，5倍吧，当然我说的是开发效率，而不是程序的运行效率，因为C#是带有垃圾回收的，这个必然是以消耗资源为代价的，C++程序的效率很高，但是我认为如果使用不当的话，不仅不能体会到他的高效，而且还会造成其他问题。至于java和C#，很多人说C#抄袭java，C#最多只是借鉴了java设计的一些方法，如果这个是抄袭的话，那么java不是也是语法上抄C++，还是C++的一个子集，语义上抄smalltalk...。但是这两种语言可完成的功能和适用领域几乎完全一致，就是网络编程，RAD，移动开发...J2EE对应asp.net,J2ME对应.net移动控件编程...所以说这java和C#只需要选择一种就可以了（记住VB.net==C#，基本上这两个互通吧，我认为，提到C#的地方，VB.net等价）&lt;/p&gt;
+
+&lt;p&gt;最近一位一个具体的东西要包含C的代码，又要开发图形界面，我又在看VC++的书，当然以前上过C++的课。C++是一种语言，在C语言的基础上发展起来，完全兼容C（这一点很了不起，我觉得，不要看C#也带了一个C，但是他们的差别太大了，而C和C++的关系完全不一样），经典的语言，并且到目前为止有着强大的生命力，我喜欢叫他纯C++（pure C++），而VC++是一种开发环境，在windows下开发C++的一种工具，在这个环境下你可以开发纯C++程序，也可以用MFC（包装了windows API的）开发windows程序，比如说C/S系统（开发这个可能C# or Java更快，个人观点），纯C++开发的程序具有很高的效率，因为目前就是按照这个目标来设计C++的，在底层C++使用的非常广泛，在这个领域C也是好手，他们两个虽然同根生，但是在这个领域可以说是相煎太急，因为用纯C++来开发图像界面比较麻烦，所以Microsoft在windows下面设计了MFC来帮助我们开发windows程序，他是封装了windows API 的C++类裤，当然它的作用不知是开发图形界面，我对这个不是很了解，据我搞这个的同学说MFC是博大精深阿。MFC开发windows窗体也是很方便的（但是还是没有C#方便），我现在在做的，这个东西开发程序的效率应该比C#的高吧，但是我觉得如果是我开发的程序的话，不见得，因为我是一新手，垃圾回收这些东西做得不好。当然有很多C++开发者是不屑于用VC的，不是VC不好，而是他们不喜欢MS。还有就是GCC编译器也可以编译C++程序，GCC在windows和linux下都可以使用，据说很多高手都不用开发环境，VI写代码，然后gcc编译。&lt;/p&gt;
+
+&lt;p&gt;我学习编程的过程是C/纯C++（学校上课）--&gt;C#（自学）--&gt;python（仅仅了解，自学）--&gt;C++（VC++）（自学，因为目前项目要）。&lt;/p&gt;
+
+&lt;p&gt;初学者学习的话我强烈不推荐C++，C++实在是太复杂了，不要以为纯C++很简单，我自己的感受是同样非常难，至今我对C++也是一知半解，不过是我比较笨也说不一定。C++语言的设计者说过这样一句话“帮助初学者学好C++的方法几乎就是让他们变成专家”。&lt;/p&gt;
+
+&lt;p&gt;如果是初学的话我还是首先推荐C，相对来说比较简单（其实也不简单，尤其是指针，指针了解大概就好了，有个印象），不一定要精通，主要是掌握基本的程序设计，基于过程的方法，书就推荐《C程序设计》*（谭浩强的），应该说是比较经典的学习书籍了，内容不是很深，但是作为入门教材，我觉得很不错。&lt;/p&gt;
+
+&lt;p&gt;如果有过程序设计基础的，不管什么语言，那么C#或者java二选一，做网站，做windows程序，这些比较激起你学习的兴趣的东西，都是他们最擅长的领域。&lt;/p&gt;
+
+&lt;p&gt;然后呢？这么快就问然后了？熟练运用这两种中的一种已经很了不起了，基本上你能想到的事情他们都能做，而且能做的很好，并且做起来比较快。如果不是这次的东西要兼容C代码，我应该也不会去接触VC++，因为我的C#也还只是半桶水呢。&lt;/p&gt;
+
+&lt;p&gt;上面是我的一点个人经验，大牛们不要见笑了&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>VC++2005 CString和char*的相互转换</title>
+      <link>http://yuliu.org/2005/12/transfer_between_cstring_and_char_star_in_vc2005/</link>
+      <pubDate>Mon, 26 Dec 2005 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2005/12/transfer_between_cstring_and_char_star_in_vc2005</guid>
+	  <description>&lt;p&gt;首先声明我不是一个高手，而是一个初学者，文章同样也是一个初学者对于CString和char*转换的理解。&lt;/p&gt;
+
+&lt;p&gt;因为需要，接触C++一段时间了，其中最为困扰我的问题就是在使用C++的过程中CString和char*的转换，在网上搜索了一下，看到问这个问题的人挺多的。我使用的平台是Win2003+VC 2005，本来这个很简单的问题稍微复杂了一点在2005里面。&lt;/p&gt;
+
+&lt;p&gt;在我的工程里面要集成一个用C开发的程序，用VC做windows窗体的界面，在C的函数中有不少是使用char*作为参数的，因此有一个必不可少的步骤就是把CString转换为shar*字符串。&lt;/p&gt;
+
+&lt;p&gt;作为一个初学者，遇到这个问题，首先是在baidu上搜索了一下转换的方法，有很多结果，别人也说有效，但是我把它放在我的代码里面的时候，就是出现错误。下面是我的解决办法。&lt;/p&gt;
+
+&lt;p&gt;使用CString的GetBuffer方法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CString origCString(&quot;Hello,World&quot;);
+char* CharString = origCString.GetBuffer(origCString.GetLength()+1);  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;网上的很多文章说的都是这个方法，但是我在VC++2005中编译得到下列信息&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Error 1 error C2440:   'initializing' : cannot convert from 'wchar_t *' to 'char *'   
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;对于这个错误不是很理解，因为是刚开始使用VC不久，所以对于wchar_t和char的区别不是很清楚，在MSDN中查看了一下，wchar_t是一个宽字符型，相当于unsigned short（16bit）。而我们通常使用的char是8bit。继续搜索wchar_t*到char*的转换，msdn上面有一篇文章是&lt;a href=&quot;http://msdn2.microsoft.com/en-us/library/ms235631.aspx&quot;&gt;Convert Between Various String Types&lt;/a&gt;，讲了VC++2005中的各种字符串char *, wchar_t*, _bstr_t, CComBSTR, CString, basic_string, and System.String的相互转换。其中将wchar_t*转换为char*的代码如下：(为了保持文章的一致性，修改了变量名)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;iostream&amp;gt;
+using namespace std;
+int main()
+{ 
+    wchar_t *origString = L&quot;Hello,World&quot;; 
+    wcout &amp;lt;&amp;lt; origString &amp;lt;&amp;lt; endl;
+
+    // Convert to a char*
+    size_t origsize = wcslen(origString) + 1;
+    const size_t newsize = 100;
+    size_t convertedChars = 0;
+    char CharString[newsize];
+    wcstombs_s(&amp;amp;convertedChars, CharString, origsize, origString , _TRUNCATE);
+    cout &amp;lt;&amp;lt; CharString &amp;lt;&amp;lt; endl;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;输出正确，均为Hello, World!&lt;/p&gt;
+
+&lt;p&gt;结合上面的两段，看看能不能将CString转换为char*&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CString origCString(&quot;Hello, World!&quot;);
+wchar_t* wCharString = origCString.GetBuffer(origCString.GetLength()+1);
+size_t origsize = wcslen(wCharString) + 1;
+size_t convertedChars = 0;
+char *CharString;
+CharString=new char(origsize);
+wcstombs_s(&amp;amp;convertedChars, CharString, origsize, wCharString , _TRUNCATE);
+cout &amp;lt;&amp;lt; CharString &amp;lt;&amp;lt; endl;  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;成功输出字符串&quot;Hello,World&quot;&lt;/p&gt;
+
+&lt;p&gt;至于为什么原来的那段代码别人都能用好，而我在VC++2005下面去不能直接使用，还要通过转换呢？正好看到《Programming Windows》的第二章讲Unicode的和在msdn论坛问了一下相关问题后得到答案。&lt;/p&gt;
+
+&lt;p&gt;原来在VC++ 2005以前，应用程序默认都是关闭对Unicode的支持的，而在VC2005中，默认打开了对它的支持，CString对应的字符串应该是TCHAR，TCHAR的定义是这样的，&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#ifdef _UNICODE
+typedef wchar_t TCHAR;
+#else
+typedef char TCHAR;
+#endif 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我想这个就是为什么我在VC++2005种不能直接转换的原因。在工程中应该可以关闭对于Unicode的支持，从而可以直接转换。这个做法是右击工程名—〉Property—〉General中的character set中选择not set，这样，本文开头的那段代码就可以正确的执行了。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>C++(VC 2005)学习笔记</title>
+      <link>http://yuliu.org/2005/12/study_notes_of_cpp_vc2005/</link>
+      <pubDate>Sun, 25 Dec 2005 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2005/12/study_notes_of_cpp_vc2005</guid>
+	  <description>&lt;h1&gt;1. C++下面string、char *、char**的相互转化&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;string str1=&quot;hello 你好&quot;;
+char *str2=const_cast&amp;lt;char*&amp;gt;(str1.c_str());
+char **str3=&amp;amp;str2;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这些是可以的，但是&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;char **str4;
+*str4=const_cast&amp;lt;char*&amp;gt;(str1.c_str());
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在使用的时候会提示str4没有定义，由于对于C++不熟悉，暂时不研究。&lt;/p&gt;
+
+&lt;h1&gt;2. 包含lib文件的方法&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;#pragma comment( lib , &quot;file.lib&quot; )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1&gt;3. 详见拙文CString和char*的相互转换&lt;/h1&gt;
+
+&lt;p&gt;见本blog另外一篇&lt;a href=&quot;/2005/12/transfer_between_cstring_and_char_star_in_vc2005&quot;&gt;文章&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1&gt;4. 读入文本文件并将它显示到Edit Control&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;CStdioFile inFile(FileName,CFile::modeRead|CFile::typeText);
+CString strLine,strAll;
+strAll=&quot;&quot;;
+while (inFile.ReadString(strLine))
+{
+strAll.AppendFormat(&quot;%s\r\n&quot;,strLine);   //必须加入/r/n才能在Edit Control中显示换行
+}
+inFile.Close(); 
+m_explanation=strAll;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>推荐一网络爱情小说《与空姐同居的日子》</title>
+      <link>http://yuliu.org/2005/12/recommendation_of_a_novel_days_with_airline_stewardess/</link>
+      <pubDate>Wed, 14 Dec 2005 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2005/12/recommendation_of_a_novel_days_with_airline_stewardess</guid>
+	  <description>&lt;p&gt;看到标题不要想歪了，虽然我也有过想歪的念头。&lt;/p&gt;
+
+&lt;p&gt;这是一部很纯净，很唯美的爱情。&lt;/p&gt;
+
+&lt;p&gt;好久没有在网上看过小说了，尤其是爱情小说&lt;/p&gt;
+
+&lt;p&gt;一口气看完了他，虽然觉得有些虚幻&lt;/p&gt;
+
+&lt;p&gt;但是这不正是每个人心里所期待的爱情？&lt;/p&gt;
+
+&lt;p&gt;看完好文，总是会失落一段时间，很奇怪的感觉。&lt;/p&gt;
+
+&lt;p&gt;不过这次应该不一样，明天我也已踏上行程。&lt;/p&gt;
+
+&lt;p&gt;强烈推荐！&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://culture.163.com/special/t/00281M4T/tongj.html&quot;&gt;阅读地址&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>买了两本书《Learning Python》和《重构》</title>
+      <link>http://yuliu.org/2005/12/buybook_learning_python_and_refactoring/</link>
+      <pubDate>Sat, 10 Dec 2005 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2005/12/buybook_learning_python_and_refactoring</guid>
+	  <description>&lt;p&gt;下午去书店逛了一下，其实起来已经十一点了，不能怪我，天气太冷了&lt;/p&gt;
+
+&lt;p&gt;《重构》是早就想买的了，可惜只有影印版的，但是想着比中文的便宜了近20块钱，就买了。&lt;/p&gt;
+
+&lt;p&gt;《Learn Python》看着影印的纸张个方面不错，对得起他的价格，也就买了。回来仔细看了一下前几章，怀疑这本书是不是too simple呢？坚持看完。&lt;/p&gt;
+
+&lt;p&gt;本来还有一本《effective C#》的，但是想着如果要同时进行三本外语书的阅读非能力所及，放弃。以后有时间估计还是会去买这本书的，评价还不错吧。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>winform中datagrid和datagridview设置列标题的实现</title>
+      <link>http://yuliu.org/2005/12/setting_title_of_datagrid_and_datagridview_of_winform/</link>
+      <pubDate>Fri, 09 Dec 2005 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2005/12/setting_title_of_datagrid_and_datagridview_of_winform</guid>
+	  <description>&lt;p&gt;原来Blog上面的,抛弃有点可惜，贴过来&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Drawing;
+using System.Windows;
+using System.Windows.Forms;
+using System.Data;
+
+namespace DgHeader
+{
+    public class FormNoVS:Form
+    {
+        private DataGrid dg1;
+        public FormNoVS()
+        {
+            this.Size = new Size(800, 600);
+            DataTable table = new DataTable();
+            table.Columns.Add(&quot;name&quot;);
+            table.Columns.Add(&quot;age&quot;);
+            DataRow row = table.NewRow();
+            row[&quot;name&quot;] = &quot;Test&quot;;
+            row[&quot;age&quot;] = 13;
+            table.Rows.Add(row);
+
+            dg1 = new DataGrid();
+            this.Controls.Add(dg1);
+            dg1.Location = new Point(100,50);
+            dg1.Size = new Size(400, 200);
+            dg1.Name = &quot;dg1&quot;;
+            dg1.ColumnHeadersVisible = true;
+            dg1.DataSource = table;
+            DataGridTableStyle style = new DataGridTableStyle();
+            DataGridTextBoxColumn headerName = new DataGridTextBoxColumn();
+            headerName.HeaderText = &quot;姓名&quot;;
+            headerName.MappingName = &quot;name&quot;;
+            headerName.Width = 100;
+            style.GridColumnStyles.AddRange(new DataGridColumnStyle[] { headerName });
+            dg1.TableStyles.AddRange(new DataGridTableStyle[] { style });
+        }
+    }
+}
+
+
+[datagridview]
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Drawing;
+using System.Windows;
+using System.Windows.Forms;
+using System.Data;
+
+namespace DgHeader
+{
+    public class FormNoVS:Form
+    {
+        private DataGridView dgv1;
+        public FormNoVS()
+        {
+            this.Size = new Size(800, 600);
+
+            DataTable table = new DataTable();
+            table.Columns.Add(&quot;name&quot;);
+            table.Columns.Add(&quot;age&quot;);
+            DataRow row = table.NewRow();
+            row[&quot;name&quot;] = &quot;Test&quot;;
+            row[&quot;age&quot;] = 13;
+            table.Rows.Add(row);
+
+            dgv1 = new DataGridView();
+            dgv1.Location = new Point(10,10);
+            dgv1.Size = new Size(400, 200);
+            this.Controls.Add(dgv1);
+            dgv1.DataSource = table;
+            dgv1.AutoGenerateColumns =true;
+            dgv1.Columns[0].HeaderText = &quot;姓名&quot;;
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>使用NUnit 2.23单元测试.net 2.0的设置</title>
+      <link>http://yuliu.org/2005/12/nunit_223_setting_for_testing_dotnet20/</link>
+      <pubDate>Fri, 09 Dec 2005 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2005/12/nunit_223_setting_for_testing_dotnet20</guid>
+	  <description>&lt;p&gt;今天在图书馆拿了一本书《单元测试之道——C#版》&lt;/p&gt;
+
+&lt;p&gt;在很多地方总是听见这个“单元测试”名词，然后这本书又不是很厚就借过来看看&lt;/p&gt;
+
+&lt;p&gt;书里面使用的是NUnit来进行单元测试的，不过好像VS2005自带了Unit Test工具，虽然看起来好像很复杂&lt;/p&gt;
+
+&lt;p&gt;在http://www.nunit.org/下载了NUnit 2.2.3&lt;/p&gt;
+
+&lt;p&gt;照着书上写了一个程序，无论是gui和console都显示错误，说CS文件格式不对，去网上看了看&lt;/p&gt;
+
+&lt;p&gt;原来要在NUnit 2.2.3安装目录的bin文件下面把nunit-console.exe.config和nunit-gui.exe.config的&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;startup&amp;gt;
+   &amp;lt;supportedRuntime version=&quot;v2.0.50727&quot; /&amp;gt;
+   &amp;lt;supportedRuntime version=&quot;v2.0.50215&quot; /&amp;gt;
+   &amp;lt;supportedRuntime version=&quot;v2.0.40607&quot; /&amp;gt;
+   &amp;lt;supportedRuntime version=&quot;v1.1.4322&quot; /&amp;gt;
+   &amp;lt;supportedRuntime version=&quot;v1.0.3705&quot; /&amp;gt;
+   &amp;lt;requiredRuntime version=&quot;v1.0.3705&quot; /&amp;gt;
+&amp;lt;/startup&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;的注释去掉
+这样结可以了
+接着看书去&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>在gnome下用C#开发一个简单的窗口</title>
+      <link>http://yuliu.org/2005/12/simple_window_using_csharp_under_gnome/</link>
+      <pubDate>Tue, 06 Dec 2005 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2005/12/simple_window_using_csharp_under_gnome</guid>
+	  <description>&lt;p&gt;终于发现ATI的显卡驱动可以用了，于是可以不再忍受800*600的分辨率了&lt;/p&gt;
+
+&lt;p&gt;做为一个.net爱好者怎么可以不尝试一下mono呢？&lt;/p&gt;
+
+&lt;p&gt;于是apt安装mono，顺便赞一把debian&lt;/p&gt;
+
+&lt;p&gt;安装好debian以后，我写了一个简单的对话框试了试&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;用monoDevelop新建工程，我的名字是gtkTest，gtk# 2.0 Project。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;编译运行已经出现了一个gnome的窗体。不过上面什么都没有&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Main.cs是定义程序入口的，暂时我还没有用到他。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;打开MyWindow.cs，首先在MyWindow的构造函数中添加一个Button。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; Button mybtn = new Button(&quot;Click me&quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+把按钮加入窗体
+
+&lt;pre&gt;&lt;code&gt; this.Add(mybtn);
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;编译运行，可以看到在窗口中已经有了一个按钮，并且是充满怎个窗口的。这里和windows是不一样的，一个窗口好象只能增加一个控件，比如说要在add一个Label在编译时刻可以通过，但是运行时刻会有Warning。而且控件大小不可调。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;添加单击事件处理函数&lt;br/&gt;
+构造函数中增加单击事件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; mybtn.Clicked+=new EventHandler (mybtn_click);
+&lt;/code&gt;&lt;/pre&gt;
+
+添加事件处理的函数
+
+&lt;pre&gt;&lt;code&gt; void mybtn_click(object sender,EventArgs args)
+&lt;/code&gt;&lt;/pre&gt;
+
+不要在里面直接用MessageBox.Show（）这个函数是没有的。&lt;br/&gt;
+看了一下Doc，发现有一个MessageDialog，估计应该是它了。&lt;br/&gt;
+查看构造函数，
+
+&lt;pre&gt;&lt;code&gt; MessageDialog(Window, DialogFlags, MessageType, ButtonsType, string, params object[])
+&lt;/code&gt;&lt;/pre&gt;
+
+第一个是父窗口，第二个的意思是他的存在规则吧，我是这样理解的。&lt;br/&gt;
+最后一个参数不知道什么意思,看他的例子也没有最后一个，我也没有写&lt;br/&gt;
+根据example在事件处理的函数里面加上
+
+&lt;pre&gt;&lt;code&gt; MessageDialog md = new MessageDialog((Window)this,
+         DialogFlags.DestroyWithParent,
+         MessageType.Question,
+         ButtonsType.YesNo, 
+         &quot;Do you really want to exit?&quot;);
+ ResponseType result = (ResponseType)md.Run();
+ md.Destroy();
+ if(result==ResponseType.Yes)
+ this.Destroy();
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;编译运行，在单击按钮的时候就会出现对话框问你是否确定退出。搞定
+最后粘一下MyWindow.cs的代码&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  using System;
+  using Gtk;
+
+  public class MyWindow : Window
+  {    
+      public MyWindow () : base (&quot;MyWindow&quot;)
+      {
+          this.SetDefaultSize (400, 300);
+          this.DeleteEvent += new DeleteEventHandler (OnMyWindowDelete);
+          Button mybtn = new Button(&quot;Click me&quot;);
+          mybtn.Clicked+=new EventHandler (mybtn_click);
+          this.Add(mybtn);
+          this.ShowAll ();
+      }
+
+      void OnMyWindowDelete (object sender, DeleteEventArgs a)
+      {
+          Application.Quit ();
+          a.RetVal = true;
+      }
+
+      void mybtn_click(object sender,EventArgs args)
+      {
+          MessageDialog md = new MessageDialog((Window)this,
+                          DialogFlags.DestroyWithParent,
+                          MessageType.Question,
+                          ButtonsType.YesNo, 
+                          &quot;Do you really want to exit?&quot;);
+          ResponseType result = (ResponseType)md.Run();
+          md.Destroy();
+          if(result==ResponseType.Yes)
+              this.Destroy();
+      }
+  } 
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
 </description>
     </item>
     

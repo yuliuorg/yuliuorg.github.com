@@ -1,6 +1,66 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>http://yuliu.org/2005/12/simple_window_using_csharp_under_gnome/</loc>
+        <lastmod>2012-07-15T10:41:01+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://yuliu.org/2005/12/nunit_223_setting_for_testing_dotnet20/</loc>
+        <lastmod>2012-07-15T10:48:06+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://yuliu.org/2005/12/setting_title_of_datagrid_and_datagridview_of_winform/</loc>
+        <lastmod>2012-07-15T10:43:40+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://yuliu.org/2005/12/buybook_learning_python_and_refactoring/</loc>
+        <lastmod>2012-07-15T10:50:45+08:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://yuliu.org/2005/12/recommendation_of_a_novel_days_with_airline_stewardess/
+        </loc>
+        <lastmod>2012-07-15T10:53:38+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://yuliu.org/2005/12/study_notes_of_cpp_vc2005/</loc>
+        <lastmod>2012-07-15T11:08:04+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://yuliu.org/2005/12/transfer_between_cstring_and_char_star_in_vc2005/</loc>
+        <lastmod>2012-07-15T11:07:31+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://yuliu.org/2005/12/my_views_on_programme_languages/</loc>
+        <lastmod>2012-07-15T11:53:08+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://yuliu.org/2006/02/aspnet_startkit_and_sql_server_2005/</loc>
+        <lastmod>2012-07-15T11:58:02+08:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://yuliu.org/2006/03/fwpost_tips_on_windows_2003_initial_installation_finish/
+        </loc>
+        <lastmod>2012-07-15T12:45:56+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://yuliu.org/2006/03/aspnet_2_role_configuration_based_on_sql_server/</loc>
+        <lastmod>2012-07-15T12:50:09+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://yuliu.org/2006/03/using_sqlparameter/</loc>
+        <lastmod>2012-07-15T12:51:54+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://yuliu.org/2006/05/get_primary_key_of_database_table/</loc>
+        <lastmod>2012-07-15T12:55:56+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://yuliu.org/2006/05/goole_web_toolkit_published/</loc>
+        <lastmod>2012-07-15T12:57:49+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://yuliu.org/2006/05/pi_development_using_csharp/</loc>
         <lastmod>2012-07-15T10:22:09+08:00</lastmod>
     </url>
@@ -11,6 +71,10 @@
     <url>
         <loc>http://yuliu.org/2006/06/pi_development_using_csharp_3/</loc>
         <lastmod>2012-07-15T10:22:09+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://yuliu.org/2006/06/folder_of_windows_update/</loc>
+        <lastmod>2012-07-15T13:11:01+08:00</lastmod>
     </url>
     <url>
         <loc>http://yuliu.org/2006/11/remote_desktop_to_windows2000/</loc>
@@ -83,6 +147,10 @@
         <lastmod>2012-07-15T10:22:09+08:00</lastmod>
     </url>
     <url>
+        <loc>http://yuliu.org/2007/01/setup_whatwhat/</loc>
+        <lastmod>2012-07-15T13:19:07+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://yuliu.org/2007/03/abnormal_shutdown_when_upgrading_to_2003sp2/</loc>
         <lastmod>2012-07-15T10:22:09+08:00</lastmod>
     </url>
@@ -153,6 +221,10 @@
     <url>
         <loc>http://yuliu.org/2007/06/harmonized_N475/</loc>
         <lastmod>2012-07-15T10:22:09+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://yuliu.org/2008/01/unmanaged_dll_in_vs2008_and_dep/</loc>
+        <lastmod>2012-07-15T13:25:02+08:00</lastmod>
     </url>
     <url>
         <loc>http://yuliu.org/2011/03/vps_hosting_from_zero_1/</loc>

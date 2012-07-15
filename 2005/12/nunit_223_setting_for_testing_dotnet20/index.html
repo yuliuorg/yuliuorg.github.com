@@ -4,7 +4,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="author" content="刘昱" />
 		
-		<title>刘昱 | A Data Driven Switch Menu On CodeProject.com </title>
+		<title>刘昱 | 使用NUnit 2.23单元测试.net 2.0的设置 </title>
 		
 		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
 		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
@@ -49,14 +49,34 @@
 			<div id="main" role="main">
 				<article class="content">
 				<section class="title">
-<h1>A Data Driven Switch Menu On CodeProject.com</h1>
+<h1>使用NUnit 2.23单元测试.net 2.0的设置</h1>
 </section>
 <section class="post">
-<p>Yesterday, I write a article on how to make a switch menu with javascript. Today I read a article on codeproject.com named <a href="http://www.codeproject.com/useritems/navpanel.asp">How To Implement a NavigationPanel Using AJAX</a>. The author do a really good work to make a Ajax data driven navigation panel by asp.net and SQL Server. With the source code of the article we can move data source to XML files and so on.</p>
+<p>今天在图书馆拿了一本书《单元测试之道——C#版》</p>
 
-<p>I decorated the code in my last article. Unfortunately, if you use Firefox to browse it, the style of code looks ugly. I used the open source code coloried tool wriiten by javascript <a href="http://www.dreamprojections.com/SyntaxHighlighter/">dp.SyntaxHighlighter</a>. I am tring to modify it to satify my requirement better the whole day but with little result.</p>
+<p>在很多地方总是听见这个“单元测试”名词，然后这本书又不是很厚就借过来看看</p>
 
-<p>what a bad day!</p>
+<p>书里面使用的是NUnit来进行单元测试的，不过好像VS2005自带了Unit Test工具，虽然看起来好像很复杂</p>
+
+<p>在http://www.nunit.org/下载了NUnit 2.2.3</p>
+
+<p>照着书上写了一个程序，无论是gui和console都显示错误，说CS文件格式不对，去网上看了看</p>
+
+<p>原来要在NUnit 2.2.3安装目录的bin文件下面把nunit-console.exe.config和nunit-gui.exe.config的</p>
+
+<pre><code>&lt;startup&gt;
+   &lt;supportedRuntime version="v2.0.50727" /&gt;
+   &lt;supportedRuntime version="v2.0.50215" /&gt;
+   &lt;supportedRuntime version="v2.0.40607" /&gt;
+   &lt;supportedRuntime version="v1.1.4322" /&gt;
+   &lt;supportedRuntime version="v1.0.3705" /&gt;
+   &lt;requiredRuntime version="v1.0.3705" /&gt;
+&lt;/startup&gt;
+</code></pre>
+
+<p>的注释去掉
+这样结可以了
+接着看书去</p>
 
 </section>
 <section class="meta">
@@ -66,7 +86,7 @@
 <span class="time">
 	/
 	
-	<time datetime="2006-12-20">2006-12-20</time> 发表
+	<time datetime="2005-12-09">2005-12-09</time> 发表
 	
 </span>
 <br />
@@ -82,7 +102,9 @@
 <span class="tags">
 	标签： 
 	
-	<a href="http://yuliu.org/essay/tags.html#程序设计" title="程序设计">程序设计</a>&nbsp;
+	<a href="http://yuliu.org/essay/tags.html#C#" title="C#">C#</a>&nbsp;
+	
+	<a href="http://yuliu.org/essay/tags.html#.net" title=".net">.net</a>&nbsp;
 	
 </span>
 
@@ -97,7 +119,7 @@ $(function(){
 		$('section.comment #show_disqus_comment').on('click',function(){
 			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
 			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
-			var disqus_url = 'http://yuliu.org/2006/12/a_data_driven_switch_menu_on_codeproject/';
+			var disqus_url = 'http://yuliu.org/2005/12/nunit_223_setting_for_testing_dotnet20/';
 			// var disqus_developer = 1; 
 			var that = this;
 			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -116,12 +138,12 @@ $(function(){
 			var url = false;
 			if (e.which == 37 || e.which == 74) {  // Left arrow and J
 				
-				url = 'http://yuliu.org/2006/12/switch_menu_in_javascript/';
+				url = 'http://yuliu.org/2005/12/simple_window_using_csharp_under_gnome/';
 				
 			}
 			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
 				
-				url = 'http://yuliu.org/2007/01/setup_whatwhat/';
+				url = 'http://yuliu.org/2005/12/setting_title_of_datagrid_and_datagridview_of_winform/';
 				
 			}
 			if (url) {

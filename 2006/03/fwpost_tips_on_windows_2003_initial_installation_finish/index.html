@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="刘昱" />
+		
+		<title>刘昱 | (转帖)Windows2003使用技巧大放送 </title>
+		
+		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
+		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+		<script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+		<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+		<!--[if IE]>
+		<script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+		<![endif]-->		
+		<script type="text/javascript" src="/media/script/default.js"></script>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33277878-1']);
+			_gaq.push(['_setDomainName', 'yuliu.org']);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_trackPageLoadTime']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+
+		<div id="container">
+			<header>
+			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
+			<h1>刘 昱</h1>
+			<h2>核能动力系统设计工程师</h2>
+			</header>
+			<nav>
+			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
+			<span><a title="简历" class="" href="http://yuliu.org/vitae/">简历</a></span>
+			<span><a title="文章" class="" href="http://yuliu.org/publication/">文章</a></span>
+			<span><a title="关于" class="" href="http://yuliu.org/about/">关于</a></span>
+			<span><a title="留言" class="" href="http://yuliu.org/guestbook/">留言</a></span>
+			<span><a title="链接" class="" href="http://yuliu.org/link/">链接</a></span>
+			<span><a title="杂货铺" class="" href="http://yuliu.org/essay">杂货铺</a></span>
+			</nav>
+			<div id="main" role="main">
+				<article class="content">
+				<section class="title">
+<h1>(转帖)Windows2003使用技巧大放送</h1>
+</section>
+<section class="post">
+<p>本来想加上原文地址的，但是由于时代久远，已不可寻。</p>
+
+<h1>一、跳过磁盘检修等待时间</h1>
+
+<p>一旦计算机因意外原因，例如突然停电或者死机的话，那么计算机下次重新启动的话，系统就会花10秒钟左右的时间，来运行磁盘扫描程序，检查磁盘是否有错误出现。要是你是一位惜时如金的人，肯定不会白白等待下去的。那就跟我一起来，跳过这段检查等待时间吧：</p>
+
+<ol>
+<li>在开始菜单中，依次执行“程序”/“附件”/“命令提示符”命令，将界面切换到DOS命令行状态下；</li>
+<li>直接输入“CHKNTFS/T :0”命令，单击回车键后，系统就能自动将检查磁盘的等待时间修改为0了；</li>
+<li>下次遇到异常情况，重新启动计算机后，系统再调用磁盘扫描程序时，就不需要等待了。</li>
+</ol>
+
+
+<h1>二、取消对网站的安全检查</h1>
+
+<p>新安装好Windows Server 2003操作系统后，打开浏览器来查询网上信息时，发现IE总是“不厌其烦”地提示我们，是否需要将当前访问的网站添加到自己信任的站点中去；要是不信任的话，就无法打开指定网页；倘若信任的话，就必须单击“添加”按钮，将该网页添加到信任网站的列表中去。不过每次访问网页，都要经过这样的步骤，显然就太烦琐了。其实我们可以通过下面的方法来让IE取消对网站安全性的检查：</p>
+
+<ol>
+<li>依次执行“开始”/“设置”/“控制面板”命令，在打开的控制面板窗口中，用鼠标双击“添加和删除程序”图标，将界面切换到“添加和删除Windows组件”页面中；</li>
+<li>用鼠标选中“Internet Explorer增强的安全配置”选项，继续单击下一步按钮，就能将该选项从系统中删除了；</li>
+<li>再单击一下“完成”按钮，退出组件删除提示窗口。
+以后，再上网的时候，IE就不会自动去检查网站的安全性了，这样就能少了不少麻烦。</li>
+</ol>
+
+
+<h1>三、自动进入Windows Server 2003系统</h1>
+
+<p>每次开机运行Windows Server 2003系统时，都需要同时按住Ctrl+Alt+Delete复合键，再输入登录密码，才能进入到系统中；要是需要频繁登录系统的话，大家可能就会受不了这样罗嗦的步骤了。此时，大家不妨按照下面的步骤，来让系统自动完成登录操作：</p>
+
+<ol>
+<li>在运行对话框中，输入注册表编辑命令regedit，来打开注册表编辑窗口；</li>
+<li>在该窗口中，依次展开<code>HKEY_LOCAL_MACHINES\SOFTWARE\Microsoft\WindowsNT\Current Version\WinLogon</code>键值；</li>
+<li>在对应右边的子窗口中，用鼠标右键单击空白处，从弹出的快捷菜单中，依次执行“新建”/“字符串”命令，来创建一个字符串类型的键名，并将键名设置为<code>AutoAdminLogon</code>，并将该键名的数值设置为“1”；</li>
+<li>找到<code>DefaultDomainName</code>键名，并用鼠标双击之，在随后出现的窗口中，输入要登录的域名，例如Department；</li>
+<li>双击<code>DefaultUserName</code>键名，在随后打开的窗口中，直接输入要登录到此域的用户名，例如“test”；</li>
+<li>在WinLogon右边的子窗口中，用鼠标右键单击空白处，从弹出的快捷菜单中，依次执行“新建”/“字符串”命令，来创建一个字符串类型的键名，并将键名设置为<code>DefaultPassword</code>，并将该键名的数值设置为用户登录系统的密码，例如用户test的登录密码为“123456”；</li>
+<li>完成设置后，重新启动计算机时，我们会发现不需要再登录，就能自动进入到Windows Server 2003系统中了。以后要取消自动登录功能的话，可以将<code>AutoAdminLogon</code>键值设置为“0”就可以了。</li>
+</ol>
+
+
+<h1>四、取消关机原因的提示</h1>
+
+<p>在关闭Windows Server 2003操作系统时，系统会弹出一个提示窗口，要求大家选择关闭计算机的原因选项；尽管这种方法可以增强系统的安全性，确保用户更有效地管理和维护计算机；不过每次关机或者重新启动系统，都要选择关机原因，实在没有必要。所以，为了进快地关闭计算机，大家可以按下面步骤来取消关机原因的提示：</p>
+
+<ol>
+<li>打开控制面板窗口，双击“电源选项”图标，在随后出现的电源属性窗口中，进入到“高级”标签页面；</li>
+<li>在该页面的“电源按钮”设置项处，将“在按下计算机电源按钮时”设置为“关机”，单击“确定”按钮，来退出设置框；</li>
+<li>以后需要关机时，可以直接按下电源按键，就能直接关闭计算机了。当然，我们也能启用休眠功能键，来实现快速关机和开机；</li>
+<li>要是系统中没有启用休眠模式的话，可以在控制面板窗口中，打开电源选项，进入到休眠标签页面，并在其中将“启用休眠”选项选中就可以了。</li>
+</ol>
+
+
+<h1>五、调用Windows XP风格界面</h1>
+
+<p>安装完Windows Server 2003系统进入到桌面时，我们会发现系统桌面的显示样式为“Windows经典样式”。看惯了这种样式后，就会感觉到有点乏味，想不想改变一下桌面的显示风格？要是你企图通过显示属性的外观设置中，来调用其他风格界面时，就发现此“路”不通；通过组策略来调用时，发现只有当前样式可以选择。那么我们有没有办法来调用其他风格样式呢，例如Windows XP样式？按照下面方法，我们就能轻松实现调用目的：</p>
+
+<ol>
+<li>在系统的开始菜单中，依次展开控制面板、管理工具和服务窗口，在对应服务的右边子窗口中，用鼠标选中“Themes”选项；</li>
+<li>仔细查看该选项的参数时，发现该服务在缺省状态下是被禁止使用的，因此我们就无法调用其他风格样式；</li>
+<li>为此，我们必须启动该服务；用鼠标双击该服务选项，然后打开常规标签页，将对应该服务的启动类型设置为“自动”，再点一下“应用”按钮；</li>
+<li>此时，“服务状态”设置项中的“启动”按钮就自动被激活了，单击该“启动”按钮，就能将系统中的Themes服务起用了；</li>
+<li>返回到系统桌面，并用鼠标右键单击空白处，从快捷菜单中执行“属性”命令，再打开外观标签页面，在其中的“窗口和按钮”处，选中Windows
+XP样式或者其他显示样式。</li>
+<li>至此，系统中的工具栏菜单、窗口等样式就会按照指定的风格来显示了。</li>
+</ol>
+
+
+<h1>六、调整Windows Media Player的播放模式</h1>
+
+<p>要是在使用Windows Media Player播放音乐的同时，我们还打开了多个工作窗口，这样我们就会经常需要在工作窗口和WMP播放界面中来回切换，这样会大大影响工作效率。现在，可以通过下面方法来调整WMP的播放模式，让操作者不需要打开WMP的主界面就能控制音乐的播放，以便不影响其他工作窗口：</p>
+
+<ol>
+<li>用鼠标右键单击系统任务栏中的空白处，从打开的快捷菜单中，执行“工具栏”下面的“Windows Media Player”命令；</li>
+<li>此后，Windows Media
+Player界面中的播放按钮就会自动缩小并显示在系统任务栏中了，利用这里的按钮，我们就能执行音乐的播放、暂停、上一首或者下一首命令了；</li>
+<li>通过这种调整，我们再也用不着手忙脚乱地在程序窗口和WMP播放界面中，来回切换了。</li>
+</ol>
+
+
+<h1>七、为指定组添加新用户</h1>
+
+<p>想在Windows Server 2003系统中添加新用户时，发现该系统控制面板窗口中却没有我们非常熟悉的“用户”图标，那么我们该从哪里着手，才能为系统的指定组添加新用户呢？呵呵，Windows Server 2003看来就是不一样！笔者经过几次摸索，发现为指定组添加新用户的方法，具体步骤如下：</p>
+
+<ol>
+<li>用鼠标右键单击桌面上的“我的电脑”图标，从打开的快捷菜单中，执行“管理”命令，弹出一个计算机管理窗口；</li>
+<li>展开该窗口中的“本地用户和组”文件夹，然后选中该文件夹下面的“用户”选项，此时在右边的子窗口中，我们就能看到当前系统中已经存在的所有用户了，其中标有红色叉号的用户表示已经创建但并没有启用；</li>
+<li>用鼠标右键单击右边子窗口的空白处，从右键菜单中执行“添加新用户”命令，在随后出现的窗口中，输入需要添加的用户的相关信息，最后单击一下“创建”按钮，来结束新用户的添加工作；</li>
+<li>要想让该用户添加到指定组的话，可以选择“组”选项，再从右边的子窗口中，选中需要加入的组名称，并用鼠标右击之，执行快捷菜单中的“添加到组”命令；</li>
+<li>在随后出现的界面中，再单击“添加”命令，将前面创建的用户添加进来就可以了。</li>
+</ol>
+
+
+<h1>八.禁用配置服务器向导</h1>
+
+<p>由于不需要服务器设置功能，首先我们先禁止“配置你的服务器”（Manage Your Server）向导的出现，你可以在控制面板（Control Panel） -> 管理员工具（Administrative Tools ）-> 管理你的服务器（Manage Your Server）运行它，然后在窗口的左下角复选“登录时不要显示该页”（Don''t display this page at logon）。</p>
+
+<h1>九.建立一个新的用户账号</h1>
+
+<p>windows server 2003不支持类似于Windows XP的登录欢迎屏幕。你可以在首次进入系统后建立一个有你个性的新用户账号。</p>
+
+<p>打开“开始”（Start） -> “运行”（Run） -> 键入“lusrmgr.msc ”，你将看到本地用户和组（Local Users and Groups ），</p>
+
+<p>右键点击左边窗口的“用户”（Users），选择“新用户”（New User）.在弹出的对话框中输入账号信息,然后点击“建立”（Great）。这样你的账号就可用了，当然，你可以选择把你的账号添加到管理员组，右键点击你新建的用户。然后选择“属性”（Properties）-> 点击“隶属于” on Member of tab -> “添加”Add.. -> “高级”Advanced -> “现在查找”Find Now 。</p>
+
+<p>在查找结果对话框中双击“管理员”（Administrators），在点击两次“确定”（Ok）后关闭“本地用户和组”（Local Users and Groups window ），现在你将可以注销Administrator用户用你自己的账号登录系统。</p>
+
+<h1>十.禁用Internet Explorer Enhanced Security</h1>
+
+<p>作为新windows组件出现的IE安全插件－－Internet Explorer Enhanced Security默认把你IE安全设置为最高。这样你将在访问站点弹出询问框并对你浏览网页及文件下载做出阻止的行为。我们其实不一定需要这个组件。</p>
+
+<p>我们首先禁止询问框的出现,在弹出的对话框中复选”以后不要显示这个信息“ （In the future, do not show this message）</p>
+
+<p>然后，我们可以在IE工具选项中自定义设置IE的安全级别。在”安全“（Security）选项卡上拉动滚动条把Internet区域安全设置为”中“（Medium），这个级别将适合大多数人，要是你有特别要求，这个步骤将不适合你。</p>
+
+<p>通过对IE安全的设置，你现在安装可以上Sun''s Java VM!</p>
+
+<p>当然，你甚至可以在控制面板－－添加程序－－添加或删除Windows组件中卸载Internet Explorer Enhanced Security 。</p>
+
+<h1>十一.安装Java VM</h1>
+
+<p>Windows server 2003没有集成MS Java VM或Sun Java VM,你可以自行下载并安装它。</p>
+
+<h1>十二.禁止关机事件跟踪</h1>
+
+<p>关机事件跟踪（Shutdown Event Tracker）也是Windows server 2003区别于其他工作站系统的一个设置，对于服务器来说这是一个必要的选择，但是对于工作站系统却没什么用，我们同样可以禁止它。</p>
+
+<p>打开”开始“Start ->”运行“ Run ->输入”gpedit.msc “，在出现的窗口的左边部分，选择</p>
+
+<p>”计算机配置“（Computer Configuration ）-> ”管理模板“（Administrative Templates）-> ”系统“（System）,在右边窗口双击“Shutdown Event Tracker” 在出现的对话框中选择“禁止”（Disabled），点击然后“确定”（OK）保存后退出这样，你将看到类似于windows 2000的关机窗口</p>
+
+<h1>十三.启用硬件和DirectX加速</h1>
+
+<ul>
+<li>硬件加速：桌面点击右键－－属性（Properties） -> 设置（Settings ）－－高级（ Advanced）－－疑难解答（Troubleshoot）。把该页面的硬件加速滚动条拉到“完全”（Full），最好点击“确定”（OK）保存退出。这期间可能出现一瞬的黑屏是完全正常。</li>
+<li>DirectX加速：打开“开始”（Start） -> “运行”（Run），键入“dxdiag”并回车打开“DirectX 诊断工具”（DirectX Tools），在“显示”（Display）页面，点击DirectDraw, Direct3D and AGP Texture 加速三个按钮启用加速。</li>
+</ul>
+
+
+<h1>十四.允许声音加速</h1>
+
+<p>如果你使用的是Windows server 2003标准版请从第二步xx作，因为标准版已允许声音服务。
+- 打开“开始”（Start） -> “运行”（Run），键入“Services.msc ”，在出现的窗口中找到“Windows Audio”并双击它，然后在启动模式（startup type）的下拉菜单选择“自动”（Automatic），并点击“应用”（Apply） ->“开始”（Start） -> “确定”（OK）
+- 打开“开始”（Start） -> “运行”（Run），键入“dxdiag”并回车打开“DirectX 诊断工具”（DirectX Tools），在“Sound”（Display）页面，把“声音的硬件加速级别”（Hardware Sound Acceleration Level）滚动条拉到“完全加速”（ Full leration）。</p>
+
+<h1>十五.启用桌面主题</h1>
+
+<p>也许你对WINDOWS经典的桌面已经感到厌烦的话，你就要考虑启用桌面主题了，Windows server 2003默认是关闭此服务的。</p>
+
+<p>打开“开始”（Start） -> “运行”（Run），键入“Services.msc ”，在出现的窗口寻找Themes并双击它，</p>
+
+<p>然后在启动模式（startup type ）的下拉菜单选择“自动”（Automatic），并点击“应用”（Apply）->“开始”（Start） -> “确定”.</p>
+
+<p>这样的xx作也是只能让你使用Windows自带的Luna主题的三个模式，假如你希望使用更多的第三方主题文件的话，你需要使用修改的Uxtheme.dll文件来支持它，关于修改的Uxtheme.dll文件，你可以在<a href="http://vortex.winbeta.org/">http://vortex.winbeta.org/</a>找到更多。</p>
+
+<h1>十六.允许内置的IMAPI CD-Burning服务和支持Windows影像设备服务</h1>
+
+<ul>
+<li><p>假如你希望启用Windows内置的IMAPI CD-Burning服务。做如下xx作：<br/>
+打开“开始”（Start） -> “运行”（Run），键入“Services.msc ”，在出现的窗口中找到“IMAPI CD-Burning COM Service ”并双击它，然后在启动模式（startup type ）的下拉菜单选择“自动”（Automatic），并点击“应用”（Apply） ->“开始”（Start） -> “确定”（OK）</p></li>
+<li><p>假如你有如数码相机和扫描仪之类的影像设备，你应该打开Windows Image Acquisition 服务。<br/>
+打开“开始”（Start） -> “运行”（Run），键入“Services.msc ”，在出现的窗口中找到“Windows Image
+Acquisition (WIA) ”并双击它，然后在启动模式（startup type ）的下拉菜单选择“自动”（Automatic），并点击“应用”（Apply） ->“开始”（Start） -> “确定”（OK）</p></li>
+</ul>
+
+
+<h1>十七.高级设置</h1>
+
+<p>我们可以修改一些windows server 2003的高级设置以适合工作站的应用环境。</p>
+
+<ul>
+<li><p>右键点击“我的电脑”（My Computer）－－属性（Properties）－－高级（Advanced）－－性能（Performance）－－设置（Setting）－－高级（Advanced），把“处理器计划”（Processor scheduling ）和内存使用（Memory usage）分配给“程序”（Programs）使用。然后点击“确定”（OK.）</p></li>
+<li><p>禁用错误报告
+右键点击“我的电脑”（My Computer）－－属性（Properties）－－高级（Advanced）－－点击“错误报告”（Error Reporting ）按钮，在出现的窗口中把“禁用错误报告”（Disable Error Reporting）选上并复选“但在发生严重错误时通知我”（But, notify me when critical errors occur.）</p></li>
+<li><p>调整虚拟内存
+正常运行Windows所需要的虚拟内存是作为物理内存的“后备力量”而存在的，虽然运行速度上硬盘不如内存，但在容量上内存是无法与硬盘相提并论的。所以我们一直是认为虚拟内存越大越好，其实事实上并不是这样的，尤其是安装Windows server 2003用做工作站的环境下并不承担高负荷工作的情况下，我们可以试试禁用虚拟内存。前提是你必须拥有512M物理内存以上。很多朋友担心如果禁用虚拟内存会不会象在Windows 9x环境下一样造成系统无法正常待机和休眠的情况，其实不会这样的，因为从windows xp开始它的虚拟内存（即pagefile.sys）是专用于数据交换的，待机模式时数据依旧保留在物理内存中，休眠模式也有其专用的休眠文件（Hiberfil.sys），所以绝对不会出现系统无法休眠的问题。而使用Windows server 2003的一些朋友经常会对其的关机和注销缓慢感到束手无策，在此我个人的解决办法就是禁用虚拟内存，这样你的注销和关机时间可能会加快很多。我今天做了测试，在加载虚拟内存的情况下注销用户重登陆windows的时间是3秒，关机是23秒。但是在禁用虚拟内存的情况下注销重登陆的时间减少到2秒，而关机时间缩短到3秒。</p></li>
+</ul>
+
+
+<p>右键点击“我的电脑”（My Computer）－－属性（Properties）－－高级（Advanced）－－性能（Performance）－－设置（Setting）－－高级（Advanced），点击“虚拟内存”（Virtual memory）部分的“更改”（Change），然后在出现的窗口选择“无分页文件”。重启系统即可。</p>
+
+<p>注意：调整虚拟内存部分经过个人测试无任何问题，但是不保证在您的机器上也是这样，所以我不对此设置造成的任何后果承担责任。只是建议对Windows server 2003关机速度有怨言的朋友尝试。</p>
+
+<h1>十八.自动登陆</h1>
+
+<p>Windows Server 2003默认是使用"CTRL-ATL-DEL to login" 对话框来登陆Windows的，不过我们我们可以使用Windows XP的Tweak UI来使Server 2003自动登陆。下载Tweak UI</p>
+
+<p>下载后直接执行tweakui.exe</p>
+
+<p>在左边的面板中选择Logon -> Autologon -> 在右边勾选Log on automatically at system startup输入你的用户名和域名（如果没有就不写）</p>
+
+<p>点击下面的Set Password，输入用户名的密码，然后点击OK。</p>
+
+<p>虽然同样的功能通过修改注册表也能完成，但是修改注册表的方法密码在注册表中表现的是明文，而Tweak UI在注册表中不会留下明文的密码，所以推荐使用Tweak UI来完成这项工作。</p>
+
+<h1>十九.安装DirectX 9a</h1>
+
+<p>在Windows Server 2003上安装DirectX 9a和在其他版本的Windows上安装DirectX 9a的方法是一样的。安装之前先启用DirectX and Graphics Acceleration。</p>
+
+<h1>二十.隐藏文件</h1>
+
+<p>Windows Server 2003默认情况下是显示所有的文件夹的，如果你不想这样，可以通过一下方法来隐藏：打开任意一个文件夹，选择Tools -> Folder Options -> View，选择Do not show hidden files and folders，点击OK。</p>
+
+<p>在Windows Server 2003中，已经安装了Windows Media Player 9，点击Start -> Programs -> Accessories -> Entertainment -> Windows Media Player就可以打开它。</p>
+
+<h1>二十一.启用 ASP 支持</h1>
+
+<p>Windows Server 2003 默认安装，是不安装 IIS 6 的，需要另外安装。安装完 IIS 6，还需要单独开启对于 ASP 的支持。方法是：控制面板 -> 管理工具 -> Web服务扩展 -> Active Server Pages -> 允许</p>
+
+<h1>二十二.启用摄像机，摄像头或者扫描仪等设备</h1>
+
+<p>在运行中输入Services.msc并回车，找到并双击Windows Image Acquisition (WIA) 服务，设置启动类型为Automatic点击Apply后点击Start然后点击OK。</p>
+
+<h1>二十三.在Win 2003中配置NAT服务器</h1>
+
+<p>如何通过使用Windows Server 2003来配置网络地址转换(NAT)服务器。Windows Server 2003“路由和远程访问”服务包括NAT路由协议。如果将NAT路由协议安装和配置在运行“路 由和远程访问”的服务器上，则使用专用Internet协议(IP)地址的内部网络客户端可以通过NAT服务器的外部接口访问Internet。</p>
+
+<p><strong>如何配置路由和远程访问NAT服务器</strong></p>
+
+<p>当内部网络客户端发送要连接Internet的请求时，NAT协议驱动程序会截取该请求，并将其转发到目标Internet服务器。所有请求看上去都像是来自NAT服务器的外部IP地址。这样就隐藏您的内部IP地址配置。</p>
+
+<p>配置“路由和远程访问”NAT服务器：</p>
+
+<p>在管理工具菜单中，选中“路由和远程访问”。</p>
+
+<p>在“路由和远程访问”MMC中，展开您的服务器名称（其中服务器名称是您要配置服务器的名称，然后展开左窗格中的IP路由。</p>
+
+<p>选中常规，然后选择新建路由协议。</p>
+
+<p>单击NAT/基本防火墙复选框，将其选中，然后点确定。</p>
+
+<p>右键单击左窗格中的NAT/基本防火墙，然后单击新建接口。</p>
+
+<p>单击表示内部网络接口的接口，然后单击确定。</p>
+
+<p>在“网络地址转换”属性中，单击“专用接口连接到专用网络”，然后单击确定。</p>
+
+<p>右键单击左窗格中的NAT/基本防火墙，然后点新建接口。</p>
+
+<p>单击表示外部网络接口的接口，然后点确定。</p>
+
+<p>在“网络地址转换”属性中，单击“公用接口连接到Internet”。</p>
+
+<p>单击“在此接口上启用NAT”复选框，将其选中，点确定。</p>
+
+<p>NAT服务器可以自动为内部网络客户端分配IP地址。如果您没有已给内部网络上的客户端分配了地址信息的DHCP服务器，则可能会需要使用此功能。</p>
+
+<p><strong>如何配置路由和远程访问NAT服务器以分配IP地址和执行代理DNS查询NAT服务器还可以代表NAT客户端执行域名系统(DNS)查询。“路由和远程访问”NAT服务器对包括在客户端请求中的Internet主机名进行解析，然后将该IP地址转发给该客户端。</strong></p>
+
+<p>要配置“路由和远程访问”NAT服务器来分配IP地址并且代表内部网络客户端执行代理DNS查询，请按以下步骤操作：</p>
+
+<p>右键单击左窗格中的NAT/基本防火墙，然后单击属性。</p>
+
+<p>单击地址分配选项卡，然后单击“使用DHCP自动分配IP地址”复选框，将其选中。</p>
+
+<p>在IP地址框中，键入网络ID。</p>
+
+<p>在掩码框中，键入子网掩码。</p>
+
+<p>选择名称解析选项卡，然后单击“使用域名系统(DNS)的客户端”复选框，将其选中。</p>
+
+<p>如果您使用请求拨号接口连接到Internet，请单击“当名称需要解析时连接到公用网络”复选框，将其选中。</p>
+
+<p>在请求拨号接口框中，选中要拨号的接口。</p>
+
+<p>选择应用，然后单击确定。</p>
+
+<p>备注：完成这些基本配置步骤之后，内部网络客户端就可以访问Internet上的服务器了。</p>
+
+<p><strong>如何配置基于Windows Server 2003的计算机以使用NAT服务器</strong></p>
+
+<p>单击开始，指向控制面板，指向网络连接，然后单击本地连接。</p>
+
+<p>单击属性。</p>
+
+<p>单击Internet协议(TCP/IP)。</p>
+
+<p>单击属性。</p>
+
+<p>在“默认网关”框中，键入NAT服务器的内部IP地址。</p>
+
+<p>备注：如果计算机从“动态主机配置协议”(DHCP)服务器接收它的IP地址，请单击高级，单击IP设置选项卡，单击网关下的添加，键入NAT服务器的内部IP地址，单击添加，单击确定，然后继续进行第6步。</p>
+
+<p>单击确定，单击确定，然后单击关闭。</p>
+
+<h1>二十四.在Win 2003中为SMTP服务配置本地域</h1>
+
+<p>SMTP服务域用于组织要传递的消息。SMTP虚拟服务器至少有一个域：默认的本地域。</p>
+
+<p>本地域是由本地SMTP服务器提供服务的域名系统(DNS)域。到达SMTP服务器的包含本地域名的消息或者在本地传送到Drop文件夹，或者与不可传递的(NDR)报告一起返回给发送方。</p>
+
+<p><strong>如何重命名默认域</strong></p>
+
+<p>默认域用于给来自不含有域的地址的消息加盖戳记。SMTP虚拟服务器必须有一个默认域。无法删除此默认域。</p>
+
+<p>默认情况下，在“控制面板”系统工具的计算机名选项卡中指定的名称被用作默认域名。也可以指定一个唯一的名称作为SMTP服务的默认域名。</p>
+
+<p>要重命名默认域，请按照下列步骤xx作：</p>
+
+<p>启动MicrosoftInternet信息服务(IIS)管理器或打开IIS管理单元。</p>
+
+<p>展开Server_name，其中Server_name是服务器的名称，然后展开所需的SMTP虚拟服务器（例如，默认SMTP虚拟服务器）。</p>
+
+<p>单击域。</p>
+
+<p>在右窗格中，右击默认域，然后单击重命名。</p>
+
+<p>键入要使用的名称，然后按ENTER键。</p>
+
+<p>退出IIS管理器或关闭IIS管理单元。</p>
+
+<p><strong>如何配置别名域</strong></p>
+
+<p>别名域是默认域的别名。可以使用与默认域相同的设置来设置别名域。SMTP服务接收的别名域的消息放置在为默认域指定的Drop文件夹中。</p>
+
+<p>要配置别名域，请按照下列步骤xx作：</p>
+
+<p>启动IIS管理器或打开IIS管理单元。</p>
+
+<p>展开Server_name，其中Server_name是服务器的名称，然后展开所需的SMTP虚拟服务器（例如，默认SMTP虚拟服务器）。</p>
+
+<p>右键单击域，指向新建，然后单击域。</p>
+
+<p>“新建SMTP域向导”启动。</p>
+
+<p>单击别名，然后单击下一步。</p>
+
+<p>在名称框中键入别名域的名称，然后单击完成。</p>
+
+<p>退出IIS管理器或关闭IIS管理单元。</p>
+
+<p><strong>如何指定Drop文件夹</strong></p>
+
+<p>对于默认域，您必须指定一个放置所有传入消息的文件夹。SMTP服务将别名域的消息放在默认域所使用的Drop文件夹中。</p>
+
+<p>默认情况下，Drop文件夹位于Inetpub\Mailroot文件夹中。您可以将任何文件夹指定为Drop文件夹，只要该文件夹是安装SMTP服务的计算机上的本地文件夹，而且没有指定为Pickup文件夹。</p>
+
+<p>要更改Drop文件夹的位置，请按照下列步骤xx作：</p>
+
+<p>启动IIS管理器或打开IIS管理单元。</p>
+
+<p>展开Server_name，其中Server_name是服务器的名称，然后展开所需的SMTP虚拟服务器（例如，默认SMTP虚拟服务器）。</p>
+
+<p>单击域。</p>
+
+<p>在右窗格中，右击默认域，然后单击属性。</p>
+
+<p>单击浏览，找到要用作Drop文件的文件夹，然后单击确定。</p>
+
+<p>单击确定。</p>
+
+<h1>二十五.为Win 2003中添加LPT端口</h1>
+
+<p>默认情况下，在Windows Server 2003中存在3个 LPT可用端口，它们是 LPT1、LPT2 和 LPT3。可以添加附加LPT端口直到LPT9。添加附加 LPT 端口后，该端口作为可用打印机端口显示在“添加打印机向导”中。</p>
+
+<p><strong>如何添加附加LPT端口</strong></p>
+
+<p>单击开始\运行。</p>
+
+<p>注意：“注册表编辑器”使用不当可造成严重问题，这些问题可能需要重新安装操作系统。Microsoft 不保证能够解决因为“注册表编辑器”使用不当而产生的问题。使用“注册表编辑器”需要您自担风险。</p>
+
+<p>在打开框键入regedit，然后单击确定。</p>
+
+<p>找到并单击下面的注册表项：</p>
+
+<p><code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Ports</code></p>
+
+<p>当前 LPT 端口显示在右窗格中。</p>
+
+<p>在编辑菜单上，指向新建，然后单击字符串值。</p>
+
+<p>键入新值名称。键入 LPT#，其中 # 是所要添加 LPT 端口的序号，然后按 ENTER。例如，键入 LPT4。</p>
+
+<p>在文件菜单上，退出“注册表编辑器”。</p>
+
+<p>单击开始\运行。</p>
+
+<p>在打开框键入cmd，单击确定。</p>
+
+<p>停止然后重新启动假脱机服务。为此，请在命令提示符下键入下列命令，在每行后按ENTER 键：</p>
+
+<pre><code>net stop spooler
+net start spooler
+</code></pre>
+
+<p>键入exit退出命令提示符。</p>
+
+<h1>二十六.加快启动和运行速度</h1>
+
+<p>修改注册表，减少预读取，减少进度条等待时间：开始→运行→regedit启动注册表编辑器，<code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters</code>，有一个键值名<code>为EnablePrefetcher</code>，它的值是3,把它改为“1”或“5”。
+找到 <code>HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control</code>，
+将 <code>WaitToKillServiceTimeout</code> 设为：1000或更小。 ( 原设定值：20000 )
+找到 <code>HKEY_CURRENT_USER\Control Panel\Desktop</code> 键，将右边视窗的WaitToKillAppTimeout 改为 1000， ( 原设定值：20000 )即关闭程序时仅等待1秒。
+将 <code>HungAppTimeout</code> 值改为：200( 原设定值：5000 )，表示程序出错时等待0.5秒。</p>
+
+<h1>二十七.让系统自动关闭停止回应的程式</h1>
+
+<p>打开注册表 <code>HKEY_CURRENT_USER\Control Panel\Desktop</code> 键，
+将 <code>AutoEndTasks</code> 值设为 1。 ( 原设定值：0 )</p>
+
+<h1>二十八.禁用系统服务Qos</h1>
+
+<p>开始菜单→运行→键入 gpedit.msc ，出现“组策略”窗口， 展开 "管理模板”→“网络” ， 展开 "QoS 数据包调度程序"，在右边窗右键单击“限制可保留带宽" ，在属性中的“设置”中有“限制可保留带宽" ，选择“已禁用”，确定即可。当上述修改完成并应用后，用户在网络连接的属性对话框内的一般属性标签栏中如果能够看到"QoS Packet Scheduler（QoS 数据包调度程序）"。说明修改成功，否则说明修改失败。</p>
+
+<h1>二十九.改变窗口弹出的速度</h1>
+
+<p>找到<code>HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics</code>子键分支，在右边的窗口中找到MinAniMate键值，其类型为REG_SZ，默认情况下此健值的值为1，表示打开窗口显示的动画，把它改为0，则禁止动画显示，接下来从开始菜单中选择“注销”命令，激活刚才所作的修改。</p>
+
+<h1>三十.运行大型软件时系统反应缓慢</h1>
+
+<p>服务器和工作站对系统资源的要求是不相同的，如果我们平时要运行诸如Photoshop、3DSMAX等软件，则应当将系统资源重新分配，修改为类似Windows XP的状态。</p>
+
+<p>设置步骤是：进入“控制面板→系统”选择“高级”选项卡，在“性能”栏里点“设置”按钮，选择“高级”选项卡，在“处理器计划”和“内存使用”两栏中均选择“程序”，最后点“确定”并重新启动计算机即可。</p>
+
+<h1>三十一.解决播放电影时画面粗糙</h1>
+
+<p>很多朋友都有这样的“遭遇”：自己的电脑配置相当好，安装了Windows 2003时显卡也能够被自动识别并安装，可是播放电影时画面非常粗糙，安装最新版显卡驱动后画面质量依然如故。其实这是因为Windows 2003默认的显示选项没有根据个人用户的需要进行优化所致。</p>
+
+<p>解决方法很简单：在桌面上点右键，依次进入“显示属性→设置→高级→疑难解答”，将“硬件加速”游标向右拖至“完全”，点“确定”退出。然后依次进入“开始→所有程序→附件→系统工具→系统信息”，选择“工具→DirectX诊断工具”(由于程序搜集系统信息，所以需要稍微等待一下，可能出现闪屏)，选择“显示”选项卡，依次启用“DirectDraw Acceleration”和“Direct3D Acceleration”项，点“退出”即可。</p>
+
+<hr />
+
+<h1>这个应该是另外一篇的招数</h1>
+
+<h2>1 安全为首 加固系统防护</h2>
+
+<p>操作系统的安全性无疑受大家关注最多，虽然Windows 2003稳定的性能受到越来越多用户的青睐，但面对层出不穷的新病毒，加强安全性依旧是当务之急。通常，我们只需要某些细微的改动就能使系统安全提升一个台阶，大家看看下面几点您做到了么？<br/>
+- 用户口令设置<br/>
+为管理员帐户设置一个密码，在很大程度上可以避免口令攻击。密码设置的字符长度应当在8位以上，最好是字母、数字、特殊字符的组合，如“psp53，@pq”、“skdfksadf10@”等，可以有效地防止暴力破解。最好不要用自己的生日、手机号码、电话号码等做口令。　　</p>
+
+<ul>
+<li><p>删除默认共享<br/>
+删除Windows 2003系统默认的隐藏共享同样可以有效提升系统的安全系数，单击“开始→运行”，输入“gpedit.msc”后回车，打开组策略编辑器。依次展开“用户配置→Windows 设置→脚本（登录/注销）”，双击登录项，然后添加“delshare.bat”（参数不需要添加），从而删除Windows Server 2003默认的共享。接下来再禁用IPC连接：打开注册表编辑器，依次展开<code>HKEY_LOCAL_MACHINESYSTEMCurrentControlSetControlLsa</code>分支，在右侧窗口中找到“restrictanonymous”子键，将其值改为“1”即可。　</p></li>
+<li><p>关闭自动播放功能<br/>
+自动播放功能不仅对光驱起作用，而且对其它驱动器也起作用，这样很容易被黑客利用来执行黑客程序。打开组策略编辑器，依次展开“计算机配置→管理模板→系统”，在右侧窗口中找到“关闭自动播放”选项并双击，在打开的对话框中选择“已启用”，然后在“关闭自动播放”后面的下拉菜单中选择“所有驱动器”，按“确定”即可生效。　　</p></li>
+<li><p>清空远程可访问的注册表路径<br/>
+将远程可访问的注册表路径设置为空，这样可以有效防止黑客利用扫描器通过远程注册表读取计算机的系统信息及其它信息。打开组策略编辑器，依次展开“计算机配置→Windows 设置→安全设置→安全选项”，在右侧窗口中找到“网络访问：可远程访问的注册表路径”，将可远程访问的注册表路径和子路径内容全部删除。</p></li>
+</ul>
+
+
+<h2>2 排除隐患 教你防堵妙招</h2>
+
+<p>除了安全设置以外，Windows 2003由于先天性的原因，还存在不少安全隐患，如果不将这些隐患“堵住”，也有可能会给整个系统带来不必要的麻烦。下面小编就介绍部分Windows 2003中不常见的安全隐患防堵方法，希望能对各位带来帮助!</p>
+
+<ul>
+<li>堵住自动保存隐患<br/>
+Windows 2003操作系统在调用应用程序出错时，系统中的Dr. Watson会自动将一些重要的调试信息保存起来，以便日后维护系统时查看。不过这些信息很有可能被黑客“瞄上”，一旦瞄上的话，各种重要的调试信息就会暴露无疑。为了堵住Dr. Watson自动保存调试信息的隐患，我们可以按如下步骤来实现：  <br/>
+打开开始菜单，选中“运行”命令，在随后打开的运行对话框中，输入注册表编辑命令“regedit”命令，打开一个注册表编辑窗口；在该窗口中，用鼠标依次展开<code>HKEY_local_machine\software\Microsoft\WindowsdowsNT\CurrentVersion\AeDebug</code>分支，在对应<code>AeDebug</code>键值的右边子窗口中，用鼠标双击Auto值，在弹出的参数设置窗口中，将其数值重新设置为“0”。<br/>
+打开系统的Windows资源管理器窗口，并在其中依次展开Documents and Settings文件夹、All Users文件夹、Shared Documents文件夹、DrWatson文件夹，最后将对应DrWatson中的User.dmp文件、Drwtsn32.log文件删除掉。<br/>
+完成上面的设置后，重新启动一下系统，就可以堵住自动保存隐患了。</li>
+</ul>
+
+
+<h2>3 安全防护</h2>
+
+<ul>
+<li><p>堵住资源共享隐患<br/>
+为了给局域网用户相互之间传输信息带来方便，Windows Server 2003系统很是“善解人意”地为各位提供了文件和打印共享功能，不过我们在享受该功能带来便利的同时，共享功能也会“引狼入室”，“大度”地向黑客们敞开了不少漏洞，给系统造成了很大的不安全性。所以，如果不需要在本机实现文件、打印共享的话，大家千万要将功能关闭，以便堵住资源共享隐患，下面就是关闭共享功能的具体步骤：<br/>
+执行控制面板菜单项下面的“网络连接”命令，在随后出现的窗口中，用鼠标右键单击一下“本地连接”图标；在打开的快捷菜单中，单击“属性”命令，这样就能打开一个“Internet协议（TCP/IP）”属性设置对话框；在该界面中取消“Microsoft网络的文件和打印机共享”这个选项；如此一来，本地计算机就没有办法对外提供文件与打印共享服务了，这样黑客自然也就少了攻击系统的“通道”。</p></li>
+<li><p>堵住用户切换隐患<br/>
+Windows 2003系统为我们提供了快速用户切换功能，利用该功能我们可以很轻松地登录到系统中。不过在享受这种轻松时，系统也存在安装隐患，例如我们要是执行系统“开始”菜单中的“注销”命令来，快速“切换用户”时，再用传统的方式来登录系统的话，系统很有可能会本次登录，错误地当作是对计算机系统的一次暴力“袭击”，这样Windows2003系统就可能将当前登录的帐号当作非法帐号，将它锁定起来，这显然不是我们所需要的；不过，我们可以按如下步骤来堵住用户切换时，产生的安全隐患：<br/>
+在Windows 2003系统桌面中，打开开始菜单下面的控制面板命令，找到下面的“管理工具”命令，再执行下级菜单中的“计算机管理”命令，找到“用户帐户”图标，并在随后出现的窗口中单击“更改用户登录或注销的方式”；在打开的设置窗口中，将“使用快速用户切换”选项取消掉就可以了。</p></li>
+<li><p>堵住页面交换隐患<br/>
+Windows 2003操作系统即使在正常工作的情况下，也有可能会向黑客或者其他访问者泄漏重要的机密信息，特别是一些重要的帐号信息。也许我们永远不会想到要查看一下，那些可能会泄漏隐私信息的文件，不过黑客对它们倒是很关心的哟！Windows 2003操作系统中的页面交换文件中，其实就隐藏了不少重要隐私信息，这些信息都是在动态中产生的，要是不及时将它们清除，就很有可能成为黑客的入侵突破口；为此，我们必须按照下面的方法，来让Windows 2003操作系统在关闭系统时，自动将系统工作时产生的页面文件全部删除掉:<br/>
+打开注册表编辑器，在该窗口的左边区域中，用鼠标依次单击<code>HKEY_local_machine\system\currentcontrolset\control\sessionmanager\memory management</code>键值，找到右边区域中的<code>ClearPageFileAtShutdown</code>键值，并用鼠标双击之，在随后打开的数值设置窗口中，将该DWORD值重新修改为“1”。<br/>
+完成设置后，退出注册表编辑窗口，并重新启动计算机系统，就能让上面的设置生效了。</p></li>
+</ul>
+
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://yuliu.org">刘昱</a>
+</span>
+<span class="time">
+	/
+	
+	<time datetime="2006-03-08">2006-03-08</time> 发表
+	
+</span>
+<br />
+
+<span class="categories">
+	分类： 
+	
+	<a href="http://yuliu.org/essay/categories.html#计算机" title="计算机">计算机</a>&nbsp;/
+	
+</span>
+
+
+<span class="tags">
+	标签： 
+	
+	<a href="http://yuliu.org/essay/tags.html#Windows" title="Windows">Windows</a>&nbsp;
+	
+</span>
+
+</section>
+
+<section class="comment">
+<a href="#" id="show_disqus_comment" onclick="return false;">更多信息，请点击查看评论</a>
+<div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+$(function(){
+		$('section.comment #show_disqus_comment').on('click',function(){
+			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
+			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+			var disqus_url = 'http://yuliu.org/2006/03/fwpost_tips_on_windows_2003_initial_installation_finish/';
+			// var disqus_developer = 1; 
+			var that = this;
+			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			var src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			PSJS.loadScript(src, function(){$(that).remove()});
+			});
+		});
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		$(document).keydown(function(e) {
+			var url = false;
+			if (e.which == 37 || e.which == 74) {  // Left arrow and J
+				
+				url = 'http://yuliu.org/2006/02/aspnet_startkit_and_sql_server_2005/';
+				
+			}
+			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+				
+				url = 'http://yuliu.org/2006/03/aspnet_2_role_configuration_based_on_sql_server/';
+				
+			}
+			if (url) {
+				window.location = url;
+			}
+		});
+	})
+</script>
+
+
+				</article>
+				<div id="toc"></div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -4,7 +4,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="author" content="刘昱" />
 		
-		<title>刘昱 | A Data Driven Switch Menu On CodeProject.com </title>
+		<title>刘昱 | asp.net 2.0 基于SQL SERVER的角色配置 </title>
 		
 		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
 		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
@@ -49,14 +49,29 @@
 			<div id="main" role="main">
 				<article class="content">
 				<section class="title">
-<h1>A Data Driven Switch Menu On CodeProject.com</h1>
+<h1>asp.net 2.0 基于SQL SERVER的角色配置</h1>
 </section>
 <section class="post">
-<p>Yesterday, I write a article on how to make a switch menu with javascript. Today I read a article on codeproject.com named <a href="http://www.codeproject.com/useritems/navpanel.asp">How To Implement a NavigationPanel Using AJAX</a>. The author do a really good work to make a Ajax data driven navigation panel by asp.net and SQL Server. With the source code of the article we can move data source to XML files and so on.</p>
+<p>SQL SERVER Express就不用说了，因为默认的连接就是它</p>
 
-<p>I decorated the code in my last article. Unfortunately, if you use Firefox to browse it, the style of code looks ugly. I used the open source code coloried tool wriiten by javascript <a href="http://www.dreamprojections.com/SyntaxHighlighter/">dp.SyntaxHighlighter</a>. I am tring to modify it to satify my requirement better the whole day but with little result.</p>
+<p>要支持其他版本的SQL SERVER，需要做以下的修改：</p>
 
-<p>what a bad day!</p>
+<ol>
+<li><p>visual studio 2005 command prompt下运行</p>
+
+<pre><code> aspnet_regsql
+</code></pre>
+
+<p>在SQL SERVER数据库中增加一个角色数据库，名字可以自己取的，这里是aspnetdb.</p></li>
+<li><p>打开IIS的website-default web site，右击properties选择asp.net选项卡，然后单击edit global configuration</p></li>
+<li><p>general标签下面修改连接字符串为</p>
+
+<pre><code> Data Source=数据库;Initial Catalog=aspnetdb;Persist Security Info=True;User ID=sa;Password=12345
+</code></pre></li>
+</ol>
+
+
+<p>OK</p>
 
 </section>
 <section class="meta">
@@ -66,7 +81,7 @@
 <span class="time">
 	/
 	
-	<time datetime="2006-12-20">2006-12-20</time> 发表
+	<time datetime="2006-03-09">2006-03-09</time> 发表
 	
 </span>
 <br />
@@ -82,7 +97,9 @@
 <span class="tags">
 	标签： 
 	
-	<a href="http://yuliu.org/essay/tags.html#程序设计" title="程序设计">程序设计</a>&nbsp;
+	<a href="http://yuliu.org/essay/tags.html#asp.net" title="asp.net">asp.net</a>&nbsp;
+	
+	<a href="http://yuliu.org/essay/tags.html#SQL Server" title="SQL Server">SQL Server</a>&nbsp;
 	
 </span>
 
@@ -97,7 +114,7 @@ $(function(){
 		$('section.comment #show_disqus_comment').on('click',function(){
 			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
 			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
-			var disqus_url = 'http://yuliu.org/2006/12/a_data_driven_switch_menu_on_codeproject/';
+			var disqus_url = 'http://yuliu.org/2006/03/aspnet_2_role_configuration_based_on_sql_server/';
 			// var disqus_developer = 1; 
 			var that = this;
 			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -116,12 +133,12 @@ $(function(){
 			var url = false;
 			if (e.which == 37 || e.which == 74) {  // Left arrow and J
 				
-				url = 'http://yuliu.org/2006/12/switch_menu_in_javascript/';
+				url = 'http://yuliu.org/2006/03/fwpost_tips_on_windows_2003_initial_installation_finish/';
 				
 			}
 			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
 				
-				url = 'http://yuliu.org/2007/01/setup_whatwhat/';
+				url = 'http://yuliu.org/2006/03/using_sqlparameter/';
 				
 			}
 			if (url) {

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="刘昱" />
+		
+		<title>刘昱 | 各种程序设计语言之我见 </title>
+		
+		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
+		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+		<script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+		<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+		<!--[if IE]>
+		<script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+		<![endif]-->		
+		<script type="text/javascript" src="/media/script/default.js"></script>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33277878-1']);
+			_gaq.push(['_setDomainName', 'yuliu.org']);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_trackPageLoadTime']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+
+		<div id="container">
+			<header>
+			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
+			<h1>刘 昱</h1>
+			<h2>核能动力系统设计工程师</h2>
+			</header>
+			<nav>
+			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
+			<span><a title="简历" class="" href="http://yuliu.org/vitae/">简历</a></span>
+			<span><a title="文章" class="" href="http://yuliu.org/publication/">文章</a></span>
+			<span><a title="关于" class="" href="http://yuliu.org/about/">关于</a></span>
+			<span><a title="留言" class="" href="http://yuliu.org/guestbook/">留言</a></span>
+			<span><a title="链接" class="" href="http://yuliu.org/link/">链接</a></span>
+			<span><a title="杂货铺" class="" href="http://yuliu.org/essay">杂货铺</a></span>
+			</nav>
+			<div id="main" role="main">
+				<article class="content">
+				<section class="title">
+<h1>各种程序设计语言之我见</h1>
+</section>
+<section class="post">
+<p>我在YDY BBS上面的回帖，乱其八糟写了很多，索性转到Blog上面来。</p>
+
+<p>具体应用具体分析吧。语言的选取和你的需要绝对是有很大的关系</p>
+
+<p>我从最初学习的vb.net到现在最常使用的C#(其实.net平台下的这两种语言几乎一样)，在做windows form和web form开发的时候都感到非常的方便，并且我个人认为功能强大到无所不能，因为他们天生设计就是为了RAD（快速软件开发）的，用他们开发的效率比使用C++高4，5倍吧，当然我说的是开发效率，而不是程序的运行效率，因为C#是带有垃圾回收的，这个必然是以消耗资源为代价的，C++程序的效率很高，但是我认为如果使用不当的话，不仅不能体会到他的高效，而且还会造成其他问题。至于java和C#，很多人说C#抄袭java，C#最多只是借鉴了java设计的一些方法，如果这个是抄袭的话，那么java不是也是语法上抄C++，还是C++的一个子集，语义上抄smalltalk...。但是这两种语言可完成的功能和适用领域几乎完全一致，就是网络编程，RAD，移动开发...J2EE对应asp.net,J2ME对应.net移动控件编程...所以说这java和C#只需要选择一种就可以了（记住VB.net==C#，基本上这两个互通吧，我认为，提到C#的地方，VB.net等价）</p>
+
+<p>最近一位一个具体的东西要包含C的代码，又要开发图形界面，我又在看VC++的书，当然以前上过C++的课。C++是一种语言，在C语言的基础上发展起来，完全兼容C（这一点很了不起，我觉得，不要看C#也带了一个C，但是他们的差别太大了，而C和C++的关系完全不一样），经典的语言，并且到目前为止有着强大的生命力，我喜欢叫他纯C++（pure C++），而VC++是一种开发环境，在windows下开发C++的一种工具，在这个环境下你可以开发纯C++程序，也可以用MFC（包装了windows API的）开发windows程序，比如说C/S系统（开发这个可能C# or Java更快，个人观点），纯C++开发的程序具有很高的效率，因为目前就是按照这个目标来设计C++的，在底层C++使用的非常广泛，在这个领域C也是好手，他们两个虽然同根生，但是在这个领域可以说是相煎太急，因为用纯C++来开发图像界面比较麻烦，所以Microsoft在windows下面设计了MFC来帮助我们开发windows程序，他是封装了windows API 的C++类裤，当然它的作用不知是开发图形界面，我对这个不是很了解，据我搞这个的同学说MFC是博大精深阿。MFC开发windows窗体也是很方便的（但是还是没有C#方便），我现在在做的，这个东西开发程序的效率应该比C#的高吧，但是我觉得如果是我开发的程序的话，不见得，因为我是一新手，垃圾回收这些东西做得不好。当然有很多C++开发者是不屑于用VC的，不是VC不好，而是他们不喜欢MS。还有就是GCC编译器也可以编译C++程序，GCC在windows和linux下都可以使用，据说很多高手都不用开发环境，VI写代码，然后gcc编译。</p>
+
+<p>我学习编程的过程是C/纯C++（学校上课）-->C#（自学）-->python（仅仅了解，自学）-->C++（VC++）（自学，因为目前项目要）。</p>
+
+<p>初学者学习的话我强烈不推荐C++，C++实在是太复杂了，不要以为纯C++很简单，我自己的感受是同样非常难，至今我对C++也是一知半解，不过是我比较笨也说不一定。C++语言的设计者说过这样一句话“帮助初学者学好C++的方法几乎就是让他们变成专家”。</p>
+
+<p>如果是初学的话我还是首先推荐C，相对来说比较简单（其实也不简单，尤其是指针，指针了解大概就好了，有个印象），不一定要精通，主要是掌握基本的程序设计，基于过程的方法，书就推荐《C程序设计》*（谭浩强的），应该说是比较经典的学习书籍了，内容不是很深，但是作为入门教材，我觉得很不错。</p>
+
+<p>如果有过程序设计基础的，不管什么语言，那么C#或者java二选一，做网站，做windows程序，这些比较激起你学习的兴趣的东西，都是他们最擅长的领域。</p>
+
+<p>然后呢？这么快就问然后了？熟练运用这两种中的一种已经很了不起了，基本上你能想到的事情他们都能做，而且能做的很好，并且做起来比较快。如果不是这次的东西要兼容C代码，我应该也不会去接触VC++，因为我的C#也还只是半桶水呢。</p>
+
+<p>上面是我的一点个人经验，大牛们不要见笑了</p>
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://yuliu.org">刘昱</a>
+</span>
+<span class="time">
+	/
+	
+	<time datetime="2005-12-31">2005-12-31</time> 发表
+	
+</span>
+<br />
+
+<span class="categories">
+	分类： 
+	
+	<a href="http://yuliu.org/essay/categories.html#计算机" title="计算机">计算机</a>&nbsp;/
+	
+</span>
+
+
+<span class="tags">
+	标签： 
+	
+	<a href="http://yuliu.org/essay/tags.html#程序设计" title="程序设计">程序设计</a>&nbsp;
+	
+	<a href="http://yuliu.org/essay/tags.html#.net" title=".net">.net</a>&nbsp;
+	
+</span>
+
+</section>
+
+<section class="comment">
+<a href="#" id="show_disqus_comment" onclick="return false;">更多信息，请点击查看评论</a>
+<div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+$(function(){
+		$('section.comment #show_disqus_comment').on('click',function(){
+			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
+			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+			var disqus_url = 'http://yuliu.org/2005/12/my_views_on_programme_languages/';
+			// var disqus_developer = 1; 
+			var that = this;
+			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			var src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			PSJS.loadScript(src, function(){$(that).remove()});
+			});
+		});
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		$(document).keydown(function(e) {
+			var url = false;
+			if (e.which == 37 || e.which == 74) {  // Left arrow and J
+				
+				url = 'http://yuliu.org/2005/12/transfer_between_cstring_and_char_star_in_vc2005/';
+				
+			}
+			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+				
+				url = 'http://yuliu.org/2006/02/aspnet_startkit_and_sql_server_2005/';
+				
+			}
+			if (url) {
+				window.location = url;
+			}
+		});
+	})
+</script>
+
+
+				</article>
+				<div id="toc"></div>
+			</div>
+		</div>
+	</body>
+</html>

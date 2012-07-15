@@ -4,7 +4,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="author" content="刘昱" />
 		
-		<title>刘昱 | A Data Driven Switch Menu On CodeProject.com </title>
+		<title>刘昱 | 在VS 2008中使用非托管DLL以及DEP </title>
 		
 		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
 		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
@@ -49,14 +49,46 @@
 			<div id="main" role="main">
 				<article class="content">
 				<section class="title">
-<h1>A Data Driven Switch Menu On CodeProject.com</h1>
+<h1>在VS 2008中使用非托管DLL以及DEP</h1>
 </section>
 <section class="post">
-<p>Yesterday, I write a article on how to make a switch menu with javascript. Today I read a article on codeproject.com named <a href="http://www.codeproject.com/useritems/navpanel.asp">How To Implement a NavigationPanel Using AJAX</a>. The author do a really good work to make a Ajax data driven navigation panel by asp.net and SQL Server. With the source code of the article we can move data source to XML files and so on.</p>
+<p>最近使用VS2008编译原来一个可以正常运行的程序时，出现下列错误，错误出现在使用未托管DLL处</p>
 
-<p>I decorated the code in my last article. Unfortunately, if you use Firefox to browse it, the style of code looks ugly. I used the open source code coloried tool wriiten by javascript <a href="http://www.dreamprojections.com/SyntaxHighlighter/">dp.SyntaxHighlighter</a>. I am tring to modify it to satify my requirement better the whole day but with little result.</p>
+<p><img src="http://fs.yuliu.org/images/essay/2008/unmanaged_dll_in_vs2008_and_dep_001.jpg" alt="错误信息" /></p>
 
-<p>what a bad day!</p>
+<p>找了很多地方，最后在MSDN论坛得到提示。</p>
+
+<p>解决方案在<a href="http://blogs.msdn.com/ed_maurer/archive/2007/12/14/nxcompat-and-the-c-compiler.aspx">这篇帖子</a></p>
+
+<p>简单的说出现这个错误的原因是vs2008的c#编译器生成的PE文件头增加了NXCOMPAT位，这个与DEP有关，DEP用于防止恶意软件注入进程。那么也就是说位托管的DLL在内存中属于为标记成为可执行的，因而出现了上述的错误。所以解决方案就是消除PE中的这个位。</p>
+
+<p>启动Visual Studio 2008 Command Prompt，输入：</p>
+
+<pre><code>editbin.exe /NXCOMPAT:NO &lt;your binary&gt;
+</code></pre>
+
+<p>如果使用VS2008，则可以在工程属性中添加一个Post-build命令：</p>
+
+<p>原文是这样的命令：</p>
+
+<pre><code>call $(DevEnvDir)..\tools\vsvars32.bat
+editbin.exe /NXCOMPAT:NO $(TargetPath)
+</code></pre>
+
+<p>但是在我这里直接引用仿佛不行，我修改成为下面这样</p>
+
+<pre><code>call "（VS安装文件夹）\Common7\Tools\vsvars32.bat"
+editbin.exe /NXCOMPAT:NO $(TargetPath)
+</code></pre>
+
+<p>第一行为设置VS环境，这个设置主要是为了后一行的editbin.exe 命令而服务的。</p>
+
+<p>同时在这样添加以后，还需要在工程属性页的Debug选项中选中下面这个选项。
+<img src="http://fs.yuliu.org/images/essay/2008/unmanaged_dll_in_vs2008_and_dep_002.jpg" alt="选项" /></p>
+
+<p>要不在调试的时候仍然会出现错误。</p>
+
+<p>我为了解决这个问题找了好几天，放在首页希望大家能够有个记忆，在遇到这个问题时候能够想起来。</p>
 
 </section>
 <section class="meta">
@@ -66,7 +98,7 @@
 <span class="time">
 	/
 	
-	<time datetime="2006-12-20">2006-12-20</time> 发表
+	<time datetime="2008-01-20">2008-01-20</time> 发表
 	
 </span>
 <br />
@@ -82,7 +114,7 @@
 <span class="tags">
 	标签： 
 	
-	<a href="http://yuliu.org/essay/tags.html#程序设计" title="程序设计">程序设计</a>&nbsp;
+	<a href="http://yuliu.org/essay/tags.html#Visual studio" title="Visual studio">Visual studio</a>&nbsp;
 	
 </span>
 
@@ -97,7 +129,7 @@ $(function(){
 		$('section.comment #show_disqus_comment').on('click',function(){
 			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
 			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
-			var disqus_url = 'http://yuliu.org/2006/12/a_data_driven_switch_menu_on_codeproject/';
+			var disqus_url = 'http://yuliu.org/2008/01/unmanaged_dll_in_vs2008_and_dep/';
 			// var disqus_developer = 1; 
 			var that = this;
 			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -116,12 +148,12 @@ $(function(){
 			var url = false;
 			if (e.which == 37 || e.which == 74) {  // Left arrow and J
 				
-				url = 'http://yuliu.org/2006/12/switch_menu_in_javascript/';
+				url = 'http://yuliu.org/2007/06/harmonized_N475/';
 				
 			}
 			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
 				
-				url = 'http://yuliu.org/2007/01/setup_whatwhat/';
+				url = 'http://yuliu.org/2011/03/vps_hosting_from_zero_1/';
 				
 			}
 			if (url) {

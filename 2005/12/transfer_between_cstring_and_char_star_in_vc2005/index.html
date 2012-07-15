@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="刘昱" />
+		
+		<title>刘昱 | VC++2005 CString和char*的相互转换 </title>
+		
+		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
+		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+		<script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+		<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+		<!--[if IE]>
+		<script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+		<![endif]-->		
+		<script type="text/javascript" src="/media/script/default.js"></script>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33277878-1']);
+			_gaq.push(['_setDomainName', 'yuliu.org']);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_trackPageLoadTime']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+
+		<div id="container">
+			<header>
+			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
+			<h1>刘 昱</h1>
+			<h2>核能动力系统设计工程师</h2>
+			</header>
+			<nav>
+			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
+			<span><a title="简历" class="" href="http://yuliu.org/vitae/">简历</a></span>
+			<span><a title="文章" class="" href="http://yuliu.org/publication/">文章</a></span>
+			<span><a title="关于" class="" href="http://yuliu.org/about/">关于</a></span>
+			<span><a title="留言" class="" href="http://yuliu.org/guestbook/">留言</a></span>
+			<span><a title="链接" class="" href="http://yuliu.org/link/">链接</a></span>
+			<span><a title="杂货铺" class="" href="http://yuliu.org/essay">杂货铺</a></span>
+			</nav>
+			<div id="main" role="main">
+				<article class="content">
+				<section class="title">
+<h1>VC++2005 CString和char*的相互转换</h1>
+</section>
+<section class="post">
+<p>首先声明我不是一个高手，而是一个初学者，文章同样也是一个初学者对于CString和char*转换的理解。</p>
+
+<p>因为需要，接触C++一段时间了，其中最为困扰我的问题就是在使用C++的过程中CString和char*的转换，在网上搜索了一下，看到问这个问题的人挺多的。我使用的平台是Win2003+VC 2005，本来这个很简单的问题稍微复杂了一点在2005里面。</p>
+
+<p>在我的工程里面要集成一个用C开发的程序，用VC做windows窗体的界面，在C的函数中有不少是使用char*作为参数的，因此有一个必不可少的步骤就是把CString转换为shar*字符串。</p>
+
+<p>作为一个初学者，遇到这个问题，首先是在baidu上搜索了一下转换的方法，有很多结果，别人也说有效，但是我把它放在我的代码里面的时候，就是出现错误。下面是我的解决办法。</p>
+
+<p>使用CString的GetBuffer方法</p>
+
+<pre><code>CString origCString("Hello,World");
+char* CharString = origCString.GetBuffer(origCString.GetLength()+1);  
+</code></pre>
+
+<p>网上的很多文章说的都是这个方法，但是我在VC++2005中编译得到下列信息</p>
+
+<pre><code>Error 1 error C2440:   'initializing' : cannot convert from 'wchar_t *' to 'char *'   
+</code></pre>
+
+<p>对于这个错误不是很理解，因为是刚开始使用VC不久，所以对于wchar_t和char的区别不是很清楚，在MSDN中查看了一下，wchar_t是一个宽字符型，相当于unsigned short（16bit）。而我们通常使用的char是8bit。继续搜索wchar_t*到char*的转换，msdn上面有一篇文章是<a href="http://msdn2.microsoft.com/en-us/library/ms235631.aspx">Convert Between Various String Types</a>，讲了VC++2005中的各种字符串char *, wchar_t*, _bstr_t, CComBSTR, CString, basic_string, and System.String的相互转换。其中将wchar_t*转换为char*的代码如下：(为了保持文章的一致性，修改了变量名)</p>
+
+<pre><code>#include &lt;stdlib.h&gt;
+#include &lt;iostream&gt;
+using namespace std;
+int main()
+{ 
+    wchar_t *origString = L"Hello,World"; 
+    wcout &lt;&lt; origString &lt;&lt; endl;
+
+    // Convert to a char*
+    size_t origsize = wcslen(origString) + 1;
+    const size_t newsize = 100;
+    size_t convertedChars = 0;
+    char CharString[newsize];
+    wcstombs_s(&amp;convertedChars, CharString, origsize, origString , _TRUNCATE);
+    cout &lt;&lt; CharString &lt;&lt; endl;
+}
+</code></pre>
+
+<p>输出正确，均为Hello, World!</p>
+
+<p>结合上面的两段，看看能不能将CString转换为char*</p>
+
+<pre><code>CString origCString("Hello, World!");
+wchar_t* wCharString = origCString.GetBuffer(origCString.GetLength()+1);
+size_t origsize = wcslen(wCharString) + 1;
+size_t convertedChars = 0;
+char *CharString;
+CharString=new char(origsize);
+wcstombs_s(&amp;convertedChars, CharString, origsize, wCharString , _TRUNCATE);
+cout &lt;&lt; CharString &lt;&lt; endl;  
+</code></pre>
+
+<p>成功输出字符串"Hello,World"</p>
+
+<p>至于为什么原来的那段代码别人都能用好，而我在VC++2005下面去不能直接使用，还要通过转换呢？正好看到《Programming Windows》的第二章讲Unicode的和在msdn论坛问了一下相关问题后得到答案。</p>
+
+<p>原来在VC++ 2005以前，应用程序默认都是关闭对Unicode的支持的，而在VC2005中，默认打开了对它的支持，CString对应的字符串应该是TCHAR，TCHAR的定义是这样的，</p>
+
+<pre><code>#ifdef _UNICODE
+typedef wchar_t TCHAR;
+#else
+typedef char TCHAR;
+#endif 
+</code></pre>
+
+<p>我想这个就是为什么我在VC++2005种不能直接转换的原因。在工程中应该可以关闭对于Unicode的支持，从而可以直接转换。这个做法是右击工程名—〉Property—〉General中的character set中选择not set，这样，本文开头的那段代码就可以正确的执行了。</p>
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://yuliu.org">刘昱</a>
+</span>
+<span class="time">
+	/
+	
+	<time datetime="2005-12-26">2005-12-26</time> 发表
+	
+</span>
+<br />
+
+<span class="categories">
+	分类： 
+	
+	<a href="http://yuliu.org/essay/categories.html#计算机" title="计算机">计算机</a>&nbsp;/
+	
+</span>
+
+
+<span class="tags">
+	标签： 
+	
+	<a href="http://yuliu.org/essay/tags.html#C++" title="C++">C++</a>&nbsp;
+	
+</span>
+
+</section>
+
+<section class="comment">
+<a href="#" id="show_disqus_comment" onclick="return false;">更多信息，请点击查看评论</a>
+<div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+$(function(){
+		$('section.comment #show_disqus_comment').on('click',function(){
+			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
+			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+			var disqus_url = 'http://yuliu.org/2005/12/transfer_between_cstring_and_char_star_in_vc2005/';
+			// var disqus_developer = 1; 
+			var that = this;
+			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			var src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			PSJS.loadScript(src, function(){$(that).remove()});
+			});
+		});
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		$(document).keydown(function(e) {
+			var url = false;
+			if (e.which == 37 || e.which == 74) {  // Left arrow and J
+				
+				url = 'http://yuliu.org/2005/12/study_notes_of_cpp_vc2005/';
+				
+			}
+			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+				
+				url = 'http://yuliu.org/2005/12/my_views_on_programme_languages/';
+				
+			}
+			if (url) {
+				window.location = url;
+			}
+		});
+	})
+</script>
+
+
+				</article>
+				<div id="toc"></div>
+			</div>
+		</div>
+	</body>
+</html>
