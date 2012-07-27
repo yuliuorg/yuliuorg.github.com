@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>刘昱 | 核能动力系统工程师</title>
-    <link>http://localhost:4000</link>
-    <atom:link href="http://localhost:4000/feed/rss.xml" rel="self" type="application/rss+xml" />
+    <link>http://yuliu.org</link>
+    <atom:link href="http://yuliu.org/feed/rss.xml" rel="self" type="application/rss+xml" />
 	<description>刘昱 | 核能动力系统工程师</description>
     <language>zh-cn</language>
-    <pubDate>Fri, 27 Jul 2012 22:28:40 +0800</pubDate>
-    <lastBuildDate>Fri, 27 Jul 2012 22:28:40 +0800</lastBuildDate>
+    <pubDate>Fri, 27 Jul 2012 22:57:12 +0800</pubDate>
+    <lastBuildDate>Fri, 27 Jul 2012 22:57:12 +0800</lastBuildDate>
 
     
     <item>
       <title>python实现文件和系统剪贴板读写</title>
-      <link>http://localhost:4000/2012/07/python_file_clipboard_read_write/</link>
+      <link>http://yuliu.org/2012/07/python_file_clipboard_read_write/</link>
       <pubDate>Fri, 20 Jul 2012 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2012/07/python_file_clipboard_read_write</guid>
+	  <guid>http://yuliu.org/2012/07/python_file_clipboard_read_write</guid>
 	  <description>&lt;p&gt;最近有一个无聊的需求，某网页上复制一些文字，接着去除每段开始和结尾的空格，并在段与段之间增加一个空行。从来没有用过python干过实际的事情，正好拿来熟悉熟悉。&lt;/p&gt;
 
 &lt;p&gt;首先的想法是把&lt;em&gt;手动把网页文字复制到文件中，手动执行python调整格式并写入输出文件，从手动文件中再复制&lt;/em&gt;，照着这个思路，实现很简单&lt;/p&gt;
@@ -73,7 +73,7 @@ pyperclip.copy(output)
 
 &lt;p&gt;因此，&lt;code&gt;strip('\xa1')&lt;/code&gt;时也会将“中的第一个&lt;code&gt;\xa1&lt;/code&gt;也一块去掉，只留下&lt;code&gt;\xb0&lt;/code&gt;，从而导致了乱码的出现。那么使用&lt;code&gt;strip('\xa1\xa1')&lt;/code&gt;行不行呢？答案是不行，因为python的strip和C#的trim还不一样，参数不是前缀或是后缀，而是其中字符集的组合（&lt;a href=&quot;http://docs.python.org/library/stdtypes.html#str.strip&quot;&gt;python文档&lt;/a&gt;），因此仍然会把“的第一个&lt;code&gt;\xa1&lt;/code&gt;去掉。&lt;/p&gt;
 
-&lt;p&gt;于是该情况下，使用&lt;a href=&quot;http://docs.python.org/library/stdtypes.html#str.replace&quot;&gt;replace&lt;/a&gt;替代strip去掉中文空格更合适一些。&lt;/p&gt;
+&lt;p&gt;于是该情况下，同时考虑到居中很少出现中文空格，所以使用&lt;a href=&quot;http://docs.python.org/library/stdtypes.html#str.replace&quot;&gt;replace&lt;/a&gt;替代strip去掉中文空格作为一个临时解决方案。&lt;/p&gt;
 
 &lt;p&gt;小结，更新后代码如下：&lt;/p&gt;
 
@@ -93,10 +93,10 @@ pyperclip.copy(output)
     
     <item>
       <title>喜欢的软件</title>
-      <link>http://localhost:4000/2012/07/my_favorite_softwares/</link>
+      <link>http://yuliu.org/2012/07/my_favorite_softwares/</link>
       <pubDate>Mon, 09 Jul 2012 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2012/07/my_favorite_softwares</guid>
+	  <guid>http://yuliu.org/2012/07/my_favorite_softwares</guid>
 	  <description>&lt;p&gt;日常工作生活常用软件的列表，排名不分先后，但这个东西随时间的变化太快，不保证及时更新，欢迎拍砖。&lt;/p&gt;
 
 &lt;ol&gt;
@@ -136,10 +136,10 @@ pyperclip.copy(output)
     
     <item>
       <title>jekyll笔记</title>
-      <link>http://localhost:4000/2012/07/jekyll_notes/</link>
+      <link>http://yuliu.org/2012/07/jekyll_notes/</link>
       <pubDate>Wed, 04 Jul 2012 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2012/07/jekyll_notes</guid>
+	  <guid>http://yuliu.org/2012/07/jekyll_notes</guid>
 	  <description>&lt;h1&gt;jekyll的sitemap生成器&lt;/h1&gt;
 
 &lt;p&gt;为了方便搜索引擎的收录，sitemap还是必要的。
@@ -168,10 +168,10 @@ pyperclip.copy(output)
     
     <item>
       <title>我的Vim（Vim-of-pisheng)</title>
-      <link>http://localhost:4000/2012/06/vim_of_pisheng/</link>
+      <link>http://yuliu.org/2012/06/vim_of_pisheng/</link>
       <pubDate>Fri, 29 Jun 2012 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2012/06/vim_of_pisheng</guid>
+	  <guid>http://yuliu.org/2012/06/vim_of_pisheng</guid>
 	  <description>&lt;h1&gt;1 Vim初始安装&lt;/h1&gt;
 
 &lt;p&gt;主要是因为采用了Vundle的插件管理方式，因此一般使用下述步骤。&lt;/p&gt;
@@ -244,10 +244,10 @@ hi PmenuThumb guifg=#c0c0c0
     
     <item>
       <title>git和github</title>
-      <link>http://localhost:4000/2012/06/git_and_github/</link>
+      <link>http://yuliu.org/2012/06/git_and_github/</link>
       <pubDate>Fri, 29 Jun 2012 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2012/06/git_and_github</guid>
+	  <guid>http://yuliu.org/2012/06/git_and_github</guid>
 	  <description>&lt;h1&gt;1 git&lt;/h1&gt;
 
 &lt;p&gt;一个版本管理和控制工具&lt;/p&gt;
@@ -338,10 +338,10 @@ $ git push -u origin master
     
     <item>
       <title>CentOS 修改IP地址, DNS, 网关</title>
-      <link>http://localhost:4000/2011/05/modify_ip_dns_gateway_in_cento/</link>
+      <link>http://yuliu.org/2011/05/modify_ip_dns_gateway_in_cento/</link>
       <pubDate>Tue, 24 May 2011 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2011/05/modify_ip_dns_gateway_in_cento</guid>
+	  <guid>http://yuliu.org/2011/05/modify_ip_dns_gateway_in_cento</guid>
 	  <description>&lt;h1&gt;一、CentOS修改IP地址&lt;/h1&gt;
 
 &lt;p&gt;修改对应网卡的IP地址的配置文件&lt;/p&gt;
@@ -409,10 +409,10 @@ search localdomain
     
     <item>
       <title>华硕笔记本F8SA笔记本拆机+换主板电池未果</title>
-      <link>http://localhost:4000/2011/05/disassembly_of_asus_notebook_f8sa/</link>
+      <link>http://yuliu.org/2011/05/disassembly_of_asus_notebook_f8sa/</link>
       <pubDate>Sat, 21 May 2011 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2011/05/disassembly_of_asus_notebook_f8sa</guid>
+	  <guid>http://yuliu.org/2011/05/disassembly_of_asus_notebook_f8sa</guid>
 	  <description>&lt;p&gt;用了快4年的华硕笔记本F8SA出了点小毛病，bios设置总是自动复位、通电自动启动等，初步判断是主板电池没电了。打电话问asus售后，告知换主板电池要200大洋。10块钱就能解决的事情要皮生花200块钱，心有不甘啊，遂决定DIY操作之。网上先搜了几个F8的拆机教程，都挺不错的，尤其是第一篇，共同的缺点是图片太小了。&lt;/p&gt;
 
 &lt;blockquote&gt;&lt;p&gt; &lt;a href=&quot;http://benyouhui.it168.com/thread-1086993-1-1.html&quot;&gt;F8S系列拆机详细图&lt;/a&gt;&lt;/p&gt;
@@ -447,10 +447,10 @@ search localdomain
     
     <item>
       <title>使用plowshare在VPS（centos）上下载网盘文件</title>
-      <link>http://localhost:4000/2011/05/using_plowfhare_to_download_from_netdrive_on_vps/</link>
+      <link>http://yuliu.org/2011/05/using_plowfhare_to_download_from_netdrive_on_vps/</link>
       <pubDate>Thu, 19 May 2011 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2011/05/using_plowfhare_to_download_from_netdrive_on_vps</guid>
+	  <guid>http://yuliu.org/2011/05/using_plowfhare_to_download_from_netdrive_on_vps</guid>
 	  <description>&lt;p&gt;&lt;a href=&quot;http://code.google.com/p/plowshare&quot;&gt;plowshare&lt;/a&gt;是一个*nix系统中，基于命令行的网盘下载工具，该工具不能自动读取验证码。支持Megaupload, Rapidshare, 2Shared, 4Shared, ZShare, Badongo, Divshare.com, Depositfiles, Netload.in, Sendspace, Usershare, x7.to等网站（&lt;a href=&quot;http://code.google.com/p/plowshare/wiki/Readme&quot;&gt;全部列表&lt;/a&gt;），惊喜发现还支持国内的115。网上有很多在vps上安装plowshare的教程，但是基本上都是从plowshare wiki翻译的，在我的centos 5.5 vps上安装中遇到了一些小问题，所以有了这篇blog，注意该文只针对centos&lt;/p&gt;
 
 &lt;h1&gt;配置rpmforge&lt;/h1&gt;
@@ -527,10 +527,10 @@ setup.sh install
     
     <item>
       <title>Tunnelier自动登录指定的SSH</title>
-      <link>http://localhost:4000/2011/05/auto_start_and_login_of_tunnelier/</link>
+      <link>http://yuliu.org/2011/05/auto_start_and_login_of_tunnelier/</link>
       <pubDate>Mon, 16 May 2011 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2011/05/auto_start_and_login_of_tunnelier</guid>
+	  <guid>http://yuliu.org/2011/05/auto_start_and_login_of_tunnelier</guid>
 	  <description>&lt;p&gt;Tunnelier是一个很好的软件，但选项中没有随系统启动的功能，但是这种软件怎么能不自动启动呢。&lt;/p&gt;
 
 &lt;p&gt;其实简单DIY，利用tunnelier的命令行就能很简单的解决这个问题。&lt;/p&gt;
@@ -547,10 +547,10 @@ setup.sh install
     
     <item>
       <title>tar解压 tar.bz2文件出错</title>
-      <link>http://localhost:4000/2011/05/tar_error_with_bzip2/</link>
+      <link>http://yuliu.org/2011/05/tar_error_with_bzip2/</link>
       <pubDate>Wed, 11 May 2011 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2011/05/tar_error_with_bzip2</guid>
+	  <guid>http://yuliu.org/2011/05/tar_error_with_bzip2</guid>
 	  <description>&lt;p&gt;用tar 解压 tar.bz2文件出错&lt;/p&gt;
 
 &lt;blockquote&gt;&lt;p&gt;debian:/usr/src# tar jxf linux-2.6.26.tar.bz2&lt;br/&gt;
@@ -568,10 +568,10 @@ tar: Error exit delayed from previous errors&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>gVIM和中文字符编码</title>
-      <link>http://localhost:4000/2011/03/gvim_and_encoding/</link>
+      <link>http://yuliu.org/2011/03/gvim_and_encoding/</link>
       <pubDate>Tue, 22 Mar 2011 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2011/03/gvim_and_encoding</guid>
+	  <guid>http://yuliu.org/2011/03/gvim_and_encoding</guid>
 	  <description>&lt;p&gt;gVIM 对我来说是作为一个文本类文件查看器和快速编辑器（windows系统下），使用中总是碰到编码的问题。其实在网络上已经有很好的解决方案了，安装&lt;em&gt;fencive&lt;/em&gt;插件即可。&lt;/p&gt;
 
 &lt;blockquote&gt;&lt;p&gt;  http://www.vim.org/scripts/script.php?script_id=1708&lt;/p&gt;&lt;/blockquote&gt;
@@ -586,10 +586,10 @@ tar: Error exit delayed from previous errors&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>没有光驱装XP系统</title>
-      <link>http://localhost:4000/2011/03/xp_install_without_cd_dirver/</link>
+      <link>http://yuliu.org/2011/03/xp_install_without_cd_dirver/</link>
       <pubDate>Fri, 11 Mar 2011 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2011/03/xp_install_without_cd_dirver</guid>
+	  <guid>http://yuliu.org/2011/03/xp_install_without_cd_dirver</guid>
 	  <description>&lt;p&gt;自己的步骤，X61通过
 1. 将XP镜像拷到欲重装系统电脑的非C盘上&lt;/p&gt;
 
@@ -614,10 +614,10 @@ Tips 2：安装中如果出现不能复制文件，是因为原系统为vista，
     
     <item>
       <title>在windows 2003中使用PI Activeview</title>
-      <link>http://localhost:4000/2011/03/pi_actieview_and_windows2003/</link>
+      <link>http://yuliu.org/2011/03/pi_actieview_and_windows2003/</link>
       <pubDate>Fri, 11 Mar 2011 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2011/03/pi_actieview_and_windows2003</guid>
+	  <guid>http://yuliu.org/2011/03/pi_actieview_and_windows2003</guid>
 	  <description>&lt;p&gt;今天在搞把PDI文件用PI Activeview嵌到网页里面去，搞了半天都不行，使用同样的方法在其他的电脑上面都是OK的，而且我的电脑浏览其他主机上面嵌有PDI的网页也不能显示。分析原因，其他的电脑都是XP或者2000的系统，只有我的是2003，难道是操作系统的原因，搜索了一下，果然在OSISOFT的支持网站上面有这样一片文章&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://techsupport.osisoft.com/support_bulletin.aspx?bulletin=126fdb56-a4ba-41dd-95b8-390e85edf4e7&quot; title=&quot;Using PI ActiveView and Windows Server 2003[已失效]&quot;&gt;Using PI ActiveView and Windows Server 2003[已失效]&lt;/a&gt;&lt;/p&gt;
@@ -640,10 +640,10 @@ for MIME type: application/octet-stream&lt;/p&gt;&lt;/li&gt;
     
     <item>
       <title>零起点VPS建站-2</title>
-      <link>http://localhost:4000/2011/03/vps_hosting_from_zero_2/</link>
+      <link>http://yuliu.org/2011/03/vps_hosting_from_zero_2/</link>
       <pubDate>Thu, 10 Mar 2011 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2011/03/vps_hosting_from_zero_2</guid>
+	  <guid>http://yuliu.org/2011/03/vps_hosting_from_zero_2</guid>
 	  <description>&lt;p&gt;在 &lt;a href=&quot;/2011/03/vps_hosting_from_zero_1&quot;&gt;上一篇&lt;/a&gt; 里面已经讲了 域名和VPS、VPS安装和虚拟主机配置、FTP的安装等。这里主要介绍一下如何安装discuz和wordpress。&lt;/p&gt;
 
 &lt;h1&gt;1. discuz&lt;/h1&gt;
@@ -703,10 +703,10 @@ chgrp -R www 目录      //设置目录下所有文件和目录为www用户组�
     
     <item>
       <title>零起点VPS建站-1</title>
-      <link>http://localhost:4000/2011/03/vps_hosting_from_zero_1/</link>
+      <link>http://yuliu.org/2011/03/vps_hosting_from_zero_1/</link>
       <pubDate>Thu, 10 Mar 2011 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2011/03/vps_hosting_from_zero_1</guid>
+	  <guid>http://yuliu.org/2011/03/vps_hosting_from_zero_1</guid>
 	  <description>&lt;p&gt;原来也建过网站，但是大部分都是在自己的电脑上，在VPS上建站还真是0起点~&lt;/p&gt;
 
 &lt;p&gt;开始还以为会遇到很多困难，后来发现现在各种牛人太多，VPS建站基本上已经全自动化了。&lt;/p&gt;
@@ -801,10 +801,10 @@ root  /home/wwwroot;
     
     <item>
       <title>在VS 2008中使用非托管DLL以及DEP</title>
-      <link>http://localhost:4000/2008/01/unmanaged_dll_in_vs2008_and_dep/</link>
+      <link>http://yuliu.org/2008/01/unmanaged_dll_in_vs2008_and_dep/</link>
       <pubDate>Sun, 20 Jan 2008 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2008/01/unmanaged_dll_in_vs2008_and_dep</guid>
+	  <guid>http://yuliu.org/2008/01/unmanaged_dll_in_vs2008_and_dep</guid>
 	  <description>&lt;p&gt;最近使用VS2008编译原来一个可以正常运行的程序时，出现下列错误，错误出现在使用未托管DLL处&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2008/unmanaged_dll_in_vs2008_and_dep_001.jpg&quot; alt=&quot;错误信息&quot; /&gt;&lt;/p&gt;
@@ -847,10 +847,10 @@ editbin.exe /NXCOMPAT:NO $(TargetPath)
     
     <item>
       <title>n475被和谐了!</title>
-      <link>http://localhost:4000/2007/06/harmonized_N475/</link>
+      <link>http://yuliu.org/2007/06/harmonized_N475/</link>
       <pubDate>Mon, 25 Jun 2007 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2007/06/harmonized_N475</guid>
+	  <guid>http://yuliu.org/2007/06/harmonized_N475</guid>
 	  <description>&lt;p&gt;昨天乘n475从上海回杭州。发现它的运行时间增加了十五分钟。才发现铁道部的确在努力构建和谐火车。此车原先的运行时间是1742-1910。&lt;/p&gt;
 
 &lt;p&gt;现在改在1737发车，比沪杭加动车前提前了五分钟，后面跟着新加的动车d677，1750-1908。于是我很简单的推算，475提早五分钟发车是为了提前五分钟1905到杭州。很开心的走上bsp，觉得bsp比动车好，一排只有四个人，还便宜六快钱，不少哦，10几%了。刚开了一会儿就觉得不对劲，这个速度不象原来的，在慢慢摇。果不其然，1745火车便停下了，预感不会是为了避让动车吧。左等右等，大概十分钟后窗边白色呼宵而过。最后475 1930才到杭州。&lt;/p&gt;
@@ -861,10 +861,10 @@ editbin.exe /NXCOMPAT:NO $(TargetPath)
     
     <item>
       <title>Log For log4net (五) - Appenders(记录方式)</title>
-      <link>http://localhost:4000/2007/04/log_for_log4net_5_appenders/</link>
+      <link>http://yuliu.org/2007/04/log_for_log4net_5_appenders/</link>
       <pubDate>Fri, 27 Apr 2007 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2007/04/log_for_log4net_5_appenders</guid>
+	  <guid>http://yuliu.org/2007/04/log_for_log4net_5_appenders</guid>
 	  <description>&lt;p&gt;原文地址：&lt;a href=&quot;http://logging.apache.org/log4net/release/manual/introduction.html#appenders&quot;&gt;Appenders&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;选择和禁止记录请求只是log4net框架的一部份。log4net允许将记录请求输出到不同的目的地。在log4net中，输出目的地叫做Appender（记录方式）。记录方式必须继承log4net.Appenders.IAppender接口。&lt;/p&gt;
@@ -1218,10 +1218,10 @@ editbin.exe /NXCOMPAT:NO $(TargetPath)
     
     <item>
       <title>Log For log4net (四) - Logger（记录器）</title>
-      <link>http://localhost:4000/2007/04/log_for_log4net_4_logger/</link>
+      <link>http://yuliu.org/2007/04/log_for_log4net_4_logger/</link>
       <pubDate>Fri, 27 Apr 2007 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2007/04/log_for_log4net_4_logger</guid>
+	  <guid>http://yuliu.org/2007/04/log_for_log4net_4_logger</guid>
 	  <description>&lt;p&gt;前三节主要翻译和学习了配置文件的写法。从这一节将计划翻译Logger（第四节）、记录方式（第五节）、布局（第六节）和过滤器（第七节）。&lt;/p&gt;
 
 &lt;p&gt;原文地址：&lt;a href=&quot;http://logging.apache.org/log4net/release/manual/introduction.html#hierarchy&quot;&gt;Loggers and Appenders&lt;/a&gt;&lt;/p&gt;
@@ -1593,10 +1593,10 @@ ILog y = LogManager.GetLogger(&quot;wombat&quot;);
     
     <item>
       <title>Log For log4net (三) - 配置语法</title>
-      <link>http://localhost:4000/2007/04/log_for_log4net_3_configuration_grammar/</link>
+      <link>http://yuliu.org/2007/04/log_for_log4net_3_configuration_grammar/</link>
       <pubDate>Fri, 27 Apr 2007 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2007/04/log_for_log4net_3_configuration_grammar</guid>
+	  <guid>http://yuliu.org/2007/04/log_for_log4net_3_configuration_grammar</guid>
 	  <description>&lt;p&gt;接&lt;a href=&quot;/2007/04/log_for_log4net_2_configuration_attribute_file&quot;&gt;上篇&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;注：这是log4net配置文档的最后一部份，描述了配置文档的语法&lt;/p&gt;
@@ -1875,10 +1875,10 @@ ILog y = LogManager.GetLogger(&quot;wombat&quot;);
     
     <item>
       <title>Log For log4net (二) - 配置特性与配置文件</title>
-      <link>http://localhost:4000/2007/04/log_for_log4net_2_configuration_attribute_file/</link>
+      <link>http://yuliu.org/2007/04/log_for_log4net_2_configuration_attribute_file/</link>
       <pubDate>Fri, 27 Apr 2007 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2007/04/log_for_log4net_2_configuration_attribute_file</guid>
+	  <guid>http://yuliu.org/2007/04/log_for_log4net_2_configuration_attribute_file</guid>
 	  <description>&lt;p&gt;接&lt;a href=&quot;/2007/04/log_for_log4net_1_configuration_summary&quot;&gt;上篇&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;注：Attribute译为“特性”，Property译为“属性”&lt;/p&gt;
@@ -2019,10 +2019,10 @@ ILog y = LogManager.GetLogger(&quot;wombat&quot;);
     
     <item>
       <title>Log For log4net (一) - 配置概述</title>
-      <link>http://localhost:4000/2007/04/log_for_log4net_1_configuration_summary/</link>
+      <link>http://yuliu.org/2007/04/log_for_log4net_1_configuration_summary/</link>
       <pubDate>Fri, 27 Apr 2007 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2007/04/log_for_log4net_1_configuration_summary</guid>
+	  <guid>http://yuliu.org/2007/04/log_for_log4net_1_configuration_summary</guid>
 	  <description>&lt;p&gt;最近在写程序时，觉得对程序进行log很有必要。比如一个程序试运行时，可以通过log了解程序的运行情况等。.NET 框架下有&lt;a href=&quot;http://www.cnblogs.com/Terrylee/archive/2006/12/03/opensource_framework_and_resource_recommendation_Log.html&quot;&gt;很多开源的log工具&lt;/a&gt;，log4net就是其中的代表。&lt;/p&gt;
 
 &lt;p&gt;以前学习英语的东西，都是只了解了一个大概。这次决定试试通过翻译英文文档来学习log4net，看看能不能有更多的收获。学习的过程就叫Log For log4net吧，好像有一点绕口:-)&lt;/p&gt;
@@ -2214,10 +2214,10 @@ INFO [main] (MyApp.cs:19) - Exiting application.
     
     <item>
       <title>使用Javascript 调用.NET WEB服务</title>
-      <link>http://localhost:4000/2007/04/using_dotnet_web_service_by_javascript/</link>
+      <link>http://yuliu.org/2007/04/using_dotnet_web_service_by_javascript/</link>
       <pubDate>Sun, 22 Apr 2007 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2007/04/using_dotnet_web_service_by_javascript</guid>
+	  <guid>http://yuliu.org/2007/04/using_dotnet_web_service_by_javascript</guid>
 	  <description>&lt;p&gt;过去使用Javascript调用服务器端代码时，后台代码一直都是放在普通的ASPX页面的Page_Load方法内，一直觉得这种方式不是很好，每实现一个功能都要一个新的页面来实现，也许还有其他问题。如果能够使用WEB服务的话，就可以解决上述问题，如可以在一个Web服务页面内放置多个函数和代码，解决web服务调用验证等。&lt;/p&gt;
 
 &lt;p&gt;在网上搜索Javascript调用web服务的方法，找到一篇&lt;a href=&quot;http://www.ibm.com/developerworks/cn/webservices/ws-wsajax/&quot;&gt;使用 Ajax 调用 SOAP Web 服务&lt;/a&gt;，但总是感觉好像太复杂了，要使用到它的Web Services JavaScript Library。另外一种我知道的方法就是使用ASP.NET Ajax，使用这个库调用web服务很简单并且实现的功能也很强。但是如果不使用这么重量的库能不能直接使用Javascript调用WEB服务呢？&lt;/p&gt;
@@ -2325,10 +2325,10 @@ public void fooText()
     
     <item>
       <title>Javascript 的命名空间、类、属性和方法</title>
-      <link>http://localhost:4000/2007/04/namespace_class_property_function_in_javascript/</link>
+      <link>http://yuliu.org/2007/04/namespace_class_property_function_in_javascript/</link>
       <pubDate>Sat, 21 Apr 2007 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2007/04/namespace_class_property_function_in_javascript</guid>
+	  <guid>http://yuliu.org/2007/04/namespace_class_property_function_in_javascript</guid>
 	  <description>&lt;p&gt;今天在网上看了一些实现Javascript 的命名空间、类、属性和方法的文章，下面是我自己尝试的代码，由于对Javascript这种prototype型的语言的理解不是很深，理解可能有误，还好实现应该没有问题的:-)&lt;/p&gt;
 
 &lt;h1&gt;1. 命名空间&lt;/h1&gt;
@@ -2418,10 +2418,10 @@ sacranto.demo.aclass.foo=function(s){
     
     <item>
       <title>配置iBatis.NET DataMapper</title>
-      <link>http://localhost:4000/2007/04/ibatis_net_datamapper_configuration/</link>
+      <link>http://yuliu.org/2007/04/ibatis_net_datamapper_configuration/</link>
       <pubDate>Wed, 18 Apr 2007 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2007/04/ibatis_net_datamapper_configuration</guid>
+	  <guid>http://yuliu.org/2007/04/ibatis_net_datamapper_configuration</guid>
 	  <description>&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;在&lt;a href=&quot;http://ibatis.apache.org/dotnetdownloads.cgi&quot;&gt;iBatis.Net的官方网站&lt;/a&gt;下载iBatis.NET DataMapper 1.6.1。这个是今年4月6号的最新版本，也是快一年以来的第一次更新。&lt;br/&gt;
 下载的Release的版本解压缩以后看起来很杂乱，dll、xml和xsd等一大堆。&lt;/p&gt;&lt;/li&gt;
@@ -2540,10 +2540,10 @@ database用于配置映射的数据源，Provider我改成了sqlServer2.0。&lt;
     
     <item>
       <title>Subversion 服务器的建立</title>
-      <link>http://localhost:4000/2007/03/setup_of_subversion_server/</link>
+      <link>http://yuliu.org/2007/03/setup_of_subversion_server/</link>
       <pubDate>Fri, 30 Mar 2007 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2007/03/setup_of_subversion_server</guid>
+	  <guid>http://yuliu.org/2007/03/setup_of_subversion_server</guid>
 	  <description>&lt;p&gt;作为一个非专业的程序设计人员，原来编程序要进行版本控制总是使用winrar压缩，今天尝试了一下Subversion（SVN），感觉的确很好用，以后就用它代替rar了。不知道用来对word文档或者其他的进行控制行不行。使用SVN首先要建立SVN服务器。这方面教程网上很多，写这篇blog的目的是帮助自己记录，免得以后到处找资料，如果对你有一点用就更好了。Subversion有一本很好的图书教程&lt;a href=&quot;http://svnbook.subversion.org.cn/1.1/index.html&quot;&gt;使用Subversion进行版本控制&lt;/a&gt;  免费PDF或者HTML，多语言版本，内容齐全，同时意味着复杂，这也是写这篇blog的原因。&lt;/p&gt;
 
 &lt;p&gt;这篇blog的目的是 &lt;strong&gt;&lt;em&gt;照着它操作即可以配置出局域网内可以直接使用的Subversion服务器&lt;/em&gt;&lt;/strong&gt; 。&lt;/p&gt;
@@ -2573,10 +2573,10 @@ database用于配置映射的数据源，Provider我改成了sqlServer2.0。&lt;
     
     <item>
       <title>PI-SDK错误-2147220424的解决方法</title>
-      <link>http://localhost:4000/2007/03/solution_to_pi_sdk_error_2147220424/</link>
+      <link>http://yuliu.org/2007/03/solution_to_pi_sdk_error_2147220424/</link>
       <pubDate>Thu, 29 Mar 2007 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2007/03/solution_to_pi_sdk_error_2147220424</guid>
+	  <guid>http://yuliu.org/2007/03/solution_to_pi_sdk_error_2147220424</guid>
 	  <description>&lt;p&gt;最近有不少人通过IM问我关于PI-SDK开发的问题，正好我也好久没有看了，把原来学习的时候写的一个利用PI-SDK读取snapshot和archive的例子拿出来重温了一下。调试运行结果竟然不通过，记得原来这个例子是OK的，看了以下错误出在Server对象的Open方法上，这个方法是用于连接数据库的。仔细看了SDK的文档，连接字符串的写法、用户名和密码均正确，但是就是连不上，每运行到这里就跑出异常-2147220424。异常提示“ServerID returned from server does not match that currently configured on this machine. The server at the path for the opened handle may have changed. ”我理解的大意是服务器的句柄变化，返回的ServerID和机器的当前配置不同。记起前几天把实验用的PI数据库重装过，难道是这个原因不成。但是怎么解决呢？文档和Google均没有找到好的答案。&lt;/p&gt;
 
 &lt;p&gt;首先，利用PI-API连接数据库，在权限允许的情况下，读写均没有问题，虽然PI-API和PI-SDK使用两套不同的登录方式，但是这样至少说明我的机器和数据库的连接是没有问题的。&lt;/p&gt;
@@ -2593,10 +2593,10 @@ database用于配置映射的数据源，Provider我改成了sqlServer2.0。&lt;
     
     <item>
       <title>聚合聊天工具 Miranda32</title>
-      <link>http://localhost:4000/2007/03/integrated_im_tools_miranda32/</link>
+      <link>http://yuliu.org/2007/03/integrated_im_tools_miranda32/</link>
       <pubDate>Thu, 29 Mar 2007 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2007/03/integrated_im_tools_miranda32</guid>
+	  <guid>http://yuliu.org/2007/03/integrated_im_tools_miranda32</guid>
 	  <description>&lt;p&gt;自安装Windows2003 SP2后，因为QQ键盘保护导致系统死机所以一直没有使用QQ。也许是QQ意识到了键盘保护引起的这些问题，推出了最新版本的QQ，它能在安装时候让你选择是否使用键盘保护。但是我一直不使用原版的QQ，乱七八糟的东西太多，从最初的木子，到珊瑚虫再到现在的飘云版。但是飘云还没有推出最新版的修改版，只好作罢。&lt;/p&gt;
 
 &lt;p&gt;但是实际又不允许我不使用QQ，周围使用它的人太多了。于是找了下有没有能够兼容QQ的聊天工具，网络的那种我不喜欢，聊天还要开个网页、老板来了怎么办？:-) 于是找到Giam最新测试版，稳定版好像不支持QQ，用着不怎么顺手，最后发现了这款聚合聊天工具&lt;a href=&quot;http://miranda-im.org/&quot;&gt;Miranda32&lt;/a&gt;.如果遇到同样问题的人可以尝试一下它。&lt;/p&gt;
@@ -2629,10 +2629,10 @@ database用于配置映射的数据源，Provider我改成了sqlServer2.0。&lt;
     
     <item>
       <title>利用PI-SDK读取和写入snapshot或者archive的示例</title>
-      <link>http://localhost:4000/2007/03/demo_to_read_write_snapshot_and_archive_using_pisdk/</link>
+      <link>http://yuliu.org/2007/03/demo_to_read_write_snapshot_and_archive_using_pisdk/</link>
       <pubDate>Thu, 29 Mar 2007 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2007/03/demo_to_read_write_snapshot_and_archive_using_pisdk</guid>
+	  <guid>http://yuliu.org/2007/03/demo_to_read_write_snapshot_and_archive_using_pisdk</guid>
 	  <description>&lt;p&gt;一个很简单的程序。实现PI-SDK读取和写入snapshot或者archive。以测试读取和写入int和float的数据，bool和string类型没有测试，估计需要修改，但是原理是一样的。界面如图，从上到下，从左到右操作就可以了。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2007/demo_to_read_write_snapshot_and_archive_using_pisdk_001.jpg&quot; alt=&quot;程序界面&quot; /&gt;&lt;/p&gt;
@@ -2654,10 +2654,10 @@ These code are provided AS IS. You can copy it, use it, and distribute it as lon
     
     <item>
       <title>Word 2007调整表格中公式显示格式的宏</title>
-      <link>http://localhost:4000/2007/03/word2007_macro_to_adjust_formula_style_in_table/</link>
+      <link>http://yuliu.org/2007/03/word2007_macro_to_adjust_formula_style_in_table/</link>
       <pubDate>Thu, 22 Mar 2007 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2007/03/word2007_macro_to_adjust_formula_style_in_table</guid>
+	  <guid>http://yuliu.org/2007/03/word2007_macro_to_adjust_formula_style_in_table</guid>
 	  <description>&lt;p&gt;最近要写一个报告，正好体验了一把Word 2007，改变的确很大，界面的报道已经很多了，google、baidu搜索不知道有多少结果。我比较关心其中公式编辑器的改变，不像以前的版本使用MathType的简化版来做为公式编辑器，word 2007使用普通文本来而不是对象来描述公式（以前的版本使用嵌入对象来描述，这个方法现在仍然被支持），所以它能很好的嵌入在普通文本里面。更为重要的是据说为了新的公式编辑器，微软使用了TeX的标准和设计新的数学字体。通过实践，果然word 2007生成的公式比以前的美观了很多。下面两个你能猜出来哪个是新公式编辑器写的吗？&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2007/word2007_macro_to_adjust_formula_style_in_table_001.jpg&quot; alt=&quot;公式&quot; /&gt;&lt;/p&gt;
@@ -2692,10 +2692,10 @@ End Sub
     
     <item>
       <title>微软网站的Windows 2003 sp2兼容应用程序列表</title>
-      <link>http://localhost:4000/2007/03/compatible_softwares_of_windows_2003sp2_in_microsoft_website/</link>
+      <link>http://yuliu.org/2007/03/compatible_softwares_of_windows_2003sp2_in_microsoft_website/</link>
       <pubDate>Sun, 18 Mar 2007 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2007/03/compatible_softwares_of_windows_2003sp2_in_microsoft_website</guid>
+	  <guid>http://yuliu.org/2007/03/compatible_softwares_of_windows_2003sp2_in_microsoft_website</guid>
 	  <description>&lt;p&gt;在这篇&lt;a href=&quot;/2007/03/abnormal_shutdown_when_upgrading_to_2003sp2&quot;&gt;Blog&lt;/a&gt;中令我写到升级到Windows 2003 sp2后，QQ因为它采用的键盘保护技术导致系统死机的问题。&lt;/p&gt;
 
 &lt;p&gt;今天在微软的官方网站上看到了&lt;a href=&quot;http://support.microsoft.com/default.aspx?scid=kb;en-us;926031&amp;amp;sd=rss&amp;amp;spid=3198#appliesto&quot;&gt;Windows 2003 sp2兼容应用程序列表（英文）&lt;/a&gt;，文章提到微软的测试人员测试了1500+个应用程序，测试结果包括两类，一类是通过检测的软件及其版本；另外一类当然是有问题的，提供了问题描述和可能的解决方法。&lt;/p&gt;
@@ -2706,10 +2706,10 @@ End Sub
     
     <item>
       <title>Windows 2003下安装965主板集成显卡（GMA3000）驱动程序</title>
-      <link>http://localhost:4000/2007/03/gma3000_driver_installation_of_965_mainboard_in_windows_2003/</link>
+      <link>http://yuliu.org/2007/03/gma3000_driver_installation_of_965_mainboard_in_windows_2003/</link>
       <pubDate>Fri, 16 Mar 2007 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2007/03/gma3000_driver_installation_of_965_mainboard_in_windows_2003</guid>
+	  <guid>http://yuliu.org/2007/03/gma3000_driver_installation_of_965_mainboard_in_windows_2003</guid>
 	  <description>&lt;p&gt;一台&lt;a href=&quot;http://www1.ap.dell.com/content/products/productdetails.aspx/optix_745?c=cn&amp;amp;l=zh&amp;amp;s=bsd&amp;amp;cs=cnbsd1&quot;&gt;DELL OptiPlex 745&lt;/a&gt;的商用台式机因为需要重新安装了Windows 2003系统，安装好以后插入自带的驱动程序盘，发现没有2003的驱动。那么先用xp的驱动试一下吧，主板的还好，到了显卡，出现了下面的对话框&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2007/gma3000_driver_installation_of_965_mainboard_in_windows_2003_001.jpg&quot; alt=&quot;error message&quot; /&gt;&lt;/p&gt;
@@ -2732,10 +2732,10 @@ End Sub
     
     <item>
       <title>升级到Windows 2003 sp2及系统不正常死机的初探</title>
-      <link>http://localhost:4000/2007/03/abnormal_shutdown_when_upgrading_to_2003sp2/</link>
+      <link>http://yuliu.org/2007/03/abnormal_shutdown_when_upgrading_to_2003sp2/</link>
       <pubDate>Thu, 15 Mar 2007 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2007/03/abnormal_shutdown_when_upgrading_to_2003sp2</guid>
+	  <guid>http://yuliu.org/2007/03/abnormal_shutdown_when_upgrading_to_2003sp2</guid>
 	  <description>&lt;p&gt;经历过XP的sp2升级经验以后，确认不会因为升级产生某些不可控的危害以后，我决定把我的2003操作系统升级到sp2 :) ，可是，却发生了...&lt;/p&gt;
 
 &lt;p&gt;首先在&lt;a href=&quot;http://www.microsoft.com/downloads/details.aspx?FamilyID=95ac1610-c232-4644-b828-c55eec605d55&amp;amp;DisplayLang=en&quot;&gt;微软的下载中心&lt;/a&gt;下载大约400M的升级包，还有一种是可以刻录成光盘的下载文件，个头也比较大，估计500M左右，我选择了这个比较小的。&lt;/p&gt;
@@ -2762,10 +2762,10 @@ End Sub
     
     <item>
       <title>whatwhat的安装</title>
-      <link>http://localhost:4000/2007/01/setup_whatwhat/</link>
+      <link>http://yuliu.org/2007/01/setup_whatwhat/</link>
       <pubDate>Tue, 30 Jan 2007 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2007/01/setup_whatwhat</guid>
+	  <guid>http://yuliu.org/2007/01/setup_whatwhat</guid>
 	  <description>&lt;p&gt;从http://cleverdevil.org/whatwhat把whatwhat拖下来以后&lt;/p&gt;
 
 &lt;p&gt;首先配置dev.cfg中的数据库为&lt;/p&gt;
@@ -2807,10 +2807,10 @@ sqlobject.dburi=&quot;notrans_sqlite:///g|/whatwhat/trunk/sqlplayground.db&quot;
     
     <item>
       <title>A Data Driven Switch Menu On CodeProject.com</title>
-      <link>http://localhost:4000/2006/12/a_data_driven_switch_menu_on_codeproject/</link>
+      <link>http://yuliu.org/2006/12/a_data_driven_switch_menu_on_codeproject/</link>
       <pubDate>Wed, 20 Dec 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/12/a_data_driven_switch_menu_on_codeproject</guid>
+	  <guid>http://yuliu.org/2006/12/a_data_driven_switch_menu_on_codeproject</guid>
 	  <description>&lt;p&gt;Yesterday, I write a article on how to make a switch menu with javascript. Today I read a article on codeproject.com named &lt;a href=&quot;http://www.codeproject.com/useritems/navpanel.asp&quot;&gt;How To Implement a NavigationPanel Using AJAX&lt;/a&gt;. The author do a really good work to make a Ajax data driven navigation panel by asp.net and SQL Server. With the source code of the article we can move data source to XML files and so on.&lt;/p&gt;
 
 &lt;p&gt;I decorated the code in my last article. Unfortunately, if you use Firefox to browse it, the style of code looks ugly. I used the open source code coloried tool wriiten by javascript &lt;a href=&quot;http://www.dreamprojections.com/SyntaxHighlighter/&quot;&gt;dp.SyntaxHighlighter&lt;/a&gt;. I am tring to modify it to satify my requirement better the whole day but with little result.&lt;/p&gt;
@@ -2821,10 +2821,10 @@ sqlobject.dburi=&quot;notrans_sqlite:///g|/whatwhat/trunk/sqlplayground.db&quot;
     
     <item>
       <title>Switch Menu In Javascript</title>
-      <link>http://localhost:4000/2006/12/switch_menu_in_javascript/</link>
+      <link>http://yuliu.org/2006/12/switch_menu_in_javascript/</link>
       <pubDate>Tue, 19 Dec 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/12/switch_menu_in_javascript</guid>
+	  <guid>http://yuliu.org/2006/12/switch_menu_in_javascript</guid>
 	  <description>&lt;p&gt;I formerly choose &lt;a href=&quot;http://ajax.asp.net/ajaxtoolkit/Accordion/Accordion.aspx&quot;&gt;Accordion Control&lt;/a&gt; in Microsoft Ajax Control toolkit in my application. I like menu with such switching  style. The control is well in it's appearance. For example, we can set frames per second of switching animation and fading transition effect.&lt;/p&gt;
 
 &lt;p&gt;However, I encountered the problem when I set  AsyncPostBackTrigger of updatepanel to the LinkButton inside the accordion. If do this, there will be a error at runtime said that  LinkButton1 is not exist. I found a lot of developer have the same confusion at the official forum of asp.net but I can't get answer of it. I think this is may be control name changed when it is in a panel.&lt;/p&gt;
@@ -2933,10 +2933,10 @@ function SwitchMenu(obj,container){
     
     <item>
       <title>Some Tips From Atlas To Microsoft Ajax RC1</title>
-      <link>http://localhost:4000/2006/12/some_tips_from_atlas_to_microsoft_ajax_rc1/</link>
+      <link>http://yuliu.org/2006/12/some_tips_from_atlas_to_microsoft_ajax_rc1/</link>
       <pubDate>Mon, 18 Dec 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/12/some_tips_from_atlas_to_microsoft_ajax_rc1</guid>
+	  <guid>http://yuliu.org/2006/12/some_tips_from_atlas_to_microsoft_ajax_rc1</guid>
 	  <description>&lt;p&gt;These days I am busy on move a old atlas application to newer Microsoft Ajax RC1. During This process I encountered some problem and get some tips.&lt;/p&gt;
 
 &lt;ol&gt;
@@ -2951,10 +2951,10 @@ function SwitchMenu(obj,container){
     
     <item>
       <title>Switch Menu In Javascript</title>
-      <link>http://localhost:4000/2006/12/switch_menu_in-javascript/</link>
+      <link>http://yuliu.org/2006/12/switch_menu_in-javascript/</link>
       <pubDate>Fri, 08 Dec 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/12/switch_menu_in-javascript</guid>
+	  <guid>http://yuliu.org/2006/12/switch_menu_in-javascript</guid>
 	  <description>&lt;p&gt;These days I am busy on move a old atlas application to newer Microsoft Ajax RC1. During This process I encountered some problem and get some tips.&lt;/p&gt;
 
 &lt;ol&gt;
@@ -2969,10 +2969,10 @@ function SwitchMenu(obj,container){
     
     <item>
       <title>LYC Anniversary 4</title>
-      <link>http://localhost:4000/2006/12/lyc_anniversary_4/</link>
+      <link>http://yuliu.org/2006/12/lyc_anniversary_4/</link>
       <pubDate>Fri, 08 Dec 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/12/lyc_anniversary_4</guid>
+	  <guid>http://yuliu.org/2006/12/lyc_anniversary_4</guid>
 	  <description>&lt;p&gt;Lyc is not short for china new star but the  abbreviation for my girlfriend' name and mine. Today is 4 anniversary of us. I still remember 4 years ago what  a nervous man I am when I went along with her. Although we had displeasure ever, now we are harmonious and deeply love each other.&lt;/p&gt;
 
 &lt;p&gt;No more word I express and want to express. Congratulation and wish we be more and more better!&lt;/p&gt;
@@ -2981,10 +2981,10 @@ function SwitchMenu(obj,container){
     
     <item>
       <title>Auto-Activate ActiveX Controls in The Web Page</title>
-      <link>http://localhost:4000/2006/12/auto_activate_activex_controls_in_the_web_page/</link>
+      <link>http://yuliu.org/2006/12/auto_activate_activex_controls_in_the_web_page/</link>
       <pubDate>Fri, 08 Dec 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/12/auto_activate_activex_controls_in_the_web_page</guid>
+	  <guid>http://yuliu.org/2006/12/auto_activate_activex_controls_in_the_web_page</guid>
 	  <description>&lt;p&gt;Microsoft has made changes to the way that newest Internet Explorer handles some content in Web pages due to security reason. When Internet Explorer encounters a page with ActiveX controls (such as a page using PI-ActiveView to show .pdi file), the control may require a single click to activate. (the newest Internet Explorer represent If user installed &lt;a href=&quot;http://support.microsoft.com/kb/912945/en-us&quot;&gt;security update 912812&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Let us take PI-ActiveView as a example.When you open the page embed .pdi, a tooltip will appear to prompt you that the control should be clicked to first activate before it can interact.&lt;/p&gt;
@@ -3012,10 +3012,10 @@ function SwitchMenu(obj,container){
     
     <item>
       <title>Install Software Do Not Support Your Windows Edition</title>
-      <link>http://localhost:4000/2006/12/install_software_do_not_support_your_windows_edition/</link>
+      <link>http://yuliu.org/2006/12/install_software_do_not_support_your_windows_edition/</link>
       <pubDate>Thu, 07 Dec 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/12/install_software_do_not_support_your_windows_edition</guid>
+	  <guid>http://yuliu.org/2006/12/install_software_do_not_support_your_windows_edition</guid>
 	  <description>&lt;p&gt;Today I need install Adobe Premiere Pro 2 that does only support windows XP. Need I change my OS just to use it, no I do not want to do it. I went to the Internet to fetch some information. At first I just want to see if there is some mod to force it work on windows 2003. A method that replaced 1033.mst is recommend. this is the simplest way to install the software.&lt;/p&gt;
 
 &lt;p&gt;However &lt;a href=&quot;http://blazinggin.spaces.live.com/&quot;&gt;another article&lt;/a&gt; attracted me more than simplest way is to modify the install package using Orca.exe. It is a database table editor for creating and editing Windows Installer packages and merge modules provided by Microsoft. The tool provides a graphical interface for validation, highlighting the particular entries where validation errors or warnings occur. More information and the way how to get it in &lt;a href=&quot;http://msdn.microsoft.com/library/default.asp?url=/library/en-us/msi/setup/orca_exe.asp&quot;&gt;Orca.exe&lt;/a&gt; or &lt;a href=&quot;http://msdn.microsoft.com/library/default.asp?url=/library/en-us/msi/setup/windows_installer_development_tools.asp&quot;&gt;Windows Installer Development Tools&lt;/a&gt;.&lt;/p&gt;
@@ -3080,10 +3080,10 @@ to
     
     <item>
       <title>Tip On Distributing PI-ActiveView Automated ActiveX Installation</title>
-      <link>http://localhost:4000/2006/12/tip_on_distributing_pi_activeview_automated_activex_installation/</link>
+      <link>http://yuliu.org/2006/12/tip_on_distributing_pi_activeview_automated_activex_installation/</link>
       <pubDate>Wed, 06 Dec 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/12/tip_on_distributing_pi_activeview_automated_activex_installation</guid>
+	  <guid>http://yuliu.org/2006/12/tip_on_distributing_pi_activeview_automated_activex_installation</guid>
 	  <description>&lt;p&gt;In previous environment, I always use PI-ActiveView in the machines which has already installed PI-ActiveView and PI-ProcessBook, So I had never care distributing problem until I want to navigate the website use PI-ActiveView to see PDI files embed in it. the result is web page can not display it.&lt;/p&gt;
 
 &lt;p&gt;I remember someone ever told that this problem can be solved by automated ActiveX installation because of in the fact it's a ActiveX Control. Open the document of it is my choice and select the setting up automated web installation. Follow the instruction of it. so easy, isn't it?&lt;/p&gt;
@@ -3100,10 +3100,10 @@ to
     
     <item>
       <title>PlaySC.com Is Shutdown</title>
-      <link>http://localhost:4000/2006/12/playsc_com_is_shutdown/</link>
+      <link>http://yuliu.org/2006/12/playsc_com_is_shutdown/</link>
       <pubDate>Wed, 06 Dec 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/12/playsc_com_is_shutdown</guid>
+	  <guid>http://yuliu.org/2006/12/playsc_com_is_shutdown</guid>
 	  <description>&lt;p&gt;Maybe this is a old news but I just got it when I can't open the website. I found the reason and knew that it is shutdown at May from Internet. It makes me a little frustrated because this is my favorite website when I in the grade 4 at university, I was a enthusiastic Starcraft fan that time and played it everyday. Logging in to PlaySC.com is as usual as eating, sleeping. PlaySC is a new comer and small that time and I am the first round member of it , We discuss sc tactics and knew some sc gamer. Although I left the game because I think I should not concentrate on games to influence my study and life, I pay attention to it like I do in Starcraft. I knew the website become more and more popular in china sc area. I am happy for seeing it.&lt;/p&gt;
 
 &lt;p&gt;As PlaySC.com is shutdown, I also be depressed to feel I am not young, the game like starcraft, diablo I played is replaced by Warcraft, Wow; the entertainment star such as Jacky, Maggie has less influence than Jay and a lot who I can't call their name.&lt;/p&gt;
@@ -3116,10 +3116,10 @@ to
     
     <item>
       <title>Add In-Site Search To Your Blogger Beta</title>
-      <link>http://localhost:4000/2006/12/add_in_site_search_to_your_blogger_beta/</link>
+      <link>http://yuliu.org/2006/12/add_in_site_search_to_your_blogger_beta/</link>
       <pubDate>Tue, 05 Dec 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/12/add_in_site_search_to_your_blogger_beta</guid>
+	  <guid>http://yuliu.org/2006/12/add_in_site_search_to_your_blogger_beta</guid>
 	  <description>&lt;p&gt;In my blogger beta default template, there is no in-site search function in my blog and I can not find it in widgets supported. So I am surprised and frustrated that blogger beta has not such normal function. I am not sure whether other default themes has it.&lt;/p&gt;
 
 &lt;p&gt;Today I navigated a &lt;a href=&quot;http://sunr.blogspot.com/&quot;&gt;blog&lt;/a&gt; which give lot's of blogger beta hack skills and found a mount of useful information there. However this function is not mentioned in it, is this is a special to me? Fortunately I saw a &quot;search this blog&quot; button in it, then I open the source of the website. I got the search code below.&lt;/p&gt;
@@ -3138,10 +3138,10 @@ to
     
     <item>
       <title>小议过量空气系数</title>
-      <link>http://localhost:4000/2006/12/a_few_points_about_excess_air_coefficient/</link>
+      <link>http://yuliu.org/2006/12/a_few_points_about_excess_air_coefficient/</link>
       <pubDate>Tue, 05 Dec 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/12/a_few_points_about_excess_air_coefficient</guid>
+	  <guid>http://yuliu.org/2006/12/a_few_points_about_excess_air_coefficient</guid>
 	  <description>&lt;p&gt;今天因为需要，计算了一下燃气轮机的过量空气系数（excess air coefficient），得出的结论让我有一点惊讶，达到了13左右。而我对过量空气系数的印象一直停留在1.2左右。看了一下计算过程和单位换算，应该没有错，于是查了一下一本燃气轮机教程，上面写到过量空气系数的范围是30-80. 虽然书的历史长了一点，但是数值估计还是差不多的，所以那么我计算的13应该是在可以接受的范围内，1.2是锅炉燃烧的的过量空气系数。我们先看看为什么锅炉的过量空气会取得比较小呢？&lt;/p&gt;
 
 &lt;ol&gt;
@@ -3172,10 +3172,10 @@ to
     
     <item>
       <title>A Normal Problem In China -- Train Delay</title>
-      <link>http://localhost:4000/2006/12/a_normal_problem_in_china_train_delay/</link>
+      <link>http://yuliu.org/2006/12/a_normal_problem_in_china_train_delay/</link>
       <pubDate>Mon, 04 Dec 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/12/a_normal_problem_in_china_train_delay</guid>
+	  <guid>http://yuliu.org/2006/12/a_normal_problem_in_china_train_delay</guid>
 	  <description>&lt;p&gt;I do not know whether train delay in other country than china is a normal thing, but it's quite ordinary in china although the railway department has improved their service now.&lt;/p&gt;
 
 &lt;p&gt;Today I take train from Shanghai to Hangzhou. A tour should take one and half a hour from 5:30 - 7:00 PM. I got to the South Shanghai Railway station at 4:40 on time, but when I waiting in the room,   unfortunately a moment later screen displayed that the train will delay, I am familiar with it as frequently train taker. but a little surprised to me the delay time is unsure. This is unacceptable to be because I can't go out for supper if I do not know when would train come. I don't think the delay time is totally unknown to railway workers. Although there is not accurate time, but must be a range. It is a monopoly mentality that just say sorry from broadcast and have not any practical action include their responsibility to forecast delay time. Finally after waiting in the room for almost one hour I got up the train at 6:20 and the train leave Shanghai at 6:40 which time I had arrived the destination if on time. when I arrived at Hangzhou, It's 8:20. the train delayed 1 hour and 20 minutes  to a trip just 1 hour 30 minutes. this is not a special case, I encounter this condition about 2 month ago in the same train.&lt;/p&gt;
@@ -3188,10 +3188,10 @@ to
     
     <item>
       <title>Two Simple Hack Tips on Blogger Beta</title>
-      <link>http://localhost:4000/2006/12/two_simple_hack_tips_on_blogger_beta/</link>
+      <link>http://yuliu.org/2006/12/two_simple_hack_tips_on_blogger_beta/</link>
       <pubDate>Fri, 01 Dec 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/12/two_simple_hack_tips_on_blogger_beta</guid>
+	  <guid>http://yuliu.org/2006/12/two_simple_hack_tips_on_blogger_beta</guid>
 	  <description>&lt;p&gt;Because I am a freshman to Blogger Beta. I found two tips to make my new blog better.&lt;/p&gt;
 
 &lt;ol&gt;
@@ -3229,10 +3229,10 @@ to
     
     <item>
       <title>Wikipedia CD 1.0 （BT下载链接已失效）</title>
-      <link>http://localhost:4000/2006/11/wikipedia_cd_1/</link>
+      <link>http://yuliu.org/2006/11/wikipedia_cd_1/</link>
       <pubDate>Thu, 30 Nov 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/11/wikipedia_cd_1</guid>
+	  <guid>http://yuliu.org/2006/11/wikipedia_cd_1</guid>
 	  <description>&lt;p&gt;维基百科在中国的命运真可谓一波三折，前段时间仿佛看着已经解封了，在大家庆祝了一段时间以后突然又不能访问了。这样的一个好东西在各个方面（政治方面暂且不论）给于我的帮助是很大的，可惜了。&lt;/p&gt;
 
 &lt;p&gt;维基百科CD给于我们用另外一种方式接触它的机会，也许有的网友会认为这个是不是专门给中国用户制作的呢？以前我也是这样认为的，但是看了介绍以后发现完全不是这样的。&lt;/p&gt;
@@ -3267,10 +3267,10 @@ to
     
     <item>
       <title>About PI-API Error -10401</title>
-      <link>http://localhost:4000/2006/11/pi_api_error_10401/</link>
+      <link>http://yuliu.org/2006/11/pi_api_error_10401/</link>
       <pubDate>Thu, 30 Nov 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/11/pi_api_error_10401</guid>
+	  <guid>http://yuliu.org/2006/11/pi_api_error_10401</guid>
 	  <description>&lt;p&gt;Today I wanted to insert data to PI by using a .net class which boxed PI-API I created it before. I used function pisn_putsnapshotx, but it doesn't work with error code -10401.&lt;/p&gt;
 
 &lt;p&gt;In PI-API Documents, there is no comment about this error code. so I had to found the reason by myself. I used default point &quot;sinusoid&quot; as test point and try to insert data into it. it works Fine. Then I compare tag property of &quot;sinusoid&quot; and my problem tag, I notice defference on DataAccess.&lt;/p&gt;
@@ -3297,10 +3297,10 @@ Problem tag: o:rw g:r w:r
     
     <item>
       <title>China First Warcraft 3 Network Live Broadcast</title>
-      <link>http://localhost:4000/2006/11/china_first_warcraft3_network_live_broadcast/</link>
+      <link>http://yuliu.org/2006/11/china_first_warcraft3_network_live_broadcast/</link>
       <pubDate>Thu, 30 Nov 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/11/china_first_warcraft3_network_live_broadcast</guid>
+	  <guid>http://yuliu.org/2006/11/china_first_warcraft3_network_live_broadcast</guid>
 	  <description>&lt;p&gt;Everyone who played starcraft or concerned about Electronic Competition would know Electronic Competition in starcraft have great development. Korean government have confirm its legal position and contribution to national economics. yellow, nada and oov had become star in Korea. but war3 and war3 player has less Influence.&lt;/p&gt;
 
 &lt;p&gt;China had develop starcraft before, but there is still great distance between Chinese and Korean player. as Sky(a famous Chinese war3 player) continually won two championship in WCG which represent highest award in Electronic Competition. China decided to make  breakthrough in war3 even in Electronic competition so that Chinese government would confirm its legal position.
@@ -3310,10 +3310,10 @@ Nowadays China hold a China-Korea war3 star competition to expand Electronic Com
     
     <item>
       <title>远程桌面连接windows 2000</title>
-      <link>http://localhost:4000/2006/11/remote_desktop_to_windows2000/</link>
+      <link>http://yuliu.org/2006/11/remote_desktop_to_windows2000/</link>
       <pubDate>Wed, 29 Nov 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/11/remote_desktop_to_windows2000</guid>
+	  <guid>http://yuliu.org/2006/11/remote_desktop_to_windows2000</guid>
 	  <description>&lt;p&gt;知道windows远程桌面是从XP开始的，一直觉得这个是个好东西，使用起来很方便，最近需要远程桌面连接windows 2000的机子，才知道2000也可以使用远程连接，但是设置要稍微麻烦一点。&lt;/p&gt;
 
 &lt;p&gt;首先Windows 2000的各个版本对远程桌面的支持不一样的，Pro版只能连接另外的计算机而不能被其他计算机连接，Server版本以上的就双向都可以了,还好我这台是Server版的.&lt;/p&gt;
@@ -3337,10 +3337,10 @@ Nowadays China hold a China-Korea war3 star competition to expand Electronic Com
     
     <item>
       <title>Windows Update的存放文件夹</title>
-      <link>http://localhost:4000/2006/06/folder_of_windows_update/</link>
+      <link>http://yuliu.org/2006/06/folder_of_windows_update/</link>
       <pubDate>Fri, 23 Jun 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/06/folder_of_windows_update</guid>
+	  <guid>http://yuliu.org/2006/06/folder_of_windows_update</guid>
 	  <description>&lt;p&gt;每次重新装系统都要重新下载补丁包，今天看了看补丁包的存放文件夹&lt;/p&gt;
 
 &lt;p&gt;原来是&lt;/p&gt;
@@ -3353,10 +3353,10 @@ Nowadays China hold a China-Korea war3 star competition to expand Electronic Com
     
     <item>
       <title>使用C#进行基于PI的开发（三）- 应用PISDK和PIAPI从PI数据库读取数据</title>
-      <link>http://localhost:4000/2006/06/pi_development_using_csharp_3/</link>
+      <link>http://yuliu.org/2006/06/pi_development_using_csharp_3/</link>
       <pubDate>Mon, 19 Jun 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/06/pi_development_using_csharp_3</guid>
+	  <guid>http://yuliu.org/2006/06/pi_development_using_csharp_3</guid>
 	  <description>&lt;p&gt;上次说了这次的题目是对PI数据库中的数据进行读取和写入，可是为了等了这么久呢?出了自己比较懒以外,遇到了一点麻烦也是一个原因呢?后面又说&lt;/p&gt;
 
 &lt;h1&gt;1 应用SDK从PI数据库读取数据&lt;/h1&gt;
@@ -3473,10 +3473,10 @@ ref PITime.PITIMESTAMP time);
     
     <item>
       <title>使用C#进行基于PI的开发（二）--常用对象的学习</title>
-      <link>http://localhost:4000/2006/06/pi_development_using_csharp_2/</link>
+      <link>http://yuliu.org/2006/06/pi_development_using_csharp_2/</link>
       <pubDate>Thu, 01 Jun 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/06/pi_development_using_csharp_2</guid>
+	  <guid>http://yuliu.org/2006/06/pi_development_using_csharp_2</guid>
 	  <description>&lt;p&gt;&lt;a href=&quot;/2011/03/pi_development_using_csharp/&quot;&gt;上一次&lt;/a&gt;的例子是通过PI-SDK获取Tag的属性并且修改它，我想更重要的是怎么取出Tag的值和进行更新吧。在进行尝试之前看了看文档，了解了一下PISDK的对象结构，下面这一张就是PISDK的结构图&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://fs.yuliu.org/images/essay/2006/pi_development_using_csharp_2_001.jpg&quot; alt=&quot;PISDKModel&quot; /&gt;&lt;/p&gt;
@@ -3523,10 +3523,10 @@ Many of the services available through the Server object are accessed through it
     
     <item>
       <title>使用C#进行基于PI的开发（一）</title>
-      <link>http://localhost:4000/2006/05/pi_development_using_csharp/</link>
+      <link>http://yuliu.org/2006/05/pi_development_using_csharp/</link>
       <pubDate>Tue, 30 May 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/05/pi_development_using_csharp</guid>
+	  <guid>http://yuliu.org/2006/05/pi_development_using_csharp</guid>
 	  <description>&lt;p&gt;根据PI的SDK的文档,从这里开始下手吧,这个文档的版本有点早,大概是2002年的,里面没有.net的例子,还好里面大多数是VB的例子,我想应该可以直接搬过来吧.于是开始动手.&lt;/p&gt;
 
 &lt;p&gt;首先欲基于PI-SDK开发PI数据库,必须先安装PI-SDK,然后再VS中新建了一个aspnet网站,添加引用:PI-SDK 1.2 Type Library 和 PISDKCommon 1.2 Type Library&lt;/p&gt;
@@ -3606,10 +3606,10 @@ SDK的VB例子
     
     <item>
       <title>google 发布 Google Web Toolkit</title>
-      <link>http://localhost:4000/2006/05/goole_web_toolkit_published/</link>
+      <link>http://yuliu.org/2006/05/goole_web_toolkit_published/</link>
       <pubDate>Thu, 18 May 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/05/goole_web_toolkit_published</guid>
+	  <guid>http://yuliu.org/2006/05/goole_web_toolkit_published</guid>
 	  <description>&lt;p&gt;大公司都不甘在Web 2.0时代落后阿!&lt;/p&gt;
 
 &lt;p&gt;前段时间发现了Yui(Yahoo user interface)&lt;/p&gt;
@@ -3644,10 +3644,10 @@ SDK的VB例子
     
     <item>
       <title>得到数据库中某表的主键</title>
-      <link>http://localhost:4000/2006/05/get_primary_key_of_database_table/</link>
+      <link>http://yuliu.org/2006/05/get_primary_key_of_database_table/</link>
       <pubDate>Wed, 10 May 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/05/get_primary_key_of_database_table</guid>
+	  <guid>http://yuliu.org/2006/05/get_primary_key_of_database_table</guid>
 	  <description>&lt;p&gt;搜索了半天总算搞到了&lt;/p&gt;
 
 &lt;p&gt;其实好像很简单的样子&lt;/p&gt;
@@ -3664,10 +3664,10 @@ where b.id=object_id(N'表名') and a.id=b.id and a.colid=b.colid)
     
     <item>
       <title>sqlparameter的使用</title>
-      <link>http://localhost:4000/2006/03/using_sqlparameter/</link>
+      <link>http://yuliu.org/2006/03/using_sqlparameter/</link>
       <pubDate>Wed, 15 Mar 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/03/using_sqlparameter</guid>
+	  <guid>http://yuliu.org/2006/03/using_sqlparameter</guid>
 	  <description>&lt;p&gt;今天才学会在写SQL语句的时候可以不用那么多的+号&lt;/p&gt;
 
 &lt;p&gt;用sqlparameter很方便&lt;/p&gt;
@@ -3682,10 +3682,10 @@ SqlCmd.Parameters.Add(&quot;@customerid&quot;, SqlDbType.NVarChar, 50).Value = &
     
     <item>
       <title>asp.net 2.0 基于SQL SERVER的角色配置</title>
-      <link>http://localhost:4000/2006/03/aspnet_2_role_configuration_based_on_sql_server/</link>
+      <link>http://yuliu.org/2006/03/aspnet_2_role_configuration_based_on_sql_server/</link>
       <pubDate>Thu, 09 Mar 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/03/aspnet_2_role_configuration_based_on_sql_server</guid>
+	  <guid>http://yuliu.org/2006/03/aspnet_2_role_configuration_based_on_sql_server</guid>
 	  <description>&lt;p&gt;SQL SERVER Express就不用说了，因为默认的连接就是它&lt;/p&gt;
 
 &lt;p&gt;要支持其他版本的SQL SERVER，需要做以下的修改：&lt;/p&gt;
@@ -3711,10 +3711,10 @@ SqlCmd.Parameters.Add(&quot;@customerid&quot;, SqlDbType.NVarChar, 50).Value = &
     
     <item>
       <title>(转帖)Windows2003使用技巧大放送</title>
-      <link>http://localhost:4000/2006/03/fwpost_tips_on_windows_2003_initial_installation_finish/</link>
+      <link>http://yuliu.org/2006/03/fwpost_tips_on_windows_2003_initial_installation_finish/</link>
       <pubDate>Wed, 08 Mar 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/03/fwpost_tips_on_windows_2003_initial_installation_finish</guid>
+	  <guid>http://yuliu.org/2006/03/fwpost_tips_on_windows_2003_initial_installation_finish</guid>
 	  <description>&lt;p&gt;本来想加上原文地址的，但是由于时代久远，已不可寻。&lt;/p&gt;
 
 &lt;h1&gt;一、跳过磁盘检修等待时间&lt;/h1&gt;
@@ -4187,10 +4187,10 @@ Windows 2003操作系统即使在正常工作的情况下，也有可能会向�
     
     <item>
       <title>让asp.net startkit使用SQL server 2005</title>
-      <link>http://localhost:4000/2006/02/aspnet_startkit_and_sql_server_2005/</link>
+      <link>http://yuliu.org/2006/02/aspnet_startkit_and_sql_server_2005/</link>
       <pubDate>Tue, 28 Feb 2006 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2006/02/aspnet_startkit_and_sql_server_2005</guid>
+	  <guid>http://yuliu.org/2006/02/aspnet_startkit_and_sql_server_2005</guid>
 	  <description>&lt;p&gt;在MSDN上面下了一个aspnet 2.0的startkit&lt;/p&gt;
 
 &lt;p&gt;里面使用的都是sql server 2005 express的数据库&lt;/p&gt;
@@ -4217,10 +4217,10 @@ Windows 2003操作系统即使在正常工作的情况下，也有可能会向�
     
     <item>
       <title>各种程序设计语言之我见</title>
-      <link>http://localhost:4000/2005/12/my_views_on_programme_languages/</link>
+      <link>http://yuliu.org/2005/12/my_views_on_programme_languages/</link>
       <pubDate>Sat, 31 Dec 2005 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2005/12/my_views_on_programme_languages</guid>
+	  <guid>http://yuliu.org/2005/12/my_views_on_programme_languages</guid>
 	  <description>&lt;p&gt;我在YDY BBS上面的回帖，乱其八糟写了很多，索性转到Blog上面来。&lt;/p&gt;
 
 &lt;p&gt;具体应用具体分析吧。语言的选取和你的需要绝对是有很大的关系&lt;/p&gt;
@@ -4245,10 +4245,10 @@ Windows 2003操作系统即使在正常工作的情况下，也有可能会向�
     
     <item>
       <title>VC++2005 CString和char*的相互转换</title>
-      <link>http://localhost:4000/2005/12/transfer_between_cstring_and_char_star_in_vc2005/</link>
+      <link>http://yuliu.org/2005/12/transfer_between_cstring_and_char_star_in_vc2005/</link>
       <pubDate>Mon, 26 Dec 2005 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2005/12/transfer_between_cstring_and_char_star_in_vc2005</guid>
+	  <guid>http://yuliu.org/2005/12/transfer_between_cstring_and_char_star_in_vc2005</guid>
 	  <description>&lt;p&gt;首先声明我不是一个高手，而是一个初学者，文章同样也是一个初学者对于CString和char*转换的理解。&lt;/p&gt;
 
 &lt;p&gt;因为需要，接触C++一段时间了，其中最为困扰我的问题就是在使用C++的过程中CString和char*的转换，在网上搜索了一下，看到问这个问题的人挺多的。我使用的平台是Win2003+VC 2005，本来这个很简单的问题稍微复杂了一点在2005里面。&lt;/p&gt;
@@ -4321,10 +4321,10 @@ typedef char TCHAR;
     
     <item>
       <title>C++(VC 2005)学习笔记</title>
-      <link>http://localhost:4000/2005/12/study_notes_of_cpp_vc2005/</link>
+      <link>http://yuliu.org/2005/12/study_notes_of_cpp_vc2005/</link>
       <pubDate>Sun, 25 Dec 2005 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2005/12/study_notes_of_cpp_vc2005</guid>
+	  <guid>http://yuliu.org/2005/12/study_notes_of_cpp_vc2005</guid>
 	  <description>&lt;h1&gt;1. C++下面string、char *、char**的相互转化&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code&gt;string str1=&quot;hello 你好&quot;;
@@ -4366,10 +4366,10 @@ m_explanation=strAll;
     
     <item>
       <title>推荐一网络爱情小说《与空姐同居的日子》</title>
-      <link>http://localhost:4000/2005/12/recommendation_of_a_novel_days_with_airline_stewardess/</link>
+      <link>http://yuliu.org/2005/12/recommendation_of_a_novel_days_with_airline_stewardess/</link>
       <pubDate>Wed, 14 Dec 2005 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2005/12/recommendation_of_a_novel_days_with_airline_stewardess</guid>
+	  <guid>http://yuliu.org/2005/12/recommendation_of_a_novel_days_with_airline_stewardess</guid>
 	  <description>&lt;p&gt;看到标题不要想歪了，虽然我也有过想歪的念头。&lt;/p&gt;
 
 &lt;p&gt;这是一部很纯净，很唯美的爱情。&lt;/p&gt;
@@ -4392,10 +4392,10 @@ m_explanation=strAll;
     
     <item>
       <title>买了两本书《Learning Python》和《重构》</title>
-      <link>http://localhost:4000/2005/12/buybook_learning_python_and_refactoring/</link>
+      <link>http://yuliu.org/2005/12/buybook_learning_python_and_refactoring/</link>
       <pubDate>Sat, 10 Dec 2005 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2005/12/buybook_learning_python_and_refactoring</guid>
+	  <guid>http://yuliu.org/2005/12/buybook_learning_python_and_refactoring</guid>
 	  <description>&lt;p&gt;下午去书店逛了一下，其实起来已经十一点了，不能怪我，天气太冷了&lt;/p&gt;
 
 &lt;p&gt;《重构》是早就想买的了，可惜只有影印版的，但是想着比中文的便宜了近20块钱，就买了。&lt;/p&gt;
@@ -4408,10 +4408,10 @@ m_explanation=strAll;
     
     <item>
       <title>winform中datagrid和datagridview设置列标题的实现</title>
-      <link>http://localhost:4000/2005/12/setting_title_of_datagrid_and_datagridview_of_winform/</link>
+      <link>http://yuliu.org/2005/12/setting_title_of_datagrid_and_datagridview_of_winform/</link>
       <pubDate>Fri, 09 Dec 2005 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2005/12/setting_title_of_datagrid_and_datagridview_of_winform</guid>
+	  <guid>http://yuliu.org/2005/12/setting_title_of_datagrid_and_datagridview_of_winform</guid>
 	  <description>&lt;p&gt;原来Blog上面的,抛弃有点可惜，贴过来&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;using System;
@@ -4499,10 +4499,10 @@ namespace DgHeader
     
     <item>
       <title>使用NUnit 2.23单元测试.net 2.0的设置</title>
-      <link>http://localhost:4000/2005/12/nunit_223_setting_for_testing_dotnet20/</link>
+      <link>http://yuliu.org/2005/12/nunit_223_setting_for_testing_dotnet20/</link>
       <pubDate>Fri, 09 Dec 2005 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2005/12/nunit_223_setting_for_testing_dotnet20</guid>
+	  <guid>http://yuliu.org/2005/12/nunit_223_setting_for_testing_dotnet20</guid>
 	  <description>&lt;p&gt;今天在图书馆拿了一本书《单元测试之道——C#版》&lt;/p&gt;
 
 &lt;p&gt;在很多地方总是听见这个“单元测试”名词，然后这本书又不是很厚就借过来看看&lt;/p&gt;
@@ -4533,10 +4533,10 @@ namespace DgHeader
     
     <item>
       <title>在gnome下用C#开发一个简单的窗口</title>
-      <link>http://localhost:4000/2005/12/simple_window_using_csharp_under_gnome/</link>
+      <link>http://yuliu.org/2005/12/simple_window_using_csharp_under_gnome/</link>
       <pubDate>Tue, 06 Dec 2005 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
-	  <guid>http://localhost:4000/2005/12/simple_window_using_csharp_under_gnome</guid>
+	  <guid>http://yuliu.org/2005/12/simple_window_using_csharp_under_gnome</guid>
 	  <description>&lt;p&gt;终于发现ATI的显卡驱动可以用了，于是可以不再忍受800*600的分辨率了&lt;/p&gt;
 
 &lt;p&gt;做为一个.net爱好者怎么可以不尝试一下mono呢？&lt;/p&gt;
