@@ -70,7 +70,7 @@ for line in fin.readlines():
         continue
     fout.writelines(newline)
     if linepre != '\n':
-        fout.writelines('\n');
+        fout.writelines('\n')
     linepre=newline
 fin.close()
 fout.close()
@@ -93,7 +93,7 @@ for line in content.split('\r\n'):
     if not newline:
         continue
     output += (newline + '\r\n\r\n')
-content=pyperclip.copy(output)
+pyperclip.copy(output)
 </code></pre>
 
 <p>需要注意的是，此处直接strip中文空格不好使，需要用<code>\xa1</code>表示中文空格。</p>

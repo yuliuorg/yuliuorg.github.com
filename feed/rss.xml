@@ -6,8 +6,8 @@
     <atom:link href="http://yuliu.org/feed/rss.xml" rel="self" type="application/rss+xml" />
 	<description>刘昱 | 核能动力系统工程师</description>
     <language>zh-cn</language>
-    <pubDate>Fri, 20 Jul 2012 21:18:33 +0800</pubDate>
-    <lastBuildDate>Fri, 20 Jul 2012 21:18:33 +0800</lastBuildDate>
+    <pubDate>Fri, 27 Jul 2012 20:33:30 +0800</pubDate>
+    <lastBuildDate>Fri, 27 Jul 2012 20:33:30 +0800</lastBuildDate>
 
     
     <item>
@@ -30,7 +30,7 @@ for line in fin.readlines():
         continue
     fout.writelines(newline)
     if linepre != '\n':
-        fout.writelines('\n');
+        fout.writelines('\n')
     linepre=newline
 fin.close()
 fout.close()
@@ -53,7 +53,7 @@ for line in content.split('\r\n'):
     if not newline:
         continue
     output += (newline + '\r\n\r\n')
-content=pyperclip.copy(output)
+pyperclip.copy(output)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;需要注意的是，此处直接strip中文空格不好使，需要用&lt;code&gt;\xa1&lt;/code&gt;表示中文空格。&lt;/p&gt;
