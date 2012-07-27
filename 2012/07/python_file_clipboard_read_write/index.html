@@ -7,7 +7,7 @@
 		<title>刘昱 | python实现文件和系统剪贴板读写 </title>
 		
 		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
-		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+		<link href="http://localhost:4000/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
 		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
 		<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
 		<script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
@@ -42,13 +42,13 @@
 			<h2>核能动力系统设计工程师</h2>
 			</header>
 			<nav>
-			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
-			<span><a title="简历" class="" href="http://yuliu.org/vitae/">简历</a></span>
-			<span><a title="文章" class="" href="http://yuliu.org/publication/">文章</a></span>
-			<span><a title="关于" class="" href="http://yuliu.org/about/">关于</a></span>
-			<span><a title="留言" class="" href="http://yuliu.org/guestbook/">留言</a></span>
-			<span><a title="链接" class="" href="http://yuliu.org/link/">链接</a></span>
-			<span><a title="杂货铺" class="" href="http://yuliu.org/essay">杂货铺</a></span>
+			<span><a title="首页" class="" href="http://localhost:4000/">主页</a></span>
+			<span><a title="简历" class="" href="http://localhost:4000/vitae/">简历</a></span>
+			<span><a title="文章" class="" href="http://localhost:4000/publication/">文章</a></span>
+			<span><a title="关于" class="" href="http://localhost:4000/about/">关于</a></span>
+			<span><a title="留言" class="" href="http://localhost:4000/guestbook/">留言</a></span>
+			<span><a title="链接" class="" href="http://localhost:4000/link/">链接</a></span>
+			<span><a title="杂货铺" class="" href="http://localhost:4000/essay">杂货铺</a></span>
 			</nav>
 			<div id="main" role="main">
 				<article class="content">
@@ -98,15 +98,46 @@ pyperclip.copy(output)
 
 <p>需要注意的是，此处直接strip中文空格不好使，需要用<code>\xa1</code>表示中文空格。</p>
 
+<h1>update:2012-07-27</h1>
+
+<p>这两天使用中发现当段首为中文符号，例如“或者《时，该段会出现乱码。放狗虽然没有找到直接的答案，但还是找到了一丝提示，主要问题应该是出在对python字符串和编码的理解上。</p>
+
+<p>python的str是一个字节数组，这个字节数组表示的是对unicode对象编码(可以是utf-8、gbk、cp936、GB2312)后的存储的格式。因此，它仅仅是一个字节流，没有其它的含义，例如</p>
+
+<pre><code>&gt;&gt;&gt; str='核能设计工程师'
+&gt;&gt;&gt; str
+'\xba\xcb\xc4\xdc\xc9\xe8\xbc\xc6\xb9\xa4\xb3\xcc\xca\xa6'
+</code></pre>
+
+<p>即在python中使用<code>\xba\xcb\xc4\xdc\xc9\xe8\xbc\xc6\xb9\xa4\xb3\xcc\xca\xa6'</code>存放<code>核能设计工程师</code>。而中文空格对应<code>\xa1\xa1</code>，“对应<code>\xa1\xb0</code></p>
+
+<p>因此，<code>strip('\xa1')</code>时也会将“中的第一个<code>\xa1</code>也一块去掉，只留下<code>\xb0</code>，从而导致了乱码的出现。那么使用<code>strip('\xa1\xa1')</code>行不行呢？答案是不行，因为python的strip和C#的trim还不一样，参数不是前缀或是后缀，而是其中字符集的组合（<a href="http://docs.python.org/library/stdtypes.html#str.strip">python文档</a>），因此仍然会把“的第一个<code>\xa1</code>去掉。</p>
+
+<p>于是该情况下，使用<a href="http://docs.python.org/library/stdtypes.html#str.replace">replace</a>替代strip去掉中文空格更合适一些。</p>
+
+<p>小结，更新后代码如下：</p>
+
+<pre><code># -*- coding: utf8 -*-
+import pyperclip
+content=pyperclip.paste()
+output = ""
+for line in content.split('\r\n'):
+    newline = line.strip(' ').replace('\xa1\xa1','').strip(' ')
+    if not newline:
+        continue
+    output += (newline + '\r\n\r\n')
+pyperclip.copy(output)
+</code></pre>
+
 </section>
 <section class="meta">
 <span class="author">
-	<a href="http://yuliu.org">刘昱</a>
+	<a href="http://localhost:4000">刘昱</a>
 </span>
 <span class="time">
 	/
 	
-	<time datetime="2012-07-20">2012-07-20</time> 发表
+	<time datetime="2012-07-27">2012-07-27</time> 更新
 	
 </span>
 <br />
@@ -114,7 +145,7 @@ pyperclip.copy(output)
 <span class="categories">
 	分类： 
 	
-	<a href="http://yuliu.org/essay/categories.html#计算机" title="计算机">计算机</a>&nbsp;/
+	<a href="http://localhost:4000/essay/categories.html#计算机" title="计算机">计算机</a>&nbsp;/
 	
 </span>
 
@@ -122,7 +153,7 @@ pyperclip.copy(output)
 <span class="tags">
 	标签： 
 	
-	<a href="http://yuliu.org/essay/tags.html#python" title="python">python</a>&nbsp;
+	<a href="http://localhost:4000/essay/tags.html#python" title="python">python</a>&nbsp;
 	
 </span>
 
@@ -137,7 +168,7 @@ $(function(){
 		$('section.comment #show_disqus_comment').on('click',function(){
 			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
 			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
-			var disqus_url = 'http://yuliu.org/2012/07/python_file_clipboard_read_write/';
+			var disqus_url = 'http://localhost:4000/2012/07/python_file_clipboard_read_write/';
 			// var disqus_developer = 1; 
 			var that = this;
 			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -156,7 +187,7 @@ $(function(){
 			var url = false;
 			if (e.which == 37 || e.which == 74) {  // Left arrow and J
 				
-				url = 'http://yuliu.org/2012/07/my_favorite_softwares/';
+				url = 'http://localhost:4000/2012/07/my_favorite_softwares/';
 				
 			}
 			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
