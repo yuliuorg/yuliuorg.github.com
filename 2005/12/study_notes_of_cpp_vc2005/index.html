@@ -7,7 +7,7 @@
 		<title>刘昱 | C++(VC 2005)学习笔记 </title>
 		
 		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
-		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+		<link href="http://localhost:4000/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
 		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
 		<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
 		<script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
@@ -42,13 +42,13 @@
 			<h2>核能动力系统设计工程师</h2>
 			</header>
 			<nav>
-			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
-			<span><a title="简历" class="" href="http://yuliu.org/vitae/">简历</a></span>
-			<span><a title="文章" class="" href="http://yuliu.org/publication/">文章</a></span>
-			<span><a title="关于" class="" href="http://yuliu.org/about/">关于</a></span>
-			<span><a title="留言" class="" href="http://yuliu.org/guestbook/">留言</a></span>
-			<span><a title="链接" class="" href="http://yuliu.org/link/">链接</a></span>
-			<span><a title="杂货铺" class="" href="http://yuliu.org/essay">杂货铺</a></span>
+			<span><a title="首页" class="" href="http://localhost:4000/">主页</a></span>
+			<span><a title="简历" class="" href="http://localhost:4000/vitae/">简历</a></span>
+			<span><a title="文章" class="" href="http://localhost:4000/publication/">文章</a></span>
+			<span><a title="关于" class="" href="http://localhost:4000/about/">关于</a></span>
+			<span><a title="留言" class="" href="http://localhost:4000/guestbook/">留言</a></span>
+			<span><a title="链接" class="" href="http://localhost:4000/link/">链接</a></span>
+			<span><a title="杂货铺" class="" href="http://localhost:4000/essay">杂货铺</a></span>
 			</nav>
 			<div id="main" role="main">
 				<article class="content">
@@ -96,7 +96,7 @@ m_explanation=strAll;
 </section>
 <section class="meta">
 <span class="author">
-	<a href="http://yuliu.org">刘昱</a>
+	<a href="http://localhost:4000">刘昱</a>
 </span>
 <span class="time">
 	/
@@ -109,7 +109,7 @@ m_explanation=strAll;
 <span class="categories">
 	分类： 
 	
-	<a href="http://yuliu.org/essay/categories.html#计算机" title="计算机">计算机</a>&nbsp;/
+	<a href="http://localhost:4000/essay/categories.html#计算机" title="计算机">计算机</a>&nbsp;/
 	
 </span>
 
@@ -117,7 +117,7 @@ m_explanation=strAll;
 <span class="tags">
 	标签： 
 	
-	<a href="http://yuliu.org/essay/tags.html#C++" title="C++">C++</a>&nbsp;
+	<a href="http://localhost:4000/essay/tags.html#C++" title="C++">C++</a>&nbsp;
 	
 </span>
 
@@ -132,7 +132,7 @@ $(function(){
 		$('section.comment #show_disqus_comment').on('click',function(){
 			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
 			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
-			var disqus_url = 'http://yuliu.org/2005/12/study_notes_of_cpp_vc2005/';
+			var disqus_url = 'http://localhost:4000/2005/12/study_notes_of_cpp_vc2005/';
 			// var disqus_developer = 1; 
 			var that = this;
 			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -151,12 +151,12 @@ $(function(){
 			var url = false;
 			if (e.which == 37 || e.which == 74) {  // Left arrow and J
 				
-				url = 'http://yuliu.org/2005/12/recommendation_of_a_novel_days_with_airline_stewardess/';
+				url = 'http://localhost:4000/2005/12/recommendation_of_a_novel_days_with_airline_stewardess/';
 				
 			}
 			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
 				
-				url = 'http://yuliu.org/2005/12/transfer_between_cstring_and_char_star_in_vc2005/';
+				url = 'http://localhost:4000/2005/12/transfer_between_cstring_and_char_star_in_vc2005/';
 				
 			}
 			if (url) {
