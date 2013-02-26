@@ -6,8 +6,8 @@
     <atom:link href="http://yuliu.org/feed/rss.xml" rel="self" type="application/rss+xml" />
 	<description>刘昱 | 核能动力系统工程师</description>
     <language>zh-cn</language>
-    <pubDate>Mon, 25 Feb 2013 20:09:50 +0800</pubDate>
-    <lastBuildDate>Mon, 25 Feb 2013 20:09:50 +0800</lastBuildDate>
+    <pubDate>Tue, 26 Feb 2013 17:13:55 +0800</pubDate>
+    <lastBuildDate>Tue, 26 Feb 2013 17:13:55 +0800</lastBuildDate>
 
     
     <item>
@@ -114,7 +114,7 @@ pyperclip.copy(output)
 &lt;li&gt;&lt;a href=&quot;http://www.mozilla.org/en-US/firefox/new/&quot;&gt;firefox&lt;/a&gt; / &lt;a href=&quot;https://www.google.com/intl/en/chrome/browser/&quot;&gt;chrome&lt;/a&gt; （不争了，两个一起用）&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.ghisler.com/&quot;&gt;total command&lt;/a&gt; （据说有不少人是因为tc才留在windows的）&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.voidtools.com/&quot;&gt;everything&lt;/a&gt; （快速搜索，这个功能难道不是系统应该直接集成的吗？）&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.picpick.org/&quot;&gt;picpick&lt;/a&gt; （还能有比这个更好的截图软件吗）&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.picpick.org/&quot;&gt;picpick&lt;/a&gt; （还能有比这个更好的截图软件吗?）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;工程小软件&lt;/p&gt;
