@@ -6,9 +6,121 @@
     <atom:link href="http://yuliu.org/feed/rss.xml" rel="self" type="application/rss+xml" />
 	<description>刘昱 | 核能动力系统工程师</description>
     <language>zh-cn</language>
-    <pubDate>Wed, 27 Feb 2013 20:39:17 +0800</pubDate>
-    <lastBuildDate>Wed, 27 Feb 2013 20:39:17 +0800</lastBuildDate>
+    <pubDate>Tue, 19 Mar 2013 10:33:57 +0800</pubDate>
+    <lastBuildDate>Tue, 19 Mar 2013 10:33:57 +0800</lastBuildDate>
 
+    
+    <item>
+      <title>Garmin nuvi 205w 车载导航升级</title>
+      <link>http://yuliu.org/2013/03/update_of_nuvi_205w_gps/</link>
+      <pubDate>Mon, 18 Mar 2013 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2013/03/update_of_nuvi_205w_gps</guid>
+	  <description>&lt;p&gt;手头有一款老机器，Garmin的车载导航nuvi 205w，好像当时Garmin中文名还叫任我游，大概是2009年的产品吧，送免费地图升级一次，在2010年的时候就已经升级了。这次通过Garmin官网再升级时发现需要缴纳199元的永久地图升级费用，遂放弃该渠道。通过bing发现了&lt;a href=&quot;http://www.sosaw.com&quot;&gt;小胖熊GPS论坛&lt;/a&gt;提供了非常规的地图升级方法，通过该方法除开可以升级到最新的地图(目前是2012.40)外，还可以增加路口3D显示。&lt;/p&gt;
+
+&lt;p&gt;本文主要参考了下面三个帖子，所有内容基本都可在这三篇帖子中找到，但是由于每篇帖子要么叙述不完整、要么附件没贴全，因此我就在这里汇总一下，以便后续傻瓜式操作。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.sosaw.com/threads-229344-1-1.html&quot;&gt;garmin nuvi 205w 刷 3d 固件,提供下载&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.sosaw.com/threads-279376-1-1.html&quot;&gt;GARMIN 205W 刷机升级教程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.sosaw.com/threads-309496-1-1.html&quot;&gt;关于佳明地图文件的类型和安装&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1&gt;0. 准备&lt;/h1&gt;
+
+&lt;p&gt;205W自带2G存储空间，但2012.40新地图+路口3D文件大小已超过3G，所以必须准备一张4G以上的SD卡，为此我特意买了个&lt;a href=&quot;http://www.amazon.cn/SanDisk-%E9%97%AA%E8%BF%AA-Ultra-SDHC-Class10-200X-8G-%E8%87%B3%E5%B0%8A%E9%AB%98%E9%80%9FSDHC%E5%AD%98%E5%82%A8%E5%8D%A1-%E6%B7%B1%E7%81%B0%E8%89%B2/dp/B008ASGORM/ref=sr_1_1?s=wireless&amp;amp;ie=UTF8&amp;amp;qid=1363577523&amp;amp;sr=1-1&quot;&gt;sandisk的8G SD&lt;/a&gt;卡&lt;/p&gt;
+
+&lt;p&gt;连接USB，将导航自带存储中的内容备份到电脑。原始结构如下：
+&lt;img src=&quot;http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_000.jpg&quot; alt=&quot;导航自带存储内容备份&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;偶的205w是S3版本且hwid是931，可以通过长按电池图标10秒进入diag mode确认（如下图），本文的方法针对该机器成功，其他版本或hwid的205w请谨慎判断是否可用，并希望能在评论中反馈结果。
+&lt;img src=&quot;http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_001.jpg&quot; alt=&quot;nuvi 205w diag mode 1&quot; /&gt;
+&lt;img src=&quot;http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_002.jpg&quot; alt=&quot;nuvi 205w diag mode 2&quot; /&gt;
+&lt;img src=&quot;http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_003.jpg&quot; alt=&quot;nuvi 205w diag mode 3&quot; /&gt;&lt;/p&gt;
+
+&lt;h1&gt;1. 安装Garmin USB Drivers 2.3&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www8.garmin.com/software/USBDrivers_23.exe&quot;&gt;官网下载&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1&gt;2. 删除text和voice目录&lt;/h1&gt;
+
+&lt;p&gt;连接USB，把205W里garmin目录下的text和voice目录删除。&lt;br/&gt;
+断开USB，让nuvi重新启动，此时界面将会变为英文，不用管它。&lt;/p&gt;
+
+&lt;h1&gt;3. 刷固件&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.kuaipan.cn/file/id_3894959811855649.htm&quot;&gt;固件下载&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;此处提供的固件中包含了台湾2.5固件和大陆3.1固件，如果要使用路口3D显示功能，必须使用台湾固件。&lt;br/&gt;
+直接将固件文件夹下的.rgn文件拖放倒updater.exe上即出现固件更新界面，选择USB Device&lt;br/&gt;
+&lt;img src=&quot;http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_004.jpg&quot; alt=&quot;刷固件1&quot; /&gt;
+&lt;img src=&quot;http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_005.jpg&quot; alt=&quot;刷固件2&quot; /&gt;
+&lt;img src=&quot;http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_006.jpg&quot; alt=&quot;刷固件1&quot; /&gt;
+打开机器，长按电池图标10秒进入diag mode后，再将USB连接到机器。经过一段时间等待（安装驱动程序）后，updater.exe即找到nuvi设备，点击OK开刷。&lt;/p&gt;
+
+&lt;h1&gt;4. 固件更新&lt;/h1&gt;
+
+&lt;p&gt;刷固件完成之后，机器将会自动重启。关机断开USB后重启，系统会提示选择区域，请选择“中国”。&lt;br/&gt;
+&lt;img src=&quot;http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_007.jpg&quot; alt=&quot;导航区域选择&quot; /&gt;
+去Garmin台湾和大陆官网，可分别下载205w最新版本的固件。根据上一步刷的固件选择升级版本固件。&lt;br/&gt;
+&lt;a href=&quot;http://www.garmin.com.cn/products/ontheroad/nuvi205W/#updateTab&quot;&gt;大陆3.40固件&lt;/a&gt;，&lt;a href=&quot;http://www.garmin.com.tw/products/ontheroad/nuvi205W/#updateTab&quot;&gt;台湾3.90固件&lt;/a&gt;&lt;br/&gt;
+运行下载的固件程序，然后连接USB,搜寻设备会看到Garmin盘符，然后点击Update开始升级。
+&lt;img src=&quot;http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_008.jpg&quot; alt=&quot;固件更新&quot; /&gt;&lt;/p&gt;
+
+&lt;h1&gt;5. 恢复text和voice目录&lt;/h1&gt;
+
+&lt;p&gt;连接USB，将备份中garmin目录下的text和voice目录拷回205w自带存储的garmin目录下。
+对于已存在的文件，可以选择跳过。
+断开USB，再205w的设置中分别设置文本和语音为中文。&lt;/p&gt;
+
+&lt;h1&gt;6. 下载地图&lt;/h1&gt;
+
+&lt;p&gt;目前大陆地图最新版本为2012.40，可从官网下载，&lt;a href=&quot;http://www.sosaw.com/threads-309419-1-1.html&quot;&gt;2012.40地图下载链接&lt;/a&gt;&lt;br/&gt;
+分别下载type 3和type 11地图。type 3是205W对应的地图，但是其中不含路口3D显示，因此还需要下载type 11的地图，使用其中的路口3D显示文件（不知道type 11的地图能不用用在205w中，欢迎大家测试并评论）。&lt;br/&gt;
+每个地图版本的type对应的机型都不一样，在更新地图时需要确认那个type适用。&lt;/p&gt;
+
+&lt;h1&gt;7. 地图解锁&lt;/h1&gt;
+
+&lt;p&gt;地图解锁要用到两个工具，分别是&lt;a href=&quot;http://www.kuaipan.cn/file/id_3894959811855651.htm&quot;&gt;Garmin Unlock Generator&lt;/a&gt;和&lt;a href=&quot;http://www.kuaipan.cn/file/id_3894959811855650.htm&quot;&gt;Garmin Unlocker Alternativev&lt;/a&gt;&lt;br/&gt;
+首先将下载的type 3和type 11地图文件（.zip）直接解压缩到相应文件夹。
+将type 3目录中的gmapprom.img复制到[Garmin Unlocker Alternativev]目录中，运行UnLock Map Directory.exe，得到Locked_gmapprom.img，之后重命名为gmapsupp.img
+运行Garmin Unlock Generator目录中的Garmin.Mobile.XT.Keygen.v1.5.exe。UnitID可以在导航设置中得到，Map Produce选择custom mapset，并输入2183（针对2012.40地图）
+&lt;img src=&quot;http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_009.jpg&quot; alt=&quot;Garmin算号器&quot; /&gt;
+之后用记事本新建一个gmapsupp.unl文件，并将Your map unlock code输入到该文件中保存。&lt;/p&gt;
+
+&lt;h1&gt;8. 地图安装&lt;/h1&gt;
+
+&lt;p&gt;将上述破解后的地图文件考入SD卡，同时将type 11解压缩目录中的JCV、SID和Sqlite目录一并考入SD卡。
+请使用读卡器，如果使用205W连接USB考，速度实在太慢。
+最后SD卡中的结构如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;--[garmin]
+  --gmapbmap.img (来自type 3的解压缩目录)
+  --gmapsupp.img
+  --gmapsupp.unl
+  --[JCV]
+  --[SID]
+  --[Sqlite]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;同时可以删除导航自带存储卡中的gmapbmap.img、gmapbmap.sum、gmapprom.img、gmapprom.unl删除以便节省空间。&lt;/p&gt;
+
+&lt;h1&gt;9. 升级报警点&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.garmin.com.cn/products/ontheroad/nuvi205W/#updateTab&quot;&gt;报警点下载&lt;/a&gt;&lt;br/&gt;
+连接USB，找到自带存储的POI文件夹，将其里面名称中包含下列字段的gpi文档删除：TrafficPeccancyCamera和StakeoutRunRedLightCamera（若POI文件夹下无符合上述条件的文档，请跳过此步骤）。&lt;br/&gt;
+运行下载的报警点升级程序。&lt;/p&gt;
+
+&lt;h1&gt;10. 结束了！&lt;/h1&gt;
+
+&lt;p&gt;这样就完成了205W升级到最新版本地图，并且增加了路口3D显示功能。
+&lt;img src=&quot;http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_010.jpg&quot; alt=&quot;升级后效果1&quot; /&gt;
+&lt;img src=&quot;http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_011.jpg&quot; alt=&quot;升级后效果2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;好像Garmin还支持北美和欧洲&lt;a href=&quot;http://www.sosaw.com/threads-304055-1-1.html&quot;&gt;2013.30&lt;/a&gt;地图，这样去国外的话，除开google map，可以又增加一层保险，由于暂时没去旅游的打算，还请感兴趣的朋友测试并欢迎反馈。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>python实现文件和系统剪贴板读写</title>

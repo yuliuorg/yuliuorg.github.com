@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="刘昱" />
+		
+		<title>刘昱 | Garmin nuvi 205w 车载导航升级 </title>
+		
+		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
+		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="/media/script/prettify/prettify.css" type="text/css" />
+		<script type="text/javascript" src="/media/script/prettify/prettify.js"></script> 
+		<script type="text/javascript" src="/media/script/jquery-1.7.2.min.js"></script>
+		<!--[if IE]>
+		<script type="text/javascript" src="/media/script/html5shiv.js"></script> 
+		<![endif]-->		
+		<script type="text/javascript" src="/media/script/default.js"></script>
+		
+		<!--MathJax-->
+		
+		<!--Google Analytics-->
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33277878-1']);
+			_gaq.push(['_setDomainName', 'yuliu.org']);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_trackPageLoadTime']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+
+		<div id="container">
+			<header>
+			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
+			<h1>刘 昱</h1>
+			<h2>核能动力系统设计工程师</h2>
+			</header>
+			<nav>
+			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
+			<span><a title="简历" class="" href="http://yuliu.org/vitae/">简历</a></span>
+			<span><a title="文章" class="" href="http://yuliu.org/publication/">文章</a></span>
+			<span><a title="关于" class="" href="http://yuliu.org/about/">关于</a></span>
+			<span><a title="留言" class="" href="http://yuliu.org/guestbook/">留言</a></span>
+			<span><a title="链接" class="" href="http://yuliu.org/link/">链接</a></span>
+			<span><a title="杂货铺" class="" href="http://yuliu.org/essay">杂货铺</a></span>
+			</nav>
+			<div id="main" role="main">
+				<article class="content">
+				<section class="title">
+<h1>Garmin nuvi 205w 车载导航升级</h1>
+</section>
+<section class="post">
+<p>手头有一款老机器，Garmin的车载导航nuvi 205w，好像当时Garmin中文名还叫任我游，大概是2009年的产品吧，送免费地图升级一次，在2010年的时候就已经升级了。这次通过Garmin官网再升级时发现需要缴纳199元的永久地图升级费用，遂放弃该渠道。通过bing发现了<a href="http://www.sosaw.com">小胖熊GPS论坛</a>提供了非常规的地图升级方法，通过该方法除开可以升级到最新的地图(目前是2012.40)外，还可以增加路口3D显示。</p>
+
+<p>本文主要参考了下面三个帖子，所有内容基本都可在这三篇帖子中找到，但是由于每篇帖子要么叙述不完整、要么附件没贴全，因此我就在这里汇总一下，以便后续傻瓜式操作。</p>
+
+<ul>
+<li><a href="http://www.sosaw.com/threads-229344-1-1.html">garmin nuvi 205w 刷 3d 固件,提供下载</a></li>
+<li><a href="http://www.sosaw.com/threads-279376-1-1.html">GARMIN 205W 刷机升级教程</a></li>
+<li><a href="http://www.sosaw.com/threads-309496-1-1.html">关于佳明地图文件的类型和安装</a></li>
+</ul>
+
+
+<h1>0. 准备</h1>
+
+<p>205W自带2G存储空间，但2012.40新地图+路口3D文件大小已超过3G，所以必须准备一张4G以上的SD卡，为此我特意买了个<a href="http://www.amazon.cn/SanDisk-%E9%97%AA%E8%BF%AA-Ultra-SDHC-Class10-200X-8G-%E8%87%B3%E5%B0%8A%E9%AB%98%E9%80%9FSDHC%E5%AD%98%E5%82%A8%E5%8D%A1-%E6%B7%B1%E7%81%B0%E8%89%B2/dp/B008ASGORM/ref=sr_1_1?s=wireless&amp;ie=UTF8&amp;qid=1363577523&amp;sr=1-1">sandisk的8G SD</a>卡</p>
+
+<p>连接USB，将导航自带存储中的内容备份到电脑。原始结构如下：
+<img src="http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_000.jpg" alt="导航自带存储内容备份" /></p>
+
+<p>偶的205w是S3版本且hwid是931，可以通过长按电池图标10秒进入diag mode确认（如下图），本文的方法针对该机器成功，其他版本或hwid的205w请谨慎判断是否可用，并希望能在评论中反馈结果。
+<img src="http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_001.jpg" alt="nuvi 205w diag mode 1" />
+<img src="http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_002.jpg" alt="nuvi 205w diag mode 2" />
+<img src="http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_003.jpg" alt="nuvi 205w diag mode 3" /></p>
+
+<h1>1. 安装Garmin USB Drivers 2.3</h1>
+
+<p><a href="http://www8.garmin.com/software/USBDrivers_23.exe">官网下载</a></p>
+
+<h1>2. 删除text和voice目录</h1>
+
+<p>连接USB，把205W里garmin目录下的text和voice目录删除。<br/>
+断开USB，让nuvi重新启动，此时界面将会变为英文，不用管它。</p>
+
+<h1>3. 刷固件</h1>
+
+<p><a href="http://www.kuaipan.cn/file/id_3894959811855649.htm">固件下载</a></p>
+
+<p>此处提供的固件中包含了台湾2.5固件和大陆3.1固件，如果要使用路口3D显示功能，必须使用台湾固件。<br/>
+直接将固件文件夹下的.rgn文件拖放倒updater.exe上即出现固件更新界面，选择USB Device<br/>
+<img src="http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_004.jpg" alt="刷固件1" />
+<img src="http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_005.jpg" alt="刷固件2" />
+<img src="http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_006.jpg" alt="刷固件1" />
+打开机器，长按电池图标10秒进入diag mode后，再将USB连接到机器。经过一段时间等待（安装驱动程序）后，updater.exe即找到nuvi设备，点击OK开刷。</p>
+
+<h1>4. 固件更新</h1>
+
+<p>刷固件完成之后，机器将会自动重启。关机断开USB后重启，系统会提示选择区域，请选择“中国”。<br/>
+<img src="http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_007.jpg" alt="导航区域选择" />
+去Garmin台湾和大陆官网，可分别下载205w最新版本的固件。根据上一步刷的固件选择升级版本固件。<br/>
+<a href="http://www.garmin.com.cn/products/ontheroad/nuvi205W/#updateTab">大陆3.40固件</a>，<a href="http://www.garmin.com.tw/products/ontheroad/nuvi205W/#updateTab">台湾3.90固件</a><br/>
+运行下载的固件程序，然后连接USB,搜寻设备会看到Garmin盘符，然后点击Update开始升级。
+<img src="http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_008.jpg" alt="固件更新" /></p>
+
+<h1>5. 恢复text和voice目录</h1>
+
+<p>连接USB，将备份中garmin目录下的text和voice目录拷回205w自带存储的garmin目录下。
+对于已存在的文件，可以选择跳过。
+断开USB，再205w的设置中分别设置文本和语音为中文。</p>
+
+<h1>6. 下载地图</h1>
+
+<p>目前大陆地图最新版本为2012.40，可从官网下载，<a href="http://www.sosaw.com/threads-309419-1-1.html">2012.40地图下载链接</a><br/>
+分别下载type 3和type 11地图。type 3是205W对应的地图，但是其中不含路口3D显示，因此还需要下载type 11的地图，使用其中的路口3D显示文件（不知道type 11的地图能不用用在205w中，欢迎大家测试并评论）。<br/>
+每个地图版本的type对应的机型都不一样，在更新地图时需要确认那个type适用。</p>
+
+<h1>7. 地图解锁</h1>
+
+<p>地图解锁要用到两个工具，分别是<a href="http://www.kuaipan.cn/file/id_3894959811855651.htm">Garmin Unlock Generator</a>和<a href="http://www.kuaipan.cn/file/id_3894959811855650.htm">Garmin Unlocker Alternativev</a><br/>
+首先将下载的type 3和type 11地图文件（.zip）直接解压缩到相应文件夹。
+将type 3目录中的gmapprom.img复制到[Garmin Unlocker Alternativev]目录中，运行UnLock Map Directory.exe，得到Locked_gmapprom.img，之后重命名为gmapsupp.img
+运行Garmin Unlock Generator目录中的Garmin.Mobile.XT.Keygen.v1.5.exe。UnitID可以在导航设置中得到，Map Produce选择custom mapset，并输入2183（针对2012.40地图）
+<img src="http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_009.jpg" alt="Garmin算号器" />
+之后用记事本新建一个gmapsupp.unl文件，并将Your map unlock code输入到该文件中保存。</p>
+
+<h1>8. 地图安装</h1>
+
+<p>将上述破解后的地图文件考入SD卡，同时将type 11解压缩目录中的JCV、SID和Sqlite目录一并考入SD卡。
+请使用读卡器，如果使用205W连接USB考，速度实在太慢。
+最后SD卡中的结构如下：</p>
+
+<pre><code>--[garmin]
+  --gmapbmap.img (来自type 3的解压缩目录)
+  --gmapsupp.img
+  --gmapsupp.unl
+  --[JCV]
+  --[SID]
+  --[Sqlite]
+</code></pre>
+
+<p>同时可以删除导航自带存储卡中的gmapbmap.img、gmapbmap.sum、gmapprom.img、gmapprom.unl删除以便节省空间。</p>
+
+<h1>9. 升级报警点</h1>
+
+<p><a href="http://www.garmin.com.cn/products/ontheroad/nuvi205W/#updateTab">报警点下载</a><br/>
+连接USB，找到自带存储的POI文件夹，将其里面名称中包含下列字段的gpi文档删除：TrafficPeccancyCamera和StakeoutRunRedLightCamera（若POI文件夹下无符合上述条件的文档，请跳过此步骤）。<br/>
+运行下载的报警点升级程序。</p>
+
+<h1>10. 结束了！</h1>
+
+<p>这样就完成了205W升级到最新版本地图，并且增加了路口3D显示功能。
+<img src="http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_010.jpg" alt="升级后效果1" />
+<img src="http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_011.jpg" alt="升级后效果2" /></p>
+
+<p>好像Garmin还支持北美和欧洲<a href="http://www.sosaw.com/threads-304055-1-1.html">2013.30</a>地图，这样去国外的话，除开google map，可以又增加一层保险，由于暂时没去旅游的打算，还请感兴趣的朋友测试并欢迎反馈。</p>
+
+</section>
+<section class="meta">
+<span class="author">
+	<a href="http://yuliu.org">刘昱</a>
+</span>
+<span class="time">
+	/
+	
+	<time datetime="2013-03-18">2013-03-18</time> 更新
+	
+</span>
+<br />
+
+<span class="categories">
+	分类： 
+	
+	<a href="http://yuliu.org/essay/categories.html#硬件" title="硬件">硬件</a>&nbsp;/
+	
+</span>
+
+
+<span class="tags">
+	标签： 
+	
+	<a href="http://yuliu.org/essay/tags.html#Garmin" title="Garmin">Garmin</a>&nbsp;
+	
+	<a href="http://yuliu.org/essay/tags.html#导航" title="导航">导航</a>&nbsp;
+	
+	<a href="http://yuliu.org/essay/tags.html#刷机" title="刷机">刷机</a>&nbsp;
+	
+</span>
+
+</section>
+
+<section class="comment">
+<a href="#" id="show_disqus_comment" onclick="return false;">更多信息，请点击查看评论</a>
+<div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+$(function(){
+		$('section.comment #show_disqus_comment').on('click',function(){
+			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
+			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
+			var disqus_url = 'http://yuliu.org/2013/03/update_of_nuvi_205w_gps/';
+			// var disqus_developer = 1; 
+			var that = this;
+			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			var src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			PSJS.loadScript(src, function(){$(that).remove()});
+			});
+		});
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		$(document).keydown(function(e) {
+			var url = false;
+			if (e.which == 37 || e.which == 74) {  // Left arrow and J
+				
+				url = 'http://yuliu.org/2012/07/python_file_clipboard_read_write/';
+				
+			}
+			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+				
+			}
+			if (url) {
+				window.location = url;
+			}
+		});
+	})
+</script>
+
+
+				</article>
+				<div id="toc"></div>
+			</div>
+		</div>
+	</body>
+</html>
