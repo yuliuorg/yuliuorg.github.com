@@ -92,8 +92,15 @@
 
 <p><a href="http://www.kuaipan.cn/file/id_3894959811855649.htm">固件下载</a></p>
 
-<p>此处提供的固件中包含了台湾2.5固件和大陆3.1固件，如果要使用路口3D显示功能，必须使用台湾固件。<br/>
-直接将固件文件夹下的.rgn文件拖放倒updater.exe上即出现固件更新界面，选择USB Device<br/>
+<p>此处提供的固件中包含了台湾2.5固件和大陆3.1固件，两个固件各有优缺点</p>
+
+<ul>
+<li>大陆固件：报警点语音提示</li>
+<li>台湾固件：路口3D显示功能</li>
+</ul>
+
+
+<p>本文以台湾固件为例，直接将固件文件夹下的.rgn文件拖放倒updater.exe上即出现固件更新界面，选择USB Device<br/>
 <img src="http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_004.jpg" alt="刷固件1" />
 <img src="http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_005.jpg" alt="刷固件2" />
 <img src="http://fs.yuliu.org/images/essay/2013/update_of_nuvi_205w_gps_006.jpg" alt="刷固件1" />
@@ -110,7 +117,7 @@
 
 <h1>5. 恢复text和voice目录</h1>
 
-<p>连接USB，将备份中garmin目录下的text和voice目录拷回205w自带存储的garmin目录下。
+<p>如果是台湾固件，需要连接USB，将备份中garmin目录下的voice目录拷回205w自带存储的garmin目录下，以便保证有中文语音TTS。如果是大陆固件，刷机固件中已经自带了。
 对于已存在的文件，可以选择跳过。
 断开USB，再205w的设置中分别设置文本和语音为中文。</p>
 
@@ -131,8 +138,9 @@
 
 <h1>8. 地图安装</h1>
 
-<p>将上述破解后的地图文件考入SD卡，同时将type 11解压缩目录中的JCV、SID和Sqlite目录一并考入SD卡。
-请使用读卡器，如果使用205W连接USB考，速度实在太慢。
+<p>将上述破解后的地图文件考入SD卡，同时将type 11解压缩目录中的JCV、SID和Sqlite目录一并考入SD卡。<br/>
+如果使用大陆固件不要type 11中的这些文件夹，因为不支持路口3D显示。<br/>
+请使用读卡器，如果使用205W连接USB考，速度实在太慢。<br/>
 最后SD卡中的结构如下：</p>
 
 <pre><code>--[garmin]
