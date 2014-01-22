@@ -51,7 +51,7 @@
 			<header>
 			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
 			<h1>刘 昱</h1>
-			<h2>核能动力系统设计工程师</h2>
+			<h2>高级工程师 核能动力系统设计</h2>
 			</header>
 			<nav>
 			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
@@ -70,20 +70,14 @@
 <section class="post">
 <p>从http://cleverdevil.org/whatwhat把whatwhat拖下来以后</p>
 
-<p>首先配置dev.cfg中的数据库为</p>
+<p>首先配置dev.cfg中的数据库为
+    # DATABASE
+    sqlobject.dburi="notrans_sqlite:///g|/whatwhat/trunk/sqlplayground.db"
+这里我使用的是sqlite</p>
 
-<pre><code># DATABASE
-sqlobject.dburi="notrans_sqlite:///g|/whatwhat/trunk/sqlplayground.db"
-</code></pre>
-
-<p>这里我使用的是sqlite</p>
-
-<p>然后安装textile，这一步很简单</p>
-
-<pre><code>easy_install textile
-</code></pre>
-
-<p>当然要保证你已经连上了互联网</p>
+<p>然后安装textile，这一步很简单
+    easy_install textile
+当然要保证你已经连上了互联网</p>
 
 <p>最后<code>python whatwhat-start.py</code>启动
 通过http://localhost:8080就可以访问了</p>

@@ -51,7 +51,7 @@
 			<header>
 			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
 			<h1>刘 昱</h1>
-			<h2>核能动力系统设计工程师</h2>
+			<h2>高级工程师 核能动力系统设计</h2>
 			</header>
 			<nav>
 			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
@@ -75,6 +75,7 @@
 <ul>
 <li>下载安装</li>
 <li>修改<code>.vimrc或\_vimrc</code>文件</li>
+<li>安装Git，windows版本可以使用Github Windows，其中带了msysgit，将其bin文件夹添加到Path以便使用git.exe和curl.exe</li>
 <li>安装Vundle插件管理软件</li>
 <li>通过Vundle安装和管理插件<br/>
 Vundle插件名需要区分大小写</li>
@@ -95,12 +96,18 @@ vim插件管理包，需要git和curl的支持</p></li>
 需要<a href="http://mbbill.googlepages.com/iconv.dll">iconv.dll</a>的支持，在系统PATH路径下。</p></li>
 <li><p><a href="http://www.vim.org/scripts/script.php?script_id=2657">VOom</a><br/>
 部分标记语言的标题自动摘要<br/>
-需要python 2.X的支持，不能使用64位的。</p></li>
+需要python 2.X的支持，不能使用64位的。<br/>
+由于python的安装包是msi格式的，在win8下如果直接安装会提示缺少dll文件无法安装，实际上是UAC权限问题，但是msi又不没有右键“以管理员身份运行”这个选项，因此需要曲线救国，新建一个bat文件，文件中写入</p>
+
+<pre><code>  msiexec /i msi文件的绝对路径
+</code></pre>
+
+<p>即可安装</p></li>
 <li><p><a href="https://github.com/tpope/vim-markdown">Markdown</a><br/>
 提供markdown着色功能
 为了便于识别两个空格表示的换行，修改<code>~\.vim\bundle\vim-markdown\syntax\markdown.vim</code>，在96行增加</p>
 
-<pre><code> hi def link markdownLineBreak             Todo
+<pre><code>  hi def link markdownLineBreak             Todo
 </code></pre>
 
 <p>markdownLineBreak其实在原始vim中已经定义，没有着色而已</p></li>
@@ -128,13 +135,11 @@ jQuery语法支持，包括关键字，和CSS选择器</p></li>
 
 <p>个人在gui下喜欢使用torte的colorscheme，但是原始版本的配色没有考虑Pmenu的样式，使得Pmenu的色调很不搭（背景是粉红)。</p>
 
-<p>打开<code>colors\torte.vim</code>，在文件最后加入下面几行。</p>
-
-<pre><code>hi Pmenu guifg=#c0c0c0 guibg=#404080
-hi PmenuSel guifg=#c0c0c0 guibg=#2050d0
-hi PmenuSbar guifg=blue guibg=darkgray
-hi PmenuThumb guifg=#c0c0c0
-</code></pre>
+<p>打开<code>colors\torte.vim</code>，在文件最后加入下面几行。
+    hi Pmenu guifg=#c0c0c0 guibg=#404080
+    hi PmenuSel guifg=#c0c0c0 guibg=#2050d0
+    hi PmenuSbar guifg=blue guibg=darkgray
+    hi PmenuThumb guifg=#c0c0c0</p>
 
 </section>
 <section class="meta">

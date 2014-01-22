@@ -51,7 +51,7 @@
 			<header>
 			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
 			<h1>刘 昱</h1>
-			<h2>核能动力系统设计工程师</h2>
+			<h2>高级工程师 核能动力系统设计</h2>
 			</header>
 			<nav>
 			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
@@ -78,19 +78,16 @@
 
 <p>照着书上写了一个程序，无论是gui和console都显示错误，说CS文件格式不对，去网上看了看</p>
 
-<p>原来要在NUnit 2.2.3安装目录的bin文件下面把nunit-console.exe.config和nunit-gui.exe.config的</p>
-
-<pre><code>&lt;startup&gt;
-   &lt;supportedRuntime version="v2.0.50727" /&gt;
-   &lt;supportedRuntime version="v2.0.50215" /&gt;
-   &lt;supportedRuntime version="v2.0.40607" /&gt;
-   &lt;supportedRuntime version="v1.1.4322" /&gt;
-   &lt;supportedRuntime version="v1.0.3705" /&gt;
-   &lt;requiredRuntime version="v1.0.3705" /&gt;
-&lt;/startup&gt;
-</code></pre>
-
-<p>的注释去掉
+<p>原来要在NUnit 2.2.3安装目录的bin文件下面把nunit-console.exe.config和nunit-gui.exe.config的
+    <startup>
+       <supportedRuntime version="v2.0.50727" />
+       <supportedRuntime version="v2.0.50215" />
+       <supportedRuntime version="v2.0.40607" />
+       <supportedRuntime version="v1.1.4322" />
+       <supportedRuntime version="v1.0.3705" />
+       <requiredRuntime version="v1.0.3705" />
+    </startup>
+的注释去掉
 这样结可以了
 接着看书去</p>
 

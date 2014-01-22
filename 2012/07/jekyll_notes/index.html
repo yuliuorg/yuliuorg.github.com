@@ -51,7 +51,7 @@
 			<header>
 			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
 			<h1>刘 昱</h1>
-			<h2>核能动力系统设计工程师</h2>
+			<h2>高级工程师 核能动力系统设计</h2>
 			</header>
 			<nav>
 			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
@@ -74,7 +74,12 @@
 
 <h1>jekyll在windows下的编码</h1>
 
-<p>由于windows系统没有采用UTF-8编码，因此需要给jekyll（版本 0.11.2）在打开文件时指定编码，以保证它能够正常工作。</p>
+<p>更新：新的jekyll通过在配置文件<code>_config.yml</code>加入encoding选项，从而不需要直接修改代码。</p>
+
+<pre><code>encoding: UTF-8
+</code></pre>
+
+<p>过时：由于windows系统没有采用UTF-8编码，因此需要给jekyll（版本 0.11.2）在打开文件时指定编码，以保证它能够正常工作。</p>
 
 <ol>
 <li><p>修改<code>[RubyDIR]\lib\ruby\gems\1.9.1\gems\jekyll-0.11.2\lib\jekyll\convertible.rb</code> 文件27行</p>
@@ -97,10 +102,8 @@
 
 <h1>rdiscount windows平台问题 (2013-02-25)</h1>
 
-<p>rdiscount版本2.0.7在windows平台下编译会出现错误。<a href="https://github.com/rtomayko/rdiscount/issues/74">github issue</a>。因此只能安装1.6.8版的。</p>
-
-<pre><code>gem install rdiscount -v 1.6.8
-</code></pre>
+<p>rdiscount版本2.0.7在windows平台下编译会出现错误。<a href="https://github.com/rtomayko/rdiscount/issues/74">github issue</a>。因此只能安装1.6.8版的。
+    gem install rdiscount -v 1.6.8</p>
 
 </section>
 <section class="meta">

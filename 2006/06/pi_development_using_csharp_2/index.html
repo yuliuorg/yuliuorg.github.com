@@ -51,7 +51,7 @@
 			<header>
 			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
 			<h1>刘 昱</h1>
-			<h2>核能动力系统设计工程师</h2>
+			<h2>高级工程师 核能动力系统设计</h2>
 			</header>
 			<nav>
 			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
@@ -83,12 +83,9 @@ Many of the services available through the Server object are accessed through it
 
 <p>一般地，程序连接到服务器需要网络连接属性，这个连接可以通过服务器对象的Open方法显式的进行，也可以通过服务器对象的某个属性或方法连接需要验证的服务器来进行一个隐式的连接。</p>
 
-<p>上面这一段有点不太懂，直到目前我都没有用过显式的Open方法，都是通过</p>
-
-<pre><code>_piServer = piSDK.Servers.DefaultServer;
-</code></pre>
-
-<p>这种所谓的隐式方法来连接，这个是不是就是所谓的隐式连接？因为在PISDK安装的时候指定了一个PI数据源，所以DefaultServer就是这个？所以我访问的时候都不需要输入用户或者密码</p>
+<p>上面这一段有点不太懂，直到目前我都没有用过显式的Open方法，都是通过
+    _piServer = piSDK.Servers.DefaultServer;
+这种所谓的隐式方法来连接，这个是不是就是所谓的隐式连接？因为在PISDK安装的时候指定了一个PI数据源，所以DefaultServer就是这个？所以我访问的时候都不需要输入用户或者密码</p>
 
 <p>我们可以通过服务器对象的属性来返回其他的对象从而获得很多服务。例如，通过服务器对象的PIPoints属性返回的PIPoints集合的对象来访问数据库里面的不同的点。</p>
 

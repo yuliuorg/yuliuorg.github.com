@@ -51,7 +51,7 @@
 			<header>
 			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
 			<h1>刘 昱</h1>
-			<h2>核能动力系统设计工程师</h2>
+			<h2>高级工程师 核能动力系统设计</h2>
 			</header>
 			<nav>
 			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
@@ -95,59 +95,55 @@
 </ol>
 
 
-<p>记录器可以通过log4net.LogManger类的静态方法获得。GetLogger方法以欲获取的记录器名称为参数，如下所示：</p>
-
-<pre><code>namespace log4net
-{
-    public class LogManager
+<p>记录器可以通过log4net.LogManger类的静态方法获得。GetLogger方法以欲获取的记录器名称为参数，如下所示：
+    namespace log4net
     {
-        public static ILog GetLogger(string name);
-        public static ILog GetLogger(Type type);
-    }
-}
-</code></pre>
+        public class LogManager
+        {
+            public static ILog GetLogger(string name);
+            public static ILog GetLogger(Type type);
+        }
+    }</p>
 
 <p>GetLogger方法也可以接受欲获取记录器的完整类型为名称的Type类型参数。</p>
 
-<p>记录器返回ILog接口，它代表了返回给开发者的记录器。ILog接口定义如下</p>
-
-<pre><code>namespace log4net
-{
-    public interface ILog
+<p>记录器返回ILog接口，它代表了返回给开发者的记录器。ILog接口定义如下
+    namespace log4net
     {
-        /* Test if a level is enabled for logging */
-        bool IsDebugEnabled { get; }
-        bool IsInfoEnabled { get; }
-        bool IsWarnEnabled { get; }
-        bool IsErrorEnabled { get; }
-        bool IsFatalEnabled { get; }
-        /* Log a message object */
-        void Debug(object message);
-        void Info(object message);
-        void Warn(object message);
-        void Error(object message);
-        void Fatal(object message);
-        /* Log a message object and exception */
-        void Debug(object message, Exception t);
-        void Info(object message, Exception t);
-        void Warn(object message, Exception t);
-        void Error(object message, Exception t);
-        void Fatal(object message, Exception t);
-        /* Log a message string using the System.String.Format syntax */
-        void DebugFormat(string format, params object[] args);
-        void InfoFormat(string format, params object[] args);
-        void WarnFormat(string format, params object[] args);
-        void ErrorFormat(string format, params object[] args);
-        void FatalFormat(string format, params object[] args);
-        /* Log a message string using the System.String.Format syntax */
-        void DebugFormat(IFormatProvider provider, string format, params object[] args);
-        void InfoFormat(IFormatProvider provider, string format, params object[] args);
-        void WarnFormat(IFormatProvider provider, string format, params object[] args);
-        void ErrorFormat(IFormatProvider provider, string format, params object[] args);
-        void FatalFormat(IFormatProvider provider, string format, params object[] args);
-    }
-}
-</code></pre>
+        public interface ILog
+        {
+            /<em> Test if a level is enabled for logging </em>/
+            bool IsDebugEnabled { get; }
+            bool IsInfoEnabled { get; }
+            bool IsWarnEnabled { get; }
+            bool IsErrorEnabled { get; }
+            bool IsFatalEnabled { get; }
+            /<em> Log a message object </em>/
+            void Debug(object message);
+            void Info(object message);
+            void Warn(object message);
+            void Error(object message);
+            void Fatal(object message);
+            /<em> Log a message object and exception </em>/
+            void Debug(object message, Exception t);
+            void Info(object message, Exception t);
+            void Warn(object message, Exception t);
+            void Error(object message, Exception t);
+            void Fatal(object message, Exception t);
+            /<em> Log a message string using the System.String.Format syntax </em>/
+            void DebugFormat(string format, params object[] args);
+            void InfoFormat(string format, params object[] args);
+            void WarnFormat(string format, params object[] args);
+            void ErrorFormat(string format, params object[] args);
+            void FatalFormat(string format, params object[] args);
+            /<em> Log a message string using the System.String.Format syntax </em>/
+            void DebugFormat(IFormatProvider provider, string format, params object[] args);
+            void InfoFormat(IFormatProvider provider, string format, params object[] args);
+            void WarnFormat(IFormatProvider provider, string format, params object[] args);
+            void ErrorFormat(IFormatProvider provider, string format, params object[] args);
+            void FatalFormat(IFormatProvider provider, string format, params object[] args);
+        }
+    }</p>
 
 <p>记录器可以被指定等级。等级是log4net.Core.Level类的实例。下列等级依照递增优先级被定义。</p>
 
@@ -419,7 +415,7 @@
 
 <p>L>=K时，等级（指定或者继承）为K的记录器允许等级为L的记录请求。</p>
 
-<p>这条规则是log4net的核心。它基于有序的规则，标准等级规则下，DEBUG&lt;INFO&lt;WARN&lt;ERROR&lt;FATAL。调用使用相同名称为参数的log4net.LogManager.GetLogger方法将返回完全相同的记录器的应用。例如</p>
+<p>这条规则是log4net的核心。它基于有序的规则，标准等级规则下，DEBUG\&lt;INFO\&lt;WARN\&lt;ERROR\&lt;FATAL。调用使用相同名称为参数的log4net.LogManager.GetLogger方法将返回完全相同的记录器的应用。例如</p>
 
 <pre><code>ILog x = LogManager.GetLogger("wombat");
 ILog y = LogManager.GetLogger("wombat");

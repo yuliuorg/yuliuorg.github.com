@@ -51,7 +51,7 @@
 			<header>
 			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
 			<h1>刘 昱</h1>
-			<h2>核能动力系统设计工程师</h2>
+			<h2>高级工程师 核能动力系统设计</h2>
 			</header>
 			<nav>
 			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
@@ -78,9 +78,11 @@
 <li><p>建立版本库（Repository），既存放文件的地方。使用TortoiseSVN到欲建立版本库的目录如E:\svn\repository右击，TortoiseSVN——在此创建版本库。选择本地文件系统。另外一种BDB方式没用过。</p></li>
 <li><p>启动Subversion服务器。这里我们直接使用Subversion服务器，其他参看图书教程。启动服务器有两种方式</p>
 
-<p> a. 命令行输入<code>svnserve -d -r E:\svn\repository</code>启动服务。这个是临时方法，即命令行窗口在使用过程中不能关闭，关闭服务器就停止了。</p>
-
-<p> b. 把subversion当作windows的服务。命令行输入 <code>sc create svnservice binpath= "\"e:\program files\Subversion\bin\svnserve.exe\" --service -r E:\svn\repository" displayname= "SVNService" depend= Tcpip</code>。binbinpath指向svnserve.exe所在目录。后面一个指向刚刚建立的版本库。注意语句里面的空格不要随意增减减少，否则会出错。</p></li>
+<ol type="a">
+<li><p>命令行输入<code>svnserve -d -r E:\svn\repository</code>启动服务。这个是临时方法，即命令行窗口在使用过程中不能关闭，关闭服务器就停止了。</p></li>
+<li><p>把subversion当作windows的服务。命令行输入 <code>sc create svnservice binpath= "\"e:\program files\Subversion\bin\svnserve.exe\" --service -r E:\svn\repository" displayname= "SVNService" depend= Tcpip</code>。binbinpath指向svnserve.exe所在目录。后面一个指向刚刚建立的版本库。注意语句里面的空格不要随意增减减少，否则会出错。</p></li>
+</ol>
+</li>
 <li><p>导入工程。选择工程的根文件夹，右击--TortoiseSVN——导入。版本库URL填写Subversion所在服务器IP及欲建立工程目录如<code>svn://10.14.91.244/PISDKDemoProject</code>，导入信息中输入对项目的描述，如图
 <img src="http://fs.yuliu.org/images/essay/2007/setup_of_subversion_server_001.jpg" alt="导入工程" />
 这一步同样可以在装有TortoiseSVN的客户端上面进行操作。</p></li>

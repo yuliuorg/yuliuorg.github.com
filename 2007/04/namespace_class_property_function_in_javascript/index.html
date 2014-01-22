@@ -51,7 +51,7 @@
 			<header>
 			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
 			<h1>刘 昱</h1>
-			<h2>核能动力系统设计工程师</h2>
+			<h2>高级工程师 核能动力系统设计</h2>
 			</header>
 			<nav>
 			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
@@ -74,68 +74,55 @@
 
 <p>分为两个部分。第一个部分是注册函数，另外一部分是声明命名空间</p>
 
-<p>命名空间注册函数，参照yui的方式，注意这种方式下所有的命名空间的第一级都是sacranto。</p>
-
-<pre><code>var sacranto = {};
-sacranto.namespace=function(ns){
-    if(!ns||!ns.length){
-        return null;
-    }
-    var levels = ns.split(".");
-    var nsobj=sacranto;
-    for(var i=(levels[0] == anto")?1:0;i&lt;levels.length;i++){
-        nsobj[levels[i]]=nsobj[levels[i]]||{};
-        nsobj = nsobj[levels[i]];
-    }
-    return nsobj;
-};  
-</code></pre>
-
-<p>声明命名空间的语句，这样我们就注册了一个sacranto.demo命名空间。</p>
-
-<pre><code>sacranto.namespace("demo");
-</code></pre>
+<p>命名空间注册函数，参照yui的方式，注意这种方式下所有的命名空间的第一级都是sacranto。
+    var sacranto = {};
+    sacranto.namespace=function(ns){
+        if(!ns||!ns.length){
+            return null;
+        }
+        var levels = ns.split(".");
+        var nsobj=sacranto;
+        for(var i=(levels[0] == anto")?1:0;i&lt;levels.length;i++){
+            nsobj[levels[i]]=nsobj[levels[i]]||{};
+            nsobj = nsobj[levels[i]];
+        }
+        return nsobj;
+    };<br/>
+声明命名空间的语句，这样我们就注册了一个sacranto.demo命名空间。
+    sacranto.namespace("demo");</p>
 
 <h1>2. 类</h1>
 
-<p>对于prototype类型的语言，函数其实就是类，声明一个函数其实就声明了一个类，并且他还是是类的静态构造函数。下面的语句声明了一个类，静态构造函数里面什么也没有做。</p>
-
-<pre><code>sacranto.demo.aclass = function(){};
-</code></pre>
+<p>对于prototype类型的语言，函数其实就是类，声明一个函数其实就声明了一个类，并且他还是是类的静态构造函数。下面的语句声明了一个类，静态构造函数里面什么也没有做。
+    sacranto.demo.aclass = function(){};</p>
 
 <h1>3. 类的属性和方法</h1>
 
-<p>这里就需要使用到prototype这个特性了</p>
-
-<pre><code>sacranto.demo.aclass.prototype = {
-    //属性
-    version: "1.0",
-    //方法
-    bar: function(s){
-        return "hello " + s;
-    }
-};
-</code></pre>
+<p>这里就需要使用到prototype这个特性了
+    sacranto.demo.aclass.prototype = {
+        //属性
+        version: "1.0",
+        //方法
+        bar: function(s){
+            return "hello " + s;
+        }
+    };</p>
 
 <h1>4. 静态方法</h1>
 
-<p>仿佛在javascript里面应该没有静态方法这个概念吧。我的理解是这样的</p>
+<p>仿佛在javascript里面应该没有静态方法这个概念吧。我的理解是这样的
+    //我理解的静态方法，其实是另外一个类和它的静态构造函数。
+    sacranto.demo.aclass.foo=function(s){
+        return "hello "+s;
+    }</p>
 
-<pre><code>//我理解的静态方法，其实是另外一个类和它的静态构造函数。
-sacranto.demo.aclass.foo=function(s){
-    return "hello "+s;
-}
-</code></pre>
-
-<p>OK，完成，测试一下吧</p>
-
-<pre><code>window.onload = function(){
-    var aobj=new sacranto.demo.aclass();
-    alert(aobj.bar("world"));                    //成功
-    //alert(sacranto.demo.aclass.bar("world"));    //失败
-    alert(sacranto.demo.aclass.foo("world"));    //成功
-};
-</code></pre>
+<p>OK，完成，测试一下吧
+    window.onload = function(){
+        var aobj=new sacranto.demo.aclass();
+        alert(aobj.bar("world"));                    //成功
+        //alert(sacranto.demo.aclass.bar("world"));    //失败
+        alert(sacranto.demo.aclass.foo("world"));    //成功
+    };</p>
 
 <p>延伸阅读：</p>
 

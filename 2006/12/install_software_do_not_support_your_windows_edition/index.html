@@ -51,7 +51,7 @@
 			<header>
 			<a href="http://en.wikipedia.org/wiki/Chicago_Pile-1"><img id="siteimage" src="/media/images/siteimg/Chicago_Pile.jpg" title="Chicago Pile 1" alt="Chicago Pile 1" /></a>
 			<h1>刘 昱</h1>
-			<h2>核能动力系统设计工程师</h2>
+			<h2>高级工程师 核能动力系统设计</h2>
 			</header>
 			<nav>
 			<span><a title="首页" class="" href="http://yuliu.org/">主页</a></span>
@@ -77,17 +77,11 @@
 <ol>
 <li><p>Using Orca.exe to open Adobe Premiere Pro 2.0.msi (NOTE: not the setup.exe, this is just a encapsulation of msi file)</p></li>
 <li><p>Find "LaunchCondition"  node in the left Column. this is the setup launch condition that can be seen from the name.</p></li>
-<li><p>Modify</p>
-
-<pre><code> ((VersionNT&gt;500) AND (ServicePackLevel&gt;=2)) OR ((VersionNT64) AND (ServicePackLevel&gt;=1))
-</code></pre>
-
+<li><p>Modify
+     ((VersionNT>500) AND (ServicePackLevel>=2)) OR ((VersionNT64) AND (ServicePackLevel>=1))
 to
-
-<pre><code> (1==1) OR ((VersionNT&gt;500) AND (ServicePackLevel&gt;=2)) OR ((VersionNT64) AND (ServicePackLevel&gt;=1))
-</code></pre>
-
-<p>just add 1==1 to make this condition always is true to let the setup run.</p></li>
+     (1==1) OR ((VersionNT>500) AND (ServicePackLevel>=2)) OR ((VersionNT64) AND (ServicePackLevel>=1))
+just add 1==1 to make this condition always is true to let the setup run.</p></li>
 </ol>
 
 
