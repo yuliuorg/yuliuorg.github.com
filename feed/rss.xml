@@ -6,8 +6,8 @@
     <atom:link href="http://yuliu.org/feed/rss.xml" rel="self" type="application/rss+xml" />
 	<description>刘昱 | 核能动力系统工程师</description>
     <language>zh-cn</language>
-    <pubDate>Wed, 22 Jan 2014 22:30:15 +0800</pubDate>
-    <lastBuildDate>Wed, 22 Jan 2014 22:30:15 +0800</lastBuildDate>
+    <pubDate>Wed, 22 Jan 2014 22:36:05 +0800</pubDate>
+    <lastBuildDate>Wed, 22 Jan 2014 22:36:05 +0800</lastBuildDate>
 
     
     <item>
@@ -642,6 +642,10 @@ $ git push -u origin master
 &lt;p&gt;接着需要设置域名的DNS（这不是立即生效的），对于顶级域名需要建立一条 A记录 到 204.232.175.78。注意不是使用CNAME形式，否则可能对其他服务（例如email）造成影响。&lt;/p&gt;
 
 &lt;p&gt;对于子域名最好使用CNAME记录，指向[username].github.com&lt;/p&gt;
+
+&lt;h2&gt;2.4 GitHub Windows (2014-01-20)&lt;/h2&gt;
+
+&lt;p&gt;github退出了&lt;a href=&quot;http://http://windows.github.com/&quot;&gt;GitHub Windows&lt;/a&gt;，使得github的内容管理更加方便。&lt;/p&gt;
 </description>
     </item>
     
