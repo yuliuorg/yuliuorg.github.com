@@ -114,27 +114,32 @@ pyperclip.copy(output)
 
 <p>这两天使用中发现当段首为中文符号，例如“或者《时，该段会出现乱码。放狗虽然没有找到直接的答案，但还是找到了一丝提示，主要问题应该是出在对python字符串和编码的理解上。</p>
 
-<p>python的str是一个字节数组，这个字节数组表示的是对unicode对象编码(可以是utf-8、gbk、cp936、GB2312)后的存储的格式。因此，它仅仅是一个字节流，没有其它的含义，例如
-    >>> str='核能设计工程师'
-    >>> str
-    '\xba\xcb\xc4\xdc\xc9\xe8\xbc\xc6\xb9\xa4\xb3\xcc\xca\xa6'
-即在python中使用<code>\xba\xcb\xc4\xdc\xc9\xe8\xbc\xc6\xb9\xa4\xb3\xcc\xca\xa6'</code>存放<code>核能设计工程师</code>。而中文空格对应<code>\xa1\xa1</code>，“对应<code>\xa1\xb0</code></p>
+<p>python的str是一个字节数组，这个字节数组表示的是对unicode对象编码(可以是utf-8、gbk、cp936、GB2312)后的存储的格式。因此，它仅仅是一个字节流，没有其它的含义，例如</p>
+
+<pre><code>&gt;&gt;&gt; str='核能设计工程师'
+&gt;&gt;&gt; str
+'\xba\xcb\xc4\xdc\xc9\xe8\xbc\xc6\xb9\xa4\xb3\xcc\xca\xa6'
+</code></pre>
+
+<p>即在python中使用<code>\xba\xcb\xc4\xdc\xc9\xe8\xbc\xc6\xb9\xa4\xb3\xcc\xca\xa6'</code>存放<code>核能设计工程师</code>。而中文空格对应<code>\xa1\xa1</code>，“对应<code>\xa1\xb0</code></p>
 
 <p>因此，<code>strip('\xa1')</code>时也会将“中的第一个<code>\xa1</code>也一块去掉，只留下<code>\xb0</code>，从而导致了乱码的出现。那么使用<code>strip('\xa1\xa1')</code>行不行呢？答案是不行，因为python的strip和C#的trim还不一样，参数不是前缀或是后缀，而是其中字符集的组合（<a href="http://docs.python.org/library/stdtypes.html#str.strip">python文档</a>），因此仍然会把“的第一个<code>\xa1</code>去掉。</p>
 
 <p>于是该情况下，同时考虑到居中很少出现中文空格，所以使用<a href="http://docs.python.org/library/stdtypes.html#str.replace">replace</a>替代strip去掉中文空格作为一个临时解决方案。</p>
 
-<p>小结，更新后代码如下：
-    # -<em>- coding: utf8 -</em>-
-    import pyperclip
-    content=pyperclip.paste()
-    output = ""
-    for line in content.split('\r\n'):
-        newline = line.strip(' ').replace('\xa1\xa1','').strip(' ')
-        if not newline:
-            continue
-        output += (newline + '\r\n\r\n')
-    pyperclip.copy(output)</p>
+<p>小结，更新后代码如下：</p>
+
+<pre><code># -*- coding: utf8 -*-
+import pyperclip
+content=pyperclip.paste()
+output = ""
+for line in content.split('\r\n'):
+    newline = line.strip(' ').replace('\xa1\xa1','').strip(' ')
+    if not newline:
+        continue
+    output += (newline + '\r\n\r\n')
+pyperclip.copy(output)
+</code></pre>
 
 </section>
 <section class="meta">

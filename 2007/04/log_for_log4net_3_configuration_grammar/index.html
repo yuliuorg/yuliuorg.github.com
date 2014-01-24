@@ -78,19 +78,22 @@
 
 <p>log4net使用log4net.Config.XmlConfigurator配置读取器来解析XML，这一部分描述XmlConfigurator的语法</p>
 
-<p>下面是一个有效的XML配置，根元素必须是<log4net>，这并不意味着这个元素不能嵌入到其他元素里面。详见配置文件节。
-    <log4net>
-        <appender name="ConsoleAppender" type="log4net.Appender.ConsoleAppender" >
-            <layout type="log4net.Layout.PatternLayout">
-                <conversionPattern value="%date [%thread] %-5level %logger [%ndc] - %message%newline" />
-            </layout>
-        </appender>
-        <root>
-            <level value="INFO" />
-            <appender-ref ref="ConsoleAppender" />
-        </root>
-    </log4net>
-<log4net>节支持下列属性</p>
+<p>下面是一个有效的XML配置，根元素必须是<log4net>，这并不意味着这个元素不能嵌入到其他元素里面。详见配置文件节。</p>
+
+<pre><code>&lt;log4net&gt;
+    &lt;appender name="ConsoleAppender" type="log4net.Appender.ConsoleAppender" &gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+            &lt;conversionPattern value="%date [%thread] %-5level %logger [%ndc] - %message%newline" /&gt;
+        &lt;/layout&gt;
+    &lt;/appender&gt;
+    &lt;root&gt;
+        &lt;level value="INFO" /&gt;
+        &lt;appender-ref ref="ConsoleAppender" /&gt;
+    &lt;/root&gt;
+&lt;/log4net&gt;
+</code></pre>
+
+<p><log4net>节支持下列属性</p>
 
 <ul>
 <li>debug：可选属性，值为true或者false，默认为false。指定为true时允许log4net的内部调试</li>
@@ -157,12 +160,15 @@
 </ul>
 
 
-<p>过滤器组成一个串来规定能够通过的事件，每个过滤器能够指定接受和处理的事件、拒绝和停止处理的事件或者允许事件到下一个过滤器。如果事件达到filter串的尽头而且没有被拒绝，那么它将被隐式的被记录器接受。
-    <filter type="log4net.Filter.LevelRangeFilter">
-        <levelMin value="INFO" />
-        <levelMax value="FATAL" />
-    </filter>
-这个过滤器将会拒绝等级低于INFO或者高于FATAL的事件，其他事件包括INFO和FATAL将会被记录。</p>
+<p>过滤器组成一个串来规定能够通过的事件，每个过滤器能够指定接受和处理的事件、拒绝和停止处理的事件或者允许事件到下一个过滤器。如果事件达到filter串的尽头而且没有被拒绝，那么它将被隐式的被记录器接受。</p>
+
+<pre><code>&lt;filter type="log4net.Filter.LevelRangeFilter"&gt;
+    &lt;levelMin value="INFO" /&gt;
+    &lt;levelMax value="FATAL" /&gt;
+&lt;/filter&gt;
+</code></pre>
+
+<p>这个过滤器将会拒绝等级低于INFO或者高于FATAL的事件，其他事件包括INFO和FATAL将会被记录。</p>
 
 <p>如果我们只想允许消息中包含特定字符（如“database”）的事件被记录，那么可以使用下面的过滤器</p>
 
@@ -174,14 +180,16 @@
 
 <p>上面的例子中，第一个过滤器将会检查时间消息中是否包含“database”，如果包含，过滤器将接受消息并停止过滤，事件被记录。如果不包含，事件被传递到下一个过滤器处理，如果没有下一个过滤器，时间会被隐式的记录。如果我们不想不符合过滤要求的事件被隐式记录，可以在最后加上log4net.Filter.DenyAllFilter，他将拒绝所有到达它的事件。</p>
 
-<p>如果我们希望记录消息中包含“database”或者“ldap”的事件，可以使用下列过滤器
-    <filter type="log4net.Filter.StringMatchFilter">
-        <stringToMatch value="database"/>
-    </filter>
-    <filter type="log4net.Filter.StringMatchFilter">
-        <stringToMatch value="ldap"/>
-    </filter>
-    <filter type="log4net.Filter.DenyAllFilter" /></p>
+<p>如果我们希望记录消息中包含“database”或者“ldap”的事件，可以使用下列过滤器</p>
+
+<pre><code>&lt;filter type="log4net.Filter.StringMatchFilter"&gt;
+    &lt;stringToMatch value="database"/&gt;
+&lt;/filter&gt;
+&lt;filter type="log4net.Filter.StringMatchFilter"&gt;
+    &lt;stringToMatch value="ldap"/&gt;
+&lt;/filter&gt;
+&lt;filter type="log4net.Filter.DenyAllFilter" /&gt;
+</code></pre>
 
 <h1>Layouts</h1>
 
@@ -201,10 +209,12 @@
 </ul>
 
 
-<p>下面的例子表示了怎样使用log4net.Layout.PatternLayout来配置布局。
-    <layout type="log4net.Layout.PatternLayout">
-        <conversionPattern value="%date [%thread] %-5level %logger [%ndc] - %message%newline" />
-    </layout></p>
+<p>下面的例子表示了怎样使用log4net.Layout.PatternLayout来配置布局。</p>
+
+<pre><code>&lt;layout type="log4net.Layout.PatternLayout"&gt;
+    &lt;conversionPattern value="%date [%thread] %-5level %logger [%ndc] - %message%newline" /&gt;
+&lt;/layout&gt;
+</code></pre>
 
 <h1>Root Logger（根记录器）</h1>
 
@@ -233,12 +243,15 @@
 
 <p>logger只可以定义为<log4net>元素的子元素</p>
 
-<p>一个记录器的例子
-    <logger name="LoggerName">
-        <level value="DEBUG" />
-        <appender-ref ref="ConsoleAppender" />
-    </logger>
-<logger>节支持下列属性</p>
+<p>一个记录器的例子</p>
+
+<pre><code>&lt;logger name="LoggerName"&gt;
+    &lt;level value="DEBUG" /&gt;
+    &lt;appender-ref ref="ConsoleAppender" /&gt;
+&lt;/logger&gt;
+</code></pre>
+
+<p><logger>节支持下列属性</p>
 
 <ul>
 <li>name：必须属性，制定记录器的名称</li>
@@ -259,8 +272,10 @@
 
 <p>Renderer只可以定义为<log4net>元素的子元素</p>
 
-<p>一个renderer例子
-    <renderer renderingClass="MyClass.MyRenderer" renderedClass="MyClass.MyFunkyObject" /></p>
+<p>一个renderer例子</p>
+
+<pre><code>&lt;renderer renderingClass="MyClass.MyRenderer" renderedClass="MyClass.MyFunkyObject" /&gt;
+</code></pre>
 
 <p><renderer>节支持下列属性</p>
 
@@ -276,9 +291,12 @@
 
 <p>parameter只可以定义为<log4net>元素的子元素</p>
 
-<p>一个parameter例子
-    <param name="ConversionPattern" value="%date [%thread] %-5level %logger [%ndc] - %message%newline" />
-<param>节支持下列属性</p>
+<p>一个parameter例子</p>
+
+<pre><code>&lt;param name="ConversionPattern" value="%date [%thread] %-5level %logger [%ndc] - %message%newline" /&gt;
+</code></pre>
+
+<p><param>节支持下列属性</p>
 
 <ul>
 <li>name：必须属性，值为传递到父对象中的parameter的名称</li>
@@ -295,10 +313,12 @@
 </ul>
 
 
-<p>一个使用嵌套参数元素的例子
-    <param name="evaluator" type="log4net.spi.LevelEvaluator">
-        <param name="Threshold" value="WARN"/>
-    <param></p>
+<p>一个使用嵌套参数元素的例子</p>
+
+<pre><code>&lt;param name="evaluator" type="log4net.spi.LevelEvaluator"&gt;
+    &lt;param name="Threshold" value="WARN"/&gt;
+&lt;param&gt;
+</code></pre>
 
 <p><strong> 扩展参数 </strong></p>
 
@@ -308,14 +328,19 @@
 
 <p>所有的参数可以使用参数名作为他们的元素名</p>
 
-<p>例如
-    <param name="evaluator" type="log4net.spi.LevelEvaluator">
-        <param name="Threshold" value="WARN"/>
-    <param>
-可以写成
-    <evaluator type="log4net.spi.LevelEvaluator">
-        <threshold value="WARN"/>
-    <evaluator></p>
+<p>例如</p>
+
+<pre><code>&lt;param name="evaluator" type="log4net.spi.LevelEvaluator"&gt;
+    &lt;param name="Threshold" value="WARN"/&gt;
+&lt;param&gt;
+</code></pre>
+
+<p>可以写成</p>
+
+<pre><code>&lt;evaluator type="log4net.spi.LevelEvaluator"&gt;
+    &lt;threshold value="WARN"/&gt;
+&lt;evaluator&gt;
+</code></pre>
 
 </section>
 <section class="meta">

@@ -96,7 +96,8 @@ tbxTime.Text = pv.TimeStamp.LocalDate.ToString();
 
 <p>如果要读取Archive的值，那么要稍微麻烦一点，应为你要给定读取的时间和模式，PIPoint对象的ArcValue方法是用来获取Archive的值，帮助的说明如下：</p>
 
-<p>object.ArcValue TimeStamp, Mode, AsynchStatus</p>
+<pre><code>object.ArcValue TimeStamp, Mode, AsynchStatus
+</code></pre>
 
 <p>这个应该是VB的语法吧，我们可以看出他有三个参数。第一个是时间，C#中我们可以直接传一个DateTime格式的数据进去，当然你也可以使用 PITime对象表示的时间，或者一个字符串。Mode代表取出的模式，因为PI数据库并不是每个时间都存有数据的，所以在你可以选择模式是读取你输入时间的当前点，后面一个点，前面一个点或者插值表示的时间。最后一个参数不解，文档里面没有说明，VB的例子则直接没有传这个参数，应该是一个可选参数，我的处理方法如下。</p>
 

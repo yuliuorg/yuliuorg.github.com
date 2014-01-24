@@ -72,17 +72,28 @@
 
 <ol>
 <li><p>The fisrt one is to hide navbar.<br/>
-you can add code below
-     #navbar-iframe { height: 0px; visibility: hidden; display: none }
-to <code>head--&lt;b:skin&gt;</code> section in your HTML. the HTML is under template settings.</p></li>
+you can add code below</p>
+
+<pre><code>  #navbar-iframe { height: 0px; visibility: hidden; display: none }
+</code></pre>
+
+<p>to <code>head--&lt;b:skin&gt;</code> section in your HTML. the HTML is under template settings.</p></li>
 <li><p>The second one is to open new window in Link List widget.<br/>
 By default there is not option that you can config it. so links in Link List widget will open in current window. However this is also could be solved it HTML code.<br/>
-At first, remember to check the option Expand Widget Templates . Then find the section
-     &lt;b:widget id='LinkList1' locked='false' title='Blog Links' type='LinkList'>
-change links
-     <li><a expr:href='data:link.target' >&lt;data:link.name/></a></li>
-to
-     <li><a expr:href='data:link.target' target='_blank'>&lt;data:link.name/></a></li></p></li>
+At first, remember to check the option Expand Widget Templates . Then find the section</p>
+
+<pre><code>  &lt;b:widget id='LinkList1' locked='false' title='Blog Links' type='LinkList'&gt;
+</code></pre>
+
+<p>change links</p>
+
+<pre><code>  &lt;li&gt;&lt;a expr:href='data:link.target' &gt;&lt;data:link.name/&gt;&lt;/a&gt;&lt;/li&gt;
+</code></pre>
+
+<p>to</p>
+
+<pre><code>  &lt;li&gt;&lt;a expr:href='data:link.target' target='_blank'&gt;&lt;data:link.name/&gt;&lt;/a&gt;&lt;/li&gt;
+</code></pre></li>
 </ol>
 
 

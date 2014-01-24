@@ -100,9 +100,13 @@ vim插件管理包，需要git和curl的支持</p></li>
 由于python的安装包是msi格式的，在win8下如果直接安装会提示缺少dll文件无法安装，实际上是UAC权限问题，但是msi又不没有右键“以管理员身份运行”这个选项，因此需要曲线救国，新建一个bat文件，文件中写入</p>
 
 <pre><code>  msiexec /i msi文件的绝对路径
-</code></pre>
+</code></pre></li>
+</ol>
 
-<p>即可安装</p></li>
+
+<p>即可安装</p>
+
+<ol>
 <li><p><a href="https://github.com/tpope/vim-markdown">Markdown</a><br/>
 提供markdown着色功能
 为了便于识别两个空格表示的换行，修改<code>~\.vim\bundle\vim-markdown\syntax\markdown.vim</code>，在96行增加</p>
@@ -135,11 +139,13 @@ jQuery语法支持，包括关键字，和CSS选择器</p></li>
 
 <p>个人在gui下喜欢使用torte的colorscheme，但是原始版本的配色没有考虑Pmenu的样式，使得Pmenu的色调很不搭（背景是粉红)。</p>
 
-<p>打开<code>colors\torte.vim</code>，在文件最后加入下面几行。
-    hi Pmenu guifg=#c0c0c0 guibg=#404080
-    hi PmenuSel guifg=#c0c0c0 guibg=#2050d0
-    hi PmenuSbar guifg=blue guibg=darkgray
-    hi PmenuThumb guifg=#c0c0c0</p>
+<p>打开<code>colors\torte.vim</code>，在文件最后加入下面几行。</p>
+
+<pre><code>hi Pmenu guifg=#c0c0c0 guibg=#404080
+hi PmenuSel guifg=#c0c0c0 guibg=#2050d0
+hi PmenuSbar guifg=blue guibg=darkgray
+hi PmenuThumb guifg=#c0c0c0
+</code></pre>
 
 </section>
 <section class="meta">

@@ -94,15 +94,16 @@
 
 <p>如果configFile和ConfigFileExtension属性均没有指定，log4net将会使用应用程序配置文件（例如TestApp.exe.config）</p>
 
-<p>示例用法
-    // Configure log4net using the .config file
-    [assembly: log4net.Config.XmlConfigurator(Watch=true)]
-    // This will cause log4net to look for a configuration file
-    // called TestApp.exe.config in the application base
-    // directory (i.e. the directory containing TestApp.exe)
-    // The config file will be watched for changes.</p>
+<p>示例用法</p>
 
-<pre><code>// Configure log4net using the .log4net file
+<pre><code>// Configure log4net using the .config file
+[assembly: log4net.Config.XmlConfigurator(Watch=true)]
+// This will cause log4net to look for a configuration file
+// called TestApp.exe.config in the application base
+// directory (i.e. the directory containing TestApp.exe)
+// The config file will be watched for changes.
+
+// Configure log4net using the .log4net file
 [assembly: log4net.Config.XmlConfigurator(ConfigFileExtension="log4net",Watch=true)]
 // This will cause log4net to look for a configuration file
 // called TestApp.exe.log4net in the application base
@@ -130,25 +131,28 @@
 
 <p>使用System.Configuration API进行配置的唯一方法是调用log4net.Config.XmlConfigurator.Configure() 方法或者 the log4net.Config.XmlConfigurator.Configure(ILoggerRepository) 方法.</p>
 
-<p>为了能够把配置数据嵌入到.config文件中，节的名字必须在configSections元素中注册到.NET解释器，还必须指定log4net.Config.Log4NetConfigurationSectionHandler用来解释这一配置节。其中类型必须是完整的组件集名因为它被.NET config文件解释器读取而不是log4net。必须指定正确的log4net组件集名。下面的配置文件示范了正确的方式
-    &lt;?xml version="1.0" encoding="utf-8" ?>
-    <configuration>
-        <configSections>
-            <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net" />
-        </configSections>
-        <log4net>
-            <appender name="ConsoleAppender" type="log4net.Appender.ConsoleAppender" >
-                <layout type="log4net.Layout.PatternLayout">
-                    <conversionPattern value="%date [%thread] %-5level %logger [%ndc] - %message%newline" />
-                </layout>
-            </appender>
-            <root>
-                <level value="INFO" />
-                <appender-ref ref="ConsoleAppender" />
-            </root>
-        </log4net>
-    </configuration>
-上面的理智中，指定了log4net组件集，他必须位于.NET运行时能够找到的地方，例如与程序相同的文件夹。如果log4net组件集位于GAC中，完整的组件集名还包括文化、版本和公钥。</p>
+<p>为了能够把配置数据嵌入到.config文件中，节的名字必须在configSections元素中注册到.NET解释器，还必须指定log4net.Config.Log4NetConfigurationSectionHandler用来解释这一配置节。其中类型必须是完整的组件集名因为它被.NET config文件解释器读取而不是log4net。必须指定正确的log4net组件集名。下面的配置文件示范了正确的方式</p>
+
+<pre><code>&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;configuration&gt;
+    &lt;configSections&gt;
+        &lt;section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net" /&gt;
+    &lt;/configSections&gt;
+    &lt;log4net&gt;
+        &lt;appender name="ConsoleAppender" type="log4net.Appender.ConsoleAppender" &gt;
+            &lt;layout type="log4net.Layout.PatternLayout"&gt;
+                &lt;conversionPattern value="%date [%thread] %-5level %logger [%ndc] - %message%newline" /&gt;
+            &lt;/layout&gt;
+        &lt;/appender&gt;
+        &lt;root&gt;
+            &lt;level value="INFO" /&gt;
+            &lt;appender-ref ref="ConsoleAppender" /&gt;
+        &lt;/root&gt;
+    &lt;/log4net&gt;
+&lt;/configuration&gt;
+</code></pre>
+
+<p>上面的理智中，指定了log4net组件集，他必须位于.NET运行时能够找到的地方，例如与程序相同的文件夹。如果log4net组件集位于GAC中，完整的组件集名还包括文化、版本和公钥。</p>
 
 <p>当用.config文件来配置时，节名即XML元素名必须为log4net。</p>
 
@@ -161,38 +165,44 @@
 
 <p>此外，log4net.Config.XmlConfiguratorAttribute可以用于指定配置文件。</p>
 
-<p>配置从文件中的log4net节读取，文件中只能有一个log4net元素但是它可以位于XML中的任意等级，例如根元素
-    &lt;?xml version="1.0" encoding="utf-8" ?>
-    <log4net>
-        <appender name="ConsoleAppender" type="log4net.Appender.ConsoleAppender" >
-            <layout type="log4net.Layout.PatternLayout">
-                <conversionPattern value="%date [%thread] %-5level %logger [%ndc] - %message%newline" />
-            </layout>
-        </appender>
-        <root>
-            <level value="INFO" />
-            <appender-ref ref="ConsoleAppender" />
-        </root>
-    </log4net>
-或者嵌入其他元素间。
-    &lt;?xml version="1.0" encoding="utf-8" ?>
-    <configuration>
-        <configSections>
-            <section name="log4net" type="System.Configuration.IgnoreSectionHandler" />
-        </configSections>
-        <log4net>
-            <appender name="ConsoleAppender" type="log4net.Appender.ConsoleAppender" >
-                <layout type="log4net.Layout.PatternLayout">
-                    <conversionPattern value="%date [%thread] %-5level %logger [%ndc] - %message%newline" />
-                </layout>
-            </appender>
-            <root>
-                <level value="INFO" />
-                <appender-ref ref="ConsoleAppender" />
-            </root>
-        </log4net>
-    </configuration>
-上面的配置文件显示了怎么样把配置数据嵌入到.config文件中尽管文件能够被log4net直接读取。值得注意的是.NET config文件解释器如果发现没有在configSections元素注册的元素将会抛出一个异常。因此，上面的例子将log4net节注册，但是指定的处理类型为System.Configuration.IgnoreSectionHandler.这个内建的类表示已使用另外的方法来读取配置节。</p>
+<p>配置从文件中的log4net节读取，文件中只能有一个log4net元素但是它可以位于XML中的任意等级，例如根元素</p>
+
+<pre><code>&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;log4net&gt;
+    &lt;appender name="ConsoleAppender" type="log4net.Appender.ConsoleAppender" &gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+            &lt;conversionPattern value="%date [%thread] %-5level %logger [%ndc] - %message%newline" /&gt;
+        &lt;/layout&gt;
+    &lt;/appender&gt;
+    &lt;root&gt;
+        &lt;level value="INFO" /&gt;
+        &lt;appender-ref ref="ConsoleAppender" /&gt;
+    &lt;/root&gt;
+&lt;/log4net&gt;
+</code></pre>
+
+<p>或者嵌入其他元素间。</p>
+
+<pre><code>&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;configuration&gt;
+    &lt;configSections&gt;
+        &lt;section name="log4net" type="System.Configuration.IgnoreSectionHandler" /&gt;
+    &lt;/configSections&gt;
+    &lt;log4net&gt;
+        &lt;appender name="ConsoleAppender" type="log4net.Appender.ConsoleAppender" &gt;
+            &lt;layout type="log4net.Layout.PatternLayout"&gt;
+                &lt;conversionPattern value="%date [%thread] %-5level %logger [%ndc] - %message%newline" /&gt;
+            &lt;/layout&gt;
+        &lt;/appender&gt;
+        &lt;root&gt;
+            &lt;level value="INFO" /&gt;
+            &lt;appender-ref ref="ConsoleAppender" /&gt;
+        &lt;/root&gt;
+    &lt;/log4net&gt;
+&lt;/configuration&gt;
+</code></pre>
+
+<p>上面的配置文件显示了怎么样把配置数据嵌入到.config文件中尽管文件能够被log4net直接读取。值得注意的是.NET config文件解释器如果发现没有在configSections元素注册的元素将会抛出一个异常。因此，上面的例子将log4net节注册，但是指定的处理类型为System.Configuration.IgnoreSectionHandler.这个内建的类表示已使用另外的方法来读取配置节。</p>
 
 </section>
 <section class="meta">

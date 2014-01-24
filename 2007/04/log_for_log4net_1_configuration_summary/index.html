@@ -111,121 +111,143 @@ public class MyApp
 
 <p>MyApp首先声明导入log4net的相关类，然后定义了一个静态记录器变量，传入参数是该类的类名。</p>
 
-<p>在MyApp中使用了下面的Bar类
-    using log4net;
-    namespace Com.Foo
+<p>在MyApp中使用了下面的Bar类</p>
+
+<pre><code>using log4net;
+namespace Com.Foo
+{
+    public class Bar
     {
-        public class Bar
+        private static readonly ILog log = nager.GetLogger(typeof(Bar));
+        public void DoIt()
         {
-            private static readonly ILog log = nager.GetLogger(typeof(Bar));
-            public void DoIt()
-            {
-                log.Debug("Did it again!");
-            }
+            log.Debug("Did it again!");
         }
     }
-BasicConfigurator.Configure()方法创建了一个简单的log4net配置，这个方法增加了一个到控制台的根记录器，输入格式可以使用PatternLayout来设置，例如<code>%-4timestamp [%thread] %-5level %logger %ndc - %message%newline</code>.</p>
+}
+</code></pre>
+
+<p>BasicConfigurator.Configure()方法创建了一个简单的log4net配置，这个方法增加了一个到控制台的根记录器，输入格式可以使用PatternLayout来设置，例如<code>%-4timestamp [%thread] %-5level %logger %ndc - %message%newline</code>.</p>
 
 <p>默认情况下，根记录器被分配到Level.DEBUG</p>
 
-<p>上述代码的输出如下
-    0    [main] INFO  MyApp  - Entering application.
-    36   [main] DEBUG Com.Foo.Bar  - Did it again!
-    51   [main] INFO  MyApp  - Exiting application.
-我们注意到在log4net中，子记录器只会连接到他们存在的上级。这里，名为Com.Foo.Bar的记录器直接连接到根记录器，因而将忽略未使用的Com或者Com.Foo的记录器。这种方法明显改进了性能和降低了log4net的内存使用。</p>
+<p>上述代码的输出如下</p>
+
+<pre><code>0    [main] INFO  MyApp  - Entering application.
+36   [main] DEBUG Com.Foo.Bar  - Did it again!
+51   [main] INFO  MyApp  - Exiting application.
+</code></pre>
+
+<p>我们注意到在log4net中，子记录器只会连接到他们存在的上级。这里，名为Com.Foo.Bar的记录器直接连接到根记录器，因而将忽略未使用的Com或者Com.Foo的记录器。这种方法明显改进了性能和降低了log4net的内存使用。</p>
 
 <p>MyApp类通过调用BasicConfigurator.Configure()方法来配置log4net，其他类只需要导入log4net命名空间，获取他们需要的记录器进行记录。</p>
 
-<p>上面的例子总是输入相同的记录信息。当然，可以简单的修改MyApp使之在运行时刻控制记录。下面是一个轻微修改版本。
-    using Com.Foo;
-    // Import log4net classes.
-    using log4net;
-    using log4net.Config;
-    public class MyApp
+<p>上面的例子总是输入相同的记录信息。当然，可以简单的修改MyApp使之在运行时刻控制记录。下面是一个轻微修改版本。</p>
+
+<pre><code>using Com.Foo;
+// Import log4net classes.
+using log4net;
+using log4net.Config;
+public class MyApp 
+{
+    private static readonly ILog log = ager.GetLogger(typeof(MyApp));
+    static void Main(string[] args) 
     {
-        private static readonly ILog log = ager.GetLogger(typeof(MyApp));
-        static void Main(string[] args)
-        {
-            // BasicConfigurator replaced with XmlConfigurator.
-            XmlConfigurator.Configure(new .IO.FileInfo(args[0]));
-            log.Info("Entering application.");
-            Bar bar = new Bar();
-            bar.DoIt();
-            log.Info("Exiting application.");
-        }
+        // BasicConfigurator replaced with XmlConfigurator.
+        XmlConfigurator.Configure(new .IO.FileInfo(args[0]));
+        log.Info("Entering application.");
+        Bar bar = new Bar();
+        bar.DoIt();
+        log.Info("Exiting application.");
     }
-这个版本的MyApp使用XmlConfigurator来解析配置文件和建立记录环境，配置文件的路径通过命令行制定。</p>
+}
+</code></pre>
+
+<p>这个版本的MyApp使用XmlConfigurator来解析配置文件和建立记录环境，配置文件的路径通过命令行制定。</p>
 
 <p><em>译注：不知道怎么赋值给命令行参数，我是直接传递log4net的配置文件的名称。</em></p>
 
-<p>下面是一个简单的配置文件，它的效果与上面的基于BasicConfigurator的例子完全相同。
-    <log4net>
-        <!-- A1 is set to be a ConsoleAppender -->
-        <appender name="A1" type="log4net.Appender.ConsoleAppender">
-            <!-- A1 uses PatternLayout -->
-            <layout type="log4net.Layout.PatternLayout">
-                <conversionPattern value="%-4timestamp ad] %-5level %logger %ndc - %message%newline" />
-            </layout>
-        </appender>
-        <!-- Set root logger level to DEBUG and its only appender to
-        <root>
-            <level value="DEBUG" />
-            <appender-ref ref="A1" />
-        </root>
-    </log4net>
-如果我们不再想记录任何Com.Foo命名空间中类的记录输出，可以参照下面的配置文件
-    <log4net>
-        <!-- A1 is set to be a ConsoleAppender -->
-        <appender name="A1" type="log4net.Appender.ConsoleAppender">
-            <!-- A1 uses PatternLayout -->
-            <layout type="log4net.Layout.PatternLayout">
-                <!-- Print the date in ISO 8601 format -->
-                <conversionPattern value="%date ad] %-5level %logger %ndc - %message%newline" />
-            </layout>
-        </appender>
-        <!-- Set root logger level to DEBUG and its only appender to
-        <root>
-            <level value="DEBUG" />
-            <appender-ref ref="A1" />
-        </root>
-        <!-- Print only messages of level WARN or above in the package o -->
-        <logger name="Com.Foo">
-            <level value="WARN" />
-        </logger>
-    </log4net>
-输出将会是这样：
-    2000-09-07 14:07:41,508 [main] INFO  MyApp - Entering application.
-    2000-09-07 14:07:41,529 [main] INFO  MyApp - Exiting application.</p>
+<p>下面是一个简单的配置文件，它的效果与上面的基于BasicConfigurator的例子完全相同。</p>
+
+<pre><code>&lt;log4net&gt;
+    &lt;!-- A1 is set to be a ConsoleAppender --&gt;
+    &lt;appender name="A1" type="log4net.Appender.ConsoleAppender"&gt;
+        &lt;!-- A1 uses PatternLayout --&gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+            &lt;conversionPattern value="%-4timestamp ad] %-5level %logger %ndc - %message%newline" /&gt;
+        &lt;/layout&gt;
+    &lt;/appender&gt;
+    &lt;!-- Set root logger level to DEBUG and its only appender to 
+    &lt;root&gt;
+        &lt;level value="DEBUG" /&gt;
+        &lt;appender-ref ref="A1" /&gt;
+    &lt;/root&gt;
+&lt;/log4net&gt;
+</code></pre>
+
+<p>如果我们不再想记录任何Com.Foo命名空间中类的记录输出，可以参照下面的配置文件</p>
+
+<pre><code>&lt;log4net&gt;
+    &lt;!-- A1 is set to be a ConsoleAppender --&gt;
+    &lt;appender name="A1" type="log4net.Appender.ConsoleAppender"&gt;
+        &lt;!-- A1 uses PatternLayout --&gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+            &lt;!-- Print the date in ISO 8601 format --&gt;
+            &lt;conversionPattern value="%date ad] %-5level %logger %ndc - %message%newline" /&gt;
+        &lt;/layout&gt;
+    &lt;/appender&gt;
+    &lt;!-- Set root logger level to DEBUG and its only appender to 
+    &lt;root&gt;
+        &lt;level value="DEBUG" /&gt;
+        &lt;appender-ref ref="A1" /&gt;
+    &lt;/root&gt;
+    &lt;!-- Print only messages of level WARN or above in the package o --&gt;
+    &lt;logger name="Com.Foo"&gt;
+        &lt;level value="WARN" /&gt;
+    &lt;/logger&gt;
+&lt;/log4net&gt;
+</code></pre>
+
+<p>输出将会是这样：</p>
+
+<pre><code>2000-09-07 14:07:41,508 [main] INFO  MyApp - Entering application.
+2000-09-07 14:07:41,529 [main] INFO  MyApp - Exiting application.
+</code></pre>
 
 <p>因为记录器Com.Foo.Bar没有分配级别，它将继承配置文件中已分配为Warn级别的Com.Foo的级别，Bar.DoIt方法中记录语句的级别为DEBUG，低于WARN，因此DoIt方法的记录请求将被禁止。</p>
 
-<p>下面是使用多记录方式的配置文件
-    <log4net>
-        <appender name="Console" type="log4net.Appender.ConsoleAppender">
-            <layout type="log4net.Layout.PatternLayout">
-                <!-- Pattern to output the caller's file name and line number -->
-                <conversionPattern value="%5level [%thread] (%file:%line) - %message%newline" />
-            </layout>
-        </appender>
-        <appender name="RollingFile" type="log4net.Appender.RollingFileAppender">
-            <file value="example.log" />
-            <appendToFile value="true" />
-            <maximumFileSize value="100KB" />
-            <maxSizeRollBackups value="2" />
-            <layout type="log4net.Layout.PatternLayout">
-                <conversionPattern value="%level %thread %logger - %message%newline" />
-            </layout>
-        </appender>
-        <root>
-            <level value="DEBUG" />
-            <appender-ref ref="Console" />
-            <appender-ref ref="RollingFile" />
-        </root>
-    </log4net>
-运行它控制台将会出现如下输出
-    INFO [main] (MyApp.cs:16) - Entering application.
-    DEBUG [main] (Bar.cs:12) - Doing it again!
-    INFO [main] (MyApp.cs:19) - Exiting application.</p>
+<p>下面是使用多记录方式的配置文件</p>
+
+<pre><code>&lt;log4net&gt;
+    &lt;appender name="Console" type="log4net.Appender.ConsoleAppender"&gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+            &lt;!-- Pattern to output the caller's file name and line number --&gt;
+            &lt;conversionPattern value="%5level [%thread] (%file:%line) - %message%newline" /&gt;
+        &lt;/layout&gt;
+    &lt;/appender&gt;
+    &lt;appender name="RollingFile" type="log4net.Appender.RollingFileAppender"&gt;
+        &lt;file value="example.log" /&gt;
+        &lt;appendToFile value="true" /&gt;
+        &lt;maximumFileSize value="100KB" /&gt;
+        &lt;maxSizeRollBackups value="2" /&gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+            &lt;conversionPattern value="%level %thread %logger - %message%newline" /&gt;
+        &lt;/layout&gt;
+    &lt;/appender&gt;
+    &lt;root&gt;
+        &lt;level value="DEBUG" /&gt;
+        &lt;appender-ref ref="Console" /&gt;
+        &lt;appender-ref ref="RollingFile" /&gt;
+    &lt;/root&gt;
+&lt;/log4net&gt;
+</code></pre>
+
+<p>运行它控制台将会出现如下输出</p>
+
+<pre><code>INFO [main] (MyApp.cs:16) - Entering application.
+DEBUG [main] (Bar.cs:12) - Doing it again!
+INFO [main] (MyApp.cs:19) - Exiting application.
+</code></pre>
 
 <p>指的注意的是，因为根记录器有第二个记录方式，记录也会被输出到example.log文件，文件将会被回滚当他达到100KB，当回滚发生时，旧版本的example.log将会被重命名为example.log.1</p>
 

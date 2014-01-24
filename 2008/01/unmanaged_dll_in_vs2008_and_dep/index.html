@@ -78,14 +78,18 @@
 
 <p>简单的说出现这个错误的原因是vs2008的c#编译器生成的PE文件头增加了NXCOMPAT位，这个与DEP有关，DEP用于防止恶意软件注入进程。那么也就是说位托管的DLL在内存中属于为标记成为可执行的，因而出现了上述的错误。所以解决方案就是消除PE中的这个位。</p>
 
-<p>启动Visual Studio 2008 Command Prompt，输入：
-    editbin.exe /NXCOMPAT:NO <your binary></p>
+<p>启动Visual Studio 2008 Command Prompt，输入：</p>
+
+<pre><code>editbin.exe /NXCOMPAT:NO &lt;your binary&gt;
+</code></pre>
 
 <p>如果使用VS2008，则可以在工程属性中添加一个Post-build命令：</p>
 
-<p>原文是这样的命令：
-    call $(DevEnvDir)..\tools\vsvars32.bat
-    editbin.exe /NXCOMPAT:NO $(TargetPath)</p>
+<p>原文是这样的命令：</p>
+
+<pre><code>call $(DevEnvDir)..\tools\vsvars32.bat
+editbin.exe /NXCOMPAT:NO $(TargetPath)
+</code></pre>
 
 <p>但是在我这里直接引用仿佛不行，我修改成为下面这样</p>
 

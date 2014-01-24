@@ -73,12 +73,17 @@
 <p>要支持其他版本的SQL SERVER，需要做以下的修改：</p>
 
 <ol>
-<li><p>visual studio 2005 command prompt下运行
-     aspnet_regsql
-在SQL SERVER数据库中增加一个角色数据库，名字可以自己取的，这里是aspnetdb.</p></li>
+<li><p>visual studio 2005 command prompt下运行</p>
+
+<pre><code> aspnet_regsql
+</code></pre>
+
+<p>在SQL SERVER数据库中增加一个角色数据库，名字可以自己取的，这里是aspnetdb.</p></li>
 <li><p>打开IIS的website-default web site，右击properties选择asp.net选项卡，然后单击edit global configuration</p></li>
-<li><p>general标签下面修改连接字符串为
-     Data Source=数据库;Initial Catalog=aspnetdb;Persist Security Info=True;User ID=sa;Password=12345</p></li>
+<li><p>general标签下面修改连接字符串为</p>
+
+<pre><code> Data Source=数据库;Initial Catalog=aspnetdb;Persist Security Info=True;User ID=sa;Password=12345
+</code></pre></li>
 </ol>
 
 

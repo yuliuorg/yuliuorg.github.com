@@ -75,10 +75,13 @@ char *str2=const_cast&lt;char*&gt;(str1.c_str());
 char **str3=&amp;str2;
 </code></pre>
 
-<p>这些是可以的，但是
-    char <em><em>str4;
-    </em>str4=const_cast&lt;char</em>>(str1.c_str());
-在使用的时候会提示str4没有定义，由于对于C++不熟悉，暂时不研究。</p>
+<p>这些是可以的，但是</p>
+
+<pre><code>char **str4;
+*str4=const_cast&lt;char*&gt;(str1.c_str());
+</code></pre>
+
+<p>在使用的时候会提示str4没有定义，由于对于C++不熟悉，暂时不研究。</p>
 
 <h1>2. 包含lib文件的方法</h1>
 

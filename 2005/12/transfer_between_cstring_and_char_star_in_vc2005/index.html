@@ -76,22 +76,28 @@
 
 <p>作为一个初学者，遇到这个问题，首先是在baidu上搜索了一下转换的方法，有很多结果，别人也说有效，但是我把它放在我的代码里面的时候，就是出现错误。下面是我的解决办法。</p>
 
-<p>使用CString的GetBuffer方法
-    CString origCString("Hello,World");
-    char<em> CharString = origCString.GetBuffer(origCString.GetLength()+1);<br/>
-网上的很多文章说的都是这个方法，但是我在VC++2005中编译得到下列信息
-    Error 1 error C2440:   'initializing' : cannot convert from 'wchar_t </em>' to 'char *'</p>
+<p>使用CString的GetBuffer方法</p>
 
-<p>对于这个错误不是很理解，因为是刚开始使用VC不久，所以对于wchar_t和char的区别不是很清楚，在MSDN中查看了一下，wchar_t是一个宽字符型，相当于unsigned short（16bit）。而我们通常使用的char是8bit。继续搜索wchar_t*到char*的转换，msdn上面有一篇文章是<a href="http://msdn2.microsoft.com/en-us/library/ms235631.aspx">Convert Between Various String Types</a>，讲了VC++2005中的各种字符串char *, wchar_t*, _bstr_t, CComBSTR, CString, basic_string, and System.String的相互转换。其中将wchar_t*转换为char*的代码如下：(为了保持文章的一致性，修改了变量名)
-    #include &lt;stdlib.h>
-    #include <iostream>
-    using namespace std;
-    int main()
-    {
-        wchar_t *origString = L"Hello,World";
-        wcout &lt;&lt; origString &lt;&lt; endl;</p>
+<pre><code>CString origCString("Hello,World");
+char* CharString = origCString.GetBuffer(origCString.GetLength()+1);  
+</code></pre>
 
-<pre><code>    // Convert to a char*
+<p>网上的很多文章说的都是这个方法，但是我在VC++2005中编译得到下列信息</p>
+
+<pre><code>Error 1 error C2440:   'initializing' : cannot convert from 'wchar_t *' to 'char *'   
+</code></pre>
+
+<p>对于这个错误不是很理解，因为是刚开始使用VC不久，所以对于wchar_t和char的区别不是很清楚，在MSDN中查看了一下，wchar_t是一个宽字符型，相当于unsigned short（16bit）。而我们通常使用的char是8bit。继续搜索wchar_t*到char*的转换，msdn上面有一篇文章是<a href="http://msdn2.microsoft.com/en-us/library/ms235631.aspx">Convert Between Various String Types</a>，讲了VC++2005中的各种字符串char *, wchar_t*, _bstr_t, CComBSTR, CString, basic_string, and System.String的相互转换。其中将wchar_t*转换为char*的代码如下：(为了保持文章的一致性，修改了变量名)</p>
+
+<pre><code>#include &lt;stdlib.h&gt;
+#include &lt;iostream&gt;
+using namespace std;
+int main()
+{ 
+    wchar_t *origString = L"Hello,World"; 
+    wcout &lt;&lt; origString &lt;&lt; endl;
+
+    // Convert to a char*
     size_t origsize = wcslen(origString) + 1;
     const size_t newsize = 100;
     size_t convertedChars = 0;
@@ -119,13 +125,16 @@ cout &lt;&lt; CharString &lt;&lt; endl;
 
 <p>至于为什么原来的那段代码别人都能用好，而我在VC++2005下面去不能直接使用，还要通过转换呢？正好看到《Programming Windows》的第二章讲Unicode的和在msdn论坛问了一下相关问题后得到答案。</p>
 
-<p>原来在VC++ 2005以前，应用程序默认都是关闭对Unicode的支持的，而在VC2005中，默认打开了对它的支持，CString对应的字符串应该是TCHAR，TCHAR的定义是这样的，
-    #ifdef _UNICODE
-    typedef wchar_t TCHAR;
-    #else
-    typedef char TCHAR;
-    #endif
-我想这个就是为什么我在VC++2005种不能直接转换的原因。在工程中应该可以关闭对于Unicode的支持，从而可以直接转换。这个做法是右击工程名—〉Property—〉General中的character set中选择not set，这样，本文开头的那段代码就可以正确的执行了。</p>
+<p>原来在VC++ 2005以前，应用程序默认都是关闭对Unicode的支持的，而在VC2005中，默认打开了对它的支持，CString对应的字符串应该是TCHAR，TCHAR的定义是这样的，</p>
+
+<pre><code>#ifdef _UNICODE
+typedef wchar_t TCHAR;
+#else
+typedef char TCHAR;
+#endif 
+</code></pre>
+
+<p>我想这个就是为什么我在VC++2005种不能直接转换的原因。在工程中应该可以关闭对于Unicode的支持，从而可以直接转换。这个做法是右击工程名—〉Property—〉General中的character set中选择not set，这样，本文开头的那段代码就可以正确的执行了。</p>
 
 </section>
 <section class="meta">

@@ -80,32 +80,48 @@
 <li><p>用monoDevelop新建工程，我的名字是gtkTest，gtk# 2.0 Project。</p></li>
 <li><p>编译运行已经出现了一个gnome的窗体。不过上面什么都没有</p></li>
 <li><p>Main.cs是定义程序入口的，暂时我还没有用到他。</p></li>
-<li><p>打开MyWindow.cs，首先在MyWindow的构造函数中添加一个Button。
-     Button mybtn = new Button("Click me");
-把按钮加入窗体
-     this.Add(mybtn);</p></li>
+<li><p>打开MyWindow.cs，首先在MyWindow的构造函数中添加一个Button。</p>
+
+<pre><code> Button mybtn = new Button("Click me");
+</code></pre>
+
+<p>把按钮加入窗体</p>
+
+<pre><code>  this.Add(mybtn);
+</code></pre></li>
 <li><p>编译运行，可以看到在窗口中已经有了一个按钮，并且是充满怎个窗口的。这里和windows是不一样的，一个窗口好象只能增加一个控件，比如说要在add一个Label在编译时刻可以通过，但是运行时刻会有Warning。而且控件大小不可调。</p></li>
 <li><p>添加单击事件处理函数<br/>
-构造函数中增加单击事件
-     mybtn.Clicked+=new EventHandler (mybtn_click);
-添加事件处理的函数
-     void mybtn_click(object sender,EventArgs args)
-不要在里面直接用MessageBox.Show（）这个函数是没有的。<br/>
+构造函数中增加单击事件</p>
+
+<pre><code>  mybtn.Clicked+=new EventHandler (mybtn_click);
+</code></pre>
+
+<p>添加事件处理的函数</p>
+
+<pre><code>  void mybtn_click(object sender,EventArgs args)
+</code></pre>
+
+<p>不要在里面直接用MessageBox.Show（）这个函数是没有的。<br/>
 看了一下Doc，发现有一个MessageDialog，估计应该是它了。<br/>
-查看构造函数，
-     MessageDialog(Window, DialogFlags, MessageType, ButtonsType, string, params object[])
-第一个是父窗口，第二个的意思是他的存在规则吧，我是这样理解的。<br/>
+查看构造函数，</p>
+
+<pre><code>  MessageDialog(Window, DialogFlags, MessageType, ButtonsType, string, params object[])
+</code></pre>
+
+<p>第一个是父窗口，第二个的意思是他的存在规则吧，我是这样理解的。<br/>
 最后一个参数不知道什么意思,看他的例子也没有最后一个，我也没有写<br/>
-根据example在事件处理的函数里面加上
-     MessageDialog md = new MessageDialog((Window)this,
-             DialogFlags.DestroyWithParent,
-             MessageType.Question,
-             ButtonsType.YesNo,
-             "Do you really want to exit?");
-     ResponseType result = (ResponseType)md.Run();
-     md.Destroy();
-     if(result==ResponseType.Yes)
-     this.Destroy();</p></li>
+根据example在事件处理的函数里面加上</p>
+
+<pre><code>  MessageDialog md = new MessageDialog((Window)this,
+          DialogFlags.DestroyWithParent,
+          MessageType.Question,
+          ButtonsType.YesNo, 
+          "Do you really want to exit?");
+  ResponseType result = (ResponseType)md.Run();
+  md.Destroy();
+  if(result==ResponseType.Yes)
+  this.Destroy();
+</code></pre></li>
 <li><p>编译运行，在单击按钮的时候就会出现对话框问你是否确定退出。搞定
 最后粘一下MyWindow.cs的代码</p>
 

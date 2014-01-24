@@ -70,17 +70,24 @@
 <section class="post">
 <p>从http://cleverdevil.org/whatwhat把whatwhat拖下来以后</p>
 
-<p>首先配置dev.cfg中的数据库为
-    # DATABASE
-    sqlobject.dburi="notrans_sqlite:///g|/whatwhat/trunk/sqlplayground.db"
-这里我使用的是sqlite</p>
+<p>首先配置dev.cfg中的数据库为</p>
 
-<p>然后安装textile，这一步很简单
-    easy_install textile
-当然要保证你已经连上了互联网</p>
+<pre><code># DATABASE
+sqlobject.dburi="notrans_sqlite:///g|/whatwhat/trunk/sqlplayground.db"
+</code></pre>
 
-<p>最后<code>python whatwhat-start.py</code>启动
-通过http://localhost:8080就可以访问了</p>
+<p>这里我使用的是sqlite</p>
+
+<p>然后安装textile，这一步很简单</p>
+
+<pre><code>easy_install textile
+</code></pre>
+
+<p>当然要保证你已经连上了互联网</p>
+
+<p>最后<code>python whatwhat-start.py</code>启动</p>
+
+<p>通过http://localhost:8080就可以访问了</p>
 
 <p>但是启动发现没有帐号登录</p>
 

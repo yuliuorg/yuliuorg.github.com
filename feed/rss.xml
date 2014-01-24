@@ -6,9 +6,61 @@
     <atom:link href="http://yuliu.org/feed/rss.xml" rel="self" type="application/rss+xml" />
 	<description>刘昱 | 核能动力系统工程师</description>
     <language>zh-cn</language>
-    <pubDate>Wed, 22 Jan 2014 22:47:42 +0800</pubDate>
-    <lastBuildDate>Wed, 22 Jan 2014 22:47:42 +0800</lastBuildDate>
+    <pubDate>Fri, 24 Jan 2014 21:09:10 +0800</pubDate>
+    <lastBuildDate>Fri, 24 Jan 2014 21:09:10 +0800</lastBuildDate>
 
+    
+    <item>
+      <title>红米刷机安装第三方ROM</title>
+      <link>http://yuliu.org/2014/01/root_reinstall_rom_of_hongmi/</link>
+      <pubDate>Fri, 24 Jan 2014 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2014/01/root_reinstall_rom_of_hongmi</guid>
+	  <description>&lt;p&gt;话说Android手机就是用来折腾的，而且还是小米，不刷刷机都对不起自己，呵呵。&lt;/p&gt;
+
+&lt;h1&gt;0 设备&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Windows 8.1系统台式机&lt;/li&gt;
+&lt;li&gt;红米联通（WCDMA）版&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1&gt;1 root&lt;/h1&gt;
+
+&lt;p&gt;由于官方recovery只能刷官方的rom，所以要刷机安装第三方rom，必须先刷第三方recovery，而这又要求首先root。&lt;/p&gt;
+
+&lt;p&gt;miui红米论坛上root的方法一堆，包括电脑端和手机端都有，&lt;a href=&quot;http://bbs.xiaomi.cn/thread-9098813-1-1.html&quot;&gt;详细了解&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;先试了手机端，百度root、root大师均不行，root大师提示权限不够。&lt;/p&gt;
+
+&lt;p&gt;再试电脑端，mi-tools不行，最后使用root大师成功（PS原来的一个移动版红米同样也只有root大师电脑板能够搞定）。&lt;/p&gt;
+
+&lt;h1&gt;2 刷第三方recovery&lt;/h1&gt;
+
+&lt;p&gt;这里选择了&lt;a href=&quot;http://blog.cofface.com/archives/543.html&quot;&gt;cwm的第三方recovery&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;使用cwm自带的手机连接电脑执行&lt;code&gt;刷入红米CWMrecovery.bat&lt;/code&gt;无法成功&lt;/p&gt;
+
+&lt;p&gt;只能将其中的Cofface_hongmi_recovery_v1.0.img拷到sd卡中，&lt;/p&gt;
+
+&lt;p&gt;安装移动叔叔客户端，通过移动叔叔刷recovery成功。&lt;/p&gt;
+
+&lt;p&gt;PS：刷完第三方不要重启进入官方系统，否则recovery会被恢复成官方recovery。&lt;/p&gt;
+
+&lt;h1&gt;3 SDCard无法挂载问题&lt;/h1&gt;
+
+&lt;p&gt;一般来说进入第三方recovery后，直接选择SD卡中的第三方rom文件即可，但是此次却出现在recovery中无法挂载SD卡（can‘t mount SDcard）的情况，遇到这种情况可使用&lt;a href=&quot;http://panasonic.jp/support/global/cs/sd/download/index.html&quot;&gt;panasonic SDcard formatter&lt;/a&gt;重新格式化SD即可。&lt;/p&gt;
+
+&lt;h1&gt;4 rom文件修改慎用记事本&lt;/h1&gt;
+
+&lt;p&gt;由于我打算刷开启了miui系统中自带root选项的准官方rom，&lt;a href=&quot;http://www.miui.com/thread-1583745-1-4.html&quot;&gt;链接一&lt;/a&gt;，&lt;a href=&quot;http://bbs.xiaomi.cn/thread-8947931-1-1.html&quot;&gt;链接二&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;于是需要对官方rom进行编辑修改，修改这些文本文件的过程中慎用系统自带的记事本，不知道什么时候就给你加个空格或换行什么的，导致rom错误无法使用。&lt;/p&gt;
+
+&lt;p&gt;推荐使用vim或者ultraedit等文本编辑软件。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>“核级”材料</title>
@@ -358,27 +410,32 @@ pyperclip.copy(output)
 
 &lt;p&gt;这两天使用中发现当段首为中文符号，例如“或者《时，该段会出现乱码。放狗虽然没有找到直接的答案，但还是找到了一丝提示，主要问题应该是出在对python字符串和编码的理解上。&lt;/p&gt;
 
-&lt;p&gt;python的str是一个字节数组，这个字节数组表示的是对unicode对象编码(可以是utf-8、gbk、cp936、GB2312)后的存储的格式。因此，它仅仅是一个字节流，没有其它的含义，例如
-    &gt;&gt;&gt; str='核能设计工程师'
-    &gt;&gt;&gt; str
-    '\xba\xcb\xc4\xdc\xc9\xe8\xbc\xc6\xb9\xa4\xb3\xcc\xca\xa6'
-即在python中使用&lt;code&gt;\xba\xcb\xc4\xdc\xc9\xe8\xbc\xc6\xb9\xa4\xb3\xcc\xca\xa6'&lt;/code&gt;存放&lt;code&gt;核能设计工程师&lt;/code&gt;。而中文空格对应&lt;code&gt;\xa1\xa1&lt;/code&gt;，“对应&lt;code&gt;\xa1\xb0&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;python的str是一个字节数组，这个字节数组表示的是对unicode对象编码(可以是utf-8、gbk、cp936、GB2312)后的存储的格式。因此，它仅仅是一个字节流，没有其它的含义，例如&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; str='核能设计工程师'
+&amp;gt;&amp;gt;&amp;gt; str
+'\xba\xcb\xc4\xdc\xc9\xe8\xbc\xc6\xb9\xa4\xb3\xcc\xca\xa6'
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;即在python中使用&lt;code&gt;\xba\xcb\xc4\xdc\xc9\xe8\xbc\xc6\xb9\xa4\xb3\xcc\xca\xa6'&lt;/code&gt;存放&lt;code&gt;核能设计工程师&lt;/code&gt;。而中文空格对应&lt;code&gt;\xa1\xa1&lt;/code&gt;，“对应&lt;code&gt;\xa1\xb0&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;因此，&lt;code&gt;strip('\xa1')&lt;/code&gt;时也会将“中的第一个&lt;code&gt;\xa1&lt;/code&gt;也一块去掉，只留下&lt;code&gt;\xb0&lt;/code&gt;，从而导致了乱码的出现。那么使用&lt;code&gt;strip('\xa1\xa1')&lt;/code&gt;行不行呢？答案是不行，因为python的strip和C#的trim还不一样，参数不是前缀或是后缀，而是其中字符集的组合（&lt;a href=&quot;http://docs.python.org/library/stdtypes.html#str.strip&quot;&gt;python文档&lt;/a&gt;），因此仍然会把“的第一个&lt;code&gt;\xa1&lt;/code&gt;去掉。&lt;/p&gt;
 
 &lt;p&gt;于是该情况下，同时考虑到居中很少出现中文空格，所以使用&lt;a href=&quot;http://docs.python.org/library/stdtypes.html#str.replace&quot;&gt;replace&lt;/a&gt;替代strip去掉中文空格作为一个临时解决方案。&lt;/p&gt;
 
-&lt;p&gt;小结，更新后代码如下：
-    # -&lt;em&gt;- coding: utf8 -&lt;/em&gt;-
-    import pyperclip
-    content=pyperclip.paste()
-    output = &quot;&quot;
-    for line in content.split('\r\n'):
-        newline = line.strip(' ').replace('\xa1\xa1','').strip(' ')
-        if not newline:
-            continue
-        output += (newline + '\r\n\r\n')
-    pyperclip.copy(output)&lt;/p&gt;
+&lt;p&gt;小结，更新后代码如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# -*- coding: utf8 -*-
+import pyperclip
+content=pyperclip.paste()
+output = &quot;&quot;
+for line in content.split('\r\n'):
+    newline = line.strip(' ').replace('\xa1\xa1','').strip(' ')
+    if not newline:
+        continue
+    output += (newline + '\r\n\r\n')
+pyperclip.copy(output)
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
@@ -508,9 +565,13 @@ vim插件管理包，需要git和curl的支持&lt;/p&gt;&lt;/li&gt;
 由于python的安装包是msi格式的，在win8下如果直接安装会提示缺少dll文件无法安装，实际上是UAC权限问题，但是msi又不没有右键“以管理员身份运行”这个选项，因此需要曲线救国，新建一个bat文件，文件中写入&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;  msiexec /i msi文件的绝对路径
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;即可安装&lt;/p&gt;&lt;/li&gt;
+
+&lt;p&gt;即可安装&lt;/p&gt;
+
+&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/tpope/vim-markdown&quot;&gt;Markdown&lt;/a&gt;&lt;br/&gt;
 提供markdown着色功能
 为了便于识别两个空格表示的换行，修改&lt;code&gt;~\.vim\bundle\vim-markdown\syntax\markdown.vim&lt;/code&gt;，在96行增加&lt;/p&gt;
@@ -543,11 +604,13 @@ jQuery语法支持，包括关键字，和CSS选择器&lt;/p&gt;&lt;/li&gt;
 
 &lt;p&gt;个人在gui下喜欢使用torte的colorscheme，但是原始版本的配色没有考虑Pmenu的样式，使得Pmenu的色调很不搭（背景是粉红)。&lt;/p&gt;
 
-&lt;p&gt;打开&lt;code&gt;colors\torte.vim&lt;/code&gt;，在文件最后加入下面几行。
-    hi Pmenu guifg=#c0c0c0 guibg=#404080
-    hi PmenuSel guifg=#c0c0c0 guibg=#2050d0
-    hi PmenuSbar guifg=blue guibg=darkgray
-    hi PmenuThumb guifg=#c0c0c0&lt;/p&gt;
+&lt;p&gt;打开&lt;code&gt;colors\torte.vim&lt;/code&gt;，在文件最后加入下面几行。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hi Pmenu guifg=#c0c0c0 guibg=#404080
+hi PmenuSel guifg=#c0c0c0 guibg=#2050d0
+hi PmenuSbar guifg=blue guibg=darkgray
+hi PmenuThumb guifg=#c0c0c0
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
@@ -657,41 +720,53 @@ $ git push -u origin master
 	  <guid>http://yuliu.org/2011/05/modify_ip_dns_gateway_in_cento</guid>
 	  <description>&lt;h1&gt;一、CentOS修改IP地址&lt;/h1&gt;
 
-&lt;p&gt;修改对应网卡的IP地址的配置文件
-    vi /etc/sysconfig/network-scripts/ifcfg-eth0
-内容
-    #描述网卡对应的设备别名，例如ifcfg-eth0的文件中它为eth0
-    DEVICE=eth0
-    #设置网卡获得ip地址的方式，选项为static，dhcp或bootp，对应静态指定的 ip地址,通过dhcp协议获得的ip地址，通过bootp协议获得的ip地址
-    BOOTPROTO=static
-    #对应的子网广播地址
-    BROADCAST=192.168.1.255
-    #对应的网卡物理地址
-    HWADDR=00:07:E9:05:E8:B4
-    #如果设置网卡获得 ip地址的方式为静态指定，此字段就指定了网卡对应的ip地址
-    IPADDR=192.168.1.99
-    IPV6INIT=no
-    IPV6_AUTOCONF=no
-    #网卡对应的网络掩码
-    NETMASK=255.255.255.0
-    ONBOOT=yes #系统启动时是否设置此网络接口，设置为yes时，系统启动时激活此设备&lt;/p&gt;
+&lt;p&gt;修改对应网卡的IP地址的配置文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vi /etc/sysconfig/network-scripts/ifcfg-eth0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;内容&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#描述网卡对应的设备别名，例如ifcfg-eth0的文件中它为eth0
+DEVICE=eth0
+#设置网卡获得ip地址的方式，选项为static，dhcp或bootp，对应静态指定的 ip地址,通过dhcp协议获得的ip地址，通过bootp协议获得的ip地址
+BOOTPROTO=static
+#对应的子网广播地址
+BROADCAST=192.168.1.255
+#对应的网卡物理地址
+HWADDR=00:07:E9:05:E8:B4
+#如果设置网卡获得 ip地址的方式为静态指定，此字段就指定了网卡对应的ip地址
+IPADDR=192.168.1.99
+IPV6INIT=no
+IPV6_AUTOCONF=no
+#网卡对应的网络掩码
+NETMASK=255.255.255.0
+ONBOOT=yes #系统启动时是否设置此网络接口，设置为yes时，系统启动时激活此设备
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h1&gt;二、CentOS 修改网关&lt;/h1&gt;
 
-&lt;p&gt;修改对应网卡的网关的配置文件
-    vi /etc/sysconfig/network
-内容
-    #表示系统是否使用网络，一般设置为yes。如果设为no，则不能使用网络，而且很多系统服务程序将无法启动
-    NETWORKING=yes
-    #设置本机的主机名，这里设置的主机名要和/etc/hosts中设置的主机名对应
-    HOSTNAME=localhost.localdomain
-    #设置本机连接的网关的IP地址。例如，网关为192.168.1.1
-    GATEWAY=192.168.1.1&lt;/p&gt;
+&lt;p&gt;修改对应网卡的网关的配置文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vi /etc/sysconfig/network
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;内容&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#表示系统是否使用网络，一般设置为yes。如果设为no，则不能使用网络，而且很多系统服务程序将无法启动
+NETWORKING=yes
+#设置本机的主机名，这里设置的主机名要和/etc/hosts中设置的主机名对应
+HOSTNAME=localhost.localdomain
+#设置本机连接的网关的IP地址。例如，网关为192.168.1.1
+GATEWAY=192.168.1.1
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h1&gt;三、CentOS 修改DNS&lt;/h1&gt;
 
-&lt;p&gt;修改对应网卡的DNS的配置文件
-    vi /etc/resolv.conf&lt;/p&gt;
+&lt;p&gt;修改对应网卡的DNS的配置文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vi /etc/resolv.conf
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2&gt;OPENDNS&lt;/h2&gt;
 
@@ -760,39 +835,69 @@ search localdomain
 
 &lt;p&gt;rpmforge是Dag和其他包的集合，为centos提供了超过5000个的包，包括wine、vlc、mplayer等（&lt;a href=&quot;http://packages.sw.be/&quot;&gt;所有包列表&lt;/a&gt;）。安装plowshare所需的libcaca、caca-utils、tesseract-ocr等。&lt;/p&gt;
 
-&lt;p&gt;1.首先进入&lt;a href=&quot;http://packages.sw.be/rpmforge-release/&quot;&gt;http://packages.sw.be/rpmforge-release&lt;/a&gt;选择适合硬件架构的&lt;tt&gt;rpmforge-release&lt;/tt&gt;包，可以使用uname -i来检查自己的硬件架构，我选的是
-    wget http://packages.sw.be/rpmforge-release/rpmforge-release-0.5.2-2.el5.rf.i386.rpm
-2.安装DAG's GPG密钥
-    rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt
-3.验证下载的&lt;tt&gt;rpmforge-release&lt;/tt&gt;
-    rpm -K rpmforge-release-0.5.2-2.el5.rf.&lt;em&gt;.rpm
-4.安装rpmforge
-    rpm -i rpmforge-release-0.5.2-2.el5.rf.&lt;/em&gt;.rpm
-程序将配置yum库配置文件并导入相应的GPG密钥，这样rpmforge就配置好了。&lt;/p&gt;
+&lt;p&gt;1.首先进入&lt;a href=&quot;http://packages.sw.be/rpmforge-release/&quot;&gt;http://packages.sw.be/rpmforge-release&lt;/a&gt;选择适合硬件架构的&lt;tt&gt;rpmforge-release&lt;/tt&gt;包，可以使用uname -i来检查自己的硬件架构，我选的是&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget http://packages.sw.be/rpmforge-release/rpmforge-release-0.5.2-2.el5.rf.i386.rpm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.安装DAG's GPG密钥&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3.验证下载的&lt;tt&gt;rpmforge-release&lt;/tt&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rpm -K rpmforge-release-0.5.2-2.el5.rf.*.rpm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;4.安装rpmforge&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rpm -i rpmforge-release-0.5.2-2.el5.rf.*.rpm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;程序将配置yum库配置文件并导入相应的GPG密钥，这样rpmforge就配置好了。&lt;/p&gt;
 
 &lt;h1&gt;安装plowshare&lt;/h1&gt;
 
-&lt;p&gt;1.安装一众依赖包
-    yum install curl recode imagemagick tesseract-ocr-eng spidermonkey-bin perlmagick libcaca caca-utils
-记得要装caca-utils，因为CLI下将网盘验证码图片装换为ASCII的img2txt不是包含在libcaca里面，而是在caca-utils里面。网上一众教程都没有提到这个~&lt;/p&gt;
+&lt;p&gt;1.安装一众依赖包&lt;/p&gt;
 
-&lt;p&gt;2.下载plowshare，注意将代码中的version换成相应的版本号
-    wget http://plowshare.googlecode.com/files/plowshare-SVN-r[VERSION]-snapshot.tar.gz
-如果喜欢稳定版
-    wget http://plowshare.googlecode.com/files/plowshare-[VERSION].tgz
-3.解压缩和安装（root下），
-    tar xvzf plowshare-SVN-rVERSION-snapshot.tar.gz
-    cd plowshare-SVN-rVERSION-snapshot.tar.gz
-    setup.sh install
-稳定版把文件名换换就行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yum install curl recode imagemagick tesseract-ocr-eng spidermonkey-bin perlmagick libcaca caca-utils
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;记得要装caca-utils，因为CLI下将网盘验证码图片装换为ASCII的img2txt不是包含在libcaca里面，而是在caca-utils里面。网上一众教程都没有提到这个~&lt;/p&gt;
+
+&lt;p&gt;2.下载plowshare，注意将代码中的version换成相应的版本号&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget http://plowshare.googlecode.com/files/plowshare-SVN-r[VERSION]-snapshot.tar.gz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果喜欢稳定版&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget http://plowshare.googlecode.com/files/plowshare-[VERSION].tgz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3.解压缩和安装（root下），&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tar xvzf plowshare-SVN-rVERSION-snapshot.tar.gz
+cd plowshare-SVN-rVERSION-snapshot.tar.gz
+setup.sh install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;稳定版把文件名换换就行&lt;/p&gt;
 
 &lt;p&gt;4.使用&lt;/p&gt;
 
-&lt;p&gt;下载
-    plowdown FILEURL
-上传
-    plowup FILEURL megaupload
-更多使用参数参见plowshare的文档吧。&lt;/p&gt;
+&lt;p&gt;下载&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;plowdown FILEURL
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上传&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;plowup FILEURL megaupload
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;更多使用参数参见plowshare的文档吧。&lt;/p&gt;
 </description>
     </item>
     
@@ -830,8 +935,10 @@ tar: Error is not recoverable: exiting now&lt;br/&gt;
 tar: Child returned status 2&lt;br/&gt;
 tar: Error exit delayed from previous errors&lt;/p&gt;&lt;/blockquote&gt;
 
-&lt;p&gt;安装bzip2软件包
-    apt-get install bzip2&lt;/p&gt;
+&lt;p&gt;安装bzip2软件包&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apt-get install bzip2
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
@@ -951,11 +1058,14 @@ for MIME type: application/octet-stream&lt;/p&gt;&lt;/li&gt;
 
 &lt;p&gt;有了dz的安装经验，wordpress也是相同的。&lt;/p&gt;
 
-&lt;p&gt;首先下载wp并解压缩，拷贝到对应目录，有官方中文版的哦
-    wget -c http://cn.wordpress.org/wordpress-3.1-zh_CN.zip
-    unzip wordpress-3.1-zh_CN.zip
-    cp -R wordpress/* /home/wwwroot/blog.XXXX.com
-接下来进入 域名/wp-admin/install.php即会启动安装过程。&lt;/p&gt;
+&lt;p&gt;首先下载wp并解压缩，拷贝到对应目录，有官方中文版的哦&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget -c http://cn.wordpress.org/wordpress-3.1-zh_CN.zip
+unzip wordpress-3.1-zh_CN.zip
+cp -R wordpress/* /home/wwwroot/blog.XXXX.com
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;接下来进入 域名/wp-admin/install.php即会启动安装过程。&lt;/p&gt;
 
 &lt;p&gt;注：LNMP WordPress安装主题、插件会要求你输入FTP信息，在putty下执行下述命令，就不需要输入这些信息咯。&lt;/p&gt;
 
@@ -1079,14 +1189,18 @@ nginx :    /usr/local/nginx
 
 &lt;p&gt;简单的说出现这个错误的原因是vs2008的c#编译器生成的PE文件头增加了NXCOMPAT位，这个与DEP有关，DEP用于防止恶意软件注入进程。那么也就是说位托管的DLL在内存中属于为标记成为可执行的，因而出现了上述的错误。所以解决方案就是消除PE中的这个位。&lt;/p&gt;
 
-&lt;p&gt;启动Visual Studio 2008 Command Prompt，输入：
-    editbin.exe /NXCOMPAT:NO &lt;your binary&gt;&lt;/p&gt;
+&lt;p&gt;启动Visual Studio 2008 Command Prompt，输入：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;editbin.exe /NXCOMPAT:NO &amp;lt;your binary&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;如果使用VS2008，则可以在工程属性中添加一个Post-build命令：&lt;/p&gt;
 
-&lt;p&gt;原文是这样的命令：
-    call $(DevEnvDir)..\tools\vsvars32.bat
-    editbin.exe /NXCOMPAT:NO $(TargetPath)&lt;/p&gt;
+&lt;p&gt;原文是这样的命令：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;call $(DevEnvDir)..\tools\vsvars32.bat
+editbin.exe /NXCOMPAT:NO $(TargetPath)
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;但是在我这里直接引用仿佛不行，我修改成为下面这样&lt;/p&gt;
 
@@ -1509,55 +1623,59 @@ editbin.exe /NXCOMPAT:NO $(TargetPath)
 &lt;/ol&gt;
 
 
-&lt;p&gt;记录器可以通过log4net.LogManger类的静态方法获得。GetLogger方法以欲获取的记录器名称为参数，如下所示：
-    namespace log4net
+&lt;p&gt;记录器可以通过log4net.LogManger类的静态方法获得。GetLogger方法以欲获取的记录器名称为参数，如下所示：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;namespace log4net
+{
+    public class LogManager
     {
-        public class LogManager
-        {
-            public static ILog GetLogger(string name);
-            public static ILog GetLogger(Type type);
-        }
-    }&lt;/p&gt;
+        public static ILog GetLogger(string name);
+        public static ILog GetLogger(Type type);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;GetLogger方法也可以接受欲获取记录器的完整类型为名称的Type类型参数。&lt;/p&gt;
 
-&lt;p&gt;记录器返回ILog接口，它代表了返回给开发者的记录器。ILog接口定义如下
-    namespace log4net
+&lt;p&gt;记录器返回ILog接口，它代表了返回给开发者的记录器。ILog接口定义如下&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;namespace log4net
+{
+    public interface ILog
     {
-        public interface ILog
-        {
-            /&lt;em&gt; Test if a level is enabled for logging &lt;/em&gt;/
-            bool IsDebugEnabled { get; }
-            bool IsInfoEnabled { get; }
-            bool IsWarnEnabled { get; }
-            bool IsErrorEnabled { get; }
-            bool IsFatalEnabled { get; }
-            /&lt;em&gt; Log a message object &lt;/em&gt;/
-            void Debug(object message);
-            void Info(object message);
-            void Warn(object message);
-            void Error(object message);
-            void Fatal(object message);
-            /&lt;em&gt; Log a message object and exception &lt;/em&gt;/
-            void Debug(object message, Exception t);
-            void Info(object message, Exception t);
-            void Warn(object message, Exception t);
-            void Error(object message, Exception t);
-            void Fatal(object message, Exception t);
-            /&lt;em&gt; Log a message string using the System.String.Format syntax &lt;/em&gt;/
-            void DebugFormat(string format, params object[] args);
-            void InfoFormat(string format, params object[] args);
-            void WarnFormat(string format, params object[] args);
-            void ErrorFormat(string format, params object[] args);
-            void FatalFormat(string format, params object[] args);
-            /&lt;em&gt; Log a message string using the System.String.Format syntax &lt;/em&gt;/
-            void DebugFormat(IFormatProvider provider, string format, params object[] args);
-            void InfoFormat(IFormatProvider provider, string format, params object[] args);
-            void WarnFormat(IFormatProvider provider, string format, params object[] args);
-            void ErrorFormat(IFormatProvider provider, string format, params object[] args);
-            void FatalFormat(IFormatProvider provider, string format, params object[] args);
-        }
-    }&lt;/p&gt;
+        /* Test if a level is enabled for logging */
+        bool IsDebugEnabled { get; }
+        bool IsInfoEnabled { get; }
+        bool IsWarnEnabled { get; }
+        bool IsErrorEnabled { get; }
+        bool IsFatalEnabled { get; }
+        /* Log a message object */
+        void Debug(object message);
+        void Info(object message);
+        void Warn(object message);
+        void Error(object message);
+        void Fatal(object message);
+        /* Log a message object and exception */
+        void Debug(object message, Exception t);
+        void Info(object message, Exception t);
+        void Warn(object message, Exception t);
+        void Error(object message, Exception t);
+        void Fatal(object message, Exception t);
+        /* Log a message string using the System.String.Format syntax */
+        void DebugFormat(string format, params object[] args);
+        void InfoFormat(string format, params object[] args);
+        void WarnFormat(string format, params object[] args);
+        void ErrorFormat(string format, params object[] args);
+        void FatalFormat(string format, params object[] args);
+        /* Log a message string using the System.String.Format syntax */
+        void DebugFormat(IFormatProvider provider, string format, params object[] args);
+        void InfoFormat(IFormatProvider provider, string format, params object[] args);
+        void WarnFormat(IFormatProvider provider, string format, params object[] args);
+        void ErrorFormat(IFormatProvider provider, string format, params object[] args);
+        void FatalFormat(IFormatProvider provider, string format, params object[] args);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;记录器可以被指定等级。等级是log4net.Core.Level类的实例。下列等级依照递增优先级被定义。&lt;/p&gt;
 
@@ -1863,19 +1981,22 @@ ILog y = LogManager.GetLogger(&quot;wombat&quot;);
 
 &lt;p&gt;log4net使用log4net.Config.XmlConfigurator配置读取器来解析XML，这一部分描述XmlConfigurator的语法&lt;/p&gt;
 
-&lt;p&gt;下面是一个有效的XML配置，根元素必须是&lt;log4net&gt;，这并不意味着这个元素不能嵌入到其他元素里面。详见配置文件节。
-    &lt;log4net&gt;
-        &lt;appender name=&quot;ConsoleAppender&quot; type=&quot;log4net.Appender.ConsoleAppender&quot; &gt;
-            &lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&gt;
-                &lt;conversionPattern value=&quot;%date [%thread] %-5level %logger [%ndc] - %message%newline&quot; /&gt;
-            &lt;/layout&gt;
-        &lt;/appender&gt;
-        &lt;root&gt;
-            &lt;level value=&quot;INFO&quot; /&gt;
-            &lt;appender-ref ref=&quot;ConsoleAppender&quot; /&gt;
-        &lt;/root&gt;
-    &lt;/log4net&gt;
-&lt;log4net&gt;节支持下列属性&lt;/p&gt;
+&lt;p&gt;下面是一个有效的XML配置，根元素必须是&lt;log4net&gt;，这并不意味着这个元素不能嵌入到其他元素里面。详见配置文件节。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;log4net&amp;gt;
+    &amp;lt;appender name=&quot;ConsoleAppender&quot; type=&quot;log4net.Appender.ConsoleAppender&quot; &amp;gt;
+        &amp;lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&amp;gt;
+            &amp;lt;conversionPattern value=&quot;%date [%thread] %-5level %logger [%ndc] - %message%newline&quot; /&amp;gt;
+        &amp;lt;/layout&amp;gt;
+    &amp;lt;/appender&amp;gt;
+    &amp;lt;root&amp;gt;
+        &amp;lt;level value=&quot;INFO&quot; /&amp;gt;
+        &amp;lt;appender-ref ref=&quot;ConsoleAppender&quot; /&amp;gt;
+    &amp;lt;/root&amp;gt;
+&amp;lt;/log4net&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;log4net&gt;节支持下列属性&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;debug：可选属性，值为true或者false，默认为false。指定为true时允许log4net的内部调试&lt;/li&gt;
@@ -1942,12 +2063,15 @@ ILog y = LogManager.GetLogger(&quot;wombat&quot;);
 &lt;/ul&gt;
 
 
-&lt;p&gt;过滤器组成一个串来规定能够通过的事件，每个过滤器能够指定接受和处理的事件、拒绝和停止处理的事件或者允许事件到下一个过滤器。如果事件达到filter串的尽头而且没有被拒绝，那么它将被隐式的被记录器接受。
-    &lt;filter type=&quot;log4net.Filter.LevelRangeFilter&quot;&gt;
-        &lt;levelMin value=&quot;INFO&quot; /&gt;
-        &lt;levelMax value=&quot;FATAL&quot; /&gt;
-    &lt;/filter&gt;
-这个过滤器将会拒绝等级低于INFO或者高于FATAL的事件，其他事件包括INFO和FATAL将会被记录。&lt;/p&gt;
+&lt;p&gt;过滤器组成一个串来规定能够通过的事件，每个过滤器能够指定接受和处理的事件、拒绝和停止处理的事件或者允许事件到下一个过滤器。如果事件达到filter串的尽头而且没有被拒绝，那么它将被隐式的被记录器接受。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;filter type=&quot;log4net.Filter.LevelRangeFilter&quot;&amp;gt;
+    &amp;lt;levelMin value=&quot;INFO&quot; /&amp;gt;
+    &amp;lt;levelMax value=&quot;FATAL&quot; /&amp;gt;
+&amp;lt;/filter&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这个过滤器将会拒绝等级低于INFO或者高于FATAL的事件，其他事件包括INFO和FATAL将会被记录。&lt;/p&gt;
 
 &lt;p&gt;如果我们只想允许消息中包含特定字符（如“database”）的事件被记录，那么可以使用下面的过滤器&lt;/p&gt;
 
@@ -1959,14 +2083,16 @@ ILog y = LogManager.GetLogger(&quot;wombat&quot;);
 
 &lt;p&gt;上面的例子中，第一个过滤器将会检查时间消息中是否包含“database”，如果包含，过滤器将接受消息并停止过滤，事件被记录。如果不包含，事件被传递到下一个过滤器处理，如果没有下一个过滤器，时间会被隐式的记录。如果我们不想不符合过滤要求的事件被隐式记录，可以在最后加上log4net.Filter.DenyAllFilter，他将拒绝所有到达它的事件。&lt;/p&gt;
 
-&lt;p&gt;如果我们希望记录消息中包含“database”或者“ldap”的事件，可以使用下列过滤器
-    &lt;filter type=&quot;log4net.Filter.StringMatchFilter&quot;&gt;
-        &lt;stringToMatch value=&quot;database&quot;/&gt;
-    &lt;/filter&gt;
-    &lt;filter type=&quot;log4net.Filter.StringMatchFilter&quot;&gt;
-        &lt;stringToMatch value=&quot;ldap&quot;/&gt;
-    &lt;/filter&gt;
-    &lt;filter type=&quot;log4net.Filter.DenyAllFilter&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;如果我们希望记录消息中包含“database”或者“ldap”的事件，可以使用下列过滤器&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;filter type=&quot;log4net.Filter.StringMatchFilter&quot;&amp;gt;
+    &amp;lt;stringToMatch value=&quot;database&quot;/&amp;gt;
+&amp;lt;/filter&amp;gt;
+&amp;lt;filter type=&quot;log4net.Filter.StringMatchFilter&quot;&amp;gt;
+    &amp;lt;stringToMatch value=&quot;ldap&quot;/&amp;gt;
+&amp;lt;/filter&amp;gt;
+&amp;lt;filter type=&quot;log4net.Filter.DenyAllFilter&quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h1&gt;Layouts&lt;/h1&gt;
 
@@ -1986,10 +2112,12 @@ ILog y = LogManager.GetLogger(&quot;wombat&quot;);
 &lt;/ul&gt;
 
 
-&lt;p&gt;下面的例子表示了怎样使用log4net.Layout.PatternLayout来配置布局。
-    &lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&gt;
-        &lt;conversionPattern value=&quot;%date [%thread] %-5level %logger [%ndc] - %message%newline&quot; /&gt;
-    &lt;/layout&gt;&lt;/p&gt;
+&lt;p&gt;下面的例子表示了怎样使用log4net.Layout.PatternLayout来配置布局。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&amp;gt;
+    &amp;lt;conversionPattern value=&quot;%date [%thread] %-5level %logger [%ndc] - %message%newline&quot; /&amp;gt;
+&amp;lt;/layout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h1&gt;Root Logger（根记录器）&lt;/h1&gt;
 
@@ -2018,12 +2146,15 @@ ILog y = LogManager.GetLogger(&quot;wombat&quot;);
 
 &lt;p&gt;logger只可以定义为&lt;log4net&gt;元素的子元素&lt;/p&gt;
 
-&lt;p&gt;一个记录器的例子
-    &lt;logger name=&quot;LoggerName&quot;&gt;
-        &lt;level value=&quot;DEBUG&quot; /&gt;
-        &lt;appender-ref ref=&quot;ConsoleAppender&quot; /&gt;
-    &lt;/logger&gt;
-&lt;logger&gt;节支持下列属性&lt;/p&gt;
+&lt;p&gt;一个记录器的例子&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;logger name=&quot;LoggerName&quot;&amp;gt;
+    &amp;lt;level value=&quot;DEBUG&quot; /&amp;gt;
+    &amp;lt;appender-ref ref=&quot;ConsoleAppender&quot; /&amp;gt;
+&amp;lt;/logger&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;logger&gt;节支持下列属性&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;name：必须属性，制定记录器的名称&lt;/li&gt;
@@ -2044,8 +2175,10 @@ ILog y = LogManager.GetLogger(&quot;wombat&quot;);
 
 &lt;p&gt;Renderer只可以定义为&lt;log4net&gt;元素的子元素&lt;/p&gt;
 
-&lt;p&gt;一个renderer例子
-    &lt;renderer renderingClass=&quot;MyClass.MyRenderer&quot; renderedClass=&quot;MyClass.MyFunkyObject&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;一个renderer例子&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;renderer renderingClass=&quot;MyClass.MyRenderer&quot; renderedClass=&quot;MyClass.MyFunkyObject&quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;renderer&gt;节支持下列属性&lt;/p&gt;
 
@@ -2061,9 +2194,12 @@ ILog y = LogManager.GetLogger(&quot;wombat&quot;);
 
 &lt;p&gt;parameter只可以定义为&lt;log4net&gt;元素的子元素&lt;/p&gt;
 
-&lt;p&gt;一个parameter例子
-    &lt;param name=&quot;ConversionPattern&quot; value=&quot;%date [%thread] %-5level %logger [%ndc] - %message%newline&quot; /&gt;
-&lt;param&gt;节支持下列属性&lt;/p&gt;
+&lt;p&gt;一个parameter例子&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;param name=&quot;ConversionPattern&quot; value=&quot;%date [%thread] %-5level %logger [%ndc] - %message%newline&quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;param&gt;节支持下列属性&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;name：必须属性，值为传递到父对象中的parameter的名称&lt;/li&gt;
@@ -2080,10 +2216,12 @@ ILog y = LogManager.GetLogger(&quot;wombat&quot;);
 &lt;/ul&gt;
 
 
-&lt;p&gt;一个使用嵌套参数元素的例子
-    &lt;param name=&quot;evaluator&quot; type=&quot;log4net.spi.LevelEvaluator&quot;&gt;
-        &lt;param name=&quot;Threshold&quot; value=&quot;WARN&quot;/&gt;
-    &lt;param&gt;&lt;/p&gt;
+&lt;p&gt;一个使用嵌套参数元素的例子&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;param name=&quot;evaluator&quot; type=&quot;log4net.spi.LevelEvaluator&quot;&amp;gt;
+    &amp;lt;param name=&quot;Threshold&quot; value=&quot;WARN&quot;/&amp;gt;
+&amp;lt;param&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;strong&gt; 扩展参数 &lt;/strong&gt;&lt;/p&gt;
 
@@ -2093,14 +2231,19 @@ ILog y = LogManager.GetLogger(&quot;wombat&quot;);
 
 &lt;p&gt;所有的参数可以使用参数名作为他们的元素名&lt;/p&gt;
 
-&lt;p&gt;例如
-    &lt;param name=&quot;evaluator&quot; type=&quot;log4net.spi.LevelEvaluator&quot;&gt;
-        &lt;param name=&quot;Threshold&quot; value=&quot;WARN&quot;/&gt;
-    &lt;param&gt;
-可以写成
-    &lt;evaluator type=&quot;log4net.spi.LevelEvaluator&quot;&gt;
-        &lt;threshold value=&quot;WARN&quot;/&gt;
-    &lt;evaluator&gt;&lt;/p&gt;
+&lt;p&gt;例如&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;param name=&quot;evaluator&quot; type=&quot;log4net.spi.LevelEvaluator&quot;&amp;gt;
+    &amp;lt;param name=&quot;Threshold&quot; value=&quot;WARN&quot;/&amp;gt;
+&amp;lt;param&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可以写成&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;evaluator type=&quot;log4net.spi.LevelEvaluator&quot;&amp;gt;
+    &amp;lt;threshold value=&quot;WARN&quot;/&amp;gt;
+&amp;lt;evaluator&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
@@ -2136,15 +2279,16 @@ ILog y = LogManager.GetLogger(&quot;wombat&quot;);
 
 &lt;p&gt;如果configFile和ConfigFileExtension属性均没有指定，log4net将会使用应用程序配置文件（例如TestApp.exe.config）&lt;/p&gt;
 
-&lt;p&gt;示例用法
-    // Configure log4net using the .config file
-    [assembly: log4net.Config.XmlConfigurator(Watch=true)]
-    // This will cause log4net to look for a configuration file
-    // called TestApp.exe.config in the application base
-    // directory (i.e. the directory containing TestApp.exe)
-    // The config file will be watched for changes.&lt;/p&gt;
+&lt;p&gt;示例用法&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;// Configure log4net using the .log4net file
+&lt;pre&gt;&lt;code&gt;// Configure log4net using the .config file
+[assembly: log4net.Config.XmlConfigurator(Watch=true)]
+// This will cause log4net to look for a configuration file
+// called TestApp.exe.config in the application base
+// directory (i.e. the directory containing TestApp.exe)
+// The config file will be watched for changes.
+
+// Configure log4net using the .log4net file
 [assembly: log4net.Config.XmlConfigurator(ConfigFileExtension=&quot;log4net&quot;,Watch=true)]
 // This will cause log4net to look for a configuration file
 // called TestApp.exe.log4net in the application base
@@ -2172,25 +2316,28 @@ ILog y = LogManager.GetLogger(&quot;wombat&quot;);
 
 &lt;p&gt;使用System.Configuration API进行配置的唯一方法是调用log4net.Config.XmlConfigurator.Configure() 方法或者 the log4net.Config.XmlConfigurator.Configure(ILoggerRepository) 方法.&lt;/p&gt;
 
-&lt;p&gt;为了能够把配置数据嵌入到.config文件中，节的名字必须在configSections元素中注册到.NET解释器，还必须指定log4net.Config.Log4NetConfigurationSectionHandler用来解释这一配置节。其中类型必须是完整的组件集名因为它被.NET config文件解释器读取而不是log4net。必须指定正确的log4net组件集名。下面的配置文件示范了正确的方式
-    &amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
-    &lt;configuration&gt;
-        &lt;configSections&gt;
-            &lt;section name=&quot;log4net&quot; type=&quot;log4net.Config.Log4NetConfigurationSectionHandler, log4net&quot; /&gt;
-        &lt;/configSections&gt;
-        &lt;log4net&gt;
-            &lt;appender name=&quot;ConsoleAppender&quot; type=&quot;log4net.Appender.ConsoleAppender&quot; &gt;
-                &lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&gt;
-                    &lt;conversionPattern value=&quot;%date [%thread] %-5level %logger [%ndc] - %message%newline&quot; /&gt;
-                &lt;/layout&gt;
-            &lt;/appender&gt;
-            &lt;root&gt;
-                &lt;level value=&quot;INFO&quot; /&gt;
-                &lt;appender-ref ref=&quot;ConsoleAppender&quot; /&gt;
-            &lt;/root&gt;
-        &lt;/log4net&gt;
-    &lt;/configuration&gt;
-上面的理智中，指定了log4net组件集，他必须位于.NET运行时能够找到的地方，例如与程序相同的文件夹。如果log4net组件集位于GAC中，完整的组件集名还包括文化、版本和公钥。&lt;/p&gt;
+&lt;p&gt;为了能够把配置数据嵌入到.config文件中，节的名字必须在configSections元素中注册到.NET解释器，还必须指定log4net.Config.Log4NetConfigurationSectionHandler用来解释这一配置节。其中类型必须是完整的组件集名因为它被.NET config文件解释器读取而不是log4net。必须指定正确的log4net组件集名。下面的配置文件示范了正确的方式&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&amp;gt;
+&amp;lt;configuration&amp;gt;
+    &amp;lt;configSections&amp;gt;
+        &amp;lt;section name=&quot;log4net&quot; type=&quot;log4net.Config.Log4NetConfigurationSectionHandler, log4net&quot; /&amp;gt;
+    &amp;lt;/configSections&amp;gt;
+    &amp;lt;log4net&amp;gt;
+        &amp;lt;appender name=&quot;ConsoleAppender&quot; type=&quot;log4net.Appender.ConsoleAppender&quot; &amp;gt;
+            &amp;lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&amp;gt;
+                &amp;lt;conversionPattern value=&quot;%date [%thread] %-5level %logger [%ndc] - %message%newline&quot; /&amp;gt;
+            &amp;lt;/layout&amp;gt;
+        &amp;lt;/appender&amp;gt;
+        &amp;lt;root&amp;gt;
+            &amp;lt;level value=&quot;INFO&quot; /&amp;gt;
+            &amp;lt;appender-ref ref=&quot;ConsoleAppender&quot; /&amp;gt;
+        &amp;lt;/root&amp;gt;
+    &amp;lt;/log4net&amp;gt;
+&amp;lt;/configuration&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上面的理智中，指定了log4net组件集，他必须位于.NET运行时能够找到的地方，例如与程序相同的文件夹。如果log4net组件集位于GAC中，完整的组件集名还包括文化、版本和公钥。&lt;/p&gt;
 
 &lt;p&gt;当用.config文件来配置时，节名即XML元素名必须为log4net。&lt;/p&gt;
 
@@ -2203,38 +2350,44 @@ ILog y = LogManager.GetLogger(&quot;wombat&quot;);
 
 &lt;p&gt;此外，log4net.Config.XmlConfiguratorAttribute可以用于指定配置文件。&lt;/p&gt;
 
-&lt;p&gt;配置从文件中的log4net节读取，文件中只能有一个log4net元素但是它可以位于XML中的任意等级，例如根元素
-    &amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
-    &lt;log4net&gt;
-        &lt;appender name=&quot;ConsoleAppender&quot; type=&quot;log4net.Appender.ConsoleAppender&quot; &gt;
-            &lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&gt;
-                &lt;conversionPattern value=&quot;%date [%thread] %-5level %logger [%ndc] - %message%newline&quot; /&gt;
-            &lt;/layout&gt;
-        &lt;/appender&gt;
-        &lt;root&gt;
-            &lt;level value=&quot;INFO&quot; /&gt;
-            &lt;appender-ref ref=&quot;ConsoleAppender&quot; /&gt;
-        &lt;/root&gt;
-    &lt;/log4net&gt;
-或者嵌入其他元素间。
-    &amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
-    &lt;configuration&gt;
-        &lt;configSections&gt;
-            &lt;section name=&quot;log4net&quot; type=&quot;System.Configuration.IgnoreSectionHandler&quot; /&gt;
-        &lt;/configSections&gt;
-        &lt;log4net&gt;
-            &lt;appender name=&quot;ConsoleAppender&quot; type=&quot;log4net.Appender.ConsoleAppender&quot; &gt;
-                &lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&gt;
-                    &lt;conversionPattern value=&quot;%date [%thread] %-5level %logger [%ndc] - %message%newline&quot; /&gt;
-                &lt;/layout&gt;
-            &lt;/appender&gt;
-            &lt;root&gt;
-                &lt;level value=&quot;INFO&quot; /&gt;
-                &lt;appender-ref ref=&quot;ConsoleAppender&quot; /&gt;
-            &lt;/root&gt;
-        &lt;/log4net&gt;
-    &lt;/configuration&gt;
-上面的配置文件显示了怎么样把配置数据嵌入到.config文件中尽管文件能够被log4net直接读取。值得注意的是.NET config文件解释器如果发现没有在configSections元素注册的元素将会抛出一个异常。因此，上面的例子将log4net节注册，但是指定的处理类型为System.Configuration.IgnoreSectionHandler.这个内建的类表示已使用另外的方法来读取配置节。&lt;/p&gt;
+&lt;p&gt;配置从文件中的log4net节读取，文件中只能有一个log4net元素但是它可以位于XML中的任意等级，例如根元素&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&amp;gt;
+&amp;lt;log4net&amp;gt;
+    &amp;lt;appender name=&quot;ConsoleAppender&quot; type=&quot;log4net.Appender.ConsoleAppender&quot; &amp;gt;
+        &amp;lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&amp;gt;
+            &amp;lt;conversionPattern value=&quot;%date [%thread] %-5level %logger [%ndc] - %message%newline&quot; /&amp;gt;
+        &amp;lt;/layout&amp;gt;
+    &amp;lt;/appender&amp;gt;
+    &amp;lt;root&amp;gt;
+        &amp;lt;level value=&quot;INFO&quot; /&amp;gt;
+        &amp;lt;appender-ref ref=&quot;ConsoleAppender&quot; /&amp;gt;
+    &amp;lt;/root&amp;gt;
+&amp;lt;/log4net&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;或者嵌入其他元素间。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&amp;gt;
+&amp;lt;configuration&amp;gt;
+    &amp;lt;configSections&amp;gt;
+        &amp;lt;section name=&quot;log4net&quot; type=&quot;System.Configuration.IgnoreSectionHandler&quot; /&amp;gt;
+    &amp;lt;/configSections&amp;gt;
+    &amp;lt;log4net&amp;gt;
+        &amp;lt;appender name=&quot;ConsoleAppender&quot; type=&quot;log4net.Appender.ConsoleAppender&quot; &amp;gt;
+            &amp;lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&amp;gt;
+                &amp;lt;conversionPattern value=&quot;%date [%thread] %-5level %logger [%ndc] - %message%newline&quot; /&amp;gt;
+            &amp;lt;/layout&amp;gt;
+        &amp;lt;/appender&amp;gt;
+        &amp;lt;root&amp;gt;
+            &amp;lt;level value=&quot;INFO&quot; /&amp;gt;
+            &amp;lt;appender-ref ref=&quot;ConsoleAppender&quot; /&amp;gt;
+        &amp;lt;/root&amp;gt;
+    &amp;lt;/log4net&amp;gt;
+&amp;lt;/configuration&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上面的配置文件显示了怎么样把配置数据嵌入到.config文件中尽管文件能够被log4net直接读取。值得注意的是.NET config文件解释器如果发现没有在configSections元素注册的元素将会抛出一个异常。因此，上面的例子将log4net节注册，但是指定的处理类型为System.Configuration.IgnoreSectionHandler.这个内建的类表示已使用另外的方法来读取配置节。&lt;/p&gt;
 </description>
     </item>
     
@@ -2287,121 +2440,143 @@ public class MyApp
 
 &lt;p&gt;MyApp首先声明导入log4net的相关类，然后定义了一个静态记录器变量，传入参数是该类的类名。&lt;/p&gt;
 
-&lt;p&gt;在MyApp中使用了下面的Bar类
-    using log4net;
-    namespace Com.Foo
+&lt;p&gt;在MyApp中使用了下面的Bar类&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;using log4net;
+namespace Com.Foo
+{
+    public class Bar
     {
-        public class Bar
+        private static readonly ILog log = nager.GetLogger(typeof(Bar));
+        public void DoIt()
         {
-            private static readonly ILog log = nager.GetLogger(typeof(Bar));
-            public void DoIt()
-            {
-                log.Debug(&quot;Did it again!&quot;);
-            }
+            log.Debug(&quot;Did it again!&quot;);
         }
     }
-BasicConfigurator.Configure()方法创建了一个简单的log4net配置，这个方法增加了一个到控制台的根记录器，输入格式可以使用PatternLayout来设置，例如&lt;code&gt;%-4timestamp [%thread] %-5level %logger %ndc - %message%newline&lt;/code&gt;.&lt;/p&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;BasicConfigurator.Configure()方法创建了一个简单的log4net配置，这个方法增加了一个到控制台的根记录器，输入格式可以使用PatternLayout来设置，例如&lt;code&gt;%-4timestamp [%thread] %-5level %logger %ndc - %message%newline&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;默认情况下，根记录器被分配到Level.DEBUG&lt;/p&gt;
 
-&lt;p&gt;上述代码的输出如下
-    0    [main] INFO  MyApp  - Entering application.
-    36   [main] DEBUG Com.Foo.Bar  - Did it again!
-    51   [main] INFO  MyApp  - Exiting application.
-我们注意到在log4net中，子记录器只会连接到他们存在的上级。这里，名为Com.Foo.Bar的记录器直接连接到根记录器，因而将忽略未使用的Com或者Com.Foo的记录器。这种方法明显改进了性能和降低了log4net的内存使用。&lt;/p&gt;
+&lt;p&gt;上述代码的输出如下&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;0    [main] INFO  MyApp  - Entering application.
+36   [main] DEBUG Com.Foo.Bar  - Did it again!
+51   [main] INFO  MyApp  - Exiting application.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们注意到在log4net中，子记录器只会连接到他们存在的上级。这里，名为Com.Foo.Bar的记录器直接连接到根记录器，因而将忽略未使用的Com或者Com.Foo的记录器。这种方法明显改进了性能和降低了log4net的内存使用。&lt;/p&gt;
 
 &lt;p&gt;MyApp类通过调用BasicConfigurator.Configure()方法来配置log4net，其他类只需要导入log4net命名空间，获取他们需要的记录器进行记录。&lt;/p&gt;
 
-&lt;p&gt;上面的例子总是输入相同的记录信息。当然，可以简单的修改MyApp使之在运行时刻控制记录。下面是一个轻微修改版本。
-    using Com.Foo;
-    // Import log4net classes.
-    using log4net;
-    using log4net.Config;
-    public class MyApp
+&lt;p&gt;上面的例子总是输入相同的记录信息。当然，可以简单的修改MyApp使之在运行时刻控制记录。下面是一个轻微修改版本。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;using Com.Foo;
+// Import log4net classes.
+using log4net;
+using log4net.Config;
+public class MyApp 
+{
+    private static readonly ILog log = ager.GetLogger(typeof(MyApp));
+    static void Main(string[] args) 
     {
-        private static readonly ILog log = ager.GetLogger(typeof(MyApp));
-        static void Main(string[] args)
-        {
-            // BasicConfigurator replaced with XmlConfigurator.
-            XmlConfigurator.Configure(new .IO.FileInfo(args[0]));
-            log.Info(&quot;Entering application.&quot;);
-            Bar bar = new Bar();
-            bar.DoIt();
-            log.Info(&quot;Exiting application.&quot;);
-        }
+        // BasicConfigurator replaced with XmlConfigurator.
+        XmlConfigurator.Configure(new .IO.FileInfo(args[0]));
+        log.Info(&quot;Entering application.&quot;);
+        Bar bar = new Bar();
+        bar.DoIt();
+        log.Info(&quot;Exiting application.&quot;);
     }
-这个版本的MyApp使用XmlConfigurator来解析配置文件和建立记录环境，配置文件的路径通过命令行制定。&lt;/p&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这个版本的MyApp使用XmlConfigurator来解析配置文件和建立记录环境，配置文件的路径通过命令行制定。&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;译注：不知道怎么赋值给命令行参数，我是直接传递log4net的配置文件的名称。&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;下面是一个简单的配置文件，它的效果与上面的基于BasicConfigurator的例子完全相同。
-    &lt;log4net&gt;
-        &lt;!-- A1 is set to be a ConsoleAppender --&gt;
-        &lt;appender name=&quot;A1&quot; type=&quot;log4net.Appender.ConsoleAppender&quot;&gt;
-            &lt;!-- A1 uses PatternLayout --&gt;
-            &lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&gt;
-                &lt;conversionPattern value=&quot;%-4timestamp ad] %-5level %logger %ndc - %message%newline&quot; /&gt;
-            &lt;/layout&gt;
-        &lt;/appender&gt;
-        &lt;!-- Set root logger level to DEBUG and its only appender to
-        &lt;root&gt;
-            &lt;level value=&quot;DEBUG&quot; /&gt;
-            &lt;appender-ref ref=&quot;A1&quot; /&gt;
-        &lt;/root&gt;
-    &lt;/log4net&gt;
-如果我们不再想记录任何Com.Foo命名空间中类的记录输出，可以参照下面的配置文件
-    &lt;log4net&gt;
-        &lt;!-- A1 is set to be a ConsoleAppender --&gt;
-        &lt;appender name=&quot;A1&quot; type=&quot;log4net.Appender.ConsoleAppender&quot;&gt;
-            &lt;!-- A1 uses PatternLayout --&gt;
-            &lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&gt;
-                &lt;!-- Print the date in ISO 8601 format --&gt;
-                &lt;conversionPattern value=&quot;%date ad] %-5level %logger %ndc - %message%newline&quot; /&gt;
-            &lt;/layout&gt;
-        &lt;/appender&gt;
-        &lt;!-- Set root logger level to DEBUG and its only appender to
-        &lt;root&gt;
-            &lt;level value=&quot;DEBUG&quot; /&gt;
-            &lt;appender-ref ref=&quot;A1&quot; /&gt;
-        &lt;/root&gt;
-        &lt;!-- Print only messages of level WARN or above in the package o --&gt;
-        &lt;logger name=&quot;Com.Foo&quot;&gt;
-            &lt;level value=&quot;WARN&quot; /&gt;
-        &lt;/logger&gt;
-    &lt;/log4net&gt;
-输出将会是这样：
-    2000-09-07 14:07:41,508 [main] INFO  MyApp - Entering application.
-    2000-09-07 14:07:41,529 [main] INFO  MyApp - Exiting application.&lt;/p&gt;
+&lt;p&gt;下面是一个简单的配置文件，它的效果与上面的基于BasicConfigurator的例子完全相同。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;log4net&amp;gt;
+    &amp;lt;!-- A1 is set to be a ConsoleAppender --&amp;gt;
+    &amp;lt;appender name=&quot;A1&quot; type=&quot;log4net.Appender.ConsoleAppender&quot;&amp;gt;
+        &amp;lt;!-- A1 uses PatternLayout --&amp;gt;
+        &amp;lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&amp;gt;
+            &amp;lt;conversionPattern value=&quot;%-4timestamp ad] %-5level %logger %ndc - %message%newline&quot; /&amp;gt;
+        &amp;lt;/layout&amp;gt;
+    &amp;lt;/appender&amp;gt;
+    &amp;lt;!-- Set root logger level to DEBUG and its only appender to 
+    &amp;lt;root&amp;gt;
+        &amp;lt;level value=&quot;DEBUG&quot; /&amp;gt;
+        &amp;lt;appender-ref ref=&quot;A1&quot; /&amp;gt;
+    &amp;lt;/root&amp;gt;
+&amp;lt;/log4net&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果我们不再想记录任何Com.Foo命名空间中类的记录输出，可以参照下面的配置文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;log4net&amp;gt;
+    &amp;lt;!-- A1 is set to be a ConsoleAppender --&amp;gt;
+    &amp;lt;appender name=&quot;A1&quot; type=&quot;log4net.Appender.ConsoleAppender&quot;&amp;gt;
+        &amp;lt;!-- A1 uses PatternLayout --&amp;gt;
+        &amp;lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&amp;gt;
+            &amp;lt;!-- Print the date in ISO 8601 format --&amp;gt;
+            &amp;lt;conversionPattern value=&quot;%date ad] %-5level %logger %ndc - %message%newline&quot; /&amp;gt;
+        &amp;lt;/layout&amp;gt;
+    &amp;lt;/appender&amp;gt;
+    &amp;lt;!-- Set root logger level to DEBUG and its only appender to 
+    &amp;lt;root&amp;gt;
+        &amp;lt;level value=&quot;DEBUG&quot; /&amp;gt;
+        &amp;lt;appender-ref ref=&quot;A1&quot; /&amp;gt;
+    &amp;lt;/root&amp;gt;
+    &amp;lt;!-- Print only messages of level WARN or above in the package o --&amp;gt;
+    &amp;lt;logger name=&quot;Com.Foo&quot;&amp;gt;
+        &amp;lt;level value=&quot;WARN&quot; /&amp;gt;
+    &amp;lt;/logger&amp;gt;
+&amp;lt;/log4net&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;输出将会是这样：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;2000-09-07 14:07:41,508 [main] INFO  MyApp - Entering application.
+2000-09-07 14:07:41,529 [main] INFO  MyApp - Exiting application.
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;因为记录器Com.Foo.Bar没有分配级别，它将继承配置文件中已分配为Warn级别的Com.Foo的级别，Bar.DoIt方法中记录语句的级别为DEBUG，低于WARN，因此DoIt方法的记录请求将被禁止。&lt;/p&gt;
 
-&lt;p&gt;下面是使用多记录方式的配置文件
-    &lt;log4net&gt;
-        &lt;appender name=&quot;Console&quot; type=&quot;log4net.Appender.ConsoleAppender&quot;&gt;
-            &lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&gt;
-                &lt;!-- Pattern to output the caller's file name and line number --&gt;
-                &lt;conversionPattern value=&quot;%5level [%thread] (%file:%line) - %message%newline&quot; /&gt;
-            &lt;/layout&gt;
-        &lt;/appender&gt;
-        &lt;appender name=&quot;RollingFile&quot; type=&quot;log4net.Appender.RollingFileAppender&quot;&gt;
-            &lt;file value=&quot;example.log&quot; /&gt;
-            &lt;appendToFile value=&quot;true&quot; /&gt;
-            &lt;maximumFileSize value=&quot;100KB&quot; /&gt;
-            &lt;maxSizeRollBackups value=&quot;2&quot; /&gt;
-            &lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&gt;
-                &lt;conversionPattern value=&quot;%level %thread %logger - %message%newline&quot; /&gt;
-            &lt;/layout&gt;
-        &lt;/appender&gt;
-        &lt;root&gt;
-            &lt;level value=&quot;DEBUG&quot; /&gt;
-            &lt;appender-ref ref=&quot;Console&quot; /&gt;
-            &lt;appender-ref ref=&quot;RollingFile&quot; /&gt;
-        &lt;/root&gt;
-    &lt;/log4net&gt;
-运行它控制台将会出现如下输出
-    INFO [main] (MyApp.cs:16) - Entering application.
-    DEBUG [main] (Bar.cs:12) - Doing it again!
-    INFO [main] (MyApp.cs:19) - Exiting application.&lt;/p&gt;
+&lt;p&gt;下面是使用多记录方式的配置文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;log4net&amp;gt;
+    &amp;lt;appender name=&quot;Console&quot; type=&quot;log4net.Appender.ConsoleAppender&quot;&amp;gt;
+        &amp;lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&amp;gt;
+            &amp;lt;!-- Pattern to output the caller's file name and line number --&amp;gt;
+            &amp;lt;conversionPattern value=&quot;%5level [%thread] (%file:%line) - %message%newline&quot; /&amp;gt;
+        &amp;lt;/layout&amp;gt;
+    &amp;lt;/appender&amp;gt;
+    &amp;lt;appender name=&quot;RollingFile&quot; type=&quot;log4net.Appender.RollingFileAppender&quot;&amp;gt;
+        &amp;lt;file value=&quot;example.log&quot; /&amp;gt;
+        &amp;lt;appendToFile value=&quot;true&quot; /&amp;gt;
+        &amp;lt;maximumFileSize value=&quot;100KB&quot; /&amp;gt;
+        &amp;lt;maxSizeRollBackups value=&quot;2&quot; /&amp;gt;
+        &amp;lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&amp;gt;
+            &amp;lt;conversionPattern value=&quot;%level %thread %logger - %message%newline&quot; /&amp;gt;
+        &amp;lt;/layout&amp;gt;
+    &amp;lt;/appender&amp;gt;
+    &amp;lt;root&amp;gt;
+        &amp;lt;level value=&quot;DEBUG&quot; /&amp;gt;
+        &amp;lt;appender-ref ref=&quot;Console&quot; /&amp;gt;
+        &amp;lt;appender-ref ref=&quot;RollingFile&quot; /&amp;gt;
+    &amp;lt;/root&amp;gt;
+&amp;lt;/log4net&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行它控制台将会出现如下输出&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;INFO [main] (MyApp.cs:16) - Entering application.
+DEBUG [main] (Bar.cs:12) - Doing it again!
+INFO [main] (MyApp.cs:19) - Exiting application.
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;指的注意的是，因为根记录器有第二个记录方式，记录也会被输出到example.log文件，文件将会被回滚当他达到100KB，当回滚发生时，旧版本的example.log将会被重命名为example.log.1&lt;/p&gt;
 
@@ -2423,57 +2598,75 @@ BasicConfigurator.Configure()方法创建了一个简单的log4net配置，这�
 
 &lt;p&gt;一个偶然的机会，我发现使用ASP.NET编写的Web服务格式是这样的。加入名为Demo的asmx页面中有一个Web方法为foo()。那么调用它的时候，在地址栏显示的地址是Demo.asmx/foo。那么在Javascript能不能直接post（get）到服务器的这个页面呢？答案是可以，从而这样很简单的就实现了通过Javascript 调用WEB服务，也不需要其他库的支持。&lt;/p&gt;
 
-&lt;p&gt;下面用一个例子简单实现Javascript 调用WEB服务，假设WEB应用程序的Services/Demo.asmx中存在foo方法返回&quot;Hello World&quot;。
-    [WebMethod]
-    public string foo()
-    {
-        return &quot;Hello World&quot;;
-    }
-直接通过&lt;code&gt;Services/Demo.asmx/foo&lt;/code&gt;访问，得到下面结果，是一个XML文件
-    &amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
-    &lt;string xmlns=&quot;http://sacranto.blogspot.com/&quot;&gt;Hello World&lt;/string&gt;
-在Javascript中的调用如下：（Javascript中使用了&lt;a href=&quot;http://jquery.org/&quot;&gt;jQuery&lt;/a&gt;库，这个库与是否调用WEB服务没有关系，下同）
-    $(document).ready(function() {
-        $(&quot;#btnFoo&quot;).click(function(){
-            $.post(&quot;Services/Demo.asmx/foo&quot;,
-                function(res){
-                    alert($(res).text());
-                }
-            );
-        });
+&lt;p&gt;下面用一个例子简单实现Javascript 调用WEB服务，假设WEB应用程序的Services/Demo.asmx中存在foo方法返回&quot;Hello World&quot;。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[WebMethod]
+public string foo()
+{
+    return &quot;Hello World&quot;;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;直接通过&lt;code&gt;Services/Demo.asmx/foo&lt;/code&gt;访问，得到下面结果，是一个XML文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&amp;gt; 
+&amp;lt;string xmlns=&quot;http://sacranto.blogspot.com/&quot;&amp;gt;Hello World&amp;lt;/string&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在Javascript中的调用如下：（Javascript中使用了&lt;a href=&quot;http://jquery.org/&quot;&gt;jQuery&lt;/a&gt;库，这个库与是否调用WEB服务没有关系，下同）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$(document).ready(function() {
+    $(&quot;#btnFoo&quot;).click(function(){
+        $.post(&quot;Services/Demo.asmx/foo&quot;,
+            function(res){
+                alert($(res).text());
+            }
+        );
     });
-这段代码用于显示返回xml中的字符，IE7和FF2的结果不同，个人认为FF2的好一些。不知道IE6和其他浏览器的结果怎么样？
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这段代码用于显示返回xml中的字符，IE7和FF2的结果不同，个人认为FF2的好一些。不知道IE6和其他浏览器的结果怎么样？
 &lt;img src=&quot;http://fs.yuliu.org/images/essay/2007/using_dotnet_web_service_by_javascript_001.jpg&quot; alt=&quot;IE截图&quot; /&gt;
 &lt;img src=&quot;http://fs.yuliu.org/images/essay/2007/using_dotnet_web_service_by_javascript_002.jpg&quot; alt=&quot;FF截图&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;那么能不能直接传递参数给WEB服务呢？在ASP.NET WEB服务中，答案仍然是可以（使用其他语言编写的WEB服务应该也可以吧）。借助于WebService.Context 获取当前请求的ASP.NET HttpContext，它封装了由 HTTP 服务器用来处理Web 请求的所有HTTP 特定的上下文。&lt;/p&gt;
 
-&lt;p&gt;修改请求的Javascript代码，多了传递参数的一行。
-    $(document).ready(function() {
-        $(&quot;#btnFoo&quot;).click(function(){
-            $.post(&quot;Services/Demo.asmx/foo&quot;,
-                {name:'sacranto',age:'24'},
-                function(res){
-                    alert($(res).text());
-                }
-            );
-        });
+&lt;p&gt;修改请求的Javascript代码，多了传递参数的一行。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$(document).ready(function() {
+    $(&quot;#btnFoo&quot;).click(function(){
+        $.post(&quot;Services/Demo.asmx/foo&quot;,
+            {name:'sacranto',age:'24'},
+            function(res){
+                alert($(res).text());
+            }
+        );
     });
-这样在web服务页面中，可以通过如下代码访问传递的参数
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这样在web服务页面中，可以通过如下代码访问传递的参数&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;string name = Context.Request.Form[&quot;name&quot;];
+int age = Convert.ToInt32(Context.Request.Form[&quot;age&quot;]);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;解决了传递参数的问题，救下来就是返回值了。web服务直接返回的都是xml，我们也可以利用Respone返回其他格式，如text/plain。例如线面的fooText方法就返回了纯文本，记得把方法改成无返回值。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[WebMethod]
+public void fooText()
+{
     string name = Context.Request.Form[&quot;name&quot;];
     int age = Convert.ToInt32(Context.Request.Form[&quot;age&quot;]);
-解决了传递参数的问题，救下来就是返回值了。web服务直接返回的都是xml，我们也可以利用Respone返回其他格式，如text/plain。例如线面的fooText方法就返回了纯文本，记得把方法改成无返回值。
-    [WebMethod]
-    public void fooText()
-    {
-        string name = Context.Request.Form[&quot;name&quot;];
-        int age = Convert.ToInt32(Context.Request.Form[&quot;age&quot;]);
-        Context.Response.Expires = -1;     &lt;br/&gt;
-        Context.Response.ContentType = &quot;text/plain&quot;;
-        Context.Response.Write(&quot;Hello &quot; + name + &quot;, your age is &quot; + oString());
-        Context.Response.End();
-    }
-在Javascript中的调用与上面基本相同，只是回调类型是text，直接使用即可。这也意味着text可以直接是json字符串了。
+    Context.Response.Expires = -1;       
+    Context.Response.ContentType = &quot;text/plain&quot;;
+    Context.Response.Write(&quot;Hello &quot; + name + &quot;, your age is &quot; + oString());
+    Context.Response.End();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在Javascript中的调用与上面基本相同，只是回调类型是text，直接使用即可。这也意味着text可以直接是json字符串了。
     $(&quot;#btnFooText&quot;).click(function(){
         $.post(&quot;Services/Demo.asmx/fooText&quot;,
             {name:'sacranto',age:'24'},
@@ -2489,13 +2682,15 @@ BasicConfigurator.Configure()方法创建了一个简单的log4net配置，这�
 &lt;p&gt;PS：据说这种方法使用 http://localhost/... 访问就正常, 但用域名会出错。　我试了用IP是没有问题的，用域名？我还没有域名呢 :-)&lt;/p&gt;
 
 &lt;p&gt;解决方法：
-在Web.config里面加上就可以了.
-    &lt;webServices&gt;
-        &lt;protocols&gt;
-            &lt;add name=&quot;HttpPost&quot; /&gt;
-            &lt;add name=&quot;HttpGet&quot; /&gt;
-        &lt;/protocols&gt;
-    &lt;/webServices&gt;&lt;/p&gt;
+在Web.config里面加上就可以了.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;webServices&amp;gt; 
+    &amp;lt;protocols&amp;gt; 
+        &amp;lt;add name=&quot;HttpPost&quot; /&amp;gt; 
+        &amp;lt;add name=&quot;HttpGet&quot; /&amp;gt; 
+    &amp;lt;/protocols&amp;gt; 
+&amp;lt;/webServices&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
@@ -2511,55 +2706,68 @@ BasicConfigurator.Configure()方法创建了一个简单的log4net配置，这�
 
 &lt;p&gt;分为两个部分。第一个部分是注册函数，另外一部分是声明命名空间&lt;/p&gt;
 
-&lt;p&gt;命名空间注册函数，参照yui的方式，注意这种方式下所有的命名空间的第一级都是sacranto。
-    var sacranto = {};
-    sacranto.namespace=function(ns){
-        if(!ns||!ns.length){
-            return null;
-        }
-        var levels = ns.split(&quot;.&quot;);
-        var nsobj=sacranto;
-        for(var i=(levels[0] == anto&quot;)?1:0;i&amp;lt;levels.length;i++){
-            nsobj[levels[i]]=nsobj[levels[i]]||{};
-            nsobj = nsobj[levels[i]];
-        }
-        return nsobj;
-    };&lt;br/&gt;
-声明命名空间的语句，这样我们就注册了一个sacranto.demo命名空间。
-    sacranto.namespace(&quot;demo&quot;);&lt;/p&gt;
+&lt;p&gt;命名空间注册函数，参照yui的方式，注意这种方式下所有的命名空间的第一级都是sacranto。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var sacranto = {};
+sacranto.namespace=function(ns){
+    if(!ns||!ns.length){
+        return null;
+    }
+    var levels = ns.split(&quot;.&quot;);
+    var nsobj=sacranto;
+    for(var i=(levels[0] == anto&quot;)?1:0;i&amp;lt;levels.length;i++){
+        nsobj[levels[i]]=nsobj[levels[i]]||{};
+        nsobj = nsobj[levels[i]];
+    }
+    return nsobj;
+};  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;声明命名空间的语句，这样我们就注册了一个sacranto.demo命名空间。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sacranto.namespace(&quot;demo&quot;);
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h1&gt;2. 类&lt;/h1&gt;
 
-&lt;p&gt;对于prototype类型的语言，函数其实就是类，声明一个函数其实就声明了一个类，并且他还是是类的静态构造函数。下面的语句声明了一个类，静态构造函数里面什么也没有做。
-    sacranto.demo.aclass = function(){};&lt;/p&gt;
+&lt;p&gt;对于prototype类型的语言，函数其实就是类，声明一个函数其实就声明了一个类，并且他还是是类的静态构造函数。下面的语句声明了一个类，静态构造函数里面什么也没有做。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sacranto.demo.aclass = function(){};
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h1&gt;3. 类的属性和方法&lt;/h1&gt;
 
-&lt;p&gt;这里就需要使用到prototype这个特性了
-    sacranto.demo.aclass.prototype = {
-        //属性
-        version: &quot;1.0&quot;,
-        //方法
-        bar: function(s){
-            return &quot;hello &quot; + s;
-        }
-    };&lt;/p&gt;
+&lt;p&gt;这里就需要使用到prototype这个特性了&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sacranto.demo.aclass.prototype = {
+    //属性
+    version: &quot;1.0&quot;,
+    //方法
+    bar: function(s){
+        return &quot;hello &quot; + s;
+    }
+};
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h1&gt;4. 静态方法&lt;/h1&gt;
 
-&lt;p&gt;仿佛在javascript里面应该没有静态方法这个概念吧。我的理解是这样的
-    //我理解的静态方法，其实是另外一个类和它的静态构造函数。
-    sacranto.demo.aclass.foo=function(s){
-        return &quot;hello &quot;+s;
-    }&lt;/p&gt;
+&lt;p&gt;仿佛在javascript里面应该没有静态方法这个概念吧。我的理解是这样的&lt;/p&gt;
 
-&lt;p&gt;OK，完成，测试一下吧
-    window.onload = function(){
-        var aobj=new sacranto.demo.aclass();
-        alert(aobj.bar(&quot;world&quot;));                    //成功
-        //alert(sacranto.demo.aclass.bar(&quot;world&quot;));    //失败
-        alert(sacranto.demo.aclass.foo(&quot;world&quot;));    //成功
-    };&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//我理解的静态方法，其实是另外一个类和它的静态构造函数。
+sacranto.demo.aclass.foo=function(s){
+    return &quot;hello &quot;+s;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;OK，完成，测试一下吧&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;window.onload = function(){
+    var aobj=new sacranto.demo.aclass();
+    alert(aobj.bar(&quot;world&quot;));                    //成功
+    //alert(sacranto.demo.aclass.bar(&quot;world&quot;));    //失败
+    alert(sacranto.demo.aclass.foo(&quot;world&quot;));    //成功
+};
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;延伸阅读：&lt;/p&gt;
 
@@ -2591,18 +2799,19 @@ BasicConfigurator.Configure()方法创建了一个简单的log4net配置，这�
 &lt;li&gt;&lt;p&gt;为了能够在Visual中编写映射文件和配置文件时使用智能提示和校验，首先把provider.xsd、SqlMap.xsd和SqlMapConfig.xsd拷贝0到&lt;code&gt;[VS安装目录]\Xml\Schemas&lt;/code&gt;，这个路径是相对于VS 2005的，其他版本参看文档4.2.4节。&lt;br/&gt;
 注：iBatis.NET的文档是需要单独下载的，不在Release包里面，下面提到的文档均是1.6.1版本的文档。&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;使用iBatis.NET之前需要在VS的工程中添加对IBatisNet.DataMapper.dll引用，添加它的同时，它会自动将IBatisNet.Common.dll和Castle.DynamicProxy.dll添加到工程的bin目录下。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;编写SqlMap.config文件，并将其置于跟目录下,一般是Web.config(WEB应用程序)或者App.config(winform)所在的文件夹。下面是一个简单示例，修改自iBatis.NET文档。
-     &amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-     &lt;sqlMapConfig xmlns=&quot;http://ibatis.apache.org/dataMapper&quot;
-     xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; &gt;
-       &lt;properties resource=&quot;properties.config&quot;/&gt;
-       &lt;settings&gt;
-         &lt;setting useStatementNamespaces=&quot;true&quot;/&gt;
-         &lt;setting cacheModelsEnabled=&quot;true&quot;/&gt;
-         &lt;setting validateSqlMap=&quot;false&quot;/&gt;
-       &lt;/settings&gt;&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;编写SqlMap.config文件，并将其置于跟目录下,一般是Web.config(WEB应用程序)或者App.config(winform)所在的文件夹。下面是一个简单示例，修改自iBatis.NET文档。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;   &amp;lt;database&amp;gt;
+&lt;pre&gt;&lt;code&gt; &amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;
+ &amp;lt;sqlMapConfig xmlns=&quot;http://ibatis.apache.org/dataMapper&quot;
+ xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; &amp;gt;
+   &amp;lt;properties resource=&quot;properties.config&quot;/&amp;gt;
+   &amp;lt;settings&amp;gt;
+     &amp;lt;setting useStatementNamespaces=&quot;true&quot;/&amp;gt;
+     &amp;lt;setting cacheModelsEnabled=&quot;true&quot;/&amp;gt;
+     &amp;lt;setting validateSqlMap=&quot;false&quot;/&amp;gt;
+   &amp;lt;/settings&amp;gt;
+
+   &amp;lt;database&amp;gt;
      &amp;lt;provider name=&quot;sqlServer2.0&quot;/&amp;gt;
      &amp;lt;dataSource name=&quot;iBatisExt&quot;  connectionString=&quot;user password=sa;data source=10.14.91.244;database=northwind;&quot;/&amp;gt;
    &amp;lt;/database&amp;gt;
@@ -2613,70 +2822,80 @@ BasicConfigurator.Configure()方法创建了一个简单的log4net配置，这�
  &amp;lt;/sqlMapConfig&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;其中首先指定Properties文件的位置，此处的Properties.config与SqlMap.config位于相同位置，Properties文件一般用来定义“名称-值”对，例如下面使用到的${root}就是在Properties.config中定义的，这里使用的Properties文件如下，很简单：
-     &amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
-     &lt;settings&gt;
-       &lt;add key=&quot;root&quot; value=&quot;./&quot; /&gt;
-     &lt;/settings&gt;
-Setting用于给定ibatis.net的一些属性，例如useStatementNamespaces是是否允许使用map文件中的命名空间，文档中的示例为false，注意把它改成true，因为下面的程序使用了map文件中的命名空间。&lt;br/&gt;
+&lt;p&gt;其中首先指定Properties文件的位置，此处的Properties.config与SqlMap.config位于相同位置，Properties文件一般用来定义“名称-值”对，例如下面使用到的${root}就是在Properties.config中定义的，这里使用的Properties文件如下，很简单：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&amp;gt;
+  &amp;lt;settings&amp;gt;
+    &amp;lt;add key=&quot;root&quot; value=&quot;./&quot; /&amp;gt;
+  &amp;lt;/settings&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Setting用于给定ibatis.net的一些属性，例如useStatementNamespaces是是否允许使用map文件中的命名空间，文档中的示例为false，注意把它改成true，因为下面的程序使用了map文件中的命名空间。&lt;br/&gt;
 database用于配置映射的数据源，Provider我改成了sqlServer2.0。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;把定义数据源的providers.config拷贝到与SqlMap.config相同的目录下，打开providers.config，修改其中的
-     &amp;lt;provider
-         name=&quot;sqlServer2.0&quot;
-         enabled=&quot;false&quot;
-为
-     &amp;lt;provider
-         name=&quot;sqlServer2.0&quot;
-         enabled=&quot;true&quot;
-这里默认情况下，也就是从Release文件夹拷贝过来的providers.config是不打开sqlServer2.0，这个地方害我修改了半天。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;把定义数据源的providers.config拷贝到与SqlMap.config相同的目录下，打开providers.config，修改其中的&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; &amp;lt;provider
+     name=&quot;sqlServer2.0&quot;
+     enabled=&quot;false&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;为&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;lt;provider
+      name=&quot;sqlServer2.0&quot;
+      enabled=&quot;true&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这里默认情况下，也就是从Release文件夹拷贝过来的providers.config是不打开sqlServer2.0，这个地方害我修改了半天。&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;编写映射文件、实体类就完成了iBatis的配置。如果你不想自己编写映射文件、实体类，Go on&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;我找到了一个iBatis.NET的CodeSmith模板，名字叫做IBatisNetGen，个人觉得很好用，它直接生成了映射文件、实体类、DAO接口和DAO层。注意在使用时制定他们的命名空间，免得生成后自己去修改。&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;使用上述模板注意有一个地方需要修改，就是在把DAO模板里面需要把SqlMapperFmt属性改为你自己的Mapper类，如本文中使用iBatis.NET默认的Mapper.Instance()。
 &lt;img src=&quot;http://fs.yuliu.org/images/essay/2007/ibatis_net_datamapper_configuration_001.jpg&quot; alt=&quot;iBates属性&quot; /&gt;
-如果使用到了多数据库，要用不同的SqlMap文件，并编写不同的Mapper类，如这里完成了一个使用AnotherSqlMap.config文件的AnotherSqlMapper类（参考文档Example 4.4），注意红色的行与iBatis.net中文档4.4.1.1节有一点区别，4.4.1.1节的语句不能直接用于替换文档中的Example 4.4的对应语句，必须做红色标示的修改。奇怪一下文档为什么不前后一致呢？
-     using IBatisNet.Common.Utilities;
-     using IBatisNet.DataMapper;
-     using IBatisNet.DataMapper.Configuration;&lt;/p&gt;
+如果使用到了多数据库，要用不同的SqlMap文件，并编写不同的Mapper类，如这里完成了一个使用AnotherSqlMap.config文件的AnotherSqlMapper类（参考文档Example 4.4），注意红色的行与iBatis.net中文档4.4.1.1节有一点区别，4.4.1.1节的语句不能直接用于替换文档中的Example 4.4的对应语句，必须做红色标示的修改。奇怪一下文档为什么不前后一致呢？&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt; namespace Demo
- {
-     public class AnotherSqlMapper
-     {
-         private static volatile ISqlMapper _mapper = null;
+&lt;pre&gt;&lt;code&gt;  using IBatisNet.Common.Utilities;
+  using IBatisNet.DataMapper;
+  using IBatisNet.DataMapper.Configuration;
 
-         protected static void Configure(object obj)
-         {
-             _mapper = null;
-         }
+  namespace Demo
+  {
+      public class AnotherSqlMapper
+      {
+          private static volatile ISqlMapper _mapper = null;
 
-         protected static void InitMapper()
-         {
-             ConfigureHandler handler = new gureHandler(Configure);
-             DomSqlMapBuilder builder = new DomSqlMapBuilder();
-             _mapper = er.ConfigureAndWatch(&quot;AnotherSqlMap.config&quot;,handler);
-         }
+          protected static void Configure(object obj)
+          {
+              _mapper = null;
+          }
 
-         public static ISqlMapper Instance()
-         {
-             if (_mapper == null)
-             {
-                 lock (typeof(SqlMapper))
-                 {
-                     if (_mapper == null)
-                     {
-                         InitMapper();
-                     }
-                 }
-             }
-             return _mapper;
-         }
+          protected static void InitMapper()
+          {
+              ConfigureHandler handler = new gureHandler(Configure);
+              DomSqlMapBuilder builder = new DomSqlMapBuilder();
+              _mapper = er.ConfigureAndWatch(&quot;AnotherSqlMap.config&quot;,handler);
+          }
 
-         public static ISqlMapper Get()
-         {
-             return Instance();
-         }
-     }
- }
+          public static ISqlMapper Instance()
+          {
+              if (_mapper == null)
+              {
+                  lock (typeof(SqlMapper))
+                  {
+                      if (_mapper == null)
+                      {
+                          InitMapper();
+                      }
+                  }
+              }
+              return _mapper;
+          }
+
+          public static ISqlMapper Get()
+          {
+              return Instance();
+          }
+      }
+  }
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;配置完成，以Northwind中的Categories表为例，实体类Categories。C#获取全部记录的调用语句。&lt;/p&gt;
 
@@ -2922,17 +3141,24 @@ End Sub
 	  <guid>http://yuliu.org/2007/01/setup_whatwhat</guid>
 	  <description>&lt;p&gt;从http://cleverdevil.org/whatwhat把whatwhat拖下来以后&lt;/p&gt;
 
-&lt;p&gt;首先配置dev.cfg中的数据库为
-    # DATABASE
-    sqlobject.dburi=&quot;notrans_sqlite:///g|/whatwhat/trunk/sqlplayground.db&quot;
-这里我使用的是sqlite&lt;/p&gt;
+&lt;p&gt;首先配置dev.cfg中的数据库为&lt;/p&gt;
 
-&lt;p&gt;然后安装textile，这一步很简单
-    easy_install textile
-当然要保证你已经连上了互联网&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# DATABASE
+sqlobject.dburi=&quot;notrans_sqlite:///g|/whatwhat/trunk/sqlplayground.db&quot;
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;最后&lt;code&gt;python whatwhat-start.py&lt;/code&gt;启动
-通过http://localhost:8080就可以访问了&lt;/p&gt;
+&lt;p&gt;这里我使用的是sqlite&lt;/p&gt;
+
+&lt;p&gt;然后安装textile，这一步很简单&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;easy_install textile
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当然要保证你已经连上了互联网&lt;/p&gt;
+
+&lt;p&gt;最后&lt;code&gt;python whatwhat-start.py&lt;/code&gt;启动&lt;/p&gt;
+
+&lt;p&gt;通过http://localhost:8080就可以访问了&lt;/p&gt;
 
 &lt;p&gt;但是启动发现没有帐号登录&lt;/p&gt;
 
@@ -3173,11 +3399,17 @@ function SwitchMenu(obj,container){
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;Using Orca.exe to open Adobe Premiere Pro 2.0.msi (NOTE: not the setup.exe, this is just a encapsulation of msi file)&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Find &quot;LaunchCondition&quot;  node in the left Column. this is the setup launch condition that can be seen from the name.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Modify
-     ((VersionNT&gt;500) AND (ServicePackLevel&gt;=2)) OR ((VersionNT64) AND (ServicePackLevel&gt;=1))
-to
-     (1==1) OR ((VersionNT&gt;500) AND (ServicePackLevel&gt;=2)) OR ((VersionNT64) AND (ServicePackLevel&gt;=1))
-just add 1==1 to make this condition always is true to let the setup run.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Modify&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; ((VersionNT&amp;gt;500) AND (ServicePackLevel&amp;gt;=2)) OR ((VersionNT64) AND (ServicePackLevel&amp;gt;=1))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;to&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  (1==1) OR ((VersionNT&amp;gt;500) AND (ServicePackLevel&amp;gt;=2)) OR ((VersionNT64) AND (ServicePackLevel&amp;gt;=1))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;just add 1==1 to make this condition always is true to let the setup run.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 
@@ -3338,17 +3570,28 @@ just add 1==1 to make this condition always is true to let the setup run.&lt;/p&
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;The fisrt one is to hide navbar.&lt;br/&gt;
-you can add code below
-     #navbar-iframe { height: 0px; visibility: hidden; display: none }
-to &lt;code&gt;head--&amp;lt;b:skin&amp;gt;&lt;/code&gt; section in your HTML. the HTML is under template settings.&lt;/p&gt;&lt;/li&gt;
+you can add code below&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  #navbar-iframe { height: 0px; visibility: hidden; display: none }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;to &lt;code&gt;head--&amp;lt;b:skin&amp;gt;&lt;/code&gt; section in your HTML. the HTML is under template settings.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;The second one is to open new window in Link List widget.&lt;br/&gt;
 By default there is not option that you can config it. so links in Link List widget will open in current window. However this is also could be solved it HTML code.&lt;br/&gt;
-At first, remember to check the option Expand Widget Templates . Then find the section
-     &amp;lt;b:widget id='LinkList1' locked='false' title='Blog Links' type='LinkList'&gt;
-change links
-     &lt;li&gt;&lt;a expr:href='data:link.target' &gt;&amp;lt;data:link.name/&gt;&lt;/a&gt;&lt;/li&gt;
-to
-     &lt;li&gt;&lt;a expr:href='data:link.target' target='_blank'&gt;&amp;lt;data:link.name/&gt;&lt;/a&gt;&lt;/li&gt;&lt;/p&gt;&lt;/li&gt;
+At first, remember to check the option Expand Widget Templates . Then find the section&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;lt;b:widget id='LinkList1' locked='false' title='Blog Links' type='LinkList'&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;change links&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;lt;li&amp;gt;&amp;lt;a expr:href='data:link.target' &amp;gt;&amp;lt;data:link.name/&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;to&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;lt;li&amp;gt;&amp;lt;a expr:href='data:link.target' target='_blank'&amp;gt;&amp;lt;data:link.name/&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 
@@ -3516,7 +3759,8 @@ tbxTime.Text = pv.TimeStamp.LocalDate.ToString();
 
 &lt;p&gt;如果要读取Archive的值，那么要稍微麻烦一点，应为你要给定读取的时间和模式，PIPoint对象的ArcValue方法是用来获取Archive的值，帮助的说明如下：&lt;/p&gt;
 
-&lt;p&gt;object.ArcValue TimeStamp, Mode, AsynchStatus&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;object.ArcValue TimeStamp, Mode, AsynchStatus
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;这个应该是VB的语法吧，我们可以看出他有三个参数。第一个是时间，C#中我们可以直接传一个DateTime格式的数据进去，当然你也可以使用 PITime对象表示的时间，或者一个字符串。Mode代表取出的模式，因为PI数据库并不是每个时间都存有数据的，所以在你可以选择模式是读取你输入时间的当前点，后面一个点，前面一个点或者插值表示的时间。最后一个参数不解，文档里面没有说明，VB的例子则直接没有传这个参数，应该是一个可选参数，我的处理方法如下。&lt;/p&gt;
 
@@ -3798,11 +4042,13 @@ where b.id=object_id(N'表名') and a.id=b.id and a.colid=b.colid)
 	  <guid>http://yuliu.org/2006/03/using_sqlparameter</guid>
 	  <description>&lt;p&gt;今天才学会在写SQL语句的时候可以不用那么多的+号&lt;/p&gt;
 
-&lt;p&gt;用sqlparameter很方便
-    string SelectSQL = &quot;select * from customers where customerid=@customerid&quot;;
-    SqlCmd.Connection = SqlConn;
-    SqlCmd.CommandText = SelectSQL;
-    SqlCmd.Parameters.Add(&quot;@customerid&quot;, SqlDbType.NVarChar, 50).Value = &quot;alfki&quot;.ToUpper();&lt;/p&gt;
+&lt;p&gt;用sqlparameter很方便&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;string SelectSQL = &quot;select * from customers where customerid=@customerid&quot;;
+SqlCmd.Connection = SqlConn;
+SqlCmd.CommandText = SelectSQL;
+SqlCmd.Parameters.Add(&quot;@customerid&quot;, SqlDbType.NVarChar, 50).Value = &quot;alfki&quot;.ToUpper();
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
@@ -3817,12 +4063,17 @@ where b.id=object_id(N'表名') and a.id=b.id and a.colid=b.colid)
 &lt;p&gt;要支持其他版本的SQL SERVER，需要做以下的修改：&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;visual studio 2005 command prompt下运行
-     aspnet_regsql
-在SQL SERVER数据库中增加一个角色数据库，名字可以自己取的，这里是aspnetdb.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;visual studio 2005 command prompt下运行&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; aspnet_regsql
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在SQL SERVER数据库中增加一个角色数据库，名字可以自己取的，这里是aspnetdb.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;打开IIS的website-default web site，右击properties选择asp.net选项卡，然后单击edit global configuration&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;general标签下面修改连接字符串为
-     Data Source=数据库;Initial Catalog=aspnetdb;Persist Security Info=True;User ID=sa;Password=12345&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;general标签下面修改连接字符串为&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; Data Source=数据库;Initial Catalog=aspnetdb;Persist Security Info=True;User ID=sa;Password=12345
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 
@@ -4322,11 +4573,17 @@ Windows 2003操作系统即使在正常工作的情况下，也有可能会向�
 
 &lt;p&gt;关于这个问题郁闷了半天。&lt;/p&gt;
 
-&lt;p&gt;后来发现其实只要在web.config修改下面的
-    connectionString=&quot;Data Source=.\SQLExpress;Integrated Security=True;User Instance=True;AttachDBFilename=|DataDirectory|CommerceDB.mdf&quot; providerName=&quot;System.Data.SqlClient&quot; /&gt;
-为
-    connectionString=&quot;Data Source=sqlserver2005数据库实例名;AttachDbFilename=|DataDirectory|CommerceDB.mdf;User ID=sa;Password=******&quot; /&gt;
-就可以了&lt;/p&gt;
+&lt;p&gt;后来发现其实只要在web.config修改下面的&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;connectionString=&quot;Data Source=.\SQLExpress;Integrated Security=True;User Instance=True;AttachDBFilename=|DataDirectory|CommerceDB.mdf&quot; providerName=&quot;System.Data.SqlClient&quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;为&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;connectionString=&quot;Data Source=sqlserver2005数据库实例名;AttachDbFilename=|DataDirectory|CommerceDB.mdf;User ID=sa;Password=******&quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;就可以了&lt;/p&gt;
 </description>
     </item>
     
@@ -4372,22 +4629,28 @@ Windows 2003操作系统即使在正常工作的情况下，也有可能会向�
 
 &lt;p&gt;作为一个初学者，遇到这个问题，首先是在baidu上搜索了一下转换的方法，有很多结果，别人也说有效，但是我把它放在我的代码里面的时候，就是出现错误。下面是我的解决办法。&lt;/p&gt;
 
-&lt;p&gt;使用CString的GetBuffer方法
-    CString origCString(&quot;Hello,World&quot;);
-    char&lt;em&gt; CharString = origCString.GetBuffer(origCString.GetLength()+1);&lt;br/&gt;
-网上的很多文章说的都是这个方法，但是我在VC++2005中编译得到下列信息
-    Error 1 error C2440:   'initializing' : cannot convert from 'wchar_t &lt;/em&gt;' to 'char *'&lt;/p&gt;
+&lt;p&gt;使用CString的GetBuffer方法&lt;/p&gt;
 
-&lt;p&gt;对于这个错误不是很理解，因为是刚开始使用VC不久，所以对于wchar_t和char的区别不是很清楚，在MSDN中查看了一下，wchar_t是一个宽字符型，相当于unsigned short（16bit）。而我们通常使用的char是8bit。继续搜索wchar_t*到char*的转换，msdn上面有一篇文章是&lt;a href=&quot;http://msdn2.microsoft.com/en-us/library/ms235631.aspx&quot;&gt;Convert Between Various String Types&lt;/a&gt;，讲了VC++2005中的各种字符串char *, wchar_t*, _bstr_t, CComBSTR, CString, basic_string, and System.String的相互转换。其中将wchar_t*转换为char*的代码如下：(为了保持文章的一致性，修改了变量名)
-    #include &amp;lt;stdlib.h&gt;
-    #include &lt;iostream&gt;
-    using namespace std;
-    int main()
-    {
-        wchar_t *origString = L&quot;Hello,World&quot;;
-        wcout &amp;lt;&amp;lt; origString &amp;lt;&amp;lt; endl;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CString origCString(&quot;Hello,World&quot;);
+char* CharString = origCString.GetBuffer(origCString.GetLength()+1);  
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;pre&gt;&lt;code&gt;    // Convert to a char*
+&lt;p&gt;网上的很多文章说的都是这个方法，但是我在VC++2005中编译得到下列信息&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Error 1 error C2440:   'initializing' : cannot convert from 'wchar_t *' to 'char *'   
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;对于这个错误不是很理解，因为是刚开始使用VC不久，所以对于wchar_t和char的区别不是很清楚，在MSDN中查看了一下，wchar_t是一个宽字符型，相当于unsigned short（16bit）。而我们通常使用的char是8bit。继续搜索wchar_t*到char*的转换，msdn上面有一篇文章是&lt;a href=&quot;http://msdn2.microsoft.com/en-us/library/ms235631.aspx&quot;&gt;Convert Between Various String Types&lt;/a&gt;，讲了VC++2005中的各种字符串char *, wchar_t*, _bstr_t, CComBSTR, CString, basic_string, and System.String的相互转换。其中将wchar_t*转换为char*的代码如下：(为了保持文章的一致性，修改了变量名)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;iostream&amp;gt;
+using namespace std;
+int main()
+{ 
+    wchar_t *origString = L&quot;Hello,World&quot;; 
+    wcout &amp;lt;&amp;lt; origString &amp;lt;&amp;lt; endl;
+
+    // Convert to a char*
     size_t origsize = wcslen(origString) + 1;
     const size_t newsize = 100;
     size_t convertedChars = 0;
@@ -4415,13 +4678,16 @@ cout &amp;lt;&amp;lt; CharString &amp;lt;&amp;lt; endl;
 
 &lt;p&gt;至于为什么原来的那段代码别人都能用好，而我在VC++2005下面去不能直接使用，还要通过转换呢？正好看到《Programming Windows》的第二章讲Unicode的和在msdn论坛问了一下相关问题后得到答案。&lt;/p&gt;
 
-&lt;p&gt;原来在VC++ 2005以前，应用程序默认都是关闭对Unicode的支持的，而在VC2005中，默认打开了对它的支持，CString对应的字符串应该是TCHAR，TCHAR的定义是这样的，
-    #ifdef _UNICODE
-    typedef wchar_t TCHAR;
-    #else
-    typedef char TCHAR;
-    #endif
-我想这个就是为什么我在VC++2005种不能直接转换的原因。在工程中应该可以关闭对于Unicode的支持，从而可以直接转换。这个做法是右击工程名—〉Property—〉General中的character set中选择not set，这样，本文开头的那段代码就可以正确的执行了。&lt;/p&gt;
+&lt;p&gt;原来在VC++ 2005以前，应用程序默认都是关闭对Unicode的支持的，而在VC2005中，默认打开了对它的支持，CString对应的字符串应该是TCHAR，TCHAR的定义是这样的，&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#ifdef _UNICODE
+typedef wchar_t TCHAR;
+#else
+typedef char TCHAR;
+#endif 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我想这个就是为什么我在VC++2005种不能直接转换的原因。在工程中应该可以关闭对于Unicode的支持，从而可以直接转换。这个做法是右击工程名—〉Property—〉General中的character set中选择not set，这样，本文开头的那段代码就可以正确的执行了。&lt;/p&gt;
 </description>
     </item>
     
@@ -4438,10 +4704,13 @@ char *str2=const_cast&amp;lt;char*&amp;gt;(str1.c_str());
 char **str3=&amp;amp;str2;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;这些是可以的，但是
-    char &lt;em&gt;&lt;em&gt;str4;
-    &lt;/em&gt;str4=const_cast&amp;lt;char&lt;/em&gt;&gt;(str1.c_str());
-在使用的时候会提示str4没有定义，由于对于C++不熟悉，暂时不研究。&lt;/p&gt;
+&lt;p&gt;这些是可以的，但是&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;char **str4;
+*str4=const_cast&amp;lt;char*&amp;gt;(str1.c_str());
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在使用的时候会提示str4没有定义，由于对于C++不熟悉，暂时不研究。&lt;/p&gt;
 
 &lt;h1&gt;2. 包含lib文件的方法&lt;/h1&gt;
 
@@ -4515,16 +4784,17 @@ m_explanation=strAll;
       <pubDate>Fri, 09 Dec 2005 00:00:00 +0800</pubDate>
       <author>mail@yuliu.org (刘昱)</author>
 	  <guid>http://yuliu.org/2005/12/setting_title_of_datagrid_and_datagridview_of_winform</guid>
-	  <description>&lt;p&gt;原来Blog上面的,抛弃有点可惜，贴过来
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Drawing;
-    using System.Windows;
-    using System.Windows.Forms;
-    using System.Data;&lt;/p&gt;
+	  <description>&lt;p&gt;原来Blog上面的,抛弃有点可惜，贴过来&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;namespace DgHeader
+&lt;pre&gt;&lt;code&gt;using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Drawing;
+using System.Windows;
+using System.Windows.Forms;
+using System.Data;
+
+namespace DgHeader
 {
     public class FormNoVS:Form
     {
@@ -4648,32 +4918,48 @@ namespace DgHeader
 &lt;li&gt;&lt;p&gt;用monoDevelop新建工程，我的名字是gtkTest，gtk# 2.0 Project。&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;编译运行已经出现了一个gnome的窗体。不过上面什么都没有&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Main.cs是定义程序入口的，暂时我还没有用到他。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;打开MyWindow.cs，首先在MyWindow的构造函数中添加一个Button。
-     Button mybtn = new Button(&quot;Click me&quot;);
-把按钮加入窗体
-     this.Add(mybtn);&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;打开MyWindow.cs，首先在MyWindow的构造函数中添加一个Button。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; Button mybtn = new Button(&quot;Click me&quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;把按钮加入窗体&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  this.Add(mybtn);
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;编译运行，可以看到在窗口中已经有了一个按钮，并且是充满怎个窗口的。这里和windows是不一样的，一个窗口好象只能增加一个控件，比如说要在add一个Label在编译时刻可以通过，但是运行时刻会有Warning。而且控件大小不可调。&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;添加单击事件处理函数&lt;br/&gt;
-构造函数中增加单击事件
-     mybtn.Clicked+=new EventHandler (mybtn_click);
-添加事件处理的函数
-     void mybtn_click(object sender,EventArgs args)
-不要在里面直接用MessageBox.Show（）这个函数是没有的。&lt;br/&gt;
+构造函数中增加单击事件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  mybtn.Clicked+=new EventHandler (mybtn_click);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;添加事件处理的函数&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  void mybtn_click(object sender,EventArgs args)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;不要在里面直接用MessageBox.Show（）这个函数是没有的。&lt;br/&gt;
 看了一下Doc，发现有一个MessageDialog，估计应该是它了。&lt;br/&gt;
-查看构造函数，
-     MessageDialog(Window, DialogFlags, MessageType, ButtonsType, string, params object[])
-第一个是父窗口，第二个的意思是他的存在规则吧，我是这样理解的。&lt;br/&gt;
+查看构造函数，&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  MessageDialog(Window, DialogFlags, MessageType, ButtonsType, string, params object[])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;第一个是父窗口，第二个的意思是他的存在规则吧，我是这样理解的。&lt;br/&gt;
 最后一个参数不知道什么意思,看他的例子也没有最后一个，我也没有写&lt;br/&gt;
-根据example在事件处理的函数里面加上
-     MessageDialog md = new MessageDialog((Window)this,
-             DialogFlags.DestroyWithParent,
-             MessageType.Question,
-             ButtonsType.YesNo,
-             &quot;Do you really want to exit?&quot;);
-     ResponseType result = (ResponseType)md.Run();
-     md.Destroy();
-     if(result==ResponseType.Yes)
-     this.Destroy();&lt;/p&gt;&lt;/li&gt;
+根据example在事件处理的函数里面加上&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  MessageDialog md = new MessageDialog((Window)this,
+          DialogFlags.DestroyWithParent,
+          MessageType.Question,
+          ButtonsType.YesNo, 
+          &quot;Do you really want to exit?&quot;);
+  ResponseType result = (ResponseType)md.Run();
+  md.Destroy();
+  if(result==ResponseType.Yes)
+  this.Destroy();
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;编译运行，在单击按钮的时候就会出现对话框问你是否确定退出。搞定
 最后粘一下MyWindow.cs的代码&lt;/p&gt;
 
