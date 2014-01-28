@@ -4,7 +4,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="author" content="刘昱" />
 		
-		<title>刘昱 | 红米刷机安装第三方ROM </title>
+		<title>刘昱 | VPS重头来一遍 </title>
 		
 		<link rel="shortcut icon" href="/media/images/siteimg/favicon.ico">
 		<link href="http://yuliu.org/feed/" rel="alternate" title="刘昱" type="application/atom+xml" />
@@ -65,52 +65,53 @@
 			<div id="main" role="main">
 				<article class="content">
 				<section class="title">
-<h1>红米刷机安装第三方ROM</h1>
+<h1>VPS重头来一遍</h1>
 </section>
 <section class="post">
-<p>话说Android手机就是用来折腾的，而且还是小米，不刷刷机都对不起自己，呵呵。</p>
+<p>好久没有折腾VPS了，如果不是最近发现SSH功能不好使，有些地方去不了的话，也不会下决心重新折腾一下VPS。这里留个简单的记录，使VPS基本具备使用条件的步骤。</p>
 
-<h1>0 设备</h1>
+<h1>前言</h1>
+
+<p>关于VPS建站，以前写过两篇还算比较详细的东西吧，<a href="/2011/03/vps_hosting_from_zero_1/">链接一</a>，<a href="2011/03/vps_hosting_from_zero_2/">链接二</a>。不过随着与时俱进，该升级的升级，该简化简化的简化。</p>
+
+<h1>流水</h1>
+
+<ol>
+<li><p>vps控制面板重装系统，选择Centos 6.3 32bit</p></li>
+<li><p>安装lnmp<br/>
+时间过得真快，lnmp已经发展到了V1.0，不过似乎也将永远停留在1.0。<a href="http://lnmp.org/install.html">安装说明</a></p></li>
+<li><p>FTP功能<br/>
+通过lnmp自带的脚本，安装pureftpd。<a href="http://lnmp.org/faq/ftpserver.html">安装说明</a><br/>
+注意1：如果lnmp安装过程选择的是MySQL 5.5，还得打个<a href="http://lnmp.org/faq/fix-pureftpd-bug-mysql-55.html">补丁</a><br/>
+注意2：也许是centos的防火墙更新了，刚安装完pureftpd是能够使用的，但是如果重启VPS，客户端将不能连上FTP，查找了一番，这是由于系统防火墙的相关端口没有打开导致的。使用下述命令，打开iptables中的相关端口即可。</p>
+
+<pre><code>  $ /sbin/iptables -I INPUT -p tcp --dport 21 -j ACCEPT
+  $ /sbin/iptables -I INPUT -p tcp --dport 22 -j ACCEPT
+  $ service iptables save
+</code></pre></li>
+<li><p>SSH账号<br/>
+建一个不能登录界面的账号供SSH使用。</p>
+
+<pre><code>  $ useradd username -s /sbin/nologin
+  $ passwd username
+</code></pre></li>
+<li><p>VPN账号<br/>
+原来是使用别人编的一个脚本直接开启VPN功能，但是此次发现该网页打不开了，于是重新google了一番，用pptpd建立VPN账号，主要参考了<a href="http://fengqi.me/unix/46.html">这个哥们的经验</a><br/>
+就一点要注意的，上面帖子中的pptpd用的是1.3.4版本，现在已经是1.4.0版本了。32位系统可用如下地址</p>
+
+<pre><code>  $ wget http://poptop.sourceforge.net/yum/stable/packages/pptpd-1.4.0-1.el6.i686.rpm
+</code></pre></li>
+</ol>
+
+
+<h1>其他</h1>
 
 <ul>
-<li>Windows 8.1系统台式机</li>
-<li>红米联通（WCDMA）版</li>
+<li><a href="http://hi.baidu.com/hanyanlovejoy/item/b2660044393659d6c1a59214">sudo的用法</a></li>
 </ul>
 
 
-<h1>1 root</h1>
-
-<p>由于官方recovery只能刷官方的rom，所以要刷机安装第三方rom，必须先刷第三方recovery，而这又要求首先root。</p>
-
-<p>miui红米论坛上root的方法一堆，包括电脑端和手机端都有，<a href="http://bbs.xiaomi.cn/thread-9098813-1-1.html">详细了解</a>。</p>
-
-<p>先试了手机端，百度root、root大师均不行，root大师提示权限不够。</p>
-
-<p>再试电脑端，mi-tools不行，最后使用root大师成功（PS原来的一个移动版红米同样也只有root大师电脑板能够搞定）。</p>
-
-<h1>2 刷第三方recovery</h1>
-
-<p>这里选择了<a href="http://blog.cofface.com/archives/543.html">cwm的第三方recovery</a></p>
-
-<p>使用cwm自带的手机连接电脑执行<code>刷入红米CWMrecovery.bat</code>无法成功</p>
-
-<p>只能将其中的Cofface_hongmi_recovery_v1.0.img拷到sd卡中，</p>
-
-<p>安装移动叔叔客户端，通过移动叔叔刷recovery成功。</p>
-
-<p>PS：刷完第三方不要重启进入官方系统，否则recovery会被恢复成官方recovery。</p>
-
-<h1>3 SDCard无法挂载问题</h1>
-
-<p>一般来说进入第三方recovery后，直接选择SD卡中的第三方rom文件即可，但是此次却出现在recovery中无法挂载SD卡（can‘t mount SDcard）的情况，遇到这种情况可使用<a href="http://panasonic.jp/support/global/cs/sd/download/index.html">panasonic SDcard formatter</a>重新格式化SD即可。</p>
-
-<h1>4 rom文件修改慎用记事本</h1>
-
-<p>由于我打算刷开启了miui系统中自带root选项的准官方rom，<a href="http://www.miui.com/thread-1583745-1-4.html">链接一</a>，<a href="http://bbs.xiaomi.cn/thread-8947931-1-1.html">链接二</a>。</p>
-
-<p>于是需要对官方rom进行编辑修改，修改这些文本文件的过程中慎用系统自带的记事本，不知道什么时候就给你加个空格或换行什么的，导致rom错误无法使用。</p>
-
-<p>推荐使用vim或者ultraedit等文本编辑软件。</p>
+<p>本文大量的都是应用链接，只担心这些链接在某事某刻就消失了，有啥好办法给他们做个备份呢？</p>
 
 </section>
 <section class="meta">
@@ -120,7 +121,7 @@
 <span class="time">
 	/
 	
-	<time datetime="2014-01-24">2014-01-24</time> 更新
+	<time datetime="2014-01-28">2014-01-28</time> 更新
 	
 </span>
 <br />
@@ -128,7 +129,7 @@
 <span class="categories">
 	分类： 
 	
-	<a href="http://yuliu.org/essay/categories.html#硬件" title="硬件">硬件</a>&nbsp;/
+	<a href="http://yuliu.org/essay/categories.html#计算机" title="计算机">计算机</a>&nbsp;/
 	
 </span>
 
@@ -136,13 +137,11 @@
 <span class="tags">
 	标签： 
 	
-	<a href="http://yuliu.org/essay/tags.html#手机" title="手机">手机</a>&nbsp;
+	<a href="http://yuliu.org/essay/tags.html#VPS" title="VPS">VPS</a>&nbsp;
 	
-	<a href="http://yuliu.org/essay/tags.html#红米" title="红米">红米</a>&nbsp;
+	<a href="http://yuliu.org/essay/tags.html#SSH" title="SSH">SSH</a>&nbsp;
 	
-	<a href="http://yuliu.org/essay/tags.html#刷机" title="刷机">刷机</a>&nbsp;
-	
-	<a href="http://yuliu.org/essay/tags.html#Android" title="Android">Android</a>&nbsp;
+	<a href="http://yuliu.org/essay/tags.html#VPN" title="VPN">VPN</a>&nbsp;
 	
 </span>
 
@@ -157,7 +156,7 @@ $(function(){
 		$('section.comment #show_disqus_comment').on('click',function(){
 			$(this).html('评论加载中<image src="/media/images/siteimg/loading.gif" class="loader-img" />');
 			var disqus_shortname = 'yuliu'; // required: replace example with your forum shortname
-			var disqus_url = 'http://yuliu.org/2014/01/root_reinstall_rom_of_hongmi/';
+			var disqus_url = 'http://yuliu.org/2014/01/review_of_vps_hosting_setup/';
 			// var disqus_developer = 1; 
 			var that = this;
 			// var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -176,12 +175,10 @@ $(function(){
 			var url = false;
 			if (e.which == 37 || e.which == 74) {  // Left arrow and J
 				
-				url = 'http://yuliu.org/2013/08/nuclear_grade_materials/';
+				url = 'http://yuliu.org/2014/01/root_reinstall_rom_of_hongmi/';
 				
 			}
 			else if (e.which == 39 || e.which == 75) {  // Right arrow and K
-				
-				url = 'http://yuliu.org/2014/01/review_of_vps_hosting_setup/';
 				
 			}
 			if (url) {

@@ -6,9 +6,62 @@
     <atom:link href="http://yuliu.org/feed/rss.xml" rel="self" type="application/rss+xml" />
 	<description>刘昱 | 核能动力系统工程师</description>
     <language>zh-cn</language>
-    <pubDate>Fri, 24 Jan 2014 21:09:10 +0800</pubDate>
-    <lastBuildDate>Fri, 24 Jan 2014 21:09:10 +0800</lastBuildDate>
+    <pubDate>Tue, 28 Jan 2014 20:36:32 +0800</pubDate>
+    <lastBuildDate>Tue, 28 Jan 2014 20:36:32 +0800</lastBuildDate>
 
+    
+    <item>
+      <title>VPS重头来一遍</title>
+      <link>http://yuliu.org/2014/01/review_of_vps_hosting_setup/</link>
+      <pubDate>Tue, 28 Jan 2014 00:00:00 +0800</pubDate>
+      <author>mail@yuliu.org (刘昱)</author>
+	  <guid>http://yuliu.org/2014/01/review_of_vps_hosting_setup</guid>
+	  <description>&lt;p&gt;好久没有折腾VPS了，如果不是最近发现SSH功能不好使，有些地方去不了的话，也不会下决心重新折腾一下VPS。这里留个简单的记录，使VPS基本具备使用条件的步骤。&lt;/p&gt;
+
+&lt;h1&gt;前言&lt;/h1&gt;
+
+&lt;p&gt;关于VPS建站，以前写过两篇还算比较详细的东西吧，&lt;a href=&quot;/2011/03/vps_hosting_from_zero_1/&quot;&gt;链接一&lt;/a&gt;，&lt;a href=&quot;2011/03/vps_hosting_from_zero_2/&quot;&gt;链接二&lt;/a&gt;。不过随着与时俱进，该升级的升级，该简化简化的简化。&lt;/p&gt;
+
+&lt;h1&gt;流水&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;vps控制面板重装系统，选择Centos 6.3 32bit&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;安装lnmp&lt;br/&gt;
+时间过得真快，lnmp已经发展到了V1.0，不过似乎也将永远停留在1.0。&lt;a href=&quot;http://lnmp.org/install.html&quot;&gt;安装说明&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;FTP功能&lt;br/&gt;
+通过lnmp自带的脚本，安装pureftpd。&lt;a href=&quot;http://lnmp.org/faq/ftpserver.html&quot;&gt;安装说明&lt;/a&gt;&lt;br/&gt;
+注意1：如果lnmp安装过程选择的是MySQL 5.5，还得打个&lt;a href=&quot;http://lnmp.org/faq/fix-pureftpd-bug-mysql-55.html&quot;&gt;补丁&lt;/a&gt;&lt;br/&gt;
+注意2：也许是centos的防火墙更新了，刚安装完pureftpd是能够使用的，但是如果重启VPS，客户端将不能连上FTP，查找了一番，这是由于系统防火墙的相关端口没有打开导致的。使用下述命令，打开iptables中的相关端口即可。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ /sbin/iptables -I INPUT -p tcp --dport 21 -j ACCEPT
+  $ /sbin/iptables -I INPUT -p tcp --dport 22 -j ACCEPT
+  $ service iptables save
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;SSH账号&lt;br/&gt;
+建一个不能登录界面的账号供SSH使用。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ useradd username -s /sbin/nologin
+  $ passwd username
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;VPN账号&lt;br/&gt;
+原来是使用别人编的一个脚本直接开启VPN功能，但是此次发现该网页打不开了，于是重新google了一番，用pptpd建立VPN账号，主要参考了&lt;a href=&quot;http://fengqi.me/unix/46.html&quot;&gt;这个哥们的经验&lt;/a&gt;&lt;br/&gt;
+就一点要注意的，上面帖子中的pptpd用的是1.3.4版本，现在已经是1.4.0版本了。32位系统可用如下地址&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ wget http://poptop.sourceforge.net/yum/stable/packages/pptpd-1.4.0-1.el6.i686.rpm
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;h1&gt;其他&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://hi.baidu.com/hanyanlovejoy/item/b2660044393659d6c1a59214&quot;&gt;sudo的用法&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;本文大量的都是应用链接，只担心这些链接在某事某刻就消失了，有啥好办法给他们做个备份呢？&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>红米刷机安装第三方ROM</title>
